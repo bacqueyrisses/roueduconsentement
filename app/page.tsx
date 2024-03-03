@@ -1,17 +1,16 @@
 import Link from "next/link";
 import Instagram from "@/components/icons/instagram";
 import NameDialog from "@/components/name-dialog";
-import Wheel from "@/components/wheel";
 import WheelWrapper from "@/components/wheel-wrapper";
 
 export default function Home() {
   return (
-    <div className="flex w-full max-w-xl flex-col items-center justify-center px-2.5 xl:px-0">
+    <div className="z-10 flex w-full max-w-xl flex-col items-center justify-center px-2.5 xl:px-0">
       <Link
         href="https://twitter.com/"
         target="_blank"
         rel="noreferrer"
-        className="animate-fade-up z-10 mx-auto mb-5 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-orange-500/20 px-5 py-2 transition-colors hover:bg-orange-200 md:px-7"
+        className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-orange-500/20 px-5 py-2 transition-colors hover:bg-orange-200 md:px-7"
       >
         <Instagram className="h-4 w-4 text-orange-500" />
       </Link>
@@ -22,7 +21,7 @@ export default function Home() {
         La roue du consentement
       </h1>
       <p
-        className="animate-fade-up mt-6 text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+        className="mt-6 animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
