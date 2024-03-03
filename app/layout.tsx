@@ -2,8 +2,7 @@ import "@/styles/tailwind.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
+import Footer from "@/components/footer";
 
 const clash = localFont({
   src: "../styles/ClashDisplay-Semibold.otf",
@@ -26,7 +25,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const scrolled = false;
   return (
     <html lang="en">
       <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
@@ -34,19 +32,7 @@ export default function RootLayout({
         <main className="flex w-full flex-col items-center justify-center pt-6">
           {children}
         </main>
-        <footer className="absolute bottom-0 w-full py-5 text-center">
-          <p className="text-gray-500">
-            Un projet de{" "}
-            <a
-              className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Nom Prénom
-            </a>
-          </p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
