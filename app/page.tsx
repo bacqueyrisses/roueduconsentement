@@ -4,12 +4,12 @@ import NameDialog from "@/components/name-dialog";
 
 export default function Home() {
   return (
-    <div className=" flex w-full max-w-xl flex-col items-center justify-center px-2.5 xl:px-0">
+    <div className="flex w-full max-w-xl flex-col items-center justify-center px-2.5 xl:px-0">
       <Link
         href="https://twitter.com/"
         target="_blank"
         rel="noreferrer"
-        className="animate-fade-up mx-auto mb-5 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-orange-500/20 px-5 py-2 transition-colors hover:bg-orange-200 md:px-7"
+        className="animate-fade-up z-10 mx-auto mb-5 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-orange-500/20 px-5 py-2 transition-colors hover:bg-orange-200 md:px-7"
       >
         <Instagram className="h-4 w-4 text-orange-500" />
       </Link>
