@@ -21,7 +21,7 @@ export default function NameDialog() {
         className="animate-fade-up mt-6 cursor-pointer rounded-full bg-blue-100 px-5 py-2 text-lg font-medium text-blue-600 transition-colors hover:bg-blue-200 md:px-7"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        Tourner la roue
+        Faire le test
       </button>
       <Dialog open={isOpen} onClose={setIsOpen}>
         <DialogTitle>Rentrez votre pseudo</DialogTitle>

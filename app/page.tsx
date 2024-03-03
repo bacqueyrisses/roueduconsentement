@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Instagram from "@/components/icons/instagram";
 import NameDialog from "@/components/name-dialog";
+import Wheel from "@/components/wheel";
+import WheelWrapper from "@/components/wheel-wrapper";
 
 export default function Home() {
   return (
@@ -27,6 +29,7 @@ export default function Home() {
       </p>
 
       <NameDialog />
+      <WheelWrapper />
     </div>
   );
 }
