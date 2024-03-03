@@ -1,5 +1,5 @@
 import "@/styles/tailwind.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   // metadataBase: new URL(""),
 };
 
+export const viewport: Viewport = {
+  themeColor: "#EDF3FD",
+};
 export default function RootLayout({
   children,
 }: {

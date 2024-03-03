@@ -11,7 +11,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Nom Prénom
+          auteur.e
         </Link>
       </p>
     </footer>

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Instagram from "@/components/icons/instagram";
+import NameDialog from "@/components/name-dialog";
 
 export default function Home() {
   return (
-    <div className="z-10 flex w-full max-w-xl flex-col items-center justify-center px-2.5 xl:px-0">
+    <div className=" flex w-full max-w-xl flex-col items-center justify-center px-2.5 xl:px-0">
       <Link
         href="https://twitter.com/"
         target="_blank"
@@ -24,12 +25,8 @@ export default function Home() {
       >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       </p>
-      <button
-        className="animate-fade-up mt-6 rounded-full bg-blue-100 px-5 py-2 text-lg font-semibold text-[#1d9bf0] transition-colors hover:bg-blue-200 md:px-7"
-        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
-      >
-        Tourner la roue
-      </button>
+
+      <NameDialog />
     </div>
   );
 }
