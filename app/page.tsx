@@ -1,12 +1,30 @@
-import { Footer } from "@/components/footer";
-
-import { Hero } from "@/components/hero";
+import Twitter from "@/components/icons/twitter";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <Footer />
-    </>
+    <div className="z-10 w-full max-w-xl px-2.5 xl:px-0">
+      <Link
+        href="https://twitter.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="animate-fade-up mx-auto mb-5 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-5 py-2 transition-colors hover:bg-blue-200 md:px-7"
+      >
+        <Twitter className="h-4 w-4 text-[#1d9bf0]" />
+      </Link>
+      <h1
+        className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
+        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+      >
+        La roue du consentement
+      </h1>
+      <p
+        className="animate-fade-up mt-6 text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore
+        laudantium obcaecati provident quia ut voluptatibus.
+      </p>
+    </div>
   );
 }

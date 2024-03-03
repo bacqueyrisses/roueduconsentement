@@ -1,21 +1,24 @@
-import { type Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-
 import "@/styles/tailwind.css";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import { Inter } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
+
+const clash = localFont({
+  src: "../styles/ClashDisplay-Semibold.otf",
+  variable: "--font-clash",
+});
 
 const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
   variable: "--font-inter",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Meta-titre",
-  description: "Meta-description.",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#F1F5F9",
+  title: "La roue du consentement",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+  // metadataBase: new URL(""),
 };
 
 export default function RootLayout({
@@ -23,23 +26,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const scrolled = false;
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} h-full scroll-smooth bg-white antialiased`}
-    >
-      <head>
-        <link
-          rel="preconnect"
-          href="https://cdn.fontshare.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&display=swap"
-        />
-      </head>
-      <body className="flex min-h-full flex-col">{children}</body>
+    <html lang="en">
+      <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
+        <div className="fixed h-screen w-full bg-gradient-to-br from-violet-100 via-teal-50 to-amber-100" />
+        <main className="flex w-full flex-col items-center justify-center pt-6">
+          {children}
+        </main>
+        <footer className="absolute bottom-0 w-full py-5 text-center">
+          <p className="text-gray-500">
+            Un projet de{" "}
+            <a
+              className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Nom Prénom
+            </a>
+          </p>
+        </footer>
+      </body>
     </html>
   );
 }
