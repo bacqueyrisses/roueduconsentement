@@ -10,9 +10,9 @@ export default function Home() {
         href="https://twitter.com/"
         target="_blank"
         rel="noreferrer"
-        className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-orange-500/20 px-5 py-2 transition-colors hover:bg-orange-200 md:px-7"
+        className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-orange-500/20 px-5 py-2 transition-colors duration-300 ease-in-out hover:bg-orange-200 md:px-7"
       >
-        <Instagram className="h-4 w-4 text-orange-500" />
+        <Instagram className="size-4 text-orange-500" />
       </Link>
       <h1
         className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-6xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl"
