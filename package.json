@@ -38,5 +38,10 @@
   },
   "lint-staged": {
     "*": "prettier --write ."
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   }
 }
