@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Field } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Check from "@/components/icons/check";
 import { authenticate } from "@/lib/actions/auth";
 import { useFormState, useFormStatus } from "react-dom";
@@ -23,7 +23,6 @@ export default function NameDialog() {
       <button
         onClick={() => setIsOpen(true)}
         className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-blue-100 px-5 py-2 text-base font-medium text-blue-500 transition-colors duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-600 md:px-7"
-        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
         <Check className={"size-6"} />
         <span>Se tester maintenant</span>
@@ -75,7 +74,7 @@ function SubmitButton() {
         <>
           <span className={"invisible"}>Jouer</span>
           <Loader
-            className={"animate-spin-slow absolute inset-0 m-auto size-5"}
+            className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
           />
         </>
       ) : (

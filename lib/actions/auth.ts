@@ -1,8 +1,7 @@
 "use server";
 import { signIn, signOut } from "@/auth";
-import { AuthError } from "next-auth";
+import { AuthError, User } from "next-auth";
 import { sql } from "@vercel/postgres";
-import { User } from "@/lib/definitions";
 
 export async function authenticate(
   prevState: string | undefined,
@@ -26,7 +25,7 @@ export async function authenticate(
 export async function create(pseudo: User["pseudo"]) {
   try {
     const user =
-      await sql`INSERT INTO "users" (pseudo) VALUES (${pseudo}) ON CONFLICT (pseudo) DO NOTHING RETURNING *`;
+      await sql<User>`INSERT INTO "users" (pseudo) VALUES (${pseudo}) ON CONFLICT (pseudo) DO NOTHING RETURNING pseudo`;
     return user.rows[0];
   } catch (error) {
     console.error(error);

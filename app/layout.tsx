@@ -33,7 +33,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Toaster />
+      <Toaster
+        position={"bottom-center"}
+        toastOptions={{
+          unstyled: true,
+          classNames: {
+            toast: `${inter.variable} w-full inline-flex gap-1.5 items-center justify-center`,
+          },
+        }}
+      />
       <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
         <div className="fixed h-screen w-full bg-gradient-to-br from-violet-100 via-teal-50 to-amber-100" />
         <main className="flex w-full flex-col items-center justify-center pt-6">
@@ -52,12 +60,6 @@ export default function RootLayout({
             >
               La roue du consentement
             </h1>
-            <p
-              className="mt-6 animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
-              style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </p>
             {children}
           </div>
         </main>

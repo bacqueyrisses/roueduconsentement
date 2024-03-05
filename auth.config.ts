@@ -5,8 +5,17 @@ export const authConfig = {
     signIn: "/",
   },
   callbacks: {
-    async session({ session, token }) {
-      // console.log(session, token);
+    async jwt({ token, trigger, session, user }) {
+      if (trigger === "update" && session) {
+        return { ...token, ...session?.user };
+      }
+      return { ...token, ...user };
+    },
+    async session({ session, token, user }) {
+      if (token.sub != null) {
+        session.user.id = token.sub;
+      }
+      session.user.pseudo = token.pseudo;
       return session;
     },
     authorized({ auth, request: { nextUrl } }) {
@@ -20,6 +29,7 @@ export const authConfig = {
       return true;
     },
   },
+  session: { strategy: "jwt" },
   providers: [],
   trustHost: true,
   secret: process.env.AUTH_SECRET,

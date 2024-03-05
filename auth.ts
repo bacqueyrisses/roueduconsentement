@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { authConfig } from "./auth.config";
 import { z } from "zod";
@@ -12,14 +12,14 @@ export const { auth, signIn, signOut } = NextAuth({
       credentials: {
         name: { label: "pseudo", type: "text", placeholder: "pseudo" },
       },
-      async authorize(credentials) {
+      async authorize(credentials): Promise<User | null> {
         const parsedCredentials = z
           .object({ pseudo: z.string() })
           .safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { pseudo } = parsedCredentials.data;
-          const user = await create(pseudo);
+          const user: User = await create(pseudo);
           if (!user) {
             console.log("Pseudonym already in use.");
             return null;
