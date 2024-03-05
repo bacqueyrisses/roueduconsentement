@@ -14,6 +14,7 @@ export default function WheelWrapper({ user }: { user: User }) {
   function handlePositive() {
     if (currentQuestionIndex === questions.length - 1) return;
     const score = questions[currentQuestionIndex].value;
+    // @ts-ignore
     setScores([...scores, score]);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
@@ -21,6 +22,7 @@ export default function WheelWrapper({ user }: { user: User }) {
   function handleNegative() {
     if (currentQuestionIndex === questions.length - 1) return;
     const score = questions[currentQuestionIndex].value;
+    // @ts-ignore
     setScores([...scores, score]);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }

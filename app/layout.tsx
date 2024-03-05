@@ -34,7 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Toaster
-        position={"bottom-center"}
+        offset={24}
+        position={"top-center"}
         toastOptions={{
           unstyled: true,
           classNames: {
