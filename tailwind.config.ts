@@ -13,6 +13,7 @@ const config: Config = {
         default: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       animation: {
+        "spin-slow": "spin 2.2s linear infinite",
         // Modal
         "scale-in": "scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
         "fade-in": "fade-in 0.3s ease-out forwards",

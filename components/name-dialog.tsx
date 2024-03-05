@@ -13,10 +13,13 @@ import Check from "@/components/icons/check";
 import { authenticate } from "@/lib/actions/auth";
 import { useFormState, useFormStatus } from "react-dom";
 
+import Loader from "@/components/icons/loader";
+
 export default function NameDialog() {
   const [isOpen, setIsOpen] = useState(false);
-  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const [error, dispatch] = useFormState(authenticate, undefined);
 
+  console.log(error);
   return (
     <>
       <button
@@ -27,36 +30,28 @@ export default function NameDialog() {
         <Check className={"size-6"} />
         <span>Se tester maintenant</span>
       </button>
-
       <Dialog open={isOpen} onClose={setIsOpen}>
-        <form
-          className={"space-x-4"}
-          action={(data) => {
-            console.log("test");
-            try {
-              dispatch(data);
-              setIsOpen(false);
-            } catch (error) {
-              console.error(error);
-              throw new Error("Couldn't create user.");
-            }
-          }}
-        >
+        <form action={dispatch}>
           <DialogTitle>Rentrez votre pseudo</DialogTitle>
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
+            <br />
+            <div className={"h-4 text-red-500"}>{error}</div>
           </DialogDescription>
           <DialogBody>
             <Field>
               <Input type={"text"} name="pseudo" placeholder="pseudonyme" />
             </Field>
           </DialogBody>
-          <DialogActions>
+          <DialogActions className={"mt-10"}>
             <button
+              type={"button"}
               className={
                 "rounded-full bg-red-100 px-5 py-2 font-medium text-red-600 transition-colors duration-300 ease-in-out hover:bg-red-200 md:px-7"
               }
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+              }}
             >
               Annuler
             </button>
@@ -73,12 +68,20 @@ function SubmitButton() {
 
   return (
     <button
-      type={"submit"}
       className={
-        "rounded-full bg-green-100 px-5 py-2 font-medium text-green-700 transition-colors duration-300 ease-in-out hover:bg-green-200 md:px-7"
+        "relative rounded-full bg-green-100 px-5 py-2 font-medium text-green-700 transition-colors duration-300 ease-in-out hover:bg-green-200 md:px-7"
       }
     >
-      Jouer
+      {pending ? (
+        <>
+          <span className={"invisible"}>Jouer</span>
+          <Loader
+            className={"animate-spin-slow absolute inset-0 m-auto size-5"}
+          />
+        </>
+      ) : (
+        "Jouer"
+      )}
     </button>
   );
 }

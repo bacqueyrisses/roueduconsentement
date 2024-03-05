@@ -14,9 +14,9 @@ export async function authenticate(
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return "Pseudonym already in use.";
+          return "Ce pseudonyme est déjà en cours d'utilisation.";
         default:
-          return "Something went wrong.";
+          return "Une erreur est survenue.";
       }
     }
     throw error;

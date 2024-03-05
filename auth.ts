@@ -13,20 +13,17 @@ export const { auth, signIn, signOut } = NextAuth({
         name: { label: "pseudo", type: "text", placeholder: "pseudo" },
       },
       async authorize(credentials) {
-        console.log(credentials);
         const parsedCredentials = z
           .object({ pseudo: z.string() })
           .safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { pseudo } = parsedCredentials.data;
-          const user = create(pseudo);
-
+          const user = await create(pseudo);
           if (!user) {
             console.log("Pseudonym already in use.");
             return null;
           }
-          console.log(user);
           return user;
         }
 
