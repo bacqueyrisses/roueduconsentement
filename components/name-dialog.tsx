@@ -12,14 +12,12 @@ import { useState } from "react";
 import Check from "@/components/icons/check";
 import { authenticate } from "@/lib/actions/auth";
 import { useFormState, useFormStatus } from "react-dom";
-
 import Loader from "@/components/icons/loader";
 
 export default function NameDialog() {
   const [isOpen, setIsOpen] = useState(false);
   const [error, dispatch] = useFormState(authenticate, undefined);
 
-  console.log(error);
   return (
     <>
       <button
