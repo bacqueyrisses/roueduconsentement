@@ -5,8 +5,9 @@ import Check from "@/components/icons/check";
 import X from "@/components/icons/x";
 import { questions } from "@/lib/data/questions";
 import { toast } from "sonner";
+import { User } from "next-auth";
 
-export default function WheelWrapper() {
+export default function WheelWrapper({ user }: { user: User }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [scores, setScores] = useState([]);
 
@@ -35,7 +36,7 @@ export default function WheelWrapper() {
         }
       >
         <Check />
-        <h1>Bienvenue</h1>
+        <h1>Bienvenue {user.pseudo}</h1>
       </div>,
     );
   }, []);

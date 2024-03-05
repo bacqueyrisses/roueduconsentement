@@ -1,5 +1,4 @@
 import { DefaultSession } from "@auth/core/types";
-import { JWT } from "@auth/core/jwt";
 
 declare module "@auth/core/types" {
   interface User {
