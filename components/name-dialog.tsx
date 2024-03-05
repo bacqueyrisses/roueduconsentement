@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Field } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Check from "@/components/icons/check";
 import { authenticate } from "@/lib/actions/auth";
 import { useFormState, useFormStatus } from "react-dom";
@@ -34,7 +34,7 @@ export default function NameDialog() {
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
             <br />
-            <div className={"h-4 text-red-500"}>{error}</div>
+            <span className={"block h-4 text-red-500"}>{error}</span>
           </DialogDescription>
           <DialogBody>
             <Field>
@@ -53,6 +53,7 @@ export default function NameDialog() {
             >
               Annuler
             </button>
+
             <SubmitButton />
           </DialogActions>
         </form>
