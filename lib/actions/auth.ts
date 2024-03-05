@@ -1,5 +1,5 @@
 "use server";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 import { sql } from "@vercel/postgres";
 import { User } from "@/lib/definitions";
@@ -32,4 +32,8 @@ export async function create(pseudo: User["pseudo"]) {
     console.error(error);
     throw new Error("Couldn't create user.");
   }
+}
+
+export async function signout() {
+  await signOut();
 }

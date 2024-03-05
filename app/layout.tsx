@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
 import Instagram from "@/components/icons/instagram";
 import Link from "next/link";
+import { Toaster } from "sonner";
 
 const clash = localFont({
   src: "../styles/ClashDisplay-Semibold.otf",
@@ -32,6 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Toaster />
       <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
         <div className="fixed h-screen w-full bg-gradient-to-br from-violet-100 via-teal-50 to-amber-100" />
         <main className="flex w-full flex-col items-center justify-center pt-6">

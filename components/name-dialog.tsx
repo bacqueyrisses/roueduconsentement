@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Field } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Check from "@/components/icons/check";
 import { authenticate } from "@/lib/actions/auth";
 import { useFormState, useFormStatus } from "react-dom";
