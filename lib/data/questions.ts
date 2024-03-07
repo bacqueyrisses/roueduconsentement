@@ -24,18 +24,17 @@ export const questions: Decision[] = [
       "Est-ce que je peux en parler à mon partenaire, un professionnel, un ami, la famille ?",
     value: 10,
   },
-  { id: 7, question: "Est-ce que je sais que je ne veux pas ?", value: 1 },
-  { id: 8, question: "Est-ce que l’autre ne veux pas ?", value: 1 },
-  { id: 9, question: "Est-ce que j’identifie des dangers ?", value: 2 },
+  { id: 7, question: "Est-ce que je sais que je ne veux pas ?", value: 10 },
+  { id: 8, question: "Est-ce que l’autre ne veux pas ?", value: 0 },
+  { id: 9, question: "Est-ce que j’identifie des dangers ?", value: 10 },
   {
     id: 10,
     question: "Est-ce que je me sens obligé de faire ce qu’on attend de moi ?",
-    value: 7,
+    value: 0,
   },
   {
     id: 11,
-    question:
-      "Est-ce que la situation me convient ? (Ambiance, consommation de produits, état physique et émotionnel)",
-    value: 8,
+    question: "Est-ce que la situation me convient ?",
+    value: 0,
   },
 ];

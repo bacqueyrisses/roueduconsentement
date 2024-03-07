@@ -1,5 +1,4 @@
 import NameDialog from "@/components/name-dialog";
-import WheelWrapper from "@/components/wheel-wrapper";
 import Wheel from "@/components/wheel";
 
 export default function Home() {

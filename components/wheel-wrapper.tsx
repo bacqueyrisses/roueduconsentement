@@ -10,10 +10,13 @@ import { User } from "next-auth";
 export default function WheelWrapper({ user }: { user: User }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [scores, setScores] = useState([]);
+  const [score2, setScore2] = useState(0);
 
   function handlePositive() {
     if (currentQuestionIndex === questions.length - 1) return;
+    // const score = questions[currentQuestionIndex].value;
     const score = questions[currentQuestionIndex].value;
+
     // @ts-ignore
     setScores([...scores, score]);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -27,7 +30,7 @@ export default function WheelWrapper({ user }: { user: User }) {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
 
-  const total =
+  const average =
     scores.reduce((acc, cur) => acc + cur, 0) / (scores.length || 1);
 
   useEffect(() => {
@@ -55,14 +58,24 @@ export default function WheelWrapper({ user }: { user: User }) {
         </h1>
         <div className={"flex items-center justify-center gap-4"}>
           <button
-            onClick={handlePositive}
+            onClick={() => {
+              if (currentQuestionIndex === questions.length - 1) return;
+              if (score2 === 10) return;
+              setScore2((prevScore) => prevScore + 1);
+              setCurrentQuestionIndex(currentQuestionIndex + 1);
+            }}
             className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-green-200 px-5 py-2 text-base font-medium text-green-600 transition-colors duration-300 ease-in-out hover:bg-green-300 hover:text-green-700 md:px-7"
           >
             <Check className={"size-6"} />
             <span>D'accord</span>
           </button>
           <button
-            onClick={handleNegative}
+            onClick={() => {
+              if (currentQuestionIndex === questions.length - 1) return;
+              if (score2 === 0) return;
+              setScore2((prevScore) => prevScore - 1);
+              setCurrentQuestionIndex(currentQuestionIndex + 1);
+            }}
             className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7"
           >
             <X className={"size-6"} />
@@ -70,7 +83,7 @@ export default function WheelWrapper({ user }: { user: User }) {
           </button>
         </div>
       </div>
-      <Wheel value={total} />
+      <Wheel value={score2} />
     </>
   );
 }

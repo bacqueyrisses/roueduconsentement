@@ -9,10 +9,9 @@ interface StatProps {
 const START_ANGLE = 45;
 const END_ANGLE = 315;
 
-export default function Wheel(props: StatProps) {
-  const { value } = props;
+export default function Wheel({ value }: StatProps) {
   const gauge = useGauge({
-    domain: [0, 100],
+    domain: [0, 10],
     startAngle: START_ANGLE,
     endAngle: END_ANGLE,
     numTicks: 10,
@@ -30,9 +29,9 @@ export default function Wheel(props: StatProps) {
     let color = "";
     if (value === 0) {
       color = "";
-    } else if (value <= 25) {
+    } else if (value <= 4) {
       color = `red`;
-    } else if (value <= 50) {
+    } else if (value <= 7) {
       color = "yellow";
     } else {
       color = "green";
