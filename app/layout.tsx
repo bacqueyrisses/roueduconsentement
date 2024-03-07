@@ -48,7 +48,7 @@ export default function RootLayout({
         <main className="flex w-full flex-col items-center justify-center pt-6">
           <div className="z-10 flex w-full max-w-xl flex-col items-center justify-center px-2.5 xl:px-0">
             <Link
-              href="https://twitter.com/"
+              href="https://instagram.com/"
               target="_blank"
               rel="noreferrer"
               className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-orange-500/20 px-5 py-2 transition-colors duration-300 ease-in-out hover:bg-orange-200 md:px-7"
