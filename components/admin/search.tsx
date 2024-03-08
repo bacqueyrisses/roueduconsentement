@@ -2,10 +2,17 @@
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
+import { Suspense, useTransition } from "react";
 import { Route } from "next";
 
 export default function Search({ disabled }: { disabled?: boolean }) {
+  return (
+    <Suspense>
+      <Searchbar disabled={disabled} />
+    </Suspense>
+  );
+}
+function Searchbar({ disabled }: { disabled?: boolean }) {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
