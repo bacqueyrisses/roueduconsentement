@@ -5,6 +5,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
+  Text,
 } from "@tremor/react";
 import { User } from "next-auth";
 
@@ -15,13 +16,21 @@ export default function UsersTable({ users }: { users: User[] }) {
         <TableRow>
           <TableHeaderCell>Pseudo</TableHeaderCell>
           <TableHeaderCell>Date</TableHeaderCell>
+          <TableHeaderCell>Score</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {users.map((user) => (
           <TableRow key={user.id}>
-            <TableCell>{user.pseudo}</TableCell>
-            <TableCell>{user.date}</TableCell>
+            <TableCell>
+              <Text>{user.pseudo}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{user.date}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{user.score ?? "Pas de score."}</Text>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

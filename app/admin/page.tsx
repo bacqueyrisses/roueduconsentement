@@ -12,7 +12,7 @@ export default async function AdminPage({
   const search = searchParams.search ?? "";
 
   const result = await sql`
-      SELECT id, pseudo, TO_CHAR(date, 'DD/MM/YYYY') AS date
+      SELECT id, pseudo, score, TO_CHAR(date, 'DD/MM/YYYY') AS date
       FROM users
       WHERE pseudo ILIKE ${"%" + search + "%"}
   `;
