@@ -3,6 +3,7 @@ import { Card, Title, Text } from "@tremor/react";
 import Search from "@/components/admin/search";
 import UsersTable from "@/components/admin/table";
 import { User } from "next-auth";
+import { Suspense } from "react";
 
 export default async function AdminPage({
   searchParams,
@@ -23,7 +24,9 @@ export default async function AdminPage({
     <main className="mx-auto max-w-7xl p-4 md:p-10">
       <Title>Utilisateurs</Title>
       <Text>Faites une recherche dans la liste des pseudos.</Text>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Card className="mt-6">
         <UsersTable users={users} />
       </Card>
