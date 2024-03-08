@@ -15,7 +15,6 @@ export default async function AdminPage({
       SELECT id, pseudo, TO_CHAR(date, 'DD/MM/YYYY') AS date
       FROM users
       WHERE pseudo ILIKE ${"%" + search + "%"}
-         OR TO_CHAR(date, 'DD/MM/YYYY') ILIKE ${"%" + search + "%"};
   `;
 
   const users = result.rows as User[];
@@ -23,7 +22,7 @@ export default async function AdminPage({
   return (
     <main className="mx-auto max-w-7xl p-4 md:p-10">
       <Title>Utilisateurs</Title>
-      <Text>Faites une recherche par pseudo ou par date.</Text>
+      <Text>Faites une recherche dans la liste des pseudos.</Text>
       <Search />
       <Card className="mt-6">
         <UsersTable users={users} />

@@ -5,7 +5,6 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-  Text,
 } from "@tremor/react";
 import { User } from "next-auth";
 

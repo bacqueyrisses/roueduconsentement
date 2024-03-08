@@ -1,17 +1,18 @@
 "use client";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 import { Route } from "next";
 
 export default function Search({ disabled }: { disabled?: boolean }) {
+  const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
   function handleSearch(term: string) {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(searchParams);
     if (term) {
       params.set("search", term);
     } else {
@@ -46,6 +47,7 @@ export default function Search({ disabled }: { disabled?: boolean }) {
           className="block h-10 w-full rounded-md border border-gray-200 pl-9 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           placeholder="Recherchez..."
           spellCheck={false}
+          defaultValue={searchParams.get("search")?.toString()}
           onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
