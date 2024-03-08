@@ -9,6 +9,7 @@ import Image from "next/image";
 import logo from "@/public/logo.png";
 import { signout } from "@/lib/actions/auth";
 import X from "@/components/icons/x";
+import Link from "next/link";
 
 const navigation = [
   { name: "Utilisateurs", href: "/admin" },
@@ -30,12 +31,14 @@ export default function Navbar({ user }: { user: any }) {
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
-                  <Image
-                    src={logo}
-                    width={27}
-                    height={27}
-                    alt={"logo de la roue du consentement"}
-                  />
+                  <Link href={"/"}>
+                    <Image
+                      src={logo}
+                      width={27}
+                      height={27}
+                      alt={"logo de la roue du consentement"}
+                    />
+                  </Link>
                 </div>
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => (
