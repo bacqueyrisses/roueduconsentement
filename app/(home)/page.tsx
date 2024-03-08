@@ -11,7 +11,7 @@ export default function HomePage() {
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       </p>
       <NameDialog />
-      <Wheel value={20} />
+      <Wheel value={5} />
     </>
   );
 }
