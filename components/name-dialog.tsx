@@ -13,10 +13,26 @@ import Check from "@/components/icons/check";
 import { authenticate } from "@/lib/actions/auth";
 import { useFormState, useFormStatus } from "react-dom";
 import Loader from "@/components/icons/loader";
+import { toast } from "sonner";
+import X from "@/components/icons/x";
 
 export default function NameDialog() {
   const [isOpen, setIsOpen] = useState(false);
   const [error, dispatch] = useFormState(authenticate, undefined);
+
+  useEffect(() => {
+    error &&
+      toast(
+        <div
+          className={
+            "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
+          }
+        >
+          <X />
+          <h1>Une erreur est survenue.</h1>
+        </div>,
+      );
+  }, [error]);
 
   return (
     <>
@@ -32,8 +48,6 @@ export default function NameDialog() {
           <DialogTitle>Rentrez votre pseudo</DialogTitle>
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
-            <br />
-            <span className={"block h-4 text-red-500"}>{error}</span>
           </DialogDescription>
           <DialogBody>
             <Field>
