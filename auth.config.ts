@@ -21,6 +21,8 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnWheel = nextUrl.pathname.startsWith("/wheel");
+      const isOnAdmin = nextUrl.pathname.startsWith("/admin");
+      if (isOnAdmin) return true;
       if (isOnWheel) {
         return isLoggedIn;
       } else if (isLoggedIn) {

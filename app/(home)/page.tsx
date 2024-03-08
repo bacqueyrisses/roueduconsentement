@@ -1,7 +1,7 @@
 import NameDialog from "@/components/name-dialog";
 import Wheel from "@/components/wheel";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <p

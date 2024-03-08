@@ -4,6 +4,7 @@ declare module "@auth/core/types" {
   interface User {
     id: string;
     pseudo: string;
+    date: string;
   }
 
   interface Session {

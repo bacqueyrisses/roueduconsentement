@@ -1,9 +1,33 @@
-export default function Page() {
+import { sql } from "@vercel/postgres";
+import { Card, Title, Text } from "@tremor/react";
+import Search from "@/components/admin/search";
+import UsersTable from "@/components/admin/table";
+import { User } from "next-auth";
+
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: { search: string };
+}) {
+  const search = searchParams.search ?? "";
+
+  const result = await sql`
+      SELECT id, pseudo, TO_CHAR(date, 'DD/MM/YYYY') AS date
+      FROM users
+      WHERE pseudo ILIKE ${"%" + search + "%"}
+         OR TO_CHAR(date, 'DD/MM/YYYY') ILIKE ${"%" + search + "%"};
+  `;
+
+  const users = result.rows as User[];
+
   return (
-    <div
-      className={
-        "relative grid gap-[17px] sm:grid-cols-2 xl:grid-cols-[repeat(15,_minmax(0,_1fr))]"
-      }
-    ></div>
+    <main className="mx-auto max-w-7xl p-4 md:p-10">
+      <Title>Utilisateurs</Title>
+      <Text>Faites une recherche par pseudo ou par date.</Text>
+      <Search />
+      <Card className="mt-6">
+        <UsersTable users={users} />
+      </Card>
+    </main>
   );
 }
