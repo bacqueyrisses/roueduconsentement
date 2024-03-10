@@ -6,11 +6,12 @@ import X from "@/components/icons/x";
 import { questions } from "@/lib/data/questions";
 import { toast } from "sonner";
 import { User } from "next-auth";
+import Question from "@/components/icons/question";
 
 export default function WheelWrapper({ user }: { user: User }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [scores, setScores] = useState([]);
-  const [score2, setScore2] = useState(0);
+  const [score2, setScore2] = useState(5);
 
   function handlePositive() {
     if (currentQuestionIndex === questions.length - 1) return;
@@ -80,6 +81,18 @@ export default function WheelWrapper({ user }: { user: User }) {
           >
             <X className={"size-6"} />
             <span>Pas d'accord</span>
+          </button>
+          <button
+            onClick={() => {
+              if (currentQuestionIndex === questions.length - 1) return;
+              if (score2 === 0) return;
+              setScore2((prevScore) => prevScore - 1);
+              setCurrentQuestionIndex(currentQuestionIndex + 1);
+            }}
+            className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7"
+          >
+            <Question className={"size-6"} />
+            <span>Je ne sais pas</span>
           </button>
         </div>
       </div>
