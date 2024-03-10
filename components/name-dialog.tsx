@@ -29,7 +29,7 @@ export default function NameDialog() {
           }
         >
           <X />
-          <h1>Une erreur est survenue.</h1>
+          <h1>{error}</h1>
         </div>,
       );
   }, [error]);

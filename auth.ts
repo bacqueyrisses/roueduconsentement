@@ -14,20 +14,24 @@ export const { auth, signIn, signOut } = NextAuth({
       },
       async authorize(credentials): Promise<User | null> {
         const parsedCredentials = z
-          .object({ pseudo: z.string() })
+          .object({
+            pseudo: z
+              .string()
+              .transform((t) => t?.trim())
+              .pipe(z.string().min(1)),
+          })
           .safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { pseudo } = parsedCredentials.data;
           const user: User = await create(pseudo);
           if (!user) {
-            console.log("Pseudonym already in use.");
             return null;
           }
           return user;
         }
 
-        console.log("Wrong pseudonym format.");
+        console.log("Pseudo schema validation failed.");
         return null;
       },
     }),

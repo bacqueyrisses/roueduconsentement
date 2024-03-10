@@ -13,7 +13,7 @@ export async function authenticate(
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return "Ce pseudonyme est déjà en cours d'utilisation.";
+          return "Renseignez un pseudo.";
         default:
           return "Une erreur est survenue.";
       }
