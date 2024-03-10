@@ -12,7 +12,12 @@ export default function HomePage() {
         dolor sit amet, consectetur adipisicing elit.
       </p>
       <NameDialog />
-      <Wheel value={5} />
+      <div
+        className="flex w-full animate-fade-up items-center justify-center overflow-hidden opacity-0"
+        style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
+      >
+        <Wheel value={5} />
+      </div>
     </>
   );
 }
