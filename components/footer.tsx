@@ -2,7 +2,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="absolute bottom-0 w-full py-5 text-center tracking-tight">
+    <footer
+      className="absolute bottom-0 w-full animate-fade-up py-5 text-center tracking-tight opacity-0"
+      style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
+    >
       <p className="text-gray-500">
         Cette application a été réalisée par un collectif de chercheurs issu du
         Master AGAPES de{" "}
