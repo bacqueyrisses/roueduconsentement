@@ -16,6 +16,9 @@ export const authConfig = {
         session.user.id = token.sub;
       }
       session.user.pseudo = token.pseudo;
+      session.user.date = token.date;
+      session.user.score = token.score;
+      session.user.completed = token.completed;
       return session;
     },
     authorized({ auth, request: { nextUrl } }) {

@@ -25,7 +25,7 @@ export async function authenticate(
 export async function create(pseudo: User["pseudo"]) {
   try {
     const user =
-      await sql<User>`INSERT INTO "users" (pseudo) VALUES (${pseudo}) RETURNING pseudo`;
+      await sql<User>`INSERT INTO "users" (pseudo) VALUES (${pseudo}) RETURNING *`;
     return user.rows[0];
   } catch (error) {
     console.error(error);

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 export default async function Page() {
   const session = await auth();
   const user = session?.user;
+  console.log(user);
   if (!user) notFound();
 
   return (
