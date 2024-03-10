@@ -6,12 +6,14 @@ declare module "@auth/core/types" {
     pseudo: string;
     date: string;
     score: number;
+    completed: boolean;
   }
 
   interface Session {
     user: {
       id: string;
       pseudo: string;
+      completed: boolean;
     } & DefaultSession["user"];
   }
 }
@@ -20,5 +22,6 @@ declare module "@auth/core/jwt" {
   interface JWT {
     id: string;
     pseudo: string;
+    completed: boolean;
   }
 }
