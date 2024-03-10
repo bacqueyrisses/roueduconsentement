@@ -50,7 +50,10 @@ export default function WheelWrapper({ user }: { user: User }) {
 
   return (
     <>
-      <div className={"mt-10 w-screen text-stone-600"}>
+      <div
+        className={"mt-10 w-screen animate-fade-up text-stone-600 opacity-0"}
+        style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+      >
         <h1
           className={
             "mx-auto max-w-5xl animate-fade-up text-center text-2xl font-semibold tracking-tight"
@@ -97,7 +100,12 @@ export default function WheelWrapper({ user }: { user: User }) {
           </button>
         </div>
       </div>
-      <Wheel value={score2} />
+      <div
+        className="flex w-full animate-fade-up items-center justify-center overflow-hidden opacity-0"
+        style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
+      >
+        <Wheel value={score2} />
+      </div>
     </>
   );
 }
