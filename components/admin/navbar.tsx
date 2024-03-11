@@ -4,12 +4,12 @@ import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import { signout } from "@/lib/actions/auth";
 import X from "@/components/icons/x";
 import Link from "next/link";
+import { Route } from "next";
 
 const navigation = [
   { name: "Utilisateurs", href: "/admin" },
@@ -20,7 +20,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar({ user }: { user: any }) {
+export default function Navbar() {
   const pathname = usePathname();
 
   return (
@@ -42,9 +42,9 @@ export default function Navbar({ user }: { user: any }) {
                 </div>
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
-                      href={item.href}
+                      href={item.href as Route}
                       className={classNames(
                         pathname === item.href
                           ? "border-slate-500 text-gray-900"
@@ -54,7 +54,7 @@ export default function Navbar({ user }: { user: any }) {
                       aria-current={pathname === item.href ? "page" : undefined}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -65,10 +65,10 @@ export default function Navbar({ user }: { user: any }) {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={user?.image || "https://avatar.vercel.sh/roue"}
+                        src={"https://avatar.vercel.sh/roue"}
                         height={32}
                         width={32}
-                        alt={`${user?.name || "placeholder"} avatar`}
+                        alt={"placeholder avatar"}
                       />
                     </Menu.Button>
                   </div>
@@ -130,46 +130,25 @@ export default function Navbar({ user }: { user: any }) {
               ))}
             </div>
             <div className="border-t border-gray-200 pb-3 pt-4">
-              {user ? (
-                <>
-                  <div className="flex items-center px-4">
-                    <div className="flex-shrink-0">
-                      <Image
-                        className="h-8 w-8 rounded-full"
-                        src={user.image}
-                        height={32}
-                        width={32}
-                        alt={`${user.name} avatar`}
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <div className="text-base font-medium text-gray-800">
-                        {user.name}
-                      </div>
-                      <div className="text-sm font-medium text-gray-500">
-                        {user.email}
-                      </div>
-                    </div>
+              <>
+                <div className="flex items-center gap-2 px-4">
+                  <div className="flex-shrink-0">
+                    <Image
+                      className="h-8 w-8 rounded-full"
+                      src={"https://avatar.vercel.sh/roue"}
+                      height={32}
+                      width={32}
+                      alt={"placeholder avatar"}
+                    />
                   </div>
-                  <div className="mt-3 space-y-1">
-                    <button
-                      onClick={() => signOut()}
-                      className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                    >
-                      Sign out
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className="mt-3 space-y-1">
                   <button
-                    onClick={() => signIn("github")}
-                    className="flex w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                    onClick={signout}
+                    className="block rounded-full bg-slate-50 px-4 py-2 text-base font-medium text-slate-700 transition-colors duration-200 ease-in-out hover:bg-slate-200/70 hover:text-slate-800"
                   >
-                    Sign in
+                    Se déconnecter
                   </button>
                 </div>
-              )}
+              </>
             </div>
           </Disclosure.Panel>
         </>
