@@ -2,7 +2,6 @@
 import Wheel from "@/components/wheel";
 import { useEffect, useState } from "react";
 import Check from "@/components/icons/check";
-import Dot from "@/components/icons/dot";
 import { questions } from "@/lib/data/questions";
 import { toast } from "sonner";
 import { User } from "next-auth";
@@ -42,7 +41,7 @@ export default function WheelWrapper({ user }: { user: User }) {
           "inline-flex items-center gap-1.5 rounded-full bg-green-200 px-5 py-2 text-base font-medium text-green-600 md:px-7"
         }
       >
-        <Dot />
+        <Check />
         <h1>Bienvenue {user.pseudo}</h1>
       </div>,
     );
