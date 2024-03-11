@@ -1,12 +1,12 @@
 import { signout } from "@/lib/actions/auth";
 import WheelWrapper from "@/components/wheel-wrapper";
-import { auth } from "@/auth";
+import { auth, update } from "@/auth";
 import { notFound } from "next/navigation";
 
 export default async function Page() {
   const session = await auth();
   const user = session?.user;
-  console.log(user);
+
   if (!user) notFound();
 
   return (

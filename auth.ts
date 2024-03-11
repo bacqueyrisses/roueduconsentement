@@ -4,7 +4,13 @@ import { authConfig } from "./auth.config";
 import { z } from "zod";
 import { create } from "@/lib/actions/auth";
 
-export const { auth, signIn, signOut } = NextAuth({
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+  unstable_update: update,
+} = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
