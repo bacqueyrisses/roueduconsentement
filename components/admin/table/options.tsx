@@ -7,6 +7,7 @@ import {
   TableRow,
   Text,
 } from "@tremor/react";
+import OptionSwitch from "@/components/admin/table/option-switch";
 
 export default function OptionsTable({ options }: any) {
   return (
@@ -21,7 +22,10 @@ export default function OptionsTable({ options }: any) {
         {options.map((option) => (
           <TableRow key={option.id}>
             <TableCell>
-              <Text>{option.option}</Text>
+              <Text>{option.description}</Text>
+            </TableCell>
+            <TableCell>
+              <OptionSwitch id={option.id} active={option.active} />
             </TableCell>
           </TableRow>
         ))}

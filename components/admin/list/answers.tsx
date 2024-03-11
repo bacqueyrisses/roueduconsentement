@@ -1,41 +1,48 @@
-import { Card, List, ListItem } from "@tremor/react";
+import {
+  Card,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+  Text,
+} from "@tremor/react";
+import Message from "@/components/icons/message";
 
 export function AnswersList({ user }) {
-  const cities = [
-    {
-      city: "Athens",
-      rating: "2 open PR",
-    },
-    {
-      city: "Lucerne",
-      rating: "1 open PR",
-    },
-    {
-      city: "Zurich",
-      rating: "0 open PR",
-    },
-    {
-      city: "Vienna",
-      rating: "1 open PR",
-    },
-    {
-      city: "Lissbon",
-      rating: "0 open PR",
-    },
-  ];
   return (
     <Card className="mx-auto max-w-2xl">
-      <h3 className="dark:text-dark-tremor-content-strong font-medium text-tremor-content-strong">
-        Réponses de {user.pseudo}
-      </h3>
-      <List className="mt-2">
-        {cities.map((item) => (
-          <ListItem key={item.city}>
-            <span>{item.city}</span>
-            <span>{item.rating}</span>
-          </ListItem>
-        ))}
-      </List>
+      <Table>
+        <TableHead>
+          <TableHeaderCell className={"flex items-center gap-2 text-xl"}>
+            <Message /> Réponses de {user.pseudo}
+          </TableHeaderCell>
+
+          <TableRow>
+            <TableHeaderCell>Description</TableHeaderCell>
+            <TableHeaderCell>Valeur</TableHeaderCell>
+            <TableHeaderCell>Date</TableHeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {user.answers.map((answer) => (
+            <TableRow key={answer.id}>
+              <TableCell>
+                <Text className={"whitespace-pre-wrap break-words"}>
+                  {answer.description}
+                </Text>
+              </TableCell>
+              <TableCell>
+                <Text>{answer.value}</Text>
+              </TableCell>
+              <TableCell>
+                <Text>{answer.date}</Text>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </Card>
   );
 }

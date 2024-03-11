@@ -23,8 +23,7 @@ export default function AdminLayout({
   return (
     <body className="h-full bg-gray-50">
       <Toaster
-        offset={24}
-        position={"top-center"}
+        position={"bottom-center"}
         toastOptions={{
           unstyled: true,
           classNames: {

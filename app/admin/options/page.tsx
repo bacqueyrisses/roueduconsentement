@@ -1,7 +1,6 @@
 import { sql } from "@vercel/postgres";
 import { Card, Text, Title } from "@tremor/react";
 import Search from "@/components/admin/search";
-import QuestionsDialog from "@/components/admin/dialog/questions";
 import OptionsTable from "@/components/admin/table/options";
 import OptionsDialog from "@/components/admin/dialog/options";
 
@@ -13,9 +12,10 @@ export default async function OptionsPage({
   const search = searchParams.search ?? "";
 
   const result = await sql`
-      SELECT id, option
+      SELECT id, description, active
       FROM options
-      WHERE option ILIKE ${"%" + search + "%"}
+      WHERE description ILIKE ${"%" + search + "%"}
+      ORDER BY date DESC
   `;
 
   const options = result.rows;

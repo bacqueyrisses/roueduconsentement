@@ -15,6 +15,7 @@ export default async function QuestionsPage({
       SELECT id, description, value, active
       FROM questions
       WHERE description ILIKE ${"%" + search + "%"}
+      ORDER BY date DESC
   `;
 
   const questions = result.rows;

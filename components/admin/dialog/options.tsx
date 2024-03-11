@@ -1,19 +1,11 @@
 "use client";
-import {
-  Button,
-  Dialog,
-  DialogPanel,
-  NumberInput,
-  Switch,
-  TextInput,
-} from "@tremor/react";
+import { Dialog, DialogPanel } from "@tremor/react";
 import React, { useState } from "react";
 import Plus from "@/components/icons/plus";
-import Check from "@/components/icons/check";
+import OptionForm from "@/components/admin/form/option";
 
 export default function OptionsDialog({ disabled }: { disabled?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSwitchOn, setIsSwitchOn] = useState(true);
 
   return (
     <div className="relative mt-5 flex h-10 justify-center">
@@ -31,40 +23,7 @@ export default function OptionsDialog({ disabled }: { disabled?: boolean }) {
         className="z-[100]"
       >
         <DialogPanel className="max-w-sm space-y-8">
-          <div className="mx-auto max-w-sm space-y-8">
-            <div>
-              <TextInput icon={Check} placeholder="Description" type={"text"} />
-            </div>
-            <div>
-              <NumberInput icon={Check} placeholder="Valeur" min={0} max={10} />
-            </div>
-            <div className="flex items-center space-x-3">
-              <Switch
-                id="switch"
-                name="active"
-                checked={isSwitchOn}
-                onChange={(value) => setIsSwitchOn(value)}
-              />
-              <label
-                htmlFor="switch"
-                className="dark:text-dark-tremor-content text-tremor-default text-tremor-content"
-              >
-                Rendre la question active
-              </label>
-            </div>
-          </div>
-          <div className="mt-8 flex items-center justify-end space-x-2">
-            <Button
-              size="xs"
-              variant="secondary"
-              onClick={() => setIsOpen(false)}
-            >
-              Fermer
-            </Button>
-            <Button size="xs" variant="primary" type={"submit"}>
-              Créer la question
-            </Button>
-          </div>
+          <OptionForm setIsOpen={setIsOpen} />
         </DialogPanel>
       </Dialog>
     </div>

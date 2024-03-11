@@ -12,10 +12,13 @@ export default async function AdminPage({
   const search = searchParams.search ?? "";
 
   const result = await sql`
-      SELECT id, pseudo, score, TO_CHAR(date, 'DD/MM/YYYY') AS date
-      FROM users
-      WHERE pseudo ILIKE ${"%" + search + "%"}
-  `;
+      SELECT u.*, TO_CHAR(u.date, 'DD/MM/YYYY') AS date, json_agg(a.*) AS answers
+      FROM users u
+      LEFT JOIN answers a ON u.id = a."userId"
+      WHERE u.pseudo ILIKE ${"%" + search + "%"}
+      GROUP BY u.id
+      ORDER BY u.date DESC;
+`;
 
   const users = result.rows as User[];
 

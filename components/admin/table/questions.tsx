@@ -1,5 +1,4 @@
 import {
-  Switch,
   Table,
   TableBody,
   TableCell,
@@ -8,6 +7,7 @@ import {
   TableRow,
   Text,
 } from "@tremor/react";
+import QuestionSwitch from "@/components/admin/table/question-switch";
 
 export default function QuestionsTable({ questions }: any) {
   return (
@@ -23,13 +23,15 @@ export default function QuestionsTable({ questions }: any) {
         {questions.map((question) => (
           <TableRow key={question.id}>
             <TableCell>
-              <Text>{question.description}</Text>
+              <Text className={"whitespace-pre-wrap break-words"}>
+                {question.description}
+              </Text>
             </TableCell>
             <TableCell>
               <Text>{question.value}</Text>
             </TableCell>
             <TableCell>
-              <Switch defaultValue={question.active} />
+              <QuestionSwitch id={question.id} active={question.active} />
             </TableCell>
           </TableRow>
         ))}

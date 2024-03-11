@@ -16,9 +16,22 @@ export const CreateQuestion = z.object({
     .pipe(z.boolean()),
 });
 
+export const UpdateQuestion = CreateQuestion.omit({
+  description: true,
+  value: true,
+});
+
 export const CreateOption = z.object({
   description: z
     .string()
     .transform((t) => t?.trim())
     .pipe(z.string().min(1)),
+  active: z
+    .string()
+    .toLowerCase()
+    .optional()
+    .nullable()
+    .default("off")
+    .transform((x) => x === "on")
+    .pipe(z.boolean()),
 });
