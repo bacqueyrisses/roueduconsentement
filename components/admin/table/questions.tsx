@@ -1,4 +1,5 @@
 import {
+  Switch,
   Table,
   TableBody,
   TableCell,
@@ -28,7 +29,7 @@ export default function QuestionsTable({ questions }: any) {
               <Text>{question.value}</Text>
             </TableCell>
             <TableCell>
-              <Text>{question.active}</Text>
+              <Switch defaultValue={question.active} />
             </TableCell>
           </TableRow>
         ))}

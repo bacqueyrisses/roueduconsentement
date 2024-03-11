@@ -6,8 +6,10 @@ import {
   TableHeaderCell,
   TableRow,
   Text,
+  Dialog,
 } from "@tremor/react";
 import { User } from "next-auth";
+import AnswersDialog from "@/components/admin/dialog/answers";
 
 export default function UsersTable({ users }: { users: User[] }) {
   return (
@@ -17,6 +19,7 @@ export default function UsersTable({ users }: { users: User[] }) {
           <TableHeaderCell>Pseudo</TableHeaderCell>
           <TableHeaderCell>Date</TableHeaderCell>
           <TableHeaderCell>Score</TableHeaderCell>
+          <TableHeaderCell>Réponses</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -30,6 +33,9 @@ export default function UsersTable({ users }: { users: User[] }) {
             </TableCell>
             <TableCell>
               <Text>{user.score ?? "Pas de score."}</Text>
+            </TableCell>
+            <TableCell>
+              <AnswersDialog user={user} />
             </TableCell>
           </TableRow>
         ))}

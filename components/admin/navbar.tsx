@@ -14,6 +14,7 @@ import { Route } from "next";
 const navigation = [
   { name: "Utilisateurs", href: "/admin" },
   { name: "Questions", href: "/admin/questions" },
+  { name: "Options", href: "/admin/options" },
 ];
 
 function classNames(...classes: string[]) {
