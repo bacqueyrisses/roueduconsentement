@@ -2,13 +2,12 @@
 import Wheel from "@/components/wheel";
 import { useEffect, useState } from "react";
 import Check from "@/components/icons/check";
-import { questions } from "@/lib/data/questions";
 import { toast } from "sonner";
 import { User } from "next-auth";
 import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
 
-export default function WheelWrapper({ user }: { user: User }) {
+export default function WheelWrapper({ user, questions }: { user: User }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [scores, setScores] = useState([]);
   const [score2, setScore2] = useState(5);
@@ -58,7 +57,7 @@ export default function WheelWrapper({ user }: { user: User }) {
             "mx-auto max-w-5xl animate-fade-up text-center text-2xl font-semibold tracking-tight"
           }
         >
-          {questions[currentQuestionIndex]?.question}
+          {questions[currentQuestionIndex]?.description}
         </h1>
         <div className={"flex items-center justify-center gap-4"}>
           <button

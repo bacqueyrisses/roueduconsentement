@@ -16,9 +16,14 @@ export const CreateQuestion = z.object({
     .pipe(z.boolean()),
 });
 
-export const UpdateQuestion = CreateQuestion.omit({
-  description: true,
-  value: true,
+export const CreateAnswer = z.object({
+  userId: z.string(),
+  description: z
+    .string()
+    .transform((t) => t?.trim())
+    .pipe(z.string().min(1)),
+  option: z.string(),
+  value: z.coerce.number().gte(0).lte(10),
 });
 
 export const CreateOption = z.object({

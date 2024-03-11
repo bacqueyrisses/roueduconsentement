@@ -22,6 +22,7 @@ export function AnswersList({ user }) {
           <TableRow>
             <TableHeaderCell>Description</TableHeaderCell>
             <TableHeaderCell>Valeur</TableHeaderCell>
+            <TableHeaderCell>Réponse</TableHeaderCell>
             <TableHeaderCell>Date</TableHeaderCell>
           </TableRow>
         </TableHead>
@@ -35,6 +36,9 @@ export function AnswersList({ user }) {
               </TableCell>
               <TableCell>
                 <Text>{answer.value}</Text>
+              </TableCell>
+              <TableCell>
+                <Text>{answer.option}</Text>
               </TableCell>
               <TableCell>
                 <Text>{answer.date}</Text>

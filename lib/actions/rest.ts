@@ -1,11 +1,7 @@
 "use server";
 
 import { sql } from "@vercel/postgres";
-import {
-  CreateOption,
-  CreateQuestion,
-  UpdateQuestion,
-} from "@/lib/schemas/rest";
+import { CreateAnswer, CreateOption, CreateQuestion } from "@/lib/schemas/rest";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
@@ -97,4 +93,29 @@ export async function updateOption(id, value) {
   }
 
   revalidatePath("/admin/options");
+}
+
+export async function createAnswer(formData: FormData) {
+  const validatedFields = CreateAnswer.safeParse({
+    userId: formData.get("userId"),
+    description: formData.get("description"),
+    option: formData.get("option"),
+    value: formData.get("value"),
+  });
+
+  if (!validatedFields.success)
+    throw new Error("Veuillez renseignez les champs");
+
+  const { userId, description, option, value } = validatedFields.data;
+
+  try {
+    await sql`
+        INSERT INTO answers ("userId", description, option, value)
+        VALUES (${userId}, ${description}, ${option}, ${value})`;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Couldn't create new answer.");
+  }
+
+  revalidatePath("/admin");
 }
