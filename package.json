@@ -31,8 +31,8 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.3",
-    "@commitlint/config-conventional": "^19.0.3",
+    "@commitlint/cli": "^19.1.0",
+    "@commitlint/config-conventional": "^19.1.0",
     "@heroicons/react": "^2.0.18",
     "@tremor/react": "^3.10.0",
     "@types/js-cookie": "^3.0.5",
@@ -48,14 +48,11 @@
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
-    "prettier-plugin-tailwindcss": "^0.5.11",
+    "prettier-plugin-tailwindcss": "^0.5.12",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "next lint --fix --file $(git diff --name-only --cached | grep '\\.jsx\\?$')"
-    ],
     "*": "prettier --write ."
   },
   "prettier": {
@@ -63,5 +60,39 @@
       "prettier-plugin-tailwindcss",
       "prettier-plugin-organize-imports"
     ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "next/core-web-vitals",
+      "prettier"
+    ],
+    "rules": {
+      "react/no-unescaped-entities": 0,
+      "react-hooks/exhaustive-deps": 0
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "feat",
+          "fix",
+          "docs",
+          "chore",
+          "style",
+          "refactor",
+          "ci",
+          "test",
+          "revert",
+          "perf",
+          "vercel"
+        ]
+      ]
+    }
   }
 }
