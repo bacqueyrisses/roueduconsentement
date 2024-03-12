@@ -1,3 +1,4 @@
+import Message from "@/components/icons/message";
 import {
   Card,
   Table,
@@ -8,7 +9,6 @@ import {
   TableRow,
   Text,
 } from "@tremor/react";
-import Message from "@/components/icons/message";
 
 export function AnswersList({ user }) {
   return (

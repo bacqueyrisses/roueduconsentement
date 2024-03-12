@@ -1,6 +1,6 @@
-import { Text, Title } from "@tremor/react";
-import Search from "@/components/admin/search";
 import QuestionsDialog from "@/components/admin/dialog/questions";
+import Search from "@/components/admin/search";
+import { Text, Title } from "@tremor/react";
 
 export default function QuestionsLoading() {
   return (

@@ -1,8 +1,8 @@
-import { sql } from "@vercel/postgres";
-import { Card, Text, Title } from "@tremor/react";
+import OptionsDialog from "@/components/admin/dialog/options";
 import Search from "@/components/admin/search";
 import OptionsTable from "@/components/admin/table/options";
-import OptionsDialog from "@/components/admin/dialog/options";
+import { Card, Text, Title } from "@tremor/react";
+import { sql } from "@vercel/postgres";
 
 export default async function OptionsPage({
   searchParams,

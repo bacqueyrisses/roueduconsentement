@@ -1,11 +1,12 @@
 "use client";
-import Wheel from "@/components/wheel";
-import { useEffect, useState } from "react";
+
 import Check from "@/components/icons/check";
-import { toast } from "sonner";
-import { User } from "next-auth";
 import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
+import Wheel from "@/components/wheel";
+import { User } from "next-auth";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function WheelWrapper({ user, questions }: { user: User }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

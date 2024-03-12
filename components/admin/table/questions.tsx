@@ -1,3 +1,4 @@
+import QuestionSwitch from "@/components/admin/table/question-switch";
 import {
   Table,
   TableBody,
@@ -7,7 +8,6 @@ import {
   TableRow,
   Text,
 } from "@tremor/react";
-import QuestionSwitch from "@/components/admin/table/question-switch";
 
 export default function QuestionsTable({ questions }: any) {
   return (

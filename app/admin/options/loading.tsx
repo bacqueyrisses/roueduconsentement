@@ -1,6 +1,6 @@
-import { Text, Title } from "@tremor/react";
-import Search from "@/components/admin/search";
 import OptionsDialog from "@/components/admin/dialog/options";
+import Search from "@/components/admin/search";
+import { Text, Title } from "@tremor/react";
 
 export default function OptionsLoading() {
   return (

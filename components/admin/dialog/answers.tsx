@@ -1,8 +1,9 @@
 "use client";
-import { Button, Dialog, DialogPanel } from "@tremor/react";
-import React, { useState } from "react";
-import Message from "@/components/icons/message";
+
 import { AnswersList } from "@/components/admin/list/answers";
+import Message from "@/components/icons/message";
+import { Button, Dialog, DialogPanel } from "@tremor/react";
+import { useState } from "react";
 
 export default function AnswersDialog({ user }) {
   const [isOpen, setIsOpen] = useState(false);

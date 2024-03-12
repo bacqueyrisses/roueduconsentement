@@ -21,7 +21,6 @@
     "next": "14.1.0",
     "next-auth": "^5.0.0-beta.15",
     "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
     "react": "^18",
     "react-dom": "^18",
@@ -43,20 +42,26 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "postcss": "^8",
     "prettier": "^3.2.5",
+    "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
   "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "next lint --fix --file $(git diff --name-only --cached | grep '\\.jsx\\?$')"
+    ],
     "*": "prettier --write ."
   },
   "prettier": {
     "plugins": [
-      "prettier-plugin-tailwindcss"
+      "prettier-plugin-tailwindcss",
+      "prettier-plugin-organize-imports"
     ]
   }
 }

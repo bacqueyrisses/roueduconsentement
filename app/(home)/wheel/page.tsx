@@ -1,8 +1,8 @@
-import { signout } from "@/lib/actions/auth";
-import WheelWrapper from "@/components/wheel-wrapper";
 import { auth } from "@/auth";
-import { notFound } from "next/navigation";
+import WheelWrapper from "@/components/wheel-wrapper";
+import { signout } from "@/lib/actions/auth";
 import { sql } from "@vercel/postgres";
+import { notFound } from "next/navigation";
 
 export default async function Page() {
   const session = await auth();

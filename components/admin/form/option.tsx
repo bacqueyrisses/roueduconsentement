@@ -1,10 +1,9 @@
-import { Button, Switch, TextInput } from "@tremor/react";
-import React, { Dispatch, useState } from "react";
 import Check from "@/components/icons/check";
-import { useFormStatus } from "react-dom";
 import { createOption } from "@/lib/actions/rest";
+import { Button, Switch, TextInput } from "@tremor/react";
+import { Dispatch, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
-import X from "@/components/icons/x";
 
 export default function OptionForm({
   setIsOpen,

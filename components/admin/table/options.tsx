@@ -1,3 +1,4 @@
+import OptionSwitch from "@/components/admin/table/option-switch";
 import {
   Table,
   TableBody,
@@ -7,7 +8,6 @@ import {
   TableRow,
   Text,
 } from "@tremor/react";
-import OptionSwitch from "@/components/admin/table/option-switch";
 
 export default function OptionsTable({ options }: any) {
   return (

@@ -1,5 +1,5 @@
-import { Text, Title } from "@tremor/react";
 import Search from "@/components/admin/search";
+import { Text, Title } from "@tremor/react";
 
 export default function AdminLoading() {
   return (

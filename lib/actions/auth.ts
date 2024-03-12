@@ -1,7 +1,8 @@
 "use server";
+
 import { signIn, signOut } from "@/auth";
-import { AuthError, User } from "next-auth";
 import { sql } from "@vercel/postgres";
+import { AuthError, User } from "next-auth";
 import { revalidatePath } from "next/cache";
 
 export async function authenticate(

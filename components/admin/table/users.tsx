@@ -1,3 +1,4 @@
+import AnswersDialog from "@/components/admin/dialog/answers";
 import {
   Table,
   TableBody,
@@ -6,10 +7,8 @@ import {
   TableHeaderCell,
   TableRow,
   Text,
-  Dialog,
 } from "@tremor/react";
 import { User } from "next-auth";
-import AnswersDialog from "@/components/admin/dialog/answers";
 
 export default function UsersTable({ users }: { users: User[] }) {
   return (

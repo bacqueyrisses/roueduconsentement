@@ -1,12 +1,10 @@
+import Footer from "@/components/footer";
+import logo from "@/public/logo.png";
 import "@/styles/tailwind.css";
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
 import { Inter } from "next/font/google";
-import Footer from "@/components/footer";
+import localFont from "next/font/local";
 import Image from "next/image";
-
-import logo from "@/public/logo.png";
-
 import { Toaster } from "sonner";
 
 const clash = localFont({

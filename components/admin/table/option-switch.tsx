@@ -1,9 +1,9 @@
 "use client";
+
+import { updateOption } from "@/lib/actions/rest";
 import { Switch } from "@tremor/react";
-import { useEffect, useState } from "react";
-import { updateOption, updateQuestion } from "@/lib/actions/rest";
+import { useState } from "react";
 import { toast } from "sonner";
-import Check from "@/components/icons/check";
 
 export default function OptionSwitch({ id, active }) {
   const [isSwitchOn, setIsSwitchOn] = useState(active);

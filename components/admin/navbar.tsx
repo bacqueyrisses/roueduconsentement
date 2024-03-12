@@ -1,15 +1,15 @@
 "use client";
 
-import { Fragment } from "react";
-import { usePathname } from "next/navigation";
+import X from "@/components/icons/x";
+import { signout } from "@/lib/actions/auth";
+import logo from "@/public/logo.png";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import logo from "@/public/logo.png";
-import { signout } from "@/lib/actions/auth";
-import X from "@/components/icons/x";
-import Link from "next/link";
 import { Route } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 
 const navigation = [
   { name: "Utilisateurs", href: "/admin" },

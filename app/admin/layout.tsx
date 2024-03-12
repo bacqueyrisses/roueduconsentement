@@ -1,10 +1,9 @@
-import "@/styles/tailwind.css";
-
 import Nav from "@/components/admin/nav";
-import { Suspense } from "react";
+import "@/styles/tailwind.css";
 import { Metadata } from "next";
-import { Toaster } from "sonner";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Admin: La roue du consentement",

@@ -1,4 +1,8 @@
 "use client";
+
+import Check from "@/components/icons/check";
+import Loader from "@/components/icons/loader";
+import X from "@/components/icons/x";
 import {
   Dialog,
   DialogActions,
@@ -8,13 +12,10 @@ import {
 } from "@/components/ui/dialog";
 import { Field } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
-import Check from "@/components/icons/check";
 import { authenticate } from "@/lib/actions/auth";
+import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import Loader from "@/components/icons/loader";
 import { toast } from "sonner";
-import X from "@/components/icons/x";
 
 export default function NameDialog() {
   const [isOpen, setIsOpen] = useState(false);

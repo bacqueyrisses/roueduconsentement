@@ -1,9 +1,9 @@
 "use client";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useTransition } from "react";
-import { Route } from "next";
 
 export default function Search({ disabled }: { disabled?: boolean }) {
   return (

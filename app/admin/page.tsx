@@ -1,7 +1,7 @@
-import { sql } from "@vercel/postgres";
-import { Card, Text, Title } from "@tremor/react";
 import Search from "@/components/admin/search";
 import UsersTable from "@/components/admin/table/users";
+import { Card, Text, Title } from "@tremor/react";
+import { sql } from "@vercel/postgres";
 import { User } from "next-auth";
 
 export default async function AdminPage({

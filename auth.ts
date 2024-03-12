@@ -1,8 +1,9 @@
+import { create } from "@/lib/actions/auth";
 import NextAuth, { User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { authConfig } from "./auth.config";
 import { z } from "zod";
-import { create } from "@/lib/actions/auth";
+
+import { authConfig } from "./auth.config";
 
 export const {
   handlers: { GET, POST },

@@ -1,8 +1,8 @@
-import { sql } from "@vercel/postgres";
-import { Card, Text, Title } from "@tremor/react";
+import QuestionsDialog from "@/components/admin/dialog/questions";
 import Search from "@/components/admin/search";
 import QuestionsTable from "@/components/admin/table/questions";
-import QuestionsDialog from "@/components/admin/dialog/questions";
+import { Card, Text, Title } from "@tremor/react";
+import { sql } from "@vercel/postgres";
 
 export default async function QuestionsPage({
   searchParams,

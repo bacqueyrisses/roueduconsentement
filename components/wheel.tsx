@@ -1,5 +1,6 @@
 "use client";
-import React, { useMemo } from "react";
+
+import { useMemo } from "react";
 import { useGauge } from "use-gauge";
 
 interface StatProps {

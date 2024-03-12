@@ -1,8 +1,9 @@
 "use client";
-import { Dialog, DialogPanel } from "@tremor/react";
-import React, { useState } from "react";
-import Plus from "@/components/icons/plus";
+
 import QuestionForm from "@/components/admin/form/question";
+import Plus from "@/components/icons/plus";
+import { Dialog, DialogPanel } from "@tremor/react";
+import { useState } from "react";
 
 export default function QuestionsDialog({ disabled }: { disabled?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
