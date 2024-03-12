@@ -2,20 +2,17 @@ import Footer from "@/components/footer";
 import logo from "@/public/logo.png";
 import { clash, inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
-import { Toaster } from "sonner";
 import { ReactNode } from "react";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Jouez | La roue du consentement",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 
-export const viewport: Viewport = {
-  themeColor: "#EDF3FD",
-};
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
     <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
       <Toaster
