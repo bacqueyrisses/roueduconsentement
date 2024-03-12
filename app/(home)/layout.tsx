@@ -5,6 +5,7 @@ import "@/styles/tailwind.css";
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { Toaster } from "sonner";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Jouez | La roue du consentement",
@@ -14,11 +15,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#EDF3FD",
 };
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
       <Toaster

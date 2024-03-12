@@ -94,5 +94,11 @@
         ]
       ]
     }
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
   }
 }

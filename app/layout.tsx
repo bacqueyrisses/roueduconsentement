@@ -1,5 +1,6 @@
 import "@/styles/tailwind.css";
 import type { Metadata, Viewport } from "next";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "La roue du consentement",
@@ -10,10 +11,6 @@ export const viewport: Viewport = {
   themeColor: "#EDF3FD",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return <html lang="en">{children}</html>;
 }

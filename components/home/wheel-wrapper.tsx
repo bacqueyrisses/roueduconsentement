@@ -1,9 +1,9 @@
 "use client";
 
+import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
 import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
-import Wheel from "@/components/wheel";
 import { User } from "next-auth";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

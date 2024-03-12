@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import WheelWrapper from "@/components/wheel-wrapper";
+import WheelWrapper from "@/components/home/wheel-wrapper";
 import { signout } from "@/lib/actions/auth";
 import { sql } from "@vercel/postgres";
 import { notFound } from "next/navigation";

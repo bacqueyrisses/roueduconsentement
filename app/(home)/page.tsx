@@ -1,5 +1,5 @@
-import NameDialog from "@/components/name-dialog";
-import Wheel from "@/components/wheel";
+import NameDialog from "@/components/home/name-dialog";
+import Wheel from "@/components/home/wheel";
 
 export default function HomePage() {
   return (

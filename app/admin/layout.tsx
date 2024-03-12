@@ -1,9 +1,8 @@
 import Nav from "@/components/admin/nav";
+import { inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
 import { Metadata } from "next";
-
-import { inter } from "@/styles/fonts";
-import { Suspense } from "react";
+import { ReactNode, Suspense } from "react";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
@@ -11,11 +10,7 @@ export const metadata: Metadata = {
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <body className="h-full bg-gray-50">
       <Toaster
