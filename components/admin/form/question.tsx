@@ -19,29 +19,9 @@ export default function QuestionForm({
         createQuestion(data)
           .then(() => {
             setIsOpen(false);
-            toast(
-              <div
-                className={
-                  "inline-flex items-center gap-1.5 rounded-full bg-green-200 px-5 py-2 text-base font-medium text-green-600 md:px-7"
-                }
-              >
-                <Check />
-                <h1>Nouvelle question créée</h1>
-              </div>,
-            );
+            toast.success("Nouvelle question créée avec succès.");
           })
-          .catch((error) =>
-            toast(
-              <div
-                className={
-                  "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
-                }
-              >
-                <X />
-                <h1>{error.message}</h1>
-              </div>,
-            ),
-          );
+          .catch((error) => toast.error(error.message));
       }}
       className="mx-auto max-w-sm space-y-8"
     >

@@ -25,9 +25,8 @@ export default function AdminLayout({
       <Toaster
         position={"bottom-center"}
         toastOptions={{
-          unstyled: true,
           classNames: {
-            toast: `${inter.variable} w-full inline-flex gap-1.5 items-center justify-center z-100`,
+            toast: `${inter.variable} max-w-max inline-flex gap-1.5 items-center justify-center z-100`,
           },
         }}
       />

@@ -12,7 +12,6 @@ export default async function Page() {
   const result = await sql`
       SELECT id, description, value
       FROM questions
-      WHERE active = true
       ORDER BY date DESC
 `;
 

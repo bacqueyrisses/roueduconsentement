@@ -17,16 +17,7 @@ export default function OptionSwitch({ id, active }) {
       onChange={(value) => {
         setIsSwitchOn(value);
         void updateOption(id, value);
-        toast(
-          <div
-            className={
-              "inline-flex items-center gap-1.5 rounded-full bg-green-200 px-5 py-2 text-base font-medium text-green-600 md:px-7"
-            }
-          >
-            <Check />
-            <h1>Option mise à jour</h1>
-          </div>,
-        );
+        toast.success("Option mise à jour avec succès.");
       }}
     />
   );
