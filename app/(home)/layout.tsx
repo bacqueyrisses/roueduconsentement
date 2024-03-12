@@ -1,24 +1,13 @@
 import Footer from "@/components/footer";
 import logo from "@/public/logo.png";
+import { clash, inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
 import Image from "next/image";
 import { Toaster } from "sonner";
 
-const clash = localFont({
-  src: "../../styles/ClashDisplay-Semibold.otf",
-  variable: "--font-clash",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "La roue du consentement",
+  title: "Jouez | La roue du consentement",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 
