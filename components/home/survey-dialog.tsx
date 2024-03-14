@@ -64,7 +64,7 @@ export default function SurveyDialog() {
         <span>Répondre</span>
       </button>
       <Dialog open={isOpen} onClose={handleClose}>
-        <button
+        <form
           onClick={() => {
             setIsOpen((prevState) => !prevState);
             const params = new URLSearchParams(searchParams);
@@ -75,7 +75,7 @@ export default function SurveyDialog() {
             localStorage.setItem("surveyCompleted", "true");
           }}
         >
-          <DialogTitle>Rentrez votre pseudo</DialogTitle>
+          <DialogTitle>Répondez à quelques questions</DialogTitle>
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
           </DialogDescription>
@@ -114,7 +114,7 @@ export default function SurveyDialog() {
 
             <SubmitButton />
           </DialogActions>
-        </button>
+        </form>
       </Dialog>
     </>
   );
