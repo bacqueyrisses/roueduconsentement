@@ -4,13 +4,13 @@ import { signout } from "@/lib/actions/auth";
 import { ReactNode } from "react";
 import { CardStack } from "../ui/card-stack";
 
-export default function CardStackDemo({ initial }) {
+export default function CardStackDemo({ initial, surveyCompleted }) {
   return (
     <div
       className="h-[30rem] flex flex-col gap-10 items-center justify-center w-full animate-fade-up opacity-0"
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
-      <CardStack items={CARDS} />
+      <CardStack items={CARDS} surveyCompleted={surveyCompleted} />
       {!initial && (
         <button
           onClick={() => signout()}
@@ -74,6 +74,14 @@ const CARDS = [
         <Highlight>Merci d'avoir participé</Highlight> à notre jeu, toutes les
         informations données restent anonymes. Vous pouvez cliquer sur le{" "}
         <Highlight>bouton vert</Highlight> pour partagez quelques informations.{" "}
+        <br />À bientôt !
+      </p>
+    ),
+    contentCompleted: (
+      <p>
+        <Highlight>Merci d'avoir répondu</Highlight> à notre questionnaire,
+        toutes les informations données restent anonymes. Vous pouvez cliquer
+        sur le <Highlight>bouton vert</Highlight> pour copier le lien du site.{" "}
         <br />À bientôt !
       </p>
     ),

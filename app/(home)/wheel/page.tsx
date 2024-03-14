@@ -9,10 +9,12 @@ export default async function Page({
   searchParams?: {
     completed?: string;
     initial?: string;
+    surveyCompleted?: string;
   };
 }) {
   const completed = searchParams?.completed || "";
   const initial = searchParams?.initial || "";
+  const surveyCompleted = searchParams?.surveyCompleted || "";
 
   const session = await auth();
   const user = session?.user;
@@ -51,6 +53,7 @@ export default async function Page({
         questions={questions}
         completed={completed}
         initial={initial}
+        surveyCompleted={surveyCompleted}
       />
     </>
   );

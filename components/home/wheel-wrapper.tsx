@@ -17,6 +17,7 @@ export default function WheelWrapper({
   questions,
   completed,
   initial,
+  surveyCompleted,
 }: {
   user: User;
 }) {
@@ -92,7 +93,7 @@ export default function WheelWrapper({
   }, []);
 
   return completed ? (
-    <CardStackDemo initial={initial} />
+    <CardStackDemo initial={initial} surveyCompleted={surveyCompleted} />
   ) : (
     <>
       <div

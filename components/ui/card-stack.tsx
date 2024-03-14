@@ -1,8 +1,11 @@
 "use client";
 import CopyButton from "@/components/home/copy-button";
+import SurveyDialog from "@/components/home/survey-dialog";
 import RightArrow from "@/components/icons/right-arrow";
 import { motion } from "framer-motion";
-import { ReactNode, useState } from "react";
+import { Route } from "next";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
 
 type Card = {
   id: number;
@@ -10,22 +13,40 @@ type Card = {
   survey?: boolean;
   designation: string;
   content: ReactNode;
+  contentCompleted?: ReactNode;
 };
 
 export const CardStack = ({
   items,
   offset,
   scaleFactor,
+  surveyCompleted,
 }: {
   items: Card[];
   offset?: number;
   scaleFactor?: number;
 }) => {
+  const [isSurveyCompleted, setIsSurveyCompleted] = useState(
+    surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
+  );
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
   const [cards, setCards] = useState<Card[]>(
     [...items].sort((a, b) => b.id - a.id),
   );
+
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    surveyCompleted && setIsSurveyCompleted(surveyCompleted);
+
+    const params = new URLSearchParams(searchParams);
+
+    params.delete("surveyCompleted");
+    replace(`${pathname}?${params.toString()}` as Route);
+  }, [surveyCompleted]);
 
   const flip = () => {
     setCards((prevCards: Card[]) => {
@@ -52,7 +73,9 @@ export const CardStack = ({
             }}
           >
             <div className="font-normal text-neutral-700 md:leading-relaxed">
-              {card.content}
+              {isSurveyCompleted && card.contentCompleted
+                ? card.contentCompleted
+                : card.content}
             </div>
             <div>
               <p className="text-neutral-500 font-medium">{card.name}</p>
@@ -70,8 +93,10 @@ export const CardStack = ({
                     <RightArrow className={"size-5"} />
                     <span>Suivant</span>
                   </button>
-                ) : (
+                ) : isSurveyCompleted ? (
                   <CopyButton />
+                ) : (
+                  <SurveyDialog />
                 )}
               </p>
             </div>
