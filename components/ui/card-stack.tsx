@@ -1,5 +1,6 @@
 "use client";
 import CopyButton from "@/components/home/copy-button";
+import { Highlight } from "@/components/home/results-stack";
 import SurveyDialog from "@/components/home/survey-dialog";
 import RightArrow from "@/components/icons/right-arrow";
 import { motion } from "framer-motion";
@@ -13,7 +14,7 @@ type Card = {
   name: string;
   survey?: boolean;
   designation: string;
-  content: ReactNode;
+  content: ReactNode | null;
   contentCompleted?: ReactNode;
 };
 
@@ -22,6 +23,7 @@ export const CardStack = ({
   offset,
   scaleFactor,
   surveyCompleted,
+  score,
 }: {
   items: Card[];
   offset?: number;
@@ -81,9 +83,20 @@ export const CardStack = ({
                   >
                     {isSurveyCompleted &&
                     card.contentCompleted &&
-                    state === "entered"
-                      ? card.contentCompleted
-                      : card.content}
+                    state === "entered" ? (
+                      card.contentCompleted
+                    ) : !card.content ? (
+                      <p>
+                        <Highlight>Félicitations,</Highlight> vous avez répondu
+                        à toutes les questions. Votre score est de
+                        <Highlight score={score}>
+                          {score.toFixed(1)} sur 10.
+                        </Highlight>{" "}
+                        Cliquez sur la carte pour avoir plus d'informations !
+                      </p>
+                    ) : (
+                      card.content
+                    )}
                   </div>
 
                   <div>

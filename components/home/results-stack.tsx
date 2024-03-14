@@ -4,13 +4,17 @@ import { signout } from "@/lib/actions/auth";
 import { ReactNode } from "react";
 import { CardStack } from "../ui/card-stack";
 
-export default function CardStackDemo({ initial, surveyCompleted }) {
+export default function CardStackDemo({ initial, surveyCompleted, score }) {
   return (
     <div
       className="h-[30rem] flex flex-col gap-10 items-center justify-center w-full animate-fade-up opacity-0"
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
-      <CardStack items={CARDS} surveyCompleted={surveyCompleted} />
+      <CardStack
+        items={CARDS}
+        surveyCompleted={surveyCompleted}
+        score={score}
+      />
       {!initial && (
         <button
           onClick={async () => {
@@ -31,12 +35,16 @@ export default function CardStackDemo({ initial, surveyCompleted }) {
 
 export const Highlight = ({
   children,
+  score,
 }: {
   children: ReactNode;
   className?: string;
+  score?: number;
 }) => {
   return (
-    <span className={"font-bold bg-emerald-100 text-emerald-700 px-1 py-0.5"}>
+    <span
+      className={`font-bold px-1 py-0.5 ${!score ? "bg-emerald-100 text-emerald-700" : score === 0 ? "" : score <= 4 ? "bg-red-100 text-red-700" : score <= 7 ? "bg-yellow-100 text-yellow-700" : "bg-emerald-100 text-emerald-700"}`}
+    >
       {children}
     </span>
   );
@@ -47,13 +55,7 @@ const CARDS = [
     id: 0,
     name: "Score",
     designation: "Votre score de consentement",
-    content: (
-      <p>
-        <Highlight>Félicitations,</Highlight> vous avez répondu à toutes les
-        questions. Votre score est de <Highlight>7 sur 10.</Highlight> Cliquez
-        sur la carte pour avoir plus d'informations !
-      </p>
-    ),
+    content: null,
   },
   {
     id: 1,

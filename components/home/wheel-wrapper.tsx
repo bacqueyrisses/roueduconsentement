@@ -94,7 +94,11 @@ export default function WheelWrapper({
   }, []);
 
   return completed ? (
-    <CardStackDemo initial={initial} surveyCompleted={surveyCompleted} />
+    <CardStackDemo
+      initial={initial}
+      surveyCompleted={surveyCompleted}
+      score={score}
+    />
   ) : (
     <>
       <div
