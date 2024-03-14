@@ -54,7 +54,7 @@ export default function CopyButton() {
       ) : (
         <Check className={"size-5"} />
       )}
-      <span>Partagez</span>
+      <span>Répondez</span>
     </button>
   );
 }

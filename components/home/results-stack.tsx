@@ -66,15 +66,15 @@ const CARDS = [
   },
   {
     id: 2,
-    name: "Partager",
-    share: true,
-    designation: "Faites nous connaître",
+    name: "Questionnaire",
+    survey: true,
+    designation: "Aidez nous",
     content: (
       <p>
         <Highlight>Merci d'avoir participé</Highlight> à notre jeu, toutes les
         informations données restent anonymes. Vous pouvez cliquer sur le{" "}
-        <Highlight>bouton vert</Highlight> pour copier le site et le partager
-        dans votre entourage. <br />À bientôt !
+        <Highlight>bouton vert</Highlight> pour partagez quelques informations.{" "}
+        <br />À bientôt !
       </p>
     ),
   },

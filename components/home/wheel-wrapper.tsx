@@ -27,6 +27,13 @@ export default function WheelWrapper({
   const { replace } = useRouter();
   const pathname = usePathname();
 
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+
+    params.delete("initial");
+    replace(`${pathname}?${params.toString()}` as Route);
+  }, []);
+
   function handlePositive() {
     if (currentQuestionIndex === questions.length - 1) return;
     // const score = questions[currentQuestionIndex].value;

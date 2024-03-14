@@ -7,7 +7,7 @@ import { ReactNode, useState } from "react";
 type Card = {
   id: number;
   name: string;
-  share?: boolean;
+  survey?: boolean;
   designation: string;
   content: ReactNode;
 };
@@ -58,7 +58,7 @@ export const CardStack = ({
               <p className="text-neutral-500 font-medium">{card.name}</p>
               <p className="flex justify-between items-center text-neutral-400 font-normal">
                 {card.designation}
-                {!card.share ? (
+                {!card.survey ? (
                   <button
                     onClick={flip}
                     className="z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
