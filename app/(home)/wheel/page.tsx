@@ -12,13 +12,13 @@ export default async function Page({
     surveyCompleted?: string;
   };
 }) {
-  const completed = searchParams?.completed || "";
-  const initial = searchParams?.initial || "";
-  const surveyCompleted = searchParams?.surveyCompleted || "";
-
   const session = await auth();
   const user = session?.user;
   if (!user) notFound();
+  console.log(user?.completed);
+  const completed = searchParams?.completed || user?.completed || "";
+  const initial = searchParams?.initial || "";
+  const surveyCompleted = searchParams?.surveyCompleted || "";
 
   const result = await sql`
       SELECT id, description, "valueOne", "valueTwo", "valueThree"

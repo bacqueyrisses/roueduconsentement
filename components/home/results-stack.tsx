@@ -7,7 +7,7 @@ import { CardStack } from "../ui/card-stack";
 export default function CardStackDemo({ initial, surveyCompleted, score }) {
   return (
     <div
-      className="h-[30rem] flex flex-col gap-10 items-center justify-center w-full animate-fade-up opacity-0"
+      className="h-[29rem] flex flex-col gap-10 items-center justify-center w-full animate-fade-up opacity-0"
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
       <CardStack
@@ -20,9 +20,10 @@ export default function CardStackDemo({ initial, surveyCompleted, score }) {
           onClick={async () => {
             localStorage.removeItem("answeredQuestions");
             localStorage.removeItem("surveyCompleted");
+            localStorage.removeItem("score");
             await signout();
           }}
-          className="absolute bottom-10 inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-amber-200 text-amber-700 bg-amber-100 hover:text-amber-800 animate-fade-up opacity-0"
+          className="absolute bottom-10 md:bottom-8 inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-amber-200 text-amber-700 bg-amber-100 hover:text-amber-800 animate-fade-up opacity-0"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
           <Refresh className={"size-5"} />
@@ -80,7 +81,6 @@ const CARDS = [
         <Highlight>Merci d'avoir participé</Highlight> à notre jeu, toutes les
         informations données restent anonymes. Vous pouvez cliquer sur le{" "}
         <Highlight>bouton vert</Highlight> pour partagez quelques informations.{" "}
-        <br />À bientôt !
       </p>
     ),
     contentCompleted: (
@@ -88,7 +88,8 @@ const CARDS = [
         <Highlight>Merci d'avoir répondu</Highlight> à notre questionnaire,
         toutes les informations données restent anonymes. Vous pouvez cliquer
         sur le <Highlight>bouton vert</Highlight> pour copier le lien du site.{" "}
-        <br />À bientôt !
+        <br />
+        <Highlight>À bientôt !</Highlight>
       </p>
     ),
   },

@@ -29,9 +29,7 @@ export const CardStack = ({
   offset?: number;
   scaleFactor?: number;
 }) => {
-  const [isSurveyCompleted, setIsSurveyCompleted] = useState(
-    surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
-  );
+  const [isSurveyCompleted, setIsSurveyCompleted] = useState(null);
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
   const [cards, setCards] = useState<Card[]>(
@@ -43,7 +41,9 @@ export const CardStack = ({
   const pathname = usePathname();
 
   useEffect(() => {
-    surveyCompleted && setIsSurveyCompleted(surveyCompleted);
+    setIsSurveyCompleted(
+      surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
+    );
 
     const params = new URLSearchParams(searchParams);
 
@@ -85,14 +85,14 @@ export const CardStack = ({
                     card.contentCompleted &&
                     state === "entered" ? (
                       card.contentCompleted
-                    ) : !card.content ? (
+                    ) : !card.content && score ? (
                       <p>
                         <Highlight>Félicitations,</Highlight> vous avez répondu
                         à toutes les questions. Votre score est de
                         <Highlight score={score}>
                           {score.toFixed(1)} sur 10.
                         </Highlight>{" "}
-                        Cliquez sur la carte pour avoir plus d'informations !
+                        Cliquez sur suivant pour avoir plus d'informations !
                       </p>
                     ) : (
                       card.content

@@ -1,8 +1,9 @@
 "use server";
 
-import { auth } from "@/auth";
+import { auth, unstable_update } from "@/auth";
 import { CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
 import { sql } from "@vercel/postgres";
+import { User } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
@@ -55,26 +56,28 @@ export async function updateQuestion(id, value) {
   revalidatePath("/admin/questions");
 }
 
-export async function updateOption(id, value) {
-  const validatedField = z.boolean().safeParse(value);
+export async function addScore(id: User["id"], score: User["score"]) {
+  const validatedField = z
+    .number()
+    .transform((n) => Number(n.toFixed(1)))
+    .safeParse(score);
 
-  if (!validatedField.success)
-    throw new Error("Veuillez renseignez les champs");
+  if (!validatedField.success) throw new Error("Une erreur est survenue.");
 
-  const active = validatedField.data;
+  const validatedScore = validatedField.data;
 
   try {
     await sql`
-        UPDATE options
-        SET active = ${active}
+        UPDATE users
+        SET score = ${validatedScore}, completed = true
         WHERE id = ${id}
         `;
   } catch (error) {
     console.error(error);
-    throw new Error("Couldn't create new question.");
+    throw new Error("Couldn't add score to user.");
   }
 
-  revalidatePath("/admin/options");
+  revalidatePath("/admin");
 }
 
 export async function createAnswer(formData: FormData) {
@@ -101,4 +104,8 @@ export async function createAnswer(formData: FormData) {
   }
 
   revalidatePath("/admin");
+}
+
+export async function updateSession() {
+  await unstable_update({ user: { completed: true } });
 }

@@ -5,7 +5,7 @@ import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
 import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
-import { createAnswer } from "@/lib/actions/rest";
+import { addScore, createAnswer, updateSession } from "@/lib/actions/rest";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -22,14 +22,14 @@ export default function WheelWrapper({
   user: User;
 }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(5);
+  const [score, setScore] = useState<null | number>(null);
 
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
 
-  console.log(currentQuestionIndex);
   useEffect(() => {
+    setScore(Number(JSON.parse(localStorage.getItem("score") as string)) || 5);
     const params = new URLSearchParams(searchParams);
 
     params.delete("initial");
@@ -43,6 +43,7 @@ export default function WheelWrapper({
       (score * currentQuestionIndex + currentValue) /
       (currentQuestionIndex + 1);
     setScore(newScore);
+    localStorage.setItem("score", JSON.stringify(newScore));
 
     const answeredQuestions = JSON.parse(
       localStorage.getItem("answeredQuestions") || "{}",
@@ -61,7 +62,10 @@ export default function WheelWrapper({
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
 
-  function handleCompleted() {
+  async function handleCompleted() {
+    score && (await addScore(user.id, score));
+    await updateSession();
+
     const params = new URLSearchParams(searchParams);
 
     params.set("completed", "true");
@@ -77,6 +81,7 @@ export default function WheelWrapper({
     while (answeredQuestions[index]) {
       index++;
     }
+
     setCurrentQuestionIndex(index);
   }, []);
 
