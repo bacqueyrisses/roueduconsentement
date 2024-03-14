@@ -19,7 +19,6 @@ export const CreateQuestion = z.object({
 });
 
 export const CreateAnswer = z.object({
-  userId: z.string(),
   description: z
     .string()
     .transform((t) => t?.trim())

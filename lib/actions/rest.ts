@@ -1,5 +1,6 @@
 "use server";
 
+import { auth } from "@/auth";
 import { CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
@@ -77,8 +78,9 @@ export async function updateOption(id, value) {
 }
 
 export async function createAnswer(formData: FormData) {
+  const session = await auth();
+  const user = session?.user;
   const validatedFields = CreateAnswer.safeParse({
-    userId: formData.get("userId"),
     description: formData.get("description"),
     option: formData.get("option"),
     value: formData.get("value"),
@@ -87,12 +89,12 @@ export async function createAnswer(formData: FormData) {
   if (!validatedFields.success)
     throw new Error("Veuillez renseignez les champs");
 
-  const { userId, description, option, value } = validatedFields.data;
+  const { description, option, value } = validatedFields.data;
 
   try {
     await sql`
         INSERT INTO answers ("userId", description, option, value)
-        VALUES (${userId}, ${description}, ${option}, ${value})`;
+        VALUES (${user?.id}, ${description}, ${option}, ${value})`;
   } catch (error) {
     console.error(error);
     throw new Error("Couldn't create new answer.");

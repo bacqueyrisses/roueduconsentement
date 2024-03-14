@@ -17,15 +17,16 @@ export default async function Page({
   const session = await auth();
   const user = session?.user;
   if (!user) notFound();
-  console.log(session?.expires);
 
   const result = await sql`
-      SELECT id, description, value
+      SELECT id, description, "valueOne", "valueTwo", "valueThree"
       FROM questions
+      WHERE active = true
       ORDER BY date DESC
 `;
 
   const questions = result.rows;
+  if (questions.length === 0) return notFound();
 
   return (
     <>

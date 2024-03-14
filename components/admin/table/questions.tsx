@@ -15,7 +15,9 @@ export default function QuestionsTable({ questions }: any) {
       <TableHead>
         <TableRow>
           <TableHeaderCell>Question</TableHeaderCell>
-          <TableHeaderCell>Valeur</TableHeaderCell>
+          <TableHeaderCell>Valeur Oui</TableHeaderCell>
+          <TableHeaderCell>Valeur Non</TableHeaderCell>
+          <TableHeaderCell>Valeur Je ne sais pas</TableHeaderCell>
           <TableHeaderCell>Active</TableHeaderCell>
         </TableRow>
       </TableHead>
@@ -28,7 +30,13 @@ export default function QuestionsTable({ questions }: any) {
               </Text>
             </TableCell>
             <TableCell>
-              <Text>{question.value}</Text>
+              <Text>{question.valueOne}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{question.valueTwo}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{question.valueThree}</Text>
             </TableCell>
             <TableCell>
               <QuestionSwitch id={question.id} active={question.active} />
