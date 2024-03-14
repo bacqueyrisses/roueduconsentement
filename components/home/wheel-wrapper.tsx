@@ -23,7 +23,9 @@ export default function WheelWrapper({
   user: User;
 }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState<null | number>(null);
+  const [score, setScore] = useState(
+    Number(JSON.parse(localStorage.getItem("score") as string)) || 5,
+  );
   const [loading, setLoading] = useState("");
 
   const searchParams = useSearchParams();
@@ -31,7 +33,6 @@ export default function WheelWrapper({
   const pathname = usePathname();
 
   useEffect(() => {
-    setScore(Number(JSON.parse(localStorage.getItem("score") as string)) || 5);
     const params = new URLSearchParams(searchParams);
 
     params.delete("initial");
@@ -147,7 +148,7 @@ export default function WheelWrapper({
             value={questions[currentQuestionIndex]?.valueOne}
             name={"value"}
             disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800 disabled:pointer-events-none"
           >
             <input name={"option"} value={"D'accord"} type="hidden" />
             <input
@@ -176,7 +177,7 @@ export default function WheelWrapper({
             value={questions[currentQuestionIndex]?.valueTwo}
             name={"value"}
             disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7 disabled:pointer-events-none"
           >
             <input name={"option"} value={"Pas d'accord"} type="hidden" />
             <input
@@ -205,7 +206,7 @@ export default function WheelWrapper({
             name={"value"}
             disabled={!!loading}
             value={questions[currentQuestionIndex]?.valueThree}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7 disabled:pointer-events-none"
           >
             <input name={"option"} value={"Je ne sais pas"} type="hidden" />
             <input
