@@ -25,18 +25,3 @@ export const CreateAnswer = z.object({
   option: z.string(),
   value: z.coerce.number().gte(0).lte(10),
 });
-
-export const CreateOption = z.object({
-  description: z
-    .string()
-    .transform((t) => t?.trim())
-    .pipe(z.string().min(1)),
-  active: z
-    .string()
-    .toLowerCase()
-    .optional()
-    .nullable()
-    .default("off")
-    .transform((x) => x === "on")
-    .pipe(z.boolean()),
-});
