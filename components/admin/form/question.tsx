@@ -35,10 +35,28 @@ export default function QuestionForm({
       <div>
         <NumberInput
           icon={Check}
-          placeholder="Valeur"
+          placeholder="Valeur Oui"
           min={0}
           max={10}
-          name={"value"}
+          name={"value-one"}
+        />
+      </div>
+      <div>
+        <NumberInput
+          icon={Check}
+          placeholder="Valeur Non"
+          min={0}
+          max={10}
+          name={"value-two"}
+        />
+      </div>
+      <div>
+        <NumberInput
+          icon={Check}
+          placeholder="Valeur Je ne sais pas"
+          min={0}
+          max={10}
+          name={"value-three"}
         />
       </div>
       <div className="flex items-center space-x-3">

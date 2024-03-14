@@ -8,19 +8,22 @@ import { z } from "zod";
 export async function createQuestion(formData: FormData) {
   const validatedFields = CreateQuestion.safeParse({
     description: formData.get("description"),
-    value: formData.get("value"),
+    valueOne: formData.get("value-one"),
+    valueTwo: formData.get("value-two"),
+    valueThree: formData.get("value-three"),
     active: formData.get("active"),
   });
 
   if (!validatedFields.success)
     throw new Error("Veuillez renseignez les champs");
 
-  const { description, value, active } = validatedFields.data;
+  const { description, valueOne, valueTwo, valueThree, active } =
+    validatedFields.data;
 
   try {
     await sql`
-        INSERT INTO questions (description, value, active)
-        VALUES (${description}, ${value}, ${active})`;
+        INSERT INTO questions (description, "valueOne", "valueTwo", "valueThree", active)
+        VALUES (${description}, ${valueOne}, ${valueTwo}, ${valueThree}, ${active})`;
   } catch (error) {
     console.error(error);
     throw new Error("Couldn't create new question.");
