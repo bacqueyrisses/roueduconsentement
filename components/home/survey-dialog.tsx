@@ -65,7 +65,8 @@ export default function SurveyDialog() {
       </button>
       <Dialog open={isOpen} onClose={handleClose}>
         <form
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setIsOpen((prevState) => !prevState);
             const params = new URLSearchParams(searchParams);
 
