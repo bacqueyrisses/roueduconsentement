@@ -1,11 +1,24 @@
 "use client";
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
+import { Route } from "next";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
 export default function CopyButton() {
   const [copying, setCopying] = useState(false);
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
+
+  function handleActive() {
+    const params = new URLSearchParams(searchParams);
+
+    params.set("completed", "true");
+    params.delete("initial");
+    replace(`${pathname}?${params.toString()}` as Route);
+  }
 
   return (
     <button
@@ -23,6 +36,7 @@ export default function CopyButton() {
             <h1>Adresse du site copiée !</h1>
           </div>,
         );
+        handleActive();
       }}
       className="z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
       style={{

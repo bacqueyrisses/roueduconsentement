@@ -15,6 +15,7 @@ export default function WheelWrapper({
   user,
   questions,
   completed,
+  initial,
 }: {
   user: User;
 }) {
@@ -51,6 +52,7 @@ export default function WheelWrapper({
     const params = new URLSearchParams(searchParams);
 
     params.set("completed", "true");
+    params.set("initial", "true");
     replace(`${pathname}?${params.toString()}` as Route);
   }
 
@@ -68,7 +70,7 @@ export default function WheelWrapper({
   }, []);
 
   return completed ? (
-    <CardStackDemo />
+    <CardStackDemo initial={initial} />
   ) : (
     <>
       <div
