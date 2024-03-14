@@ -28,6 +28,7 @@ export default function WheelWrapper({
   const { replace } = useRouter();
   const pathname = usePathname();
 
+  console.log(currentQuestionIndex);
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
 
@@ -57,7 +58,7 @@ export default function WheelWrapper({
       nextIndex++;
     }
 
-    setCurrentQuestionIndex(nextIndex);
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
 
   function handleCompleted() {

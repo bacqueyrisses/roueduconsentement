@@ -13,7 +13,11 @@ export default function CardStackDemo({ initial, surveyCompleted }) {
       <CardStack items={CARDS} surveyCompleted={surveyCompleted} />
       {!initial && (
         <button
-          onClick={() => signout()}
+          onClick={async () => {
+            localStorage.removeItem("answeredQuestions");
+            localStorage.removeItem("surveyCompleted");
+            await signout();
+          }}
           className="absolute bottom-10 inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-amber-200 text-amber-700 bg-amber-100 hover:text-amber-800 animate-fade-up opacity-0"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >

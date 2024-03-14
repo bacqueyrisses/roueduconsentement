@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
+import { Transition } from "react-transition-group";
 
 type Card = {
   id: number;
@@ -72,34 +73,45 @@ export const CardStack = ({
               zIndex: index + 1, // Increase z-index for the cards that are behind
             }}
           >
-            <div className="font-normal text-neutral-700 md:leading-relaxed">
-              {isSurveyCompleted && card.contentCompleted
-                ? card.contentCompleted
-                : card.content}
-            </div>
-            <div>
-              <p className="text-neutral-500 font-medium">{card.name}</p>
-              <p className="flex justify-between items-center text-neutral-400 font-normal">
-                {card.designation}
-                {!card.survey ? (
-                  <button
-                    onClick={flip}
-                    className="z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
-                    style={{
-                      animationDelay: "0.3s",
-                      animationFillMode: "forwards",
-                    }}
+            <Transition in={isSurveyCompleted} timeout={500}>
+              {(state) => (
+                <>
+                  <div
+                    className={`font-normal text-neutral-700 md:leading-relaxed transition-opacity ${state === "entered" && "animate-fade-up"}`}
                   >
-                    <RightArrow className={"size-5"} />
-                    <span>Suivant</span>
-                  </button>
-                ) : isSurveyCompleted ? (
-                  <CopyButton />
-                ) : (
-                  <SurveyDialog />
-                )}
-              </p>
-            </div>
+                    {isSurveyCompleted &&
+                    card.contentCompleted &&
+                    state === "entered"
+                      ? card.contentCompleted
+                      : card.content}
+                  </div>
+
+                  <div>
+                    <p className="text-neutral-500 font-medium">{card.name}</p>
+                    <p className="flex justify-between items-center text-neutral-400 font-normal">
+                      {card.designation}
+                      {!card.survey ? (
+                        <button
+                          onClick={flip}
+                          className="z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
+                          style={{
+                            animationDelay: "0.3s",
+                            animationFillMode: "forwards",
+                          }}
+                        >
+                          <RightArrow className={"size-5"} />
+                          <span>Suivant</span>
+                        </button>
+                      ) : isSurveyCompleted && state === "entered" ? (
+                        <CopyButton state={state} />
+                      ) : (
+                        <SurveyDialog />
+                      )}
+                    </p>
+                  </div>
+                </>
+              )}
+            </Transition>
           </motion.div>
         );
       })}

@@ -1,8 +1,21 @@
 "use client";
 import Check from "@/components/icons/check";
+import { Route } from "next";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 
-export default function CopyButton() {
+export default function CopyButton({ state }) {
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
+
+  function handleActive() {
+    const params = new URLSearchParams(searchParams);
+
+    params.delete("initial");
+    replace(`${pathname}?${params.toString()}` as Route);
+  }
+
   return (
     <button
       onClick={() => {
@@ -18,16 +31,13 @@ export default function CopyButton() {
             <h1>Adresse du site copiée !</h1>
           </div>,
         );
+        handleActive();
       }}
-      className="z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
-      style={{
-        animationDelay: "0.3s",
-        animationFillMode: "forwards",
-      }}
+      className={`${state === "entered" && "animate-fade-up"} z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3`}
     >
       <Check className={"size-5"} />
 
-      <span>Copier le lien</span>
+      <span>Copiez le lien</span>
     </button>
   );
 }
