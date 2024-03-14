@@ -146,6 +146,7 @@ export default function WheelWrapper({
             onClick={() => handleAnswer("One")}
             value={questions[currentQuestionIndex]?.valueOne}
             name={"value"}
+            disabled={!!loading}
             className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
           >
             <input name={"option"} value={"D'accord"} type="hidden" />
@@ -173,6 +174,8 @@ export default function WheelWrapper({
             type={"submit"}
             onClick={() => handleAnswer("Two")}
             value={questions[currentQuestionIndex]?.valueTwo}
+            name={"value"}
+            disabled={!!loading}
             className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7"
           >
             <input name={"option"} value={"Pas d'accord"} type="hidden" />
@@ -199,6 +202,8 @@ export default function WheelWrapper({
           <button
             type={"submit"}
             onClick={() => handleAnswer("Three")}
+            name={"value"}
+            disabled={!!loading}
             value={questions[currentQuestionIndex]?.valueThree}
             className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7"
           >
