@@ -3,6 +3,7 @@
 import CardStackDemo from "@/components/home/results-stack";
 import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
+import Loader from "@/components/icons/loader";
 import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
 import { addScore, createAnswer, updateSession } from "@/lib/actions/rest";
@@ -23,6 +24,7 @@ export default function WheelWrapper({
 }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState<null | number>(null);
+  const [loading, setLoading] = useState("");
 
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -37,7 +39,8 @@ export default function WheelWrapper({
   }, []);
 
   function handleAnswer(value: string) {
-    if (currentQuestionIndex === questions.length - 1) return handleCompleted();
+    if (currentQuestionIndex === questions.length - 1)
+      return handleCompleted(value);
     const currentValue = questions[currentQuestionIndex][`value${value}`];
     const newScore =
       (score * currentQuestionIndex + currentValue) /
@@ -62,7 +65,8 @@ export default function WheelWrapper({
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
 
-  async function handleCompleted() {
+  async function handleCompleted(value: string) {
+    setLoading(value);
     score && (await addScore(user.id, score));
     await updateSession();
 
@@ -121,8 +125,6 @@ export default function WheelWrapper({
           action={async (data) => {
             try {
               await createAnswer(data);
-              if (currentQuestionIndex === questions.length - 1)
-                return handleCompleted();
             } catch (error) {
               console.error(error);
               toast(
@@ -144,7 +146,7 @@ export default function WheelWrapper({
             onClick={() => handleAnswer("One")}
             value={questions[currentQuestionIndex]?.valueOne}
             name={"value"}
-            className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
           >
             <input name={"option"} value={"D'accord"} type="hidden" />
             <input
@@ -152,14 +154,26 @@ export default function WheelWrapper({
               value={questions[currentQuestionIndex]?.description}
               type="hidden"
             />
-            <Check className={"size-6"} />
-            <span>D'accord</span>
+            {loading === "One" ? (
+              <>
+                <Check className={"size-6 invisible"} />
+                <span className={"invisible"}>D'accord</span>
+                <Loader
+                  className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
+                />
+              </>
+            ) : (
+              <>
+                <Check className={"size-6"} />
+                <span>D'accord</span>
+              </>
+            )}
           </button>
           <button
             type={"submit"}
             onClick={() => handleAnswer("Two")}
             value={questions[currentQuestionIndex]?.valueTwo}
-            className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7"
           >
             <input name={"option"} value={"Pas d'accord"} type="hidden" />
             <input
@@ -167,14 +181,26 @@ export default function WheelWrapper({
               value={questions[currentQuestionIndex]?.description}
               type="hidden"
             />
-            <X className={"size-6"} />
-            <span>Pas d'accord</span>
+            {loading === "Two" ? (
+              <>
+                <X className={"size-6 invisible"} />
+                <span className={"invisible"}>Pas d'accord</span>
+                <Loader
+                  className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
+                />
+              </>
+            ) : (
+              <>
+                <X className={"size-6"} />
+                <span>Pas d'accord</span>
+              </>
+            )}
           </button>
           <button
             type={"submit"}
             onClick={() => handleAnswer("Three")}
             value={questions[currentQuestionIndex]?.valueThree}
-            className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7"
           >
             <input name={"option"} value={"Je ne sais pas"} type="hidden" />
             <input
@@ -182,8 +208,21 @@ export default function WheelWrapper({
               value={questions[currentQuestionIndex]?.description}
               type="hidden"
             />
-            <Question className={"size-6"} />
-            <span>Je ne sais pas</span>
+            {loading === "Three" ? (
+              <>
+                <Question className={"size-6 invisible"} />
+                <span className={"invisible"}>Je ne sais pas</span>
+
+                <Loader
+                  className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
+                />
+              </>
+            ) : (
+              <>
+                <X className={"size-6"} />
+                <span>Je ne sais pas</span>
+              </>
+            )}
           </button>
         </form>
       </div>

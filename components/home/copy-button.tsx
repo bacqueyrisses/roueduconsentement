@@ -28,7 +28,7 @@ export default function CopyButton({ state }) {
             }
           >
             <Check />
-            <h1>Adresse du site copiée !</h1>
+            <h1>L'adresse du site a été copiée !</h1>
           </div>,
         );
         handleActive();

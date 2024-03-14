@@ -29,7 +29,9 @@ export const CardStack = ({
   offset?: number;
   scaleFactor?: number;
 }) => {
-  const [isSurveyCompleted, setIsSurveyCompleted] = useState(null);
+  const [isSurveyCompleted, setIsSurveyCompleted] = useState(
+    surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
+  );
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
   const [cards, setCards] = useState<Card[]>(
@@ -41,9 +43,7 @@ export const CardStack = ({
   const pathname = usePathname();
 
   useEffect(() => {
-    setIsSurveyCompleted(
-      surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
-    );
+    surveyCompleted && setIsSurveyCompleted(surveyCompleted);
 
     const params = new URLSearchParams(searchParams);
 
@@ -60,7 +60,7 @@ export const CardStack = ({
   };
 
   return (
-    <div className="relative h-60 w-96 md:h-[16rem] md:w-[27rem] select-none">
+    <div className="relative h-60 w-96 md:h-[16rem] md:w-[27rem]">
       {cards.map((card, index) => {
         return (
           <motion.div
@@ -75,7 +75,7 @@ export const CardStack = ({
               zIndex: index + 1, // Increase z-index for the cards that are behind
             }}
           >
-            <Transition in={isSurveyCompleted} timeout={500}>
+            <Transition in={isSurveyCompleted!} timeout={500}>
               {(state) => (
                 <>
                   <div
@@ -92,7 +92,9 @@ export const CardStack = ({
                         <Highlight score={score}>
                           {score.toFixed(1)} sur 10.
                         </Highlight>{" "}
-                        Cliquez sur suivant pour avoir plus d'informations !
+                        Cliquez sur{" "}
+                        <span className={"italic font-medium"}>suivant</span>{" "}
+                        pour avoir plus d'informations !
                       </p>
                     ) : (
                       card.content

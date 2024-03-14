@@ -66,13 +66,13 @@ export default function SurveyDialog() {
       <Dialog open={isOpen} onClose={handleClose}>
         <button
           onClick={() => {
-            localStorage.setItem("surveyCompleted", "true");
             setIsOpen((prevState) => !prevState);
             const params = new URLSearchParams(searchParams);
 
             params.set("surveyCompleted", "true");
             params.delete("initial");
             replace(`${pathname}?${params.toString()}` as Route);
+            localStorage.setItem("surveyCompleted", "true");
           }}
         >
           <DialogTitle>Rentrez votre pseudo</DialogTitle>
