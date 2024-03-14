@@ -1,13 +1,10 @@
 "use client";
 import Check from "@/components/icons/check";
-import Loader from "@/components/icons/loader";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 import { toast } from "sonner";
 
 export default function CopyButton() {
-  const [copying, setCopying] = useState(false);
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -23,9 +20,8 @@ export default function CopyButton() {
   return (
     <button
       onClick={() => {
-        setCopying(true);
         void navigator.clipboard.writeText(`https://consentement.vercel.app`);
-        setCopying(false);
+
         toast(
           <div
             className={
@@ -44,17 +40,9 @@ export default function CopyButton() {
         animationFillMode: "forwards",
       }}
     >
-      {copying ? (
-        <>
-          <span className={"invisible"}>Jouer</span>
-          <Loader
-            className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
-          />
-        </>
-      ) : (
-        <Check className={"size-5"} />
-      )}
-      <span>Répondez</span>
+      <Check className={"size-5"} />
+
+      <span>Partagez</span>
     </button>
   );
 }
