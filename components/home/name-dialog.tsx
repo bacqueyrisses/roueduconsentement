@@ -83,7 +83,7 @@ function SubmitButton() {
   return (
     <button
       className={
-        "relative rounded-full bg-green-100 px-5 py-2 font-medium text-green-700 transition-colors duration-300 ease-in-out hover:bg-green-200 md:px-7"
+        "hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800relative rounded-full px-5 py-2 font-medium transition-colors duration-300 ease-in-out md:px-7"
       }
     >
       {pending ? (

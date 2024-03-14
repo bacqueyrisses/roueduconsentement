@@ -3,7 +3,10 @@ import { ReactNode } from "react";
 import { CardStack } from "../ui/card-stack";
 export default function CardStackDemo() {
   return (
-    <div className="h-[30rem] flex items-center justify-center w-full">
+    <div
+      className="h-[30rem] flex items-center justify-center w-full animate-fade-up opacity-0"
+      style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+    >
       <CardStack items={CARDS} />
     </div>
   );
@@ -16,11 +19,7 @@ export const Highlight = ({
   className?: string;
 }) => {
   return (
-    <span
-      className={
-        "font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500 px-1 py-0.5"
-      }
-    >
+    <span className={"font-bold bg-emerald-100 text-emerald-700 px-1 py-0.5"}>
       {children}
     </span>
   );
@@ -29,39 +28,40 @@ export const Highlight = ({
 const CARDS = [
   {
     id: 0,
-    name: "Manu Arora",
-    designation: "Senior Software Engineer",
+    name: "Score",
+    designation: "Votre score de consentement",
     content: (
       <p>
-        These cards are amazing, <Highlight>I want to use them</Highlight> in my
-        project. Framer motion is a godsend ngl tbh fam 🙏
+        <Highlight>Félicitations,</Highlight> vous avez répondu à toutes les
+        questions. Votre score est de <Highlight>7 sur 10.</Highlight> Cliquez
+        sur la carte pour avoir plus d'informations !
       </p>
     ),
   },
   {
     id: 1,
-    name: "Elon Musk",
-    designation: "Senior Shitposter",
+    name: "Recommendations",
+    designation: "Notre conseil personnalisé",
     content: (
       <p>
-        I dont like this Twitter thing,{" "}
-        <Highlight>deleting it right away</Highlight> because yolo. Instead, I
-        would like to call it <Highlight>X.com</Highlight> so that it can easily
-        be confused with adult sites.
+        Lorem ipsum dolor sit amet,
+        <Highlight>consectetur adipisicing elit</Highlight>. Asperiores beatae
+        corporis eveniet harum inventore iure quae qui{" "}
+        <Highlight>veritatis</Highlight> voluptatem voluptatibus.
       </p>
     ),
   },
   {
     id: 2,
-    name: "Tyler Durden",
-    designation: "Manager Project Mayhem",
+    name: "Partager",
+    share: true,
+    designation: "Faites nous connaître",
     content: (
       <p>
-        The first rule of
-        <Highlight>Fight Club</Highlight> is that you do not talk about fight
-        club. The second rule of
-        <Highlight>Fight club</Highlight> is that you DO NOT TALK about fight
-        club.
+        <Highlight>Merci d'avoir participé</Highlight> à notre jeu, toutes les
+        informations données restent anonymes. Vous pouvez cliquer sur le{" "}
+        <Highlight>bouton vert</Highlight> pour copier le site et le partager
+        dans votre entourage. <br />À bientôt !
       </p>
     ),
   },

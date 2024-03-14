@@ -1,17 +1,30 @@
 "use client";
 
+import CardStackDemo from "@/components/home/results-stack";
 import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
 import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
+import { Route } from "next";
 import { User } from "next-auth";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-export default function WheelWrapper({ user, questions }: { user: User }) {
+export default function WheelWrapper({
+  user,
+  questions,
+  completed,
+}: {
+  user: User;
+}) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [scores, setScores] = useState([]);
   const [score2, setScore2] = useState(5);
+
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
 
   function handlePositive() {
     if (currentQuestionIndex === questions.length - 1) return;
@@ -34,11 +47,18 @@ export default function WheelWrapper({ user, questions }: { user: User }) {
   const average =
     scores.reduce((acc, cur) => acc + cur, 0) / (scores.length || 1);
 
+  function handleCompleted() {
+    const params = new URLSearchParams(searchParams);
+
+    params.set("completed", "true");
+    replace(`${pathname}?${params.toString()}` as Route);
+  }
+
   useEffect(() => {
     toast(
       <div
         className={
-          "inline-flex items-center gap-1.5 rounded-full bg-green-200 px-5 py-2 text-base font-medium text-green-600 md:px-7"
+          "inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
         }
       >
         <Check />
@@ -47,7 +67,9 @@ export default function WheelWrapper({ user, questions }: { user: User }) {
     );
   }, []);
 
-  return (
+  return completed ? (
+    <CardStackDemo />
+  ) : (
     <>
       <div
         className={"mt-10 w-screen animate-fade-up text-stone-600 opacity-0"}
@@ -63,19 +85,21 @@ export default function WheelWrapper({ user, questions }: { user: User }) {
         <div className={"flex items-center justify-center gap-4"}>
           <button
             onClick={() => {
-              if (currentQuestionIndex === questions.length - 1) return;
+              if (currentQuestionIndex === questions.length - 1)
+                return handleCompleted();
               if (score2 === 10) return;
               setScore2((prevScore) => prevScore + 1);
               setCurrentQuestionIndex(currentQuestionIndex + 1);
             }}
-            className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-green-200 px-5 py-2 text-base font-medium text-green-600 transition-colors duration-300 ease-in-out hover:bg-green-300 hover:text-green-700 md:px-7"
+            className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
           >
             <Check className={"size-6"} />
             <span>D'accord</span>
           </button>
           <button
             onClick={() => {
-              if (currentQuestionIndex === questions.length - 1) return;
+              if (currentQuestionIndex === questions.length - 1)
+                return handleCompleted();
               if (score2 === 0) return;
               setScore2((prevScore) => prevScore - 1);
               setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -87,7 +111,9 @@ export default function WheelWrapper({ user, questions }: { user: User }) {
           </button>
           <button
             onClick={() => {
-              if (currentQuestionIndex === questions.length - 1) return;
+              if (currentQuestionIndex === questions.length - 1)
+                return handleCompleted();
+
               if (score2 === 0) return;
               setScore2((prevScore) => prevScore - 1);
               setCurrentQuestionIndex(currentQuestionIndex + 1);
