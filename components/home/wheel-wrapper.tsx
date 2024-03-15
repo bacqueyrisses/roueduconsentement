@@ -68,7 +68,7 @@ export default function WheelWrapper({
 
   async function handleCompleted(value: string) {
     setLoading(value);
-    score && (await addScore(user.id, score));
+    score && (await addScore(score));
     await updateSession();
 
     const params = new URLSearchParams(searchParams);
@@ -108,6 +108,7 @@ export default function WheelWrapper({
       initial={initial}
       surveyCompleted={surveyCompleted}
       score={score}
+      user={user}
     />
   ) : (
     <>

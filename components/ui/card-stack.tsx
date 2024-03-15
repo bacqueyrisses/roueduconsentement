@@ -24,6 +24,7 @@ export const CardStack = ({
   scaleFactor,
   surveyCompleted,
   score,
+  user,
 }: {
   items: Card[];
   offset?: number;

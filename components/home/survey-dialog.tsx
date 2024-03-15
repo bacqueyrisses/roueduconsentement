@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Field, Label } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
-import { authenticate } from "@/lib/actions/auth";
+import { addSurvey } from "@/lib/actions/rest";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ import { toast } from "sonner";
 
 export default function SurveyDialog() {
   const [isOpen, setIsOpen] = useState(false);
-  const [error, dispatch] = useFormState(authenticate, undefined);
+  const [error, dispatch] = useFormState(addSurvey, undefined);
 
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -65,7 +65,7 @@ export default function SurveyDialog() {
       </button>
       <Dialog open={isOpen} onClose={handleClose}>
         <form
-          onClick={(e) => {
+          onSubmit={(e) => {
             e.preventDefault();
             setIsOpen((prevState) => !prevState);
             const params = new URLSearchParams(searchParams);
@@ -84,22 +84,37 @@ export default function SurveyDialog() {
             <Field>
               <Label>Âge</Label>
               <Input
-                type={"text"}
+                type={"number"}
                 name="age"
                 placeholder="Quel âge avez vous ?"
               />
             </Field>
             <Field>
               <Label>Question</Label>
-              <Input type={"text"} name="question" placeholder="Question" />
+              <Input
+                type={"text"}
+                disabled
+                name="question"
+                placeholder="Question"
+              />
             </Field>
             <Field>
               <Label>Question</Label>
-              <Input type={"text"} name="question" placeholder="Question" />
+              <Input
+                type={"text"}
+                disabled
+                name="question"
+                placeholder="Question"
+              />
             </Field>
             <Field>
               <Label>Question</Label>
-              <Input type={"text"} name="question" placeholder="Question" />
+              <Input
+                type={"text"}
+                disabled
+                name="question"
+                placeholder="Question"
+              />
             </Field>
           </DialogBody>
           <DialogActions className={"mt-10"}>

@@ -26,3 +26,7 @@ export const CreateAnswer = z.object({
   option: z.string(),
   value: z.coerce.number().gte(0).lte(10),
 });
+
+export const AddSurvey = z.object({
+  age: z.coerce.number().gte(0).lte(10),
+});

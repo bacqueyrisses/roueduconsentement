@@ -1,12 +1,15 @@
 "use server";
 
 import { auth, unstable_update } from "@/auth";
-import { CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
+import { AddSurvey, CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
 import { sql } from "@vercel/postgres";
 import { User } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-
+export async function getUser() {
+  const session = await auth();
+  return session?.user;
+}
 export async function createQuestion(formData: FormData) {
   const validatedFields = CreateQuestion.safeParse({
     description: formData.get("description"),
@@ -56,7 +59,8 @@ export async function updateQuestion(id, value) {
   revalidatePath("/admin/questions");
 }
 
-export async function addScore(id: User["id"], score: User["score"]) {
+export async function addScore(score: User["score"]) {
+  const user = await getUser();
   const validatedField = z
     .number()
     .transform((n) => Number(n.toFixed(1)))
@@ -70,7 +74,32 @@ export async function addScore(id: User["id"], score: User["score"]) {
     await sql`
         UPDATE users
         SET score = ${validatedScore}, completed = true
-        WHERE id = ${id}
+        WHERE id = ${user?.id}
+        `;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Couldn't add score to user.");
+  }
+
+  revalidatePath("/admin");
+}
+
+export async function addSurvey(formData: FormData) {
+  const user = await getUser();
+  const validatedFields = AddSurvey.safeParse({
+    age: formData.get("age"),
+  });
+
+  if (!validatedFields.success)
+    throw new Error("Veuillez renseignez les champs");
+
+  const { age } = validatedFields.data;
+
+  try {
+    await sql`
+        UPDATE users
+        SET age = ${age}
+        WHERE id = ${user?.id}
         `;
   } catch (error) {
     console.error(error);
@@ -81,8 +110,7 @@ export async function addScore(id: User["id"], score: User["score"]) {
 }
 
 export async function createAnswer(formData: FormData) {
-  const session = await auth();
-  const user = session?.user;
+  const user = await getUser();
   const validatedFields = CreateAnswer.safeParse({
     description: formData.get("description"),
     option: formData.get("option"),

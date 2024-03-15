@@ -4,7 +4,12 @@ import { signout } from "@/lib/actions/auth";
 import { ReactNode } from "react";
 import { CardStack } from "../ui/card-stack";
 
-export default function CardStackDemo({ initial, surveyCompleted, score }) {
+export default function CardStackDemo({
+  initial,
+  surveyCompleted,
+  score,
+  user,
+}) {
   return (
     <div
       className="h-[29rem] flex flex-col gap-10 items-center justify-center w-full animate-fade-up opacity-0"
@@ -14,6 +19,7 @@ export default function CardStackDemo({ initial, surveyCompleted, score }) {
         items={CARDS}
         surveyCompleted={surveyCompleted}
         score={score}
+        user={user}
       />
       {!initial && (
         <button
