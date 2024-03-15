@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/dialog";
 import { Field, Label } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
-import { initialState } from "@/lib/actions/helpers";
 import { addSurvey } from "@/lib/actions/rest";
+import { initialState } from "@/lib/helpers";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

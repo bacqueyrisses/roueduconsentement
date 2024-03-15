@@ -1,7 +1,7 @@
 "use server";
 
 import { auth, unstable_update } from "@/auth";
-import { PrevState } from "@/lib/actions/helpers";
+import { PrevState } from "@/lib/helpers";
 import { AddSurvey, CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
 import { sql } from "@vercel/postgres";
 import { User } from "next-auth";

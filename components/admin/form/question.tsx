@@ -1,6 +1,6 @@
 import Check from "@/components/icons/check";
-import { initialState } from "@/lib/actions/helpers";
 import { createQuestion } from "@/lib/actions/rest";
+import { initialState } from "@/lib/helpers";
 import { Button, NumberInput, Switch, TextInput } from "@tremor/react";
 import { Dispatch, useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";

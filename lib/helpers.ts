@@ -20,3 +20,7 @@ export async function retry<T>(
 
   throw new Error("Maximum number of retry attempts reached.");
 }
+
+// This is temporary until @types/react-dom is updated
+export const initialState: any = {};
+export type PrevState = any;
