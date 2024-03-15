@@ -26,7 +26,7 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
     return {
       success: false,
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Add Survey.",
+      message: "Validation error. Failed to Create Question.",
     };
   }
 
@@ -39,7 +39,7 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
         VALUES (${description}, ${valueOne}, ${valueTwo}, ${valueThree}, ${active})`;
   } catch (error) {
     console.error(error);
-    throw new Error("Couldn't create new question.");
+    throw new Error("Database error. Failed to Create Question.");
   }
 
   revalidatePath("/admin/questions");
@@ -52,7 +52,7 @@ export async function updateQuestion(id, value) {
   const validatedField = z.boolean().safeParse(value);
 
   if (!validatedField.success)
-    throw new Error("Veuillez renseignez les champs");
+    throw new Error("Validation error. Failed to Update Question.");
 
   const active = validatedField.data;
 
@@ -64,7 +64,7 @@ export async function updateQuestion(id, value) {
         `;
   } catch (error) {
     console.error(error);
-    throw new Error("Couldn't create new question.");
+    throw new Error("Database error. Failed to Update Question.");
   }
 
   revalidatePath("/admin/questions");
@@ -77,7 +77,8 @@ export async function addScore(score: User["score"]) {
     .transform((n) => Number(n.toFixed(1)))
     .safeParse(score);
 
-  if (!validatedField.success) throw new Error("Une erreur est survenue.");
+  if (!validatedField.success)
+    throw new Error("Validation error. Failed to Add Score to User.");
 
   const validatedScore = validatedField.data;
 
@@ -89,7 +90,7 @@ export async function addScore(score: User["score"]) {
         `;
   } catch (error) {
     console.error(error);
-    throw new Error("Couldn't add score to user.");
+    throw new Error("Database error. Failed to Add Score to User.");
   }
 
   revalidatePath("/admin");
@@ -106,7 +107,7 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
     return {
       success: false,
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Add Survey.",
+      message: "Validation error. Failed to Add Survey to User.",
     };
   }
 
@@ -120,7 +121,7 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
         `;
   } catch (error) {
     console.error(error);
-    throw new Error("Couldn't add score to user.");
+    throw new Error("Database error. Failed to Add Survey to User.");
   }
 
   revalidatePath("/admin");
@@ -138,7 +139,7 @@ export async function createAnswer(formData: FormData) {
   });
 
   if (!validatedFields.success)
-    throw new Error("Veuillez renseignez les champs");
+    throw new Error("Validation error. Failed to Create Answer.");
 
   const { description, option, value } = validatedFields.data;
 
@@ -148,7 +149,7 @@ export async function createAnswer(formData: FormData) {
         VALUES (${user?.id}, ${description}, ${option}, ${value})`;
   } catch (error) {
     console.error(error);
-    throw new Error("Couldn't create new answer.");
+    throw new Error("Database error. Failed to Create Answer.");
   }
 
   revalidatePath("/admin");

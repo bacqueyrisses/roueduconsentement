@@ -7,6 +7,7 @@ import Loader from "@/components/icons/loader";
 import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
 import { addScore, createAnswer, updateSession } from "@/lib/actions/rest";
+import { retry } from "@/lib/helpers";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -67,8 +68,11 @@ export default function WheelWrapper({
   }
 
   async function handleCompleted(value: string) {
+    if (!score) return;
+
     setLoading(value);
-    score && (await addScore(score));
+    addScore(score).catch(() => retry(() => addScore(score)));
+
     await updateSession();
 
     const params = new URLSearchParams(searchParams);
@@ -136,7 +140,7 @@ export default function WheelWrapper({
                   }
                 >
                   <X />
-                  <h1>Une erreur est survenue.</h1>
+                  <h1>Une erreur est survenue. Réessayez.</h1>
                 </div>,
               );
             }

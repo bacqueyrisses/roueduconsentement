@@ -15,8 +15,11 @@ export default function QuestionSwitch({ id, active }) {
       checked={isSwitchOn}
       onChange={(value) => {
         setIsSwitchOn(value);
-        void updateQuestion(id, value);
-        toast.success("Question mise à jour avec succès.");
+        updateQuestion(id, value)
+          .then(() => toast.success("Question mise à jour avec succès."))
+          .catch((error) =>
+            toast.error("Une erreur est survenue. Réessayez.."),
+          );
       }}
     />
   );
