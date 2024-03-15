@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn, signOut } from "@/auth";
+import { signIn, signOut, unstable_update } from "@/auth";
 import { sql } from "@vercel/postgres";
 import { AuthError, User } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -39,4 +39,7 @@ export async function create(pseudo: User["pseudo"]) {
 
 export async function signout() {
   await signOut();
+}
+export async function updateSession() {
+  await unstable_update({ user: { completed: true } });
 }

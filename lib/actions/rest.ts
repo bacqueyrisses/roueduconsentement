@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, unstable_update } from "@/auth";
+import { auth } from "@/auth";
 import { PrevState } from "@/lib/helpers";
 import { AddSurvey, CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
 import { Question } from "@prisma/client";
@@ -154,8 +154,4 @@ export async function createAnswer(formData: FormData) {
   }
 
   revalidatePath("/admin");
-}
-
-export async function updateSession() {
-  await unstable_update({ user: { completed: true } });
 }
