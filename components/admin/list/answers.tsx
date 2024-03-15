@@ -13,7 +13,7 @@ import {
 
 export function AnswersList({ user }: { user: UserQuery }) {
   return (
-    <Card className="mx-auto max-w-5xl">
+    <Card className="mx-auto max-w-6xl">
       <Table>
         <TableHead>
           <TableRow>
