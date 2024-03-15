@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model answers {
+  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  userId      String   @db.Uuid
+  description String
+  option      String
+  value       Int
+  date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+}
+
+model questions {
+  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  description String
+  valueOne    Int
+  valueTwo    Int
+  valueThree  Int
+  active      Boolean
+  date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+}
+
+model users {
+  id        String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  pseudo    String   @db.VarChar(255)
+  score     Decimal? @db.Decimal
+  age       Int?
+  completed Boolean? @default(false)
+  date      DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+}
