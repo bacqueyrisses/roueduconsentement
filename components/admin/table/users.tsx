@@ -18,6 +18,7 @@ export default function UsersTable({ users }: { users: UserQuery[] }) {
           <TableHeaderCell>Pseudo</TableHeaderCell>
           <TableHeaderCell>Date</TableHeaderCell>
           <TableHeaderCell>Score</TableHeaderCell>
+          <TableHeaderCell>Âge</TableHeaderCell>
           <TableHeaderCell>Réponses</TableHeaderCell>
         </TableRow>
       </TableHead>
@@ -32,6 +33,9 @@ export default function UsersTable({ users }: { users: UserQuery[] }) {
             </TableCell>
             <TableCell>
               <Text>{user.score?.toString() ?? "Pas de score."}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{user.age ?? "Non renseigné."}</Text>
             </TableCell>
             <TableCell>
               <AnswersDialog user={user} />
