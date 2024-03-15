@@ -4,15 +4,38 @@ import CardStackDemo from "@/components/home/results-stack";
 import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
-import Question from "@/components/icons/question";
 import X from "@/components/icons/x";
 import { addScore, createAnswer, updateSession } from "@/lib/actions/rest";
 import { retry } from "@/lib/helpers";
+import { Questions } from "@prisma/client";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+
+interface WheelWrapper {
+  user: User;
+  questions: Omit<Questions, "active" | "date">[];
+  completed: string | User["completed"];
+  initial: string;
+  surveyCompleted: string;
+}
+interface OptionButton {
+  valueKey: keyof Pick<
+    Omit<Questions, "active" | "date">,
+    "valueOne" | "valueTwo" | "valueThree"
+  >;
+  loading: string;
+  handleClick: (
+    key: keyof Pick<
+      Omit<Questions, "active" | "date">,
+      "valueOne" | "valueTwo" | "valueThree"
+    >,
+  ) => void;
+  buttonText: string;
+  buttonColor: string;
+}
 
 export default function WheelWrapper({
   user,
@@ -20,9 +43,7 @@ export default function WheelWrapper({
   completed,
   initial,
   surveyCompleted,
-}: {
-  user: User;
-}) {
+}: WheelWrapper) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(
     Number(JSON.parse(localStorage.getItem("score") as string)) || 5,
@@ -40,10 +61,15 @@ export default function WheelWrapper({
     replace(`${pathname}?${params.toString()}` as Route);
   }, []);
 
-  function handleAnswer(value: string) {
+  function handleAnswer(
+    key: keyof Pick<
+      Omit<Questions, "active" | "date">,
+      "valueOne" | "valueTwo" | "valueThree"
+    >,
+  ) {
     if (currentQuestionIndex === questions.length - 1)
-      return handleCompleted(value);
-    const currentValue = questions[currentQuestionIndex][`value${value}`];
+      return handleCompleted(key);
+    const currentValue = questions[currentQuestionIndex][key];
     const newScore =
       (score * currentQuestionIndex + currentValue) /
       (currentQuestionIndex + 1);
@@ -147,94 +173,115 @@ export default function WheelWrapper({
           }}
           className={"flex items-center justify-center gap-4"}
         >
-          <button
-            type={"submit"}
-            onClick={() => handleAnswer("One")}
-            value={questions[currentQuestionIndex]?.valueOne}
-            name={"value"}
-            disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800 disabled:pointer-events-none"
-          >
-            <input name={"option"} value={"D'accord"} type="hidden" />
-            <input
-              name={"description"}
-              value={questions[currentQuestionIndex]?.description}
-              type="hidden"
-            />
-            {loading === "One" ? (
-              <>
-                <Check className={"size-6 invisible"} />
-                <span className={"invisible"}>D'accord</span>
-                <Loader
-                  className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
-                />
-              </>
-            ) : (
-              <>
-                <Check className={"size-6"} />
-                <span>D'accord</span>
-              </>
-            )}
-          </button>
-          <button
-            type={"submit"}
-            onClick={() => handleAnswer("Two")}
-            value={questions[currentQuestionIndex]?.valueTwo}
-            name={"value"}
-            disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7 disabled:pointer-events-none"
-          >
-            <input name={"option"} value={"Pas d'accord"} type="hidden" />
-            <input
-              name={"description"}
-              value={questions[currentQuestionIndex]?.description}
-              type="hidden"
-            />
-            {loading === "Two" ? (
-              <>
-                <X className={"size-6 invisible"} />
-                <span className={"invisible"}>Pas d'accord</span>
-                <Loader
-                  className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
-                />
-              </>
-            ) : (
-              <>
-                <X className={"size-6"} />
-                <span>Pas d'accord</span>
-              </>
-            )}
-          </button>
-          <button
-            type={"submit"}
-            onClick={() => handleAnswer("Three")}
-            name={"value"}
-            disabled={!!loading}
-            value={questions[currentQuestionIndex]?.valueThree}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7 disabled:pointer-events-none"
-          >
-            <input name={"option"} value={"Je ne sais pas"} type="hidden" />
-            <input
-              name={"description"}
-              value={questions[currentQuestionIndex]?.description}
-              type="hidden"
-            />
-            {loading === "Three" ? (
-              <>
-                <Question className={"size-6 invisible"} />
-                <span className={"invisible"}>Je ne sais pas</span>
+          <OptionButton
+            valueKey="valueOne"
+            loading={loading}
+            handleClick={handleAnswer}
+            buttonText="D'accord"
+            buttonColor="emerald"
+          />
+          <OptionButton
+            valueKey="valueTwo"
+            loading={loading}
+            handleClick={handleAnswer}
+            buttonText="Pas d'accord"
+            buttonColor="red"
+          />
+          <OptionButton
+            valueKey="valueThree"
+            loading={loading}
+            handleClick={handleAnswer}
+            buttonText="Je ne sais pas"
+            buttonColor="yellow"
+          />
+          {/*<button*/}
+          {/*  type={"submit"}*/}
+          {/*  onClick={() => handleAnswer("valueOne")}*/}
+          {/*  value={questions[currentQuestionIndex]?.valueOne}*/}
+          {/*  name={"value"}*/}
+          {/*  disabled={!!loading}*/}
+          {/*  className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800 disabled:pointer-events-none"*/}
+          {/*>*/}
+          {/*  <input name={"option"} value={"D'accord"} type="hidden" />*/}
+          {/*  <input*/}
+          {/*    name={"description"}*/}
+          {/*    value={questions[currentQuestionIndex]?.description}*/}
+          {/*    type="hidden"*/}
+          {/*  />*/}
+          {/*  {loading === "valueOne" ? (*/}
+          {/*    <>*/}
+          {/*      <Check className={"size-6 invisible"} />*/}
+          {/*      <span className={"invisible"}>D'accord</span>*/}
+          {/*      <Loader*/}
+          {/*        className={"absolute inset-0 m-auto size-5 animate-spin-slow"}*/}
+          {/*      />*/}
+          {/*    </>*/}
+          {/*  ) : (*/}
+          {/*    <>*/}
+          {/*      <Check className={"size-6"} />*/}
+          {/*      <span>D'accord</span>*/}
+          {/*    </>*/}
+          {/*  )}*/}
+          {/*</button>*/}
+          {/*<button*/}
+          {/*  type={"submit"}*/}
+          {/*  onClick={() => handleAnswer("valueTwo")}*/}
+          {/*  value={questions[currentQuestionIndex]?.valueTwo}*/}
+          {/*  name={"value"}*/}
+          {/*  disabled={!!loading}*/}
+          {/*  className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7 disabled:pointer-events-none"*/}
+          {/*>*/}
+          {/*  <input name={"option"} value={"Pas d'accord"} type="hidden" />*/}
+          {/*  <input*/}
+          {/*    name={"description"}*/}
+          {/*    value={questions[currentQuestionIndex]?.description}*/}
+          {/*    type="hidden"*/}
+          {/*  />*/}
+          {/*  {loading === "valueTwo" ? (*/}
+          {/*    <>*/}
+          {/*      <X className={"size-6 invisible"} />*/}
+          {/*      <span className={"invisible"}>Pas d'accord</span>*/}
+          {/*      <Loader*/}
+          {/*        className={"absolute inset-0 m-auto size-5 animate-spin-slow"}*/}
+          {/*      />*/}
+          {/*    </>*/}
+          {/*  ) : (*/}
+          {/*    <>*/}
+          {/*      <X className={"size-6"} />*/}
+          {/*      <span>Pas d'accord</span>*/}
+          {/*    </>*/}
+          {/*  )}*/}
+          {/*</button>*/}
+          {/*<button*/}
+          {/*  type={"submit"}*/}
+          {/*  onClick={() => handleAnswer("valueThree")}*/}
+          {/*  name={"value"}*/}
+          {/*  disabled={!!loading}*/}
+          {/*  value={questions[currentQuestionIndex]?.valueThree}*/}
+          {/*  className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7 disabled:pointer-events-none"*/}
+          {/*>*/}
+          {/*  <input name={"option"} value={"Je ne sais pas"} type="hidden" />*/}
+          {/*  <input*/}
+          {/*    name={"description"}*/}
+          {/*    value={questions[currentQuestionIndex]?.description}*/}
+          {/*    type="hidden"*/}
+          {/*  />*/}
+          {/*  {loading === "valueThree" ? (*/}
+          {/*    <>*/}
+          {/*      <Question className={"size-6 invisible"} />*/}
+          {/*      <span className={"invisible"}>Je ne sais pas</span>*/}
 
-                <Loader
-                  className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
-                />
-              </>
-            ) : (
-              <>
-                <X className={"size-6"} />
-                <span>Je ne sais pas</span>
-              </>
-            )}
-          </button>
+          {/*      <Loader*/}
+          {/*        className={"absolute inset-0 m-auto size-5 animate-spin-slow"}*/}
+          {/*      />*/}
+          {/*    </>*/}
+          {/*  ) : (*/}
+          {/*    <>*/}
+          {/*      <X className={"size-6"} />*/}
+          {/*      <span>Je ne sais pas</span>*/}
+          {/*    </>*/}
+          {/*  )}*/}
+          {/*</button>*/}
         </form>
       </div>
       <div
@@ -245,4 +292,42 @@ export default function WheelWrapper({
       </div>
     </>
   );
+
+  function OptionButton({
+    valueKey,
+    loading,
+    handleClick,
+    buttonText,
+    buttonColor,
+  }: OptionButton) {
+    return (
+      <button
+        type="submit"
+        onClick={() => handleClick(valueKey)}
+        value={questions[currentQuestionIndex]?.[valueKey]}
+        name="value"
+        disabled={!!loading}
+        className={`relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium text-${buttonColor}-700 transition-colors duration-300 ease-in-out hover:bg-${buttonColor}-300 hover:text-${buttonColor}-800 md:px-7 disabled:pointer-events-none`}
+      >
+        <input name="option" value={buttonText} type="hidden" />
+        <input
+          name="description"
+          value={questions[currentQuestionIndex]?.description}
+          type="hidden"
+        />
+        {loading === valueKey ? (
+          <>
+            <Check className="size-6 invisible" />
+            <span className="invisible">{buttonText}</span>
+            <Loader className="absolute inset-0 m-auto size-5 animate-spin-slow" />
+          </>
+        ) : (
+          <>
+            <Check className="size-6" />
+            <span>{buttonText}</span>
+          </>
+        )}
+      </button>
+    );
+  }
 }

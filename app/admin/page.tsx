@@ -13,10 +13,10 @@ export default async function AdminPage({
 
   const result = await sql`
       SELECT u.*, TO_CHAR(u.date, 'DD/MM/YYYY') AS date, json_agg(a.*) AS answers
-      FROM users u
-      LEFT JOIN answers a ON u.id = a."userId"
+      FROM "Users" u
+      LEFT JOIN "Answers" a ON u.id = a."userId"
       WHERE u.pseudo ILIKE ${"%" + search + "%"}
-      GROUP BY u.id
+      GROUP BY u.id, u.date
       ORDER BY u.date DESC;
 `;
 

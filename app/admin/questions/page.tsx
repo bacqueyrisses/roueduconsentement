@@ -13,7 +13,7 @@ export default async function QuestionsPage({
 
   const result = await sql`
       SELECT id, description, "valueOne", "valueTwo", "valueThree", active
-      FROM questions
+      FROM "Questions"
       WHERE description ILIKE ${"%" + search + "%"}
       ORDER BY date DESC
   `;

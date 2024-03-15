@@ -36,7 +36,7 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
 
   try {
     await sql`
-        INSERT INTO questions (description, "valueOne", "valueTwo", "valueThree", active)
+        INSERT INTO "Questions" (description, "valueOne", "valueTwo", "valueThree", active)
         VALUES (${description}, ${valueOne}, ${valueTwo}, ${valueThree}, ${active})`;
   } catch (error) {
     console.error(error);
@@ -65,7 +65,7 @@ export async function updateQuestion(
 
   try {
     await sql`
-        UPDATE questions
+        UPDATE "Questions"
         SET active = ${active}
         WHERE id = ${id}
         `;
@@ -91,7 +91,7 @@ export async function addScore(score: User["score"]) {
 
   try {
     await sql`
-        UPDATE users
+        UPDATE "Users"
         SET score = ${validatedScore}, completed = true
         WHERE id = ${user?.id}
         `;
@@ -122,7 +122,7 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
 
   try {
     await sql`
-        UPDATE users
+        UPDATE "Users"
         SET age = ${age}
         WHERE id = ${user?.id}
         `;
@@ -152,7 +152,7 @@ export async function createAnswer(formData: FormData) {
 
   try {
     await sql`
-        INSERT INTO answers ("userId", description, option, value)
+        INSERT INTO "Answers" ("userId", description, option, value)
         VALUES (${user?.id}, ${description}, ${option}, ${value})`;
   } catch (error) {
     console.error(error);
