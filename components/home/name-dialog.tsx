@@ -53,7 +53,12 @@ export default function NameDialog() {
           </DialogDescription>
           <DialogBody>
             <Field>
-              <Input type={"text"} name="pseudo" placeholder="pseudonyme" />
+              <Input
+                type={"text"}
+                name="pseudo"
+                placeholder="pseudonyme"
+                invalid={!!error}
+              />
             </Field>
           </DialogBody>
           <DialogActions className={"mt-10"}>
