@@ -108,13 +108,17 @@ export const CardStack = ({
                       {!card.survey ? (
                         <button
                           onClick={flip}
-                          className="z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
+                          className="group z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
                           style={{
                             animationDelay: "0.3s",
                             animationFillMode: "forwards",
                           }}
                         >
-                          <RightArrow className={"size-5"} />
+                          <RightArrow
+                            className={
+                              "size-5 group-hover:translate-x-[0.1px] transition"
+                            }
+                          />
                           <span>Suivant</span>
                         </button>
                       ) : isSurveyCompleted && state === "entered" ? (

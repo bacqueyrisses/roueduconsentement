@@ -34,6 +34,7 @@ export default async function Page({
     <>
       {!completed ? (
         <p
+          key={"not-completed"}
           className="mt-6 animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
@@ -41,7 +42,8 @@ export default async function Page({
         </p>
       ) : (
         <p
-          className="mt-6 animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          key={"completed"}
+          className="animate-fade-up mt-6 text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Découvrez les informations liées à votre score ✨

@@ -13,7 +13,7 @@ export default function HomePage() {
       </p>
       <NameDialog />
       <div
-        className="mt-6 flex w-full animate-fade-up items-center justify-center overflow-hidden opacity-0"
+        className="mt-4 flex w-full animate-fade-up items-center justify-center overflow-hidden opacity-0"
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <Wheel value={5} />

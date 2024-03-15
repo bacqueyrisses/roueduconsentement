@@ -112,7 +112,7 @@ export default function WheelWrapper({
   ) : (
     <>
       <div
-        className={"mt-10 w-screen animate-fade-up text-stone-600 opacity-0"}
+        className={"mt-6 w-screen animate-fade-up text-stone-600 opacity-0"}
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <h1
