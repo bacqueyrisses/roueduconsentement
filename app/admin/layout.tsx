@@ -1,8 +1,8 @@
-import Nav from "@/components/admin/nav";
+import Navbar from "@/components/admin/navbar";
 import { inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
 import { Metadata } from "next";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
@@ -21,9 +21,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           },
         }}
       />
-      <Suspense>
-        <Nav />
-      </Suspense>
+      <Navbar />
       {children}
     </body>
   );

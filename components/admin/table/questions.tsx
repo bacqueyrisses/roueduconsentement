@@ -1,3 +1,4 @@
+import { QuestionQuery } from "@/app/admin/questions/page";
 import QuestionSwitch from "@/components/admin/table/question-switch";
 import {
   Table,
@@ -9,7 +10,11 @@ import {
   Text,
 } from "@tremor/react";
 
-export default function QuestionsTable({ questions }: any) {
+export default function QuestionsTable({
+  questions,
+}: {
+  questions: QuestionQuery[];
+}) {
   return (
     <Table>
       <TableHead>

@@ -1,3 +1,4 @@
+import { UserQuery } from "@/app/admin/page";
 import AnswersDialog from "@/components/admin/dialog/answers";
 import {
   Table,
@@ -8,9 +9,8 @@ import {
   TableRow,
   Text,
 } from "@tremor/react";
-import { User } from "next-auth";
 
-export default function UsersTable({ users }: { users: User[] }) {
+export default function UsersTable({ users }: { users: UserQuery[] }) {
   return (
     <Table>
       <TableHead>
@@ -31,7 +31,7 @@ export default function UsersTable({ users }: { users: User[] }) {
               <Text>{user.date}</Text>
             </TableCell>
             <TableCell>
-              <Text>{user.score ?? "Pas de score."}</Text>
+              <Text>{user.score?.toString() ?? "Pas de score."}</Text>
             </TableCell>
             <TableCell>
               <AnswersDialog user={user} />

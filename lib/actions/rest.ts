@@ -3,7 +3,7 @@
 import { auth, unstable_update } from "@/auth";
 import { PrevState } from "@/lib/helpers";
 import { AddSurvey, CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
-import { Questions } from "@prisma/client";
+import { Question } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { User } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -36,7 +36,7 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
 
   try {
     await sql`
-        INSERT INTO "Questions" (description, "valueOne", "valueTwo", "valueThree", active)
+        INSERT INTO "Question" (description, "valueOne", "valueTwo", "valueThree", active)
         VALUES (${description}, ${valueOne}, ${valueTwo}, ${valueThree}, ${active})`;
   } catch (error) {
     console.error(error);
@@ -49,13 +49,7 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
   };
 }
 
-export async function updateQuestion(
-  id: Questions["id"],
-  value:
-    | Questions["valueOne"]
-    | Questions["valueTwo"]
-    | Questions["valueThree"],
-) {
+export async function updateQuestion(id: Question["id"], value: boolean) {
   const validatedField = z.boolean().safeParse(value);
 
   if (!validatedField.success)
@@ -65,7 +59,7 @@ export async function updateQuestion(
 
   try {
     await sql`
-        UPDATE "Questions"
+        UPDATE "Question"
         SET active = ${active}
         WHERE id = ${id}
         `;
@@ -91,7 +85,7 @@ export async function addScore(score: User["score"]) {
 
   try {
     await sql`
-        UPDATE "Users"
+        UPDATE "User"
         SET score = ${validatedScore}, completed = true
         WHERE id = ${user?.id}
         `;
@@ -122,7 +116,7 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
 
   try {
     await sql`
-        UPDATE "Users"
+        UPDATE "User"
         SET age = ${age}
         WHERE id = ${user?.id}
         `;
@@ -152,7 +146,7 @@ export async function createAnswer(formData: FormData) {
 
   try {
     await sql`
-        INSERT INTO "Answers" ("userId", description, option, value)
+        INSERT INTO "Answer" ("userId", description, option, value)
         VALUES (${user?.id}, ${description}, ${option}, ${value})`;
   } catch (error) {
     console.error(error);

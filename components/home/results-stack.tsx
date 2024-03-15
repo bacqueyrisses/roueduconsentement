@@ -1,15 +1,22 @@
 "use client";
 import Refresh from "@/components/icons/refresh";
+import CardStack from "@/components/ui/card-stack";
 import { signout } from "@/lib/actions/auth";
+import { User } from "next-auth";
 import { ReactNode } from "react";
-import { CardStack } from "../ui/card-stack";
 
+interface CardStackDemo {
+  initial: string;
+  surveyCompleted: string;
+  score: User["score"];
+  user: User;
+}
 export default function CardStackDemo({
   initial,
   surveyCompleted,
   score,
   user,
-}) {
+}: CardStackDemo) {
   return (
     <div
       className="h-[29rem] flex flex-col gap-10 items-center justify-center w-full animate-fade-up opacity-0"
@@ -19,7 +26,6 @@ export default function CardStackDemo({
         items={CARDS}
         surveyCompleted={surveyCompleted}
         score={score}
-        user={user}
       />
       {!initial && (
         <button
@@ -31,7 +37,7 @@ export default function CardStackDemo({
           }}
           className="absolute bottom-10 md:bottom-8 inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-amber-200 text-amber-700 bg-amber-100 hover:text-amber-800 animate-fade-up opacity-0"
           style={{
-            animationDelay: "1.5s",
+            animationDelay: "1.3s",
             animationFillMode: "forwards",
             animationDuration: "800ms",
           }}

@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import WheelWrapper from "@/components/home/wheel-wrapper";
-import { Questions } from "@prisma/client";
+import { Question } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { notFound } from "next/navigation";
 
@@ -21,9 +21,9 @@ export default async function Page({
   const initial = searchParams?.initial || "";
   const surveyCompleted = searchParams?.surveyCompleted || "";
 
-  const result = await sql<Omit<Questions, "active" | "date">>`
+  const result = await sql<Omit<Question, "active" | "date">>`
       SELECT id, description, "valueOne", "valueTwo", "valueThree"
-      FROM "Questions"
+      FROM "Question"
       WHERE active = true
       ORDER BY date DESC
 `;

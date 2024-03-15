@@ -8,7 +8,7 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Answers {
+model Answer {
   id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId      String   @db.Uuid
   description String
@@ -17,7 +17,7 @@ model Answers {
   date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
 
-model Questions {
+model Question {
   id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   description String
   valueOne    Int
@@ -27,7 +27,7 @@ model Questions {
   date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
 
-model Users {
+model User {
   id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   pseudo    String   @db.VarChar(255)
   score     Decimal? @db.Decimal

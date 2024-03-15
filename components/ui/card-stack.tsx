@@ -5,6 +5,7 @@ import SurveyDialog from "@/components/home/survey-dialog";
 import RightArrow from "@/components/icons/right-arrow";
 import { motion } from "framer-motion";
 import { Route } from "next";
+import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 import { Transition } from "react-transition-group";
@@ -18,20 +19,23 @@ type Card = {
   contentCompleted?: ReactNode;
 };
 
-export const CardStack = ({
-  items,
-  offset,
-  scaleFactor,
-  surveyCompleted,
-  score,
-  user,
-}: {
+interface CardStack {
   items: Card[];
+  surveyCompleted: string;
+  score: User["score"];
   offset?: number;
   scaleFactor?: number;
-}) => {
+}
+
+export default function CardStack({
+  items,
+  surveyCompleted,
+  score,
+  offset,
+  scaleFactor,
+}: CardStack) {
   const [isSurveyCompleted, setIsSurveyCompleted] = useState(
-    surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
+    !!surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
   );
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
@@ -44,7 +48,7 @@ export const CardStack = ({
   const pathname = usePathname();
 
   useEffect(() => {
-    surveyCompleted && setIsSurveyCompleted(surveyCompleted);
+    surveyCompleted && setIsSurveyCompleted(!!surveyCompleted);
 
     const params = new URLSearchParams(searchParams);
 
@@ -137,4 +141,4 @@ export const CardStack = ({
       })}
     </div>
   );
-};
+}

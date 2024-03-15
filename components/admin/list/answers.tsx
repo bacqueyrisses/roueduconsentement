@@ -1,3 +1,4 @@
+import { UserQuery } from "@/app/admin/page";
 import Message from "@/components/icons/message";
 import {
   Card,
@@ -10,7 +11,7 @@ import {
   Text,
 } from "@tremor/react";
 
-export function AnswersList({ user }) {
+export function AnswersList({ user }: { user: UserQuery }) {
   return (
     <Card className="mx-auto max-w-2xl">
       <Table>
@@ -51,7 +52,7 @@ export function AnswersList({ user }) {
                   <Text>{answer?.value}</Text>
                 </TableCell>
                 <TableCell>
-                  <Text>{answer?.date}</Text>
+                  <Text>{answer?.date.toString()}</Text>
                 </TableCell>
               </TableRow>
             ))

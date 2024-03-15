@@ -2,9 +2,10 @@
 import Check from "@/components/icons/check";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { TransitionStatus } from "react-transition-state";
 import { toast } from "sonner";
 
-export default function CopyButton({ state }) {
+export default function CopyButton({ state }: { state: TransitionStatus }) {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
