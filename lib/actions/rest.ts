@@ -3,6 +3,7 @@
 import { auth, unstable_update } from "@/auth";
 import { PrevState } from "@/lib/helpers";
 import { AddSurvey, CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
+import { Questions } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { User } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -48,7 +49,13 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
   };
 }
 
-export async function updateQuestion(id, value) {
+export async function updateQuestion(
+  id: Questions["id"],
+  value:
+    | Questions["valueOne"]
+    | Questions["valueTwo"]
+    | Questions["valueThree"],
+) {
   const validatedField = z.boolean().safeParse(value);
 
   if (!validatedField.success)
