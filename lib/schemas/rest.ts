@@ -28,5 +28,5 @@ export const CreateAnswer = z.object({
 });
 
 export const AddSurvey = z.object({
-  age: z.coerce.number().gte(0).lte(10),
+  age: z.coerce.number().gte(0).lte(150, { message: "bite" }),
 });

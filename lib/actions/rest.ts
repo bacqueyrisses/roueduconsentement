@@ -6,6 +6,7 @@ import { sql } from "@vercel/postgres";
 import { User } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+
 export async function getUser() {
   const session = await auth();
   return session?.user;
@@ -84,14 +85,23 @@ export async function addScore(score: User["score"]) {
   revalidatePath("/admin");
 }
 
-export async function addSurvey(formData: FormData) {
+export async function addSurvey(prevState: any, formData: FormData) {
   const user = await getUser();
+
   const validatedFields = AddSurvey.safeParse({
     age: formData.get("age"),
   });
+  // console.log(validatedFields.error.flatten().fieldErrors);
+  // if (!validatedFields.success)
+  //   throw new Error("Veuillez renseignez les champs");
 
-  if (!validatedFields.success)
-    throw new Error("Veuillez renseignez les champs");
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Create Invoice.",
+    };
+  }
 
   const { age } = validatedFields.data;
 
@@ -107,6 +117,9 @@ export async function addSurvey(formData: FormData) {
   }
 
   revalidatePath("/admin");
+  return {
+    success: true,
+  };
 }
 
 export async function createAnswer(formData: FormData) {

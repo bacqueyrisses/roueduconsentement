@@ -30,7 +30,11 @@ export default function CardStackDemo({
             await signout();
           }}
           className="absolute bottom-10 md:bottom-8 inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-amber-200 text-amber-700 bg-amber-100 hover:text-amber-800 animate-fade-up opacity-0"
-          style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+          style={{
+            animationDelay: "1.5s",
+            animationFillMode: "forwards",
+            animationDuration: "800ms",
+          }}
         >
           <Refresh className={"size-5"} />
           <span>Jouer à nouveau</span>

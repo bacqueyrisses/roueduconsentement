@@ -2,7 +2,6 @@
 
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
-import X from "@/components/icons/x";
 import {
   Dialog,
   DialogActions,
@@ -17,11 +16,10 @@ import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { toast } from "sonner";
 
 export default function SurveyDialog() {
   const [isOpen, setIsOpen] = useState(false);
-  const [error, dispatch] = useFormState(addSurvey, undefined);
+  const [state, dispatch] = useFormState(addSurvey, undefined);
 
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -36,18 +34,32 @@ export default function SurveyDialog() {
   }
 
   useEffect(() => {
-    error &&
-      toast(
-        <div
-          className={
-            "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
-          }
-        >
-          <X />
-          <h1>{error}</h1>
-        </div>,
-      );
-  }, [error]);
+    if (state?.success) {
+      const params = new URLSearchParams(searchParams);
+
+      params.set("surveyCompleted", "true");
+      params.delete("initial");
+      replace(`${pathname}?${params.toString()}` as Route);
+      localStorage.setItem("surveyCompleted", "true");
+
+      setIsOpen(false);
+    }
+
+    //
+    // !state?.success &&
+    //   state.errors.((error) =>
+    //     toast(
+    //       <div
+    //         className={
+    //           "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
+    //         }
+    //       >
+    //         <X />
+    //         <h1>{error}</h1>
+    //       </div>,
+    //     ),
+    //   );
+  }, [state?.success]);
 
   return (
     <>
@@ -64,18 +76,7 @@ export default function SurveyDialog() {
         <span>Répondre</span>
       </button>
       <Dialog open={isOpen} onClose={handleClose}>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setIsOpen((prevState) => !prevState);
-            const params = new URLSearchParams(searchParams);
-
-            params.set("surveyCompleted", "true");
-            params.delete("initial");
-            replace(`${pathname}?${params.toString()}` as Route);
-            localStorage.setItem("surveyCompleted", "true");
-          }}
-        >
+        <form action={dispatch}>
           <DialogTitle>Répondez à quelques questions</DialogTitle>
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
@@ -147,7 +148,7 @@ function SubmitButton() {
     >
       {pending ? (
         <>
-          <span className={"invisible"}>Jouer</span>
+          <span className={"invisible"}>Partagez</span>
           <Loader
             className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
           />
