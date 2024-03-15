@@ -23,8 +23,8 @@ export default function AnswersDialog({ user }: { user: UserQuery }) {
         static={true}
         className="z-[100]"
       >
-        <DialogPanel className="max-w-2xl space-y-8">
-          <div className="mx-auto max-w-2xl space-y-8">
+        <DialogPanel className="max-w-5xl space-y-8">
+          <div className="mx-auto max-w-5xl space-y-8">
             <AnswersList user={user} />
           </div>
           <div className="mt-8 flex items-center justify-end space-x-2">
