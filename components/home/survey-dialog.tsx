@@ -2,6 +2,7 @@
 
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
+import X from "@/components/icons/x";
 import {
   Dialog,
   DialogActions,
@@ -11,15 +12,17 @@ import {
 } from "@/components/ui/dialog";
 import { Field, Label } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
+import { initialState } from "@/lib/actions/helpers";
 import { addSurvey } from "@/lib/actions/rest";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
+import { toast } from "sonner";
 
 export default function SurveyDialog() {
   const [isOpen, setIsOpen] = useState(false);
-  const [state, dispatch] = useFormState(addSurvey, undefined);
+  const [state, dispatch] = useFormState(addSurvey, initialState);
 
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -44,22 +47,24 @@ export default function SurveyDialog() {
 
       setIsOpen(false);
     }
-
-    //
-    // !state?.success &&
-    //   state.errors.((error) =>
-    //     toast(
-    //       <div
-    //         className={
-    //           "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
-    //         }
-    //       >
-    //         <X />
-    //         <h1>{error}</h1>
-    //       </div>,
-    //     ),
-    //   );
   }, [state?.success]);
+
+  useEffect(() => {
+    if (state?.errors) {
+      Object.keys(state.errors).forEach((key) => {
+        toast(
+          <div
+            className={
+              "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
+            }
+          >
+            <X />
+            <h1>{state.errors[key]}</h1>
+          </div>,
+        );
+      });
+    }
+  }, [state?.errors]);
 
   return (
     <>
@@ -88,6 +93,8 @@ export default function SurveyDialog() {
                 type={"number"}
                 name="age"
                 placeholder="Quel âge avez vous ?"
+                min={0}
+                invalid={!!state?.errors?.age}
               />
             </Field>
             <Field>

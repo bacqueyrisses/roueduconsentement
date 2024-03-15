@@ -1,6 +1,7 @@
 "use server";
 
 import { auth, unstable_update } from "@/auth";
+import { PrevState } from "@/lib/actions/helpers";
 import { AddSurvey, CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
 import { sql } from "@vercel/postgres";
 import { User } from "next-auth";
@@ -85,21 +86,18 @@ export async function addScore(score: User["score"]) {
   revalidatePath("/admin");
 }
 
-export async function addSurvey(prevState: any, formData: FormData) {
+export async function addSurvey(prevState: PrevState, formData: FormData) {
   const user = await getUser();
 
   const validatedFields = AddSurvey.safeParse({
     age: formData.get("age"),
   });
-  // console.log(validatedFields.error.flatten().fieldErrors);
-  // if (!validatedFields.success)
-  //   throw new Error("Veuillez renseignez les champs");
 
   if (!validatedFields.success) {
     return {
       success: false,
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Invoice.",
+      message: "Missing Fields. Failed to Add Survey.",
     };
   }
 
