@@ -36,6 +36,7 @@ export default function SurveyDialog() {
     replace(`${pathname}?${params.toString()}` as Route);
   }
 
+  // Effect to handle useFormState success states
   useEffect(() => {
     if (state?.success) {
       const params = new URLSearchParams(searchParams);
@@ -49,6 +50,7 @@ export default function SurveyDialog() {
     }
   }, [state?.success]);
 
+  // Effect to handle useFormState error states
   useEffect(() => {
     if (state?.errors) {
       Object.keys(state.errors).forEach((key) => {

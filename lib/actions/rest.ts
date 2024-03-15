@@ -12,7 +12,8 @@ export async function getUser() {
   const session = await auth();
   return session?.user;
 }
-export async function createQuestion(formData: FormData) {
+
+export async function createQuestion(prevState: PrevState, formData: FormData) {
   const validatedFields = CreateQuestion.safeParse({
     description: formData.get("description"),
     valueOne: formData.get("value-one"),
@@ -21,8 +22,13 @@ export async function createQuestion(formData: FormData) {
     active: formData.get("active"),
   });
 
-  if (!validatedFields.success)
-    throw new Error("Veuillez renseignez les champs");
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Add Survey.",
+    };
+  }
 
   const { description, valueOne, valueTwo, valueThree, active } =
     validatedFields.data;
@@ -37,6 +43,9 @@ export async function createQuestion(formData: FormData) {
   }
 
   revalidatePath("/admin/questions");
+  return {
+    success: true,
+  };
 }
 
 export async function updateQuestion(id, value) {
