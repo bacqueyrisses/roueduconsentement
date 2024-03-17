@@ -36,6 +36,8 @@ export const authConfig = {
       }
 
       if (isOnWheel) {
+        if (isAdminLoggedIn)
+          return Response.redirect(new URL("/admin", nextUrl));
         return isUserLoggedIn;
       } else if (isUserLoggedIn) {
         return Response.redirect(new URL("/wheel", nextUrl));

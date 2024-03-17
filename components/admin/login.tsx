@@ -13,8 +13,6 @@ export default function AdminLoginForm() {
     error && toast.error(error);
   }, [error]);
 
-  console.log(error);
-
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
