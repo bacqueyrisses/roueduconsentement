@@ -33,9 +33,17 @@ export default async function Page({
 
   return (
     <>
-      {!completed ? (
+      {surveyCompleted && completed ? (
         <p
-          key={"not-completed"}
+          key={"not-completed-title"}
+          className="mt-6 animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+        >
+          Merci de votre participation 🤍
+        </p>
+      ) : !completed ? (
+        <p
+          key={"not-completed-title"}
           className="mt-6 animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
@@ -43,7 +51,7 @@ export default async function Page({
         </p>
       ) : (
         <p
-          key={"completed"}
+          key={"completed-title"}
           className="animate-fade-up mt-6 text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >

@@ -1,5 +1,4 @@
 "use client";
-import CopyButton from "@/components/home/copy-button";
 import { Highlight } from "@/components/home/results-stack";
 import SurveyDialog from "@/components/home/survey-dialog";
 import RightArrow from "@/components/icons/right-arrow";
@@ -8,7 +7,6 @@ import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
-import { Transition } from "react-transition-group";
 
 type Card = {
   id: number;
@@ -80,62 +78,48 @@ export default function CardStack({
               zIndex: index + 1, // Increase z-index for the cards that are behind
             }}
           >
-            <Transition in={isSurveyCompleted!} timeout={500}>
-              {(state) => (
-                <>
-                  <div
-                    className={`font-normal text-neutral-700 md:leading-relaxed transition-opacity ${state === "entered" && "animate-fade-up"}`}
-                  >
-                    {isSurveyCompleted &&
-                    card.contentCompleted &&
-                    state === "entered" ? (
-                      card.contentCompleted
-                    ) : !card.content && score ? (
-                      <p>
-                        <Highlight>Félicitations,</Highlight> vous avez répondu
-                        à toutes les questions. Votre score est de
-                        <Highlight score={score}>
-                          {score.toFixed(1)} sur 10.
-                        </Highlight>{" "}
-                        Cliquez sur{" "}
-                        <span className={"italic font-medium"}>suivant</span>{" "}
-                        pour avoir plus d'informations !
-                      </p>
-                    ) : (
-                      card.content
-                    )}
-                  </div>
+            <>
+              <div
+                className={`font-normal text-neutral-700 md:leading-relaxed`}
+              >
+                {!isSurveyCompleted && !card.content && score ? (
+                  <p>
+                    <Highlight>Félicitations,</Highlight> vous avez répondu à
+                    toutes les questions. Votre score est de
+                    <Highlight score={score}>
+                      {score.toFixed(1)} sur 10.
+                    </Highlight>{" "}
+                    Cliquez sur{" "}
+                    <span className={"italic font-medium"}>suivant</span> pour
+                    avoir plus d'informations !
+                  </p>
+                ) : (
+                  card.content
+                )}
+              </div>
 
-                  <div>
-                    <p className="text-neutral-500 font-medium">{card.name}</p>
-                    <p className="flex justify-between items-center text-neutral-400 font-normal">
-                      {card.designation}
-                      {!card.survey ? (
-                        <button
-                          onClick={flip}
-                          className="group z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
-                          style={{
-                            animationDelay: "0.3s",
-                            animationFillMode: "forwards",
-                          }}
-                        >
-                          <RightArrow
-                            className={
-                              "size-5 group-hover:translate-x-[0.1px] transition"
-                            }
-                          />
-                          <span>Suivant</span>
-                        </button>
-                      ) : isSurveyCompleted && state === "entered" ? (
-                        <CopyButton state={state} />
-                      ) : (
-                        <SurveyDialog />
-                      )}
-                    </p>
-                  </div>
-                </>
-              )}
-            </Transition>
+              <div>
+                <p className="text-neutral-500 font-medium">{card.name}</p>
+                <p className="flex justify-between items-center text-neutral-400 font-normal">
+                  {card.designation}
+                  {!card.survey ? (
+                    <button
+                      onClick={flip}
+                      className="group z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
+                    >
+                      <RightArrow
+                        className={
+                          "size-5 group-hover:translate-x-[0.1px] transition"
+                        }
+                      />
+                      <span>Suivant</span>
+                    </button>
+                  ) : (
+                    <SurveyDialog />
+                  )}
+                </p>
+              </div>
+            </>
           </motion.div>
         );
       })}

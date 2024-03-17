@@ -2,10 +2,9 @@
 import Check from "@/components/icons/check";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { TransitionStatus } from "react-transition-state";
 import { toast } from "sonner";
 
-export default function CopyButton({ state }: { state: TransitionStatus }) {
+export default function CopyButton() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -34,7 +33,8 @@ export default function CopyButton({ state }: { state: TransitionStatus }) {
         );
         handleActive();
       }}
-      className={`${state === "entered" && "animate-fade-up"} z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3`}
+      className={`animate-fade-up z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3 opacity-0`}
+      style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
       <Check className={"size-5"} />
 
