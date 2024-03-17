@@ -66,7 +66,7 @@ export const {
           if (!admin) {
             return null;
           }
-          return user;
+          return admin;
         }
 
         console.log("Pseudo schema validation failed.");

@@ -101,7 +101,7 @@ export default function WheelWrapper({
     setLoading(value);
     addScore(score).catch(() => retry(() => addScore(score)));
 
-    await updateSession();
+    await updateSession({ completed: true });
 
     const params = new URLSearchParams(searchParams);
 

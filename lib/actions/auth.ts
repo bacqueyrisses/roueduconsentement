@@ -40,6 +40,6 @@ export async function create(pseudo: User["pseudo"]) {
 export async function signout() {
   await signOut();
 }
-export async function updateSession() {
-  await unstable_update({ user: { completed: true } });
+export async function updateSession(newUser: Partial<User>) {
+  await unstable_update({ user: newUser });
 }
