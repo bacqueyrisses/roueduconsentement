@@ -23,11 +23,11 @@ export function FinalCard({ score }: { score: User["score"] }) {
         </p>
       </div>
       <div>
-        <p className="text-neutral-500 font-medium">Test</p>
-        <p className="flex justify-between items-center text-neutral-400 font-normal">
+        <div className="text-neutral-500 font-medium">Test</div>
+        <div className="flex justify-between items-center text-neutral-400 font-normal">
           Merci
           <CopyButton />
-        </p>
+        </div>
       </div>
     </motion.div>
   );

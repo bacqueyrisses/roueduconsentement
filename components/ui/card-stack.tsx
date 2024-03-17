@@ -97,8 +97,8 @@ export default function CardStack({
               </div>
 
               <div>
-                <p className="text-neutral-500 font-medium">{card.name}</p>
-                <p className="flex justify-between items-center text-neutral-400 font-normal">
+                <div className="text-neutral-500 font-medium">{card.name}</div>
+                <div className="flex justify-between items-center text-neutral-400 font-normal">
                   {card.designation}
                   {!card.survey ? (
                     <button
@@ -115,7 +115,7 @@ export default function CardStack({
                   ) : (
                     <SurveyDialog />
                   )}
-                </p>
+                </div>
               </div>
             </>
           </motion.div>

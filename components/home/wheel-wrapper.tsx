@@ -55,7 +55,6 @@ export default function WheelWrapper({
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
-
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
 
@@ -72,15 +71,15 @@ export default function WheelWrapper({
     if (currentQuestionIndex === questions.length - 1)
       return handleCompleted(key);
     const currentValue = questions[currentQuestionIndex][key];
-    const newScore =
-      (score * currentQuestionIndex + currentValue) /
-      (currentQuestionIndex + 1);
+    const newScore = (score + currentValue) / 2;
+
     setScore(newScore);
     localStorage.setItem("score", JSON.stringify(newScore));
 
     const answeredQuestions = JSON.parse(
       localStorage.getItem("answeredQuestions") || "{}",
     );
+
     answeredQuestions[currentQuestionIndex] = true;
     localStorage.setItem(
       "answeredQuestions",
