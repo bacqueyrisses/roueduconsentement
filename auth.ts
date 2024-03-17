@@ -15,7 +15,7 @@ export const {
   ...authConfig,
   providers: [
     Credentials({
-      name: "Credentials",
+      name: "app",
       credentials: {
         name: { label: "pseudo", type: "text", placeholder: "pseudo" },
       },
@@ -33,6 +33,37 @@ export const {
           const { pseudo } = parsedCredentials.data;
           const user: User = await create(pseudo);
           if (!user) {
+            return null;
+          }
+          return user;
+        }
+
+        console.log("Pseudo schema validation failed.");
+        return null;
+      },
+    }),
+    Credentials({
+      name: "admin",
+      credentials: {
+        email: { label: "email", type: "email", placeholder: "email" },
+        password: {
+          label: "password",
+          type: "password",
+          placeholder: "password",
+        },
+      },
+      async authorize(credentials): Promise<User | null> {
+        const parsedCredentials = z
+          .object({
+            email: z.string().email(),
+            password: z.string(),
+          })
+          .safeParse(credentials);
+
+        if (parsedCredentials.success) {
+          const { email, password } = parsedCredentials.data;
+          const admin: User = await getAdmin(email, password);
+          if (!admin) {
             return null;
           }
           return user;

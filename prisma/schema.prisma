@@ -35,3 +35,10 @@ model User {
   completed Boolean? @default(false)
   date      DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
+
+model Admin {
+  id       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email    String   @db.VarChar(255)
+  password String
+  date     DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+}
