@@ -8,16 +8,32 @@ interface ExtendedUser extends User {
   completed: boolean;
 }
 
-type IUser = ExtendedUser;
-
 declare module "@auth/core/types" {
-  interface User extends IUser {}
+  interface User {
+    id: string;
+    pseudo: string;
+    date: string;
+    score: number;
+    completed: boolean;
+  }
 
   interface Session {
-    user: IUser & DefaultSession["user"];
+    user: {
+      id: string;
+      pseudo: string;
+      date: string;
+      score: number;
+      completed: boolean;
+    } & DefaultSession["user"];
   }
 }
 
 declare module "@auth/core/jwt" {
-  interface JWT extends IUser {}
+  interface JWT {
+    id: string;
+    pseudo: string;
+    date: string;
+    score: number;
+    completed: boolean;
+  }
 }
