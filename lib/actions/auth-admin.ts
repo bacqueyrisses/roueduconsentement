@@ -1,7 +1,6 @@
 "use server";
 
 import { signIn } from "@/auth";
-import { Admin } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { AuthError } from "next-auth";
 
@@ -24,9 +23,9 @@ export async function authenticateAdmin(
   }
 }
 
-export async function getAdmin(email: Admin["email"]) {
+export async function getAdmin(email: any) {
   try {
-    const admin = await sql<Admin>`SELECT * FROM "Admin" WHERE email=${email}`;
+    const admin = await sql`SELECT * FROM "Admin" WHERE email=${email}`;
     return admin.rows[0];
   } catch (error) {
     console.error(error);
