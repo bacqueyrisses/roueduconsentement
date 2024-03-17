@@ -138,9 +138,10 @@ export default function WheelWrapper({
   return completed ? (
     <CardStackDemo
       initial={initial}
-      surveyCompleted={surveyCompleted}
+      surveyCompleted={
+        localStorage.getItem("surveyCompleted") || surveyCompleted
+      }
       score={score}
-      user={user}
     />
   ) : (
     <>

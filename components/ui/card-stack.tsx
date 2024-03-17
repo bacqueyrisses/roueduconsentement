@@ -32,9 +32,7 @@ export default function CardStack({
   offset,
   scaleFactor,
 }: CardStack) {
-  const [isSurveyCompleted, setIsSurveyCompleted] = useState(
-    !!surveyCompleted || localStorage.getItem("surveyCompleted") === "true",
-  );
+  const [isSurveyCompleted, setIsSurveyCompleted] = useState(!!surveyCompleted);
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
   const [cards, setCards] = useState<Card[]>(

@@ -10,13 +10,11 @@ interface CardStackDemo {
   initial: string;
   surveyCompleted: string;
   score: User["score"];
-  user: User;
 }
 export default function CardStackDemo({
   initial,
   surveyCompleted,
   score,
-  user,
 }: CardStackDemo) {
   return (
     <div
