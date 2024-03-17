@@ -1,5 +1,5 @@
 "use client";
-import { QuestionQuery } from "@/app/admin/questions/page";
+import { QuestionQuery } from "@/app/admin/(admin)/questions/page";
 import { updateQuestion } from "@/lib/actions/rest";
 import { Switch } from "@tremor/react";
 import { useState } from "react";

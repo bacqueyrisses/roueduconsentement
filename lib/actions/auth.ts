@@ -2,6 +2,7 @@
 
 import { signIn, signOut, unstable_update } from "@/auth";
 import { sql } from "@vercel/postgres";
+import { Route } from "next";
 import { AuthError, User } from "next-auth";
 import { revalidatePath } from "next/cache";
 
@@ -10,7 +11,7 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-    await signIn("app", formData);
+    await signIn("app-login", formData);
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -37,8 +38,8 @@ export async function create(pseudo: User["pseudo"]) {
   }
 }
 
-export async function signout() {
-  await signOut();
+export async function signout(redirectTo: Route) {
+  await signOut({ redirectTo });
 }
 export async function updateSession(newUser: Partial<User>) {
   await unstable_update({ user: newUser });

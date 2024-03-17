@@ -87,7 +87,7 @@ export default function Navbar() {
                           className={classNames(
                             "flex w-full items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-black",
                           )}
-                          onClick={signout}
+                          onClick={() => signout("/")}
                         >
                           <X className={"size-5"} />
                           Se déconnecter
@@ -142,7 +142,7 @@ export default function Navbar() {
                     />
                   </div>
                   <button
-                    onClick={signout}
+                    onClick={() => signout("/")}
                     className="block rounded-full bg-slate-50 px-4 py-2 text-base font-medium text-slate-700 transition-colors duration-200 ease-in-out hover:bg-slate-200/70 hover:text-slate-800"
                   >
                     Se déconnecter

@@ -39,7 +39,7 @@ export default function CardStackDemo({
             localStorage.removeItem("answeredQuestions");
             localStorage.removeItem("surveyCompleted");
             localStorage.removeItem("score");
-            await signout();
+            await signout("/");
           }}
           className={`bottom-8 md:-bottom-4 absolute  inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-amber-200 text-amber-700 bg-amber-100 hover:text-amber-800 animate-fade-up opacity-0`}
           style={{
@@ -58,7 +58,7 @@ export default function CardStackDemo({
             localStorage.removeItem("answeredQuestions");
             localStorage.removeItem("surveyCompleted");
             localStorage.removeItem("score");
-            await signout();
+            await signout("/");
           }}
           className={`bottom-10 md:bottom-8 absolute  inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-amber-200 text-amber-700 bg-amber-100 hover:text-amber-800 animate-fade-up opacity-0`}
           style={{

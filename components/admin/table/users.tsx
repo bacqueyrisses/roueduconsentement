@@ -1,4 +1,4 @@
-import { UserQuery } from "@/app/admin/page";
+import { UserQuery } from "@/app/admin/(admin)/page";
 import AnswersDialog from "@/components/admin/dialog/answers";
 import {
   Table,

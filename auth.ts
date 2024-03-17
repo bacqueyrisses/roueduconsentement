@@ -1,8 +1,10 @@
 import { create } from "@/lib/actions/auth";
+
 import NextAuth, { User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 
+import { getAdmin } from "@/lib/actions/auth-admin";
 import { authConfig } from "./auth.config";
 
 export const {
@@ -15,6 +17,7 @@ export const {
   ...authConfig,
   providers: [
     Credentials({
+      id: "app-login",
       name: "app",
       credentials: {
         name: { label: "pseudo", type: "text", placeholder: "pseudo" },
@@ -31,10 +34,9 @@ export const {
 
         if (parsedCredentials.success) {
           const { pseudo } = parsedCredentials.data;
-          const user: User = await create(pseudo);
-          if (!user) {
-            return null;
-          }
+          const user = await create(pseudo);
+          if (!user) return null;
+
           return user;
         }
 
@@ -43,6 +45,7 @@ export const {
       },
     }),
     Credentials({
+      id: "admin-login",
       name: "admin",
       credentials: {
         email: { label: "email", type: "email", placeholder: "email" },
@@ -52,7 +55,7 @@ export const {
           placeholder: "password",
         },
       },
-      async authorize(credentials): Promise<User | null> {
+      async authorize(credentials): Promise<any | null> {
         const parsedCredentials = z
           .object({
             email: z.string().email(),
@@ -62,14 +65,15 @@ export const {
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
-          const admin: User = await getAdmin(email, password);
-          if (!admin) {
-            return null;
-          }
+
+          const admin = await getAdmin(email);
+          if (!admin) return null;
+
+          // const passwordsMatch = await bcrypt.compare(password, admin.password);
           return admin;
         }
 
-        console.log("Pseudo schema validation failed.");
+        console.log("Identifiants incorrects.");
         return null;
       },
     }),

@@ -1,6 +1,6 @@
 "use client";
 
-import { UserQuery } from "@/app/admin/page";
+import { UserQuery } from "@/app/admin/(admin)/page";
 import { AnswersList } from "@/components/admin/list/answers";
 import Message from "@/components/icons/message";
 import { Button, Dialog, DialogPanel } from "@tremor/react";

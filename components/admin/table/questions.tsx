@@ -1,4 +1,4 @@
-import { QuestionQuery } from "@/app/admin/questions/page";
+import { QuestionQuery } from "@/app/admin/(admin)/questions/page";
 import QuestionSwitch from "@/components/admin/table/question-switch";
 import {
   Table,
