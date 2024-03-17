@@ -70,6 +70,9 @@ export const {
           if (!admin) return null;
 
           // const passwordsMatch = await bcrypt.compare(password, admin.password);
+          const passwordsMatch = password === admin.password;
+          if (!passwordsMatch) return null;
+
           return admin;
         }
 
