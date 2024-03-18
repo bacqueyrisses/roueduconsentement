@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports",
-    "create": "node -r dotenv/config ./lib/scripts/create.js"
+    "format": "prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.0-alpha.4",
