@@ -58,7 +58,6 @@ export default function NameDialog() {
                 type={"text"}
                 name="pseudo"
                 placeholder="pseudonyme"
-                className={"text-base"}
                 invalid={!!error}
               />
             </Field>
