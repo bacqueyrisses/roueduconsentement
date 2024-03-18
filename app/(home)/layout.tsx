@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
-    <body className={`${clash.variable} ${inter.variable} h-full w-full`}>
+    <body className={`${clash.variable} ${inter.variable}  h-full w-full`}>
       <Toaster
         offset={24}
         position={"top-center"}
@@ -26,8 +26,8 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
         }}
       />
       <div className="fixed h-screen w-full bg-gradient-to-br from-violet-100 via-teal-50 to-amber-100" />
-      <main className="z-10 flex h-full w-full max-w-2xl flex-col items-center justify-start gap-6 px-2.5 pt-6 xl:px-0">
-        <section className={"flex flex-col items-center justify-center"}>
+      <main className="z-10 mx-auto flex h-full w-full max-w-2xl flex-col items-center justify-start gap-6 px-2.5 pt-6 xl:px-0">
+        <section className={"flex w-full flex-col items-center justify-center"}>
           <Image
             src={logo}
             width={33}

@@ -125,7 +125,7 @@ export default function WheelWrapper({
     toast(
       <div
         className={
-          "inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
+          "inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-5 py-2 text-base font-medium text-emerald-700 hover:bg-emerald-200 hover:text-emerald-800 md:px-7"
         }
       >
         <Check />
@@ -145,12 +145,12 @@ export default function WheelWrapper({
   ) : (
     <>
       <div
-        className={"mt-6 w-screen animate-fade-up text-stone-600 opacity-0"}
+        className={"w-screen animate-fade-up text-stone-600 opacity-0"}
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <h1
           className={
-            "mx-auto max-w-5xl animate-fade-up text-center text-2xl font-semibold tracking-tight"
+            "mx-auto max-w-5xl animate-fade-up text-center text-xl font-semibold tracking-tight md:text-2xl"
           }
         >
           {questions[currentQuestionIndex]?.description}
@@ -173,7 +173,7 @@ export default function WheelWrapper({
               );
             }
           }}
-          className={"flex items-center justify-center gap-4"}
+          className={"flex items-center justify-center gap-3 md:gap-4"}
         >
           <button
             type={"submit"}
@@ -181,9 +181,9 @@ export default function WheelWrapper({
             value={questions[currentQuestionIndex]?.valueOne}
             name={"value"}
             disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium transition-colors duration-300 ease-in-out md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800 disabled:pointer-events-none"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-emerald-100 px-5 py-2 text-base font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 disabled:pointer-events-none md:px-7"
           >
-            <input name={"option"} value={"D'accord"} type="hidden" />
+            <input name={"option"} value={"Oui"} type="hidden" />
             <input
               name={"description"}
               value={questions[currentQuestionIndex]?.description}
@@ -191,8 +191,8 @@ export default function WheelWrapper({
             />
             {loading === "valueOne" ? (
               <>
-                <Check className={"size-6 invisible"} />
-                <span className={"invisible"}>D'accord</span>
+                <Check className={"invisible size-6"} />
+                <span className={"invisible"}>Oui</span>
                 <Loader
                   className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
                 />
@@ -200,7 +200,7 @@ export default function WheelWrapper({
             ) : (
               <>
                 <Check className={"size-6"} />
-                <span>D'accord</span>
+                <span>Oui</span>
               </>
             )}
           </button>
@@ -210,9 +210,9 @@ export default function WheelWrapper({
             value={questions[currentQuestionIndex]?.valueTwo}
             name={"value"}
             disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 md:px-7 disabled:pointer-events-none"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 disabled:pointer-events-none md:px-7"
           >
-            <input name={"option"} value={"Pas d'accord"} type="hidden" />
+            <input name={"option"} value={"Non"} type="hidden" />
             <input
               name={"description"}
               value={questions[currentQuestionIndex]?.description}
@@ -220,8 +220,8 @@ export default function WheelWrapper({
             />
             {loading === "valueTwo" ? (
               <>
-                <X className={"size-6 invisible"} />
-                <span className={"invisible"}>Pas d'accord</span>
+                <X className={"invisible size-6"} />
+                <span className={"invisible"}>Non</span>
                 <Loader
                   className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
                 />
@@ -229,7 +229,7 @@ export default function WheelWrapper({
             ) : (
               <>
                 <X className={"size-6"} />
-                <span>Pas d'accord</span>
+                <span>Non</span>
               </>
             )}
           </button>
@@ -239,9 +239,9 @@ export default function WheelWrapper({
             name={"value"}
             disabled={!!loading}
             value={questions[currentQuestionIndex]?.valueThree}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 md:px-7 disabled:pointer-events-none"
+            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 disabled:pointer-events-none md:px-7"
           >
-            <input name={"option"} value={"Je ne sais pas"} type="hidden" />
+            <input name={"option"} value={"Je sais pas"} type="hidden" />
             <input
               name={"description"}
               value={questions[currentQuestionIndex]?.description}
@@ -249,8 +249,8 @@ export default function WheelWrapper({
             />
             {loading === "valueThree" ? (
               <>
-                <Help className={"size-6 invisible"} />
-                <span className={"invisible"}>Je ne sais pas</span>
+                <Help className={"invisible size-6"} />
+                <span className={"invisible"}>Je sais pas</span>
 
                 <Loader
                   className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
@@ -259,7 +259,7 @@ export default function WheelWrapper({
             ) : (
               <>
                 <X className={"size-6"} />
-                <span>Je ne sais pas</span>
+                <span>Je sais pas</span>
               </>
             )}
           </button>
