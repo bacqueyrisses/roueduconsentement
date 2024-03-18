@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "prettier --write .",
+    "format": "prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports",
     "create": "node -r dotenv/config ./lib/scripts/create.js"
   },
   "dependencies": {
@@ -63,12 +63,11 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "lint-staged": {
-    "*": "prettier --write ."
+    "*": "prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports"
   },
   "prettier": {
     "plugins": [
-      "prettier-plugin-tailwindcss",
-      "prettier-plugin-organize-imports"
+      "prettier-plugin-tailwindcss"
     ]
   },
   "eslintConfig": {

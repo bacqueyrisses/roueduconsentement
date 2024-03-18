@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
-    <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
+    <body className={`${clash.variable} ${inter.variable} h-full w-full`}>
       <Toaster
         offset={24}
         position={"top-center"}
@@ -37,7 +37,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
             className={"mb-3 animate-fade-up opacity-0"}
           />
           <h1
-            className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-6xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl"
+            className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
             La roue du consentement

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer
-      className="px-10 absolute bottom-0 w-full animate-fade-up py-5 md:text-[0.9rem] text-[0.7rem] text-center tracking-tight opacity-0"
+      className="px-10 absolute bottom-0 w-full animate-fade-up py-5 md:text-[0.9rem] text-[0.6rem] text-center tracking-tight opacity-0"
       style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
     >
       <p className="text-gray-500">

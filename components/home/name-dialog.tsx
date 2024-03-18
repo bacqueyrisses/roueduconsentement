@@ -39,12 +39,13 @@ export default function NameDialog() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-blue-100 px-5 py-2 text-base font-medium text-blue-500 opacity-0 transition-colors duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-600 md:px-7"
+        className="mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-blue-100 px-5 py-2 text-sm font-medium text-blue-500 opacity-0 transition-colors duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-600 md:px-7 md:text-base"
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <Check className={"size-6"} />
         <span>Se tester maintenant</span>
       </button>
+
       <Dialog open={isOpen} onClose={setIsOpen}>
         <form action={dispatch}>
           <DialogTitle>Rentrez votre pseudo</DialogTitle>
@@ -88,7 +89,7 @@ function SubmitButton() {
   return (
     <button
       className={
-        "relative hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800relative rounded-full px-5 py-2 font-medium transition-colors duration-300 ease-in-out md:px-7"
+        "relative relative rounded-full bg-emerald-100 px-5 py-2 font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 md:px-7"
       }
     >
       {pending ? (

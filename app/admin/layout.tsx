@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 
 export default function RootAdminLayout({ children }: { children: ReactNode }) {
   return (
-    <body className="h-screen w-full bg-gray-50">
+    <body className="h-full w-full bg-gray-50">
       <Toaster
         position={"bottom-center"}
         toastOptions={{
