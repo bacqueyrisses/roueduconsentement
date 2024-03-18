@@ -9,11 +9,15 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#EDF3FD",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={"select-none h-dvh"}>
+    <html lang="en" className={"h-dvh select-none"}>
       {children}
     </html>
   );
