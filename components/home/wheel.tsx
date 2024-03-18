@@ -44,7 +44,7 @@ export default function Wheel({ value }: StatProps) {
   return (
     <div className="z-10">
       <svg
-        className="h-full w-[400px] overflow-visible p-2 md:w-[520px]"
+        className="h-full w-[450px] overflow-visible p-2 md:w-[520px]"
         {...gauge.getSVGProps()}
       >
         <defs>

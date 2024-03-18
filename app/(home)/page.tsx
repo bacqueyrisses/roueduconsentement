@@ -4,20 +4,22 @@ import Wheel from "@/components/home/wheel";
 export default function HomePage() {
   return (
     <>
-      <p
-        className="mt-6 animate-fade-up text-center text-base text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
-        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
-      >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum
-        dolor sit amet, consectetur adipisicing elit.
-      </p>
-      <NameDialog />
-      <div
-        className="mt-4 flex w-full animate-fade-up items-center justify-center overflow-hidden opacity-0"
+      <section className={"flex flex-col items-center justify-center gap-4"}>
+        <p
+          className="animate-fade-up text-center text-base text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum
+          dolor sit amet, consectetur adipisicing elit.
+        </p>
+        <NameDialog />
+      </section>
+      <section
+        className="flex w-full animate-fade-up items-center justify-center overflow-hidden opacity-0"
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <Wheel value={5} />
-      </div>
+      </section>
     </>
   );
 }
