@@ -10,10 +10,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
+import { paths } from "@/lib/constants";
 
 const navigation = [
-  { name: "Utilisateurs", href: "/admin" },
-  { name: "Questions", href: "/admin/questions" },
+  { name: "Utilisateurs", href: paths.toAdmin },
+  { name: "Questions", href: paths.toAdminQuestions },
 ];
 
 function classNames(...classes: string[]) {
@@ -31,7 +32,7 @@ export default function Navbar() {
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
-                  <Link href={"/"}>
+                  <Link href={paths.toHome}>
                     <Image
                       src={logo}
                       width={27}
@@ -87,7 +88,7 @@ export default function Navbar() {
                           className={classNames(
                             "flex w-full items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-black",
                           )}
-                          onClick={() => signout("/")}
+                          onClick={() => signout(paths.toHome)}
                         >
                           <X className={"size-5"} />
                           Se déconnecter
@@ -142,7 +143,7 @@ export default function Navbar() {
                     />
                   </div>
                   <button
-                    onClick={() => signout("/")}
+                    onClick={() => signout(paths.toHome)}
                     className="block rounded-full bg-slate-50 px-4 py-2 text-base font-medium text-slate-700 transition-colors duration-200 ease-in-out hover:bg-slate-200/70 hover:text-slate-800"
                   >
                     Se déconnecter

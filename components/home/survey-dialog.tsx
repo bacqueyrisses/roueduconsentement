@@ -13,7 +13,7 @@ import {
 import { Field, Label } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
 import { addSurvey } from "@/lib/actions/rest";
-import { initialState } from "@/lib/helpers";
+import { initialState } from "@/lib/utils";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -72,7 +72,7 @@ export default function SurveyDialog() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
+        className="z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 px-3 py-1 font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800"
         style={{
           animationDelay: "0.3s",
           animationFillMode: "forwards",
@@ -152,7 +152,7 @@ function SubmitButton() {
   return (
     <button
       className={
-        "relative hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800relative rounded-full px-5 py-2 font-medium transition-colors duration-300 ease-in-out md:px-7"
+        "hover:text-emerald-800relative relative rounded-full bg-emerald-100 px-5 py-2 font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 md:px-7"
       }
     >
       {pending ? (

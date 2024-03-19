@@ -1,8 +1,9 @@
 import { NextAuthConfig } from "next-auth";
+import { paths } from "@/lib/constants";
 
 export const authConfig = {
   pages: {
-    signIn: "/",
+    signIn: paths.toHome,
   },
   callbacks: {
     async jwt({ token, trigger, session, user }) {
@@ -24,23 +25,23 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isUserLoggedIn = !!auth?.user;
       const isAdminLoggedIn = !!auth?.user.email;
-      const isOnWheel = nextUrl.pathname.startsWith("/wheel");
-      const isOnAdmin = nextUrl.pathname.startsWith("/admin");
-      const isOnAdminLogin = nextUrl.pathname === "/admin/login";
+      const isOnWheel = nextUrl.pathname.startsWith(paths.toWheel);
+      const isOnAdmin = nextUrl.pathname.startsWith(paths.toAdmin);
+      const isOnAdminLogin = nextUrl.pathname === paths.toAdminLogin;
 
       if (isOnAdminLogin) {
         if (!isAdminLoggedIn) return true;
-        return Response.redirect(new URL("/admin", nextUrl));
+        return Response.redirect(new URL(paths.toAdmin, nextUrl));
       } else if (isOnAdmin) {
         return isAdminLoggedIn;
       }
 
       if (isOnWheel) {
         if (isAdminLoggedIn)
-          return Response.redirect(new URL("/admin", nextUrl));
+          return Response.redirect(new URL(paths.toAdmin, nextUrl));
         return isUserLoggedIn;
       } else if (isUserLoggedIn) {
-        return Response.redirect(new URL("/wheel", nextUrl));
+        return Response.redirect(new URL(paths.toWheel, nextUrl));
       }
       return true;
     },

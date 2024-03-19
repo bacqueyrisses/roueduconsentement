@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
-import { PrevState } from "@/lib/helpers";
+import { PrevState } from "@/lib/utils";
 import { AddSurvey, CreateAnswer, CreateQuestion } from "@/lib/schemas/rest";
 import { Question } from "@prisma/client";
 import { sql } from "@vercel/postgres";
@@ -25,7 +25,6 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
 
   if (!validatedFields.success) {
     return {
-      success: false,
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Validation error. Failed to Create Question.",
     };
@@ -106,7 +105,6 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
 
   if (!validatedFields.success) {
     return {
-      success: false,
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Validation error. Failed to Add Survey to User.",
     };

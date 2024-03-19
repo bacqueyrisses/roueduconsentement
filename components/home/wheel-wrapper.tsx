@@ -8,7 +8,7 @@ import Loader from "@/components/icons/loader";
 import X from "@/components/icons/x";
 import { updateSession } from "@/lib/actions/auth";
 import { addScore, createAnswer } from "@/lib/actions/rest";
-import { retry } from "@/lib/helpers";
+import { retry } from "@/lib/utils";
 import { Question } from "@prisma/client";
 import { Route } from "next";
 import { User } from "next-auth";
