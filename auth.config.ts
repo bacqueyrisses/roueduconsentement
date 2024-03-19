@@ -1,5 +1,5 @@
 import { paths } from "@/lib/constants";
-
+import { Role } from "@prisma/client";
 import { NextAuthConfig } from "next-auth";
 
 export const authConfig = {
