@@ -2,6 +2,7 @@
 
 import X from "@/components/icons/x";
 import { signout } from "@/lib/actions/auth";
+import { paths } from "@/lib/constants";
 import logo from "@/public/logo.png";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -10,7 +11,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
-import { paths } from "@/lib/constants";
 
 const navigation = [
   { name: "Utilisateurs", href: paths.toAdmin },

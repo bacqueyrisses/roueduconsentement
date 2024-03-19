@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import logo from "@/public/logo.png";
 import { clash, inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
@@ -5,7 +6,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
-import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Jouez | La roue du consentement",

@@ -1,11 +1,11 @@
 "use server";
 
 import { signIn, signOut, unstable_update } from "@/auth";
+import { paths } from "@/lib/constants";
 import { sql } from "@vercel/postgres";
 import { Route } from "next";
 import { AuthError, User } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { paths } from "@/lib/constants";
 
 export async function authenticate(
   prevState: string | undefined,

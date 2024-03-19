@@ -3,10 +3,10 @@ import { FinalCard } from "@/components/home/final-card";
 import Refresh from "@/components/icons/refresh";
 import CardStack from "@/components/ui/card-stack";
 import { signout } from "@/lib/actions/auth";
-import { User } from "next-auth";
-import { ReactNode } from "react";
 import { paths } from "@/lib/constants";
+import { User } from "next-auth";
 import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
 
 interface CardStackDemo {
   initial: string;

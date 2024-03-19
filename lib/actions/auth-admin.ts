@@ -1,11 +1,11 @@
 "use server";
 
 import { signIn } from "@/auth";
+import { paths } from "@/lib/constants";
 import { User } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { paths } from "@/lib/constants";
 
 export async function authenticateAdmin(
   prevState: string | undefined,
