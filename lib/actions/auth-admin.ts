@@ -1,9 +1,10 @@
 "use server";
 
 import { signIn } from "@/auth";
-import { Admin } from "@prisma/client";
+import { User } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { AuthError } from "next-auth";
+import { revalidatePath } from "next/cache";
 
 export async function authenticateAdmin(
   prevState: string | undefined,
@@ -24,12 +25,18 @@ export async function authenticateAdmin(
   }
 }
 
-export async function getAdmin(email: Admin["email"]) {
+export async function upsertAdmin(email: User["emailAdmin"]) {
   try {
-    const admin = await sql<Admin>`SELECT * FROM "Admin" WHERE email=${email}`;
-    return admin.rows[0];
+    const user = await sql<User>`
+        INSERT INTO "User" ("emailAdmin", pseudo, role)
+        VALUES (${email}, 'admin', 'admin')
+        ON CONFLICT ("emailAdmin")  DO UPDATE SET pseudo = excluded.pseudo, role = excluded.role
+        RETURNING *`;
+    return user.rows[0];
   } catch (error) {
     console.error(error);
-    throw new Error("Couldn't get admin data.");
+    throw new Error("Couldn't create user.");
+  } finally {
+    revalidatePath("/admin");
   }
 }

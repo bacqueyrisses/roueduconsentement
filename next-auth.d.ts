@@ -1,39 +1,14 @@
-import { DefaultSession, User } from "@auth/core/types";
-
-interface ExtendedUser extends User {
-  id: string;
-  pseudo: string;
-  date: string;
-  score: number;
-  completed: boolean;
-}
+import { DefaultSession } from "@auth/core/types";
+import { User as UserDB } from "@prisma/client";
 
 declare module "@auth/core/types" {
-  interface User {
-    id: string;
-    pseudo: string;
-    date: string;
-    score: number;
-    completed: boolean;
-  }
+  interface User extends UserDB {}
 
   interface Session {
-    user: {
-      id: string;
-      pseudo: string;
-      date: string;
-      score: number;
-      completed: boolean;
-    } & DefaultSession["user"];
+    user: UserDB & DefaultSession["user"];
   }
 }
 
 declare module "@auth/core/jwt" {
-  interface JWT {
-    id: string;
-    pseudo: string;
-    date: string;
-    score: number;
-    completed: boolean;
-  }
+  interface JWT extends UserDB {}
 }

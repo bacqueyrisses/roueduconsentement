@@ -16,7 +16,6 @@
     "@types/bcrypt": "^5.0.2",
     "@vercel/postgres": "^0.7.2",
     "autoprefixer": "^10.4.16",
-    "bcrypt": "^5.1.1",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.0.12",

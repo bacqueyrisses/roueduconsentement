@@ -1,5 +1,6 @@
 import { NextAuthConfig } from "next-auth";
 import { paths } from "@/lib/constants";
+import { Role } from "@prisma/client";
 
 export const authConfig = {
   pages: {
@@ -19,12 +20,14 @@ export const authConfig = {
       session.user.pseudo = token.pseudo;
       session.user.date = token.date;
       session.user.score = token.score;
+      session.user.role = token.role;
       session.user.completed = token.completed;
       return session;
     },
     authorized({ auth, request: { nextUrl } }) {
-      const isUserLoggedIn = !!auth?.user;
-      const isAdminLoggedIn = !!auth?.user.email;
+      const isUserLoggedIn = auth?.user.role === Role.user;
+      const isAdminLoggedIn = auth?.user.role === Role.admin;
+
       const isOnWheel = nextUrl.pathname.startsWith(paths.toWheel);
       const isOnAdmin = nextUrl.pathname.startsWith(paths.toAdmin);
       const isOnAdminLogin = nextUrl.pathname === paths.toAdminLogin;
