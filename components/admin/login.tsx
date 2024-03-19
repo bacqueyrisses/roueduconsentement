@@ -16,14 +16,14 @@ export default function AdminLoginForm() {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h1 className="text-center text-tremor-title font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
+        <h1 className="dark:text-dark-tremor-content-strong text-center text-tremor-title font-semibold text-tremor-content-strong">
           Espace Admin | Connectez vous
         </h1>
 
         <form action={dispatch} className="mt-6">
           <label
             htmlFor="email"
-            className="text-tremor-default font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong"
+            className="dark:text-dark-tremor-content-strong text-tremor-default font-medium text-tremor-content-strong"
           >
             Email
           </label>
@@ -32,7 +32,7 @@ export default function AdminLoginForm() {
             id="email"
             name="email"
             autoComplete="email"
-            placeholder="roue@consentement.com"
+            placeholder="consentement@email.com"
             className="mt-2"
             error={!!error}
           />
@@ -58,7 +58,7 @@ function SubmitButton() {
     <Button
       loading={pending}
       type="submit"
-      className="mt-4 w-full whitespace-nowrap rounded-tremor-default bg-tremor-brand py-2 text-center text-tremor-default font-medium text-tremor-brand-inverted shadow-tremor-input hover:bg-tremor-brand-emphasis dark:bg-dark-tremor-brand dark:text-dark-tremor-brand-inverted dark:shadow-dark-tremor-input dark:hover:bg-dark-tremor-brand-emphasis"
+      className="dark:bg-dark-tremor-brand dark:text-dark-tremor-brand-inverted dark:shadow-dark-tremor-input dark:hover:bg-dark-tremor-brand-emphasis mt-4 w-full whitespace-nowrap rounded-tremor-default bg-tremor-brand py-2 text-center text-tremor-default font-medium text-tremor-brand-inverted shadow-tremor-input hover:bg-tremor-brand-emphasis"
     >
       Se connecter
     </Button>

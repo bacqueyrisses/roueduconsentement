@@ -5,6 +5,7 @@ import { User } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
+import { paths } from "@/lib/constants";
 
 export async function authenticateAdmin(
   prevState: string | undefined,
@@ -29,7 +30,7 @@ export async function upsertAdmin(email: User["emailAdmin"]) {
   try {
     const user = await sql<User>`
         INSERT INTO "User" ("emailAdmin", pseudo, role)
-        VALUES (${email}, 'admin', 'admin')
+        VALUES (${email}, 'Admin', 'admin')
         ON CONFLICT ("emailAdmin")  DO UPDATE SET pseudo = excluded.pseudo, role = excluded.role
         RETURNING *`;
     return user.rows[0];
@@ -37,6 +38,6 @@ export async function upsertAdmin(email: User["emailAdmin"]) {
     console.error(error);
     throw new Error("Couldn't create user.");
   } finally {
-    revalidatePath("/admin");
+    revalidatePath(paths.toAdmin);
   }
 }

@@ -61,8 +61,8 @@ export const { auth, unstable_update, signIn, signOut } = NextAuth({
           const { email } = parsedCredentials.data;
 
           const user = await upsertAdmin(email);
-          console.log(user);
           if (!user) return null;
+
           return user;
         }
 

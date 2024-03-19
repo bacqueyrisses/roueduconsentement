@@ -4,6 +4,17 @@ const prisma = new PrismaClient();
 
 async function main() {
   try {
+    // Create Admin User
+    await prisma.user.upsert({
+      where: { emailAdmin: "admin@email.com" },
+      update: {},
+      create: {
+        pseudo: "Admin",
+        role: "admin",
+      },
+    });
+
+    // Create Questions
     const questions = await Promise.all([
       prisma.question.upsert({
         where: { description: "Est-ce que j’en ai envie ?" },

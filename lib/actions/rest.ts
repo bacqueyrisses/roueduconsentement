@@ -8,6 +8,7 @@ import { sql } from "@vercel/postgres";
 import { User } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { paths } from "@/lib/constants";
 
 export async function getUser() {
   const session = await auth();
@@ -42,7 +43,7 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
     throw new Error("Database error. Failed to Create Question.");
   }
 
-  revalidatePath("/admin/questions");
+  revalidatePath(paths.toAdminQuestions);
   return {
     success: true,
   };
@@ -67,7 +68,7 @@ export async function updateQuestion(id: Question["id"], value: boolean) {
     throw new Error("Database error. Failed to Update Question.");
   }
 
-  revalidatePath("/admin/questions");
+  revalidatePath(paths.toAdminQuestions);
 }
 
 export async function addScore(score: User["score"]) {
@@ -93,7 +94,7 @@ export async function addScore(score: User["score"]) {
     throw new Error("Database error. Failed to Add Score to User.");
   }
 
-  revalidatePath("/admin");
+  revalidatePath(paths.toAdmin);
 }
 
 export async function addSurvey(prevState: PrevState, formData: FormData) {
@@ -123,7 +124,7 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
     throw new Error("Database error. Failed to Add Survey to User.");
   }
 
-  revalidatePath("/admin");
+  revalidatePath(paths.toAdmin);
   return {
     success: true,
   };
@@ -151,5 +152,5 @@ export async function createAnswer(formData: FormData) {
     throw new Error("Database error. Failed to Create Answer.");
   }
 
-  revalidatePath("/admin");
+  revalidatePath(paths.toAdmin);
 }

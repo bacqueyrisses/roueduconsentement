@@ -5,6 +5,7 @@ import { sql } from "@vercel/postgres";
 import { Route } from "next";
 import { AuthError, User } from "next-auth";
 import { revalidatePath } from "next/cache";
+import { paths } from "@/lib/constants";
 
 export async function authenticate(
   prevState: string | undefined,
@@ -34,7 +35,7 @@ export async function create(pseudo: User["pseudo"]) {
     console.error(error);
     throw new Error("Couldn't create user.");
   } finally {
-    revalidatePath("/admin");
+    revalidatePath(paths.toAdmin);
   }
 }
 
