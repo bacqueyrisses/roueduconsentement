@@ -13,7 +13,6 @@ async function main() {
         role: "admin",
       },
     });
-
     // Create Questions
     const questions = await Promise.all([
       prisma.question.upsert({
