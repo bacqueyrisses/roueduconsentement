@@ -4,9 +4,10 @@ import Refresh from "@/components/icons/refresh";
 import CardStack from "@/components/ui/card-stack";
 import { signout } from "@/lib/actions/auth";
 import { paths } from "@/lib/constants";
-import { User } from "next-auth";
+
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
+import { User } from "next-auth";
 
 interface CardStackDemo {
   initial: string;
@@ -87,7 +88,7 @@ export const Highlight = ({
 }: {
   children: ReactNode;
   className?: string;
-  score?: number;
+  score?: User["score"];
 }) => {
   return (
     <span

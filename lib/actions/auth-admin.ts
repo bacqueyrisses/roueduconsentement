@@ -2,9 +2,9 @@
 
 import { signIn } from "@/auth";
 import { paths } from "@/lib/constants";
-import { User } from "@prisma/client";
+import { User as UserDB } from "@prisma/client";
 import { sql } from "@vercel/postgres";
-import { AuthError } from "next-auth";
+import { AuthError, User } from "next-auth";
 import { revalidatePath } from "next/cache";
 
 export async function authenticateAdmin(
@@ -26,7 +26,7 @@ export async function authenticateAdmin(
   }
 }
 
-export async function upsertAdmin(email: User["emailAdmin"]) {
+export async function upsertAdmin(email: UserDB["emailAdmin"]) {
   try {
     const user = await sql<User>`
         INSERT INTO "User" ("emailAdmin", pseudo, role)
