@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Field, Label } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
+import { updateSession } from "@/lib/actions/auth";
 import { addSurvey } from "@/lib/actions/rest";
 import { initialState } from "@/lib/utils";
 import { Route } from "next";
@@ -19,7 +20,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
-import { updateSession } from "@/lib/actions/auth";
 
 export default function SurveyDialog() {
   const [isOpen, setIsOpen] = useState(false);

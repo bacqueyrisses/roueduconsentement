@@ -4,8 +4,8 @@ import Refresh from "@/components/icons/refresh";
 import CardStack from "@/components/ui/card-stack";
 import { signout } from "@/lib/actions/auth";
 import { paths } from "@/lib/constants";
-import { ReactNode } from "react";
 import { User } from "next-auth";
+import { ReactNode } from "react";
 
 interface CardStackDemo {
   initial: string;

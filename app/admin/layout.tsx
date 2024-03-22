@@ -1,6 +1,6 @@
 import { inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
