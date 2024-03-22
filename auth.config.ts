@@ -22,6 +22,7 @@ export const authConfig = {
       session.user.score = token.score;
       session.user.role = token.role;
       session.user.completed = token.completed;
+      session.user.surveyCompleted = token.surveyCompleted;
       return session;
     },
     authorized({ auth, request: { nextUrl } }) {

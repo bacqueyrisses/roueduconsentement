@@ -19,6 +19,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
+import { updateSession } from "@/lib/actions/auth";
 
 export default function SurveyDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,6 +46,7 @@ export default function SurveyDialog() {
       params.delete("initial");
       replace(`${pathname}?${params.toString()}` as Route);
       localStorage.setItem("surveyCompleted", "true");
+      void updateSession({ surveyCompleted: true });
 
       setIsOpen(false);
     }

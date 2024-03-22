@@ -8,6 +8,7 @@ declare module "@auth/core/types" {
     date: string;
     score: number;
     completed: boolean;
+    surveyCompleted: boolean;
     role: Pick<Role>;
   }
 
@@ -18,6 +19,8 @@ declare module "@auth/core/types" {
       date: string;
       score: number;
       completed: boolean;
+      surveyCompleted: boolean;
+      role: Pick<Role>;
     } & DefaultSession["user"];
   }
 }
@@ -29,5 +32,7 @@ declare module "@auth/core/jwt" {
     date: string;
     score: number;
     completed: boolean;
+    surveyCompleted: boolean;
+    role: Pick<Role>;
   }
 }

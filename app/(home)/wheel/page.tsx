@@ -19,7 +19,8 @@ export default async function Page({
 
   const completed = searchParams?.completed || user?.completed || "";
   const initial = searchParams?.initial || "";
-  const surveyCompleted = searchParams?.surveyCompleted || "";
+  const surveyCompleted =
+    searchParams?.surveyCompleted || user?.surveyCompleted || "";
 
   const result = await sql<Omit<Question, "active" | "date">>`
       SELECT id, description, "valueOne", "valueTwo", "valueThree"
