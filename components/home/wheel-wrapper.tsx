@@ -1,6 +1,6 @@
 "use client";
 
-import CardStackDemo from "@/components/home/results-stack";
+import CardStackWrapper from "@/components/home/results-stack";
 import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
 import Help from "@/components/icons/help";
@@ -120,7 +120,7 @@ export default function WheelWrapper({
   }, []);
 
   return completed ? (
-    <CardStackDemo
+    <CardStackWrapper
       initial={initial}
       surveyCompleted={
         localStorage.getItem("surveyCompleted") || surveyCompleted
@@ -237,7 +237,9 @@ export default function WheelWrapper({
             {loading === "valueThree" ? (
               <>
                 <Help className={"invisible size-6"} />
-                <span className={"invisible"}>Je sais pas</span>
+                <span className={"invisible whitespace-nowrap"}>
+                  Je sais pas
+                </span>
 
                 <Loader
                   className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
@@ -246,7 +248,7 @@ export default function WheelWrapper({
             ) : (
               <>
                 <X className={"size-6"} />
-                <span>Je sais pas</span>
+                <span className={"whitespace-nowrap"}>Je sais pas</span>
               </>
             )}
           </button>

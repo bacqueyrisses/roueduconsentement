@@ -24,7 +24,7 @@ export default function CopyButton() {
         toast(
           <div
             className={
-              "inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-base font-medium md:px-7 hover:bg-emerald-200 text-emerald-700 bg-emerald-100 hover:text-emerald-800"
+              "inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-5 py-2 text-base font-medium text-emerald-700 hover:bg-emerald-200 hover:text-emerald-800 md:px-7"
             }
           >
             <Check />
@@ -33,7 +33,7 @@ export default function CopyButton() {
         );
         handleActive();
       }}
-      className={`animate-fade-up z-100 absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3 opacity-0`}
+      className={`z-100 inline-flex animate-fade-up items-center justify-between gap-1.5 rounded-full bg-emerald-100 px-3 py-1 font-medium text-emerald-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800`}
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
       <Check className={"size-5"} />

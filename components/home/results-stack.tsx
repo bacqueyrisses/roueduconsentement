@@ -12,7 +12,7 @@ interface CardStackDemo {
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
 }
-export default function CardStackDemo({
+export default function CardStackWrapper({
   initial,
   surveyCompleted,
   score,
@@ -44,7 +44,7 @@ export default function CardStackDemo({
 
             await signout(paths.toHome);
           }}
-          className={`absolute bottom-8 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-[4.5rem] md:px-7`}
+          className={`absolute bottom-8 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-14 md:px-7`}
           style={{
             animationDelay: "1.3s",
             animationFillMode: "forwards",
