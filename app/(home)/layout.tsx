@@ -16,7 +16,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
     <body className={`${clash.variable} ${inter.variable} h-full w-full`}>
       <Toaster
-        offset={24}
+        offset={16}
         position={"top-center"}
         toastOptions={{
           unstyled: true,
