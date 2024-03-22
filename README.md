@@ -12,7 +12,7 @@
 </p>
 
 <a href="websiteurl">
-    <img alt="alt" src="imagesrc">
+    <img alt="alt" src="https://github.com/bacqueyrisses/consentement/assets/96829831/d0d6deec-0b32-4825-87bc-80bafbdff179">
 </a>
 
 <br/>
