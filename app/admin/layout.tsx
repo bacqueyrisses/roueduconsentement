@@ -5,12 +5,8 @@ import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "🌀La roue du consentement",
+  title: "Admin",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#EDF3FD",
 };
 
 export default function RootAdminLayout({ children }: { children: ReactNode }) {
