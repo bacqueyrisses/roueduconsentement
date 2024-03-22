@@ -37,7 +37,7 @@ export default async function Page({
       {surveyCompleted && completed ? (
         <p
           key={"not-completed-title"}
-          className="animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          className="animate-fade-up text-center text-xl text-gray-500 opacity-0 [text-wrap:balance]"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Merci de votre participation 🤍
@@ -45,7 +45,7 @@ export default async function Page({
       ) : !completed ? (
         <p
           key={"not-completed-title"}
-          className="animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          className="animate-fade-up text-center text-xl text-gray-500 opacity-0 [text-wrap:balance]"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Répondez aux questions 👇
@@ -53,7 +53,7 @@ export default async function Page({
       ) : (
         <p
           key={"completed-title"}
-          className="animate-fade-up text-center text-lg text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          className="animate-fade-up text-center text-xl text-gray-500 opacity-0 [text-wrap:balance]"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Découvrez les informations liées à votre score ✨

@@ -77,9 +77,7 @@ export default function CardStack({
             }}
           >
             <>
-              <div
-                className={`font-normal text-neutral-700 md:leading-relaxed`}
-              >
+              <div className={`font-normal leading-relaxed text-neutral-700`}>
                 {!isSurveyCompleted && !card.content && score ? (
                   <p>
                     <Highlight>Félicitations,</Highlight> vous avez répondu à

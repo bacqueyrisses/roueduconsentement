@@ -11,7 +11,7 @@ export function FinalCard({ score }: { score: User["score"] }) {
         style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
       >
         <div
-          className={`font-normal text-neutral-700 transition-opacity md:leading-relaxed `}
+          className={`font-normal leading-relaxed text-neutral-700 transition-opacity `}
         >
           <p>
             <Highlight>Merci d'avoir répondu</Highlight> à notre questionnaire,
