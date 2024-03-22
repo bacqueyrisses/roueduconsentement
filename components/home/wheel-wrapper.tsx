@@ -21,7 +21,7 @@ interface WheelWrapper {
   questions: Omit<Question, "active" | "date">[];
   completed: string | User["completed"];
   initial: string;
-  surveyCompleted: string;
+  surveyCompleted: string | User["surveyCompleted"];
 }
 interface OptionButton {
   valueKey: keyof Pick<

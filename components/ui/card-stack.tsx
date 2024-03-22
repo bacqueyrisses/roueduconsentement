@@ -19,7 +19,7 @@ type Card = {
 
 interface CardStack {
   items: Card[];
-  surveyCompleted: string;
+  surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
   offset?: number;
   scaleFactor?: number;
@@ -66,7 +66,7 @@ export default function CardStack({
         return (
           <motion.div
             key={card.id}
-            className="absolute bg-white h-60 w-96 md:h-[16rem] md:w-[27rem] rounded-3xl md:p-5 p-4 shadow-xl border border-neutral-200 shadow-black/[0.1] flex flex-col justify-between"
+            className="absolute flex h-60 w-96 flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[16rem] md:w-[27rem] md:p-5"
             style={{
               transformOrigin: "top center",
             }}
@@ -88,7 +88,7 @@ export default function CardStack({
                       {score.toFixed(1)} sur 10.
                     </Highlight>{" "}
                     Cliquez sur{" "}
-                    <span className={"italic font-medium"}>suivant</span> pour
+                    <span className={"font-medium italic"}>suivant</span> pour
                     avoir plus d'informations !
                   </p>
                 ) : (
@@ -97,17 +97,17 @@ export default function CardStack({
               </div>
 
               <div>
-                <div className="text-neutral-500 font-medium">{card.name}</div>
-                <div className="flex justify-between items-center text-neutral-400 font-normal">
+                <div className="font-medium text-neutral-500">{card.name}</div>
+                <div className="flex items-center justify-between font-normal text-neutral-400">
                   {card.designation}
                   {!card.survey ? (
                     <button
                       onClick={flip}
-                      className="group z-100 absolute right-4 md:right-5 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 py-1 font-medium text-emerald-700 hover:text-emerald-800 transition-colors duration-300 ease-in-out hover:bg-emerald-200 px-3"
+                      className="z-100 group absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 px-3 py-1 font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 md:right-5"
                     >
                       <RightArrow
                         className={
-                          "size-5 group-hover:translate-x-[0.1px] transition"
+                          "size-5 transition group-hover:translate-x-[0.1px]"
                         }
                       />
                       <span>Suivant</span>

@@ -11,7 +11,7 @@ import { User } from "next-auth";
 
 interface CardStackDemo {
   initial: string;
-  surveyCompleted: string;
+  surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
 }
 export default function CardStackDemo({
