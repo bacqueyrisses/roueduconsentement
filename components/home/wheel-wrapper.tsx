@@ -23,21 +23,6 @@ interface WheelWrapper {
   initial: string;
   surveyCompleted: string | User["surveyCompleted"];
 }
-interface OptionButton {
-  valueKey: keyof Pick<
-    Omit<Question, "active" | "date">,
-    "valueOne" | "valueTwo" | "valueThree"
-  >;
-  loading: string;
-  handleClick: (
-    key: keyof Pick<
-      Omit<Question, "active" | "date">,
-      "valueOne" | "valueTwo" | "valueThree"
-    >,
-  ) => void;
-  buttonText: string;
-  buttonColor: string;
-}
 
 export default function WheelWrapper({
   user,
@@ -146,7 +131,7 @@ export default function WheelWrapper({
     <>
       <div
         className={
-          "h-32 w-screen animate-fade-up px-4 text-stone-600 opacity-0 md:h-auto"
+          "h-32 w-screen animate-fade-up px-2 text-stone-600 opacity-0 md:h-auto"
         }
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
@@ -260,7 +245,7 @@ export default function WheelWrapper({
               </>
             ) : (
               <>
-                <Help className={"size-6"} />
+                <X className={"size-6"} />
                 <span>Je sais pas</span>
               </>
             )}

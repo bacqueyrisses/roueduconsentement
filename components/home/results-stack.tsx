@@ -4,8 +4,6 @@ import Refresh from "@/components/icons/refresh";
 import CardStack from "@/components/ui/card-stack";
 import { signout } from "@/lib/actions/auth";
 import { paths } from "@/lib/constants";
-
-import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 import { User } from "next-auth";
 
@@ -19,11 +17,11 @@ export default function CardStackDemo({
   surveyCompleted,
   score,
 }: CardStackDemo) {
-  const router = useRouter();
-
   return (
     <div
-      className={`${!surveyCompleted ? "h-[29rem]" : "h-[26rem]"} flex w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0`}
+      className={
+        "flex h-full w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
+      }
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
       {!surveyCompleted ? (
@@ -36,10 +34,9 @@ export default function CardStackDemo({
       ) : (
         <FinalCard key={"not-completed-card"} score={score} />
       )}
-
       {!initial && surveyCompleted ? (
         <button
-          key={"not-completed-button"}
+          key={"completed-button"}
           onClick={async () => {
             localStorage.removeItem("answeredQuestions");
             localStorage.removeItem("surveyCompleted");
@@ -47,7 +44,7 @@ export default function CardStackDemo({
 
             await signout(paths.toHome);
           }}
-          className={`absolute bottom-8 inline-flex  animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:-bottom-4 md:px-7`}
+          className={`absolute bottom-8 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-[4.5rem] md:px-7`}
           style={{
             animationDelay: "1.3s",
             animationFillMode: "forwards",
@@ -59,7 +56,7 @@ export default function CardStackDemo({
         </button>
       ) : !initial ? (
         <button
-          key={"completed-button"}
+          key={"not-completed-button"}
           onClick={async () => {
             localStorage.removeItem("answeredQuestions");
             localStorage.removeItem("surveyCompleted");
@@ -67,7 +64,7 @@ export default function CardStackDemo({
 
             await signout(paths.toHome);
           }}
-          className={`absolute bottom-10 inline-flex  animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7`}
+          className={`absolute bottom-10 inline-flex  animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-16 md:px-7`}
           style={{
             animationDelay: "1.5s",
             animationFillMode: "forwards",
