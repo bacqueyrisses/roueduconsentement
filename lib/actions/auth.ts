@@ -42,6 +42,6 @@ export async function create(pseudo: User["pseudo"]) {
 export async function signout(redirectTo: Route) {
   await signOut({ redirectTo });
 }
-export async function updateSession(newUser: Partial<User>) {
-  await unstable_update({ user: newUser });
+export async function updateSession(data: Partial<User>) {
+  await unstable_update({ user: data });
 }

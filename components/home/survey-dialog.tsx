@@ -40,13 +40,13 @@ export default function SurveyDialog() {
   // Effect to handle useFormState success states
   useEffect(() => {
     if (state?.success) {
-      const params = new URLSearchParams(searchParams);
+      void updateSession({ surveyCompleted: true });
 
+      const params = new URLSearchParams(searchParams);
       params.set("surveyCompleted", "true");
       params.delete("initial");
       replace(`${pathname}?${params.toString()}` as Route);
       localStorage.setItem("surveyCompleted", "true");
-      void updateSession({ surveyCompleted: true });
 
       setIsOpen(false);
     }
