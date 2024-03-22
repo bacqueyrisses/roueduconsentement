@@ -2,6 +2,7 @@
 
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
+import JSConfetti from "js-confetti";
 import X from "@/components/icons/x";
 import {
   Dialog,
@@ -29,6 +30,8 @@ export default function SurveyDialog() {
   const { replace } = useRouter();
   const pathname = usePathname();
 
+  const jsConfetti = new JSConfetti();
+
   function handleClose() {
     setIsOpen((prevState) => !prevState);
     const params = new URLSearchParams(searchParams);
@@ -49,6 +52,11 @@ export default function SurveyDialog() {
       localStorage.setItem("surveyCompleted", "true");
 
       setIsOpen(false);
+      setTimeout(() => {
+        void jsConfetti.addConfetti({
+          emojis: ["🤍"],
+        });
+      }, 1300);
     }
   }, [state?.success]);
 
