@@ -55,8 +55,10 @@ export default function SurveyDialog() {
       setTimeout(() => {
         void jsConfetti.addConfetti({
           emojis: ["🤍"],
+          confettiNumber: 75,
+          emojiSize: 80,
         });
-      }, 1300);
+      }, 1200);
     }
   }, [state?.success]);
 
