@@ -44,7 +44,7 @@ export default function CardStackWrapper({
 
             await signout(paths.toHome);
           }}
-          className={`absolute bottom-24 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-16 md:px-7`}
+          className={`absolute bottom-24 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-lg font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-16 md:px-7 md:text-base`}
           style={{
             animationDelay: "1.3s",
             animationFillMode: "forwards",
@@ -64,7 +64,7 @@ export default function CardStackWrapper({
 
             await signout(paths.toHome);
           }}
-          className={`absolute bottom-40 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-20 md:px-7`}
+          className={`absolute bottom-40 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-lg font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-20 md:px-7 md:text-base`}
           style={{
             animationDelay: "1.5s",
             animationFillMode: "forwards",
