@@ -145,12 +145,14 @@ export default function WheelWrapper({
   ) : (
     <>
       <div
-        className={"w-screen animate-fade-up text-stone-600 opacity-0"}
+        className={
+          "h-32 w-screen animate-fade-up text-stone-600 opacity-0 md:h-auto"
+        }
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <h1
           className={
-            "mx-auto max-w-5xl animate-fade-up text-center text-xl font-semibold tracking-tight md:text-2xl"
+            "animate-fade-up text-center text-2xl font-semibold tracking-tight"
           }
         >
           {questions[currentQuestionIndex]?.description}
