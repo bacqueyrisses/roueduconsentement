@@ -3,7 +3,10 @@ import type { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "La roue du consentement",
+  title: {
+    template: "%s | 🌀 La roue du consentement",
+    default: "🌀 La roue du consentement",
+  },
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 

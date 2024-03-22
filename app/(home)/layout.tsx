@@ -8,7 +8,7 @@ import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "🌀Jouez | La roue du consentement",
+  title: "Jouez",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 

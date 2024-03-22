@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "🌀Admin | La roue du consentement",
+  title: "Admin",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 
