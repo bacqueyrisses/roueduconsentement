@@ -61,12 +61,12 @@ export default function CardStack({
   };
 
   return (
-    <div className="relative flex h-full translate-y-12 items-center justify-center">
+    <div className="relative flex h-full w-full translate-y-12 items-center justify-center">
       {cards.map((card, index) => {
         return (
           <motion.div
             key={card.id}
-            className="absolute flex w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[20rem] md:w-[33rem] md:p-5"
+            className="absolute flex h-1/2 w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-3/5 md:w-4/5 md:p-5"
             style={{
               transformOrigin: "top center",
             }}
