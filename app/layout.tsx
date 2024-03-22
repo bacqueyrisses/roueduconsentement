@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     default: "🌀 La roue du consentement",
   },
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+  metadataBase: new URL("https://consentement.vercel.app"),
 };
 
 export const viewport: Viewport = {
