@@ -58,7 +58,7 @@ export default function SurveyDialog() {
           confettiNumber: 75,
           emojiSize: 80,
         });
-      }, 1200);
+      }, 1000);
     }
   }, [state?.success]);
 
