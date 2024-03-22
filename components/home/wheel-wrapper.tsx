@@ -260,7 +260,7 @@ export default function WheelWrapper({
               </>
             ) : (
               <>
-                <X className={"size-6"} />
+                <Help className={"size-6"} />
                 <span>Je sais pas</span>
               </>
             )}
