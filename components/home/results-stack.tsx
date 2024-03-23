@@ -100,7 +100,7 @@ const CARDS = [
   {
     id: 0,
     name: "Score",
-    designation: "Votre score de consentement",
+    designation: "Votre score",
     content: null,
   },
   {
