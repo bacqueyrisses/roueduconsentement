@@ -130,9 +130,7 @@ export default function WheelWrapper({
   ) : (
     <>
       <div
-        className={
-          "h-28 w-screen animate-fade-up px-2 text-stone-600 opacity-0 md:h-auto"
-        }
+        className={"w-screen animate-fade-up px-2 text-stone-600 opacity-0"}
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <h1

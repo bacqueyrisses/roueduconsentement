@@ -5,7 +5,7 @@ import { User } from "next-auth";
 
 export function FinalCard({ score }: { score: User["score"] }) {
   return (
-    <div className="relative flex h-full -translate-y-14 items-center justify-center">
+    <div className="relative flex h-full -translate-y-8 items-center justify-center">
       <motion.div
         className="flex h-fit w-full animate-fade-up flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 opacity-0 shadow-xl shadow-black/[0.1] md:h-2/3 md:w-11/12 md:p-5"
         style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
