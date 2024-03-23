@@ -176,7 +176,7 @@ export default function WheelWrapper({
             />
             {loading === "valueOne" ? (
               <>
-                <Check className={"invisible size-5"} />
+                <Check className={"invisible size-5 md:size-6"} />
                 <span className={"invisible"}>Oui</span>
                 <Loader
                   className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
@@ -184,7 +184,7 @@ export default function WheelWrapper({
               </>
             ) : (
               <>
-                <Check className={"size-5"} />
+                <Check className={"size-5 md:size-6"} />
                 <span>Oui</span>
               </>
             )}
@@ -205,7 +205,7 @@ export default function WheelWrapper({
             />
             {loading === "valueTwo" ? (
               <>
-                <X className={"invisible size-5"} />
+                <X className={"invisible size-5 md:size-6"} />
                 <span className={"invisible"}>Non</span>
                 <Loader
                   className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
@@ -213,7 +213,7 @@ export default function WheelWrapper({
               </>
             ) : (
               <>
-                <X className={"size-5"} />
+                <X className={"size-5 md:size-6"} />
                 <span>Non</span>
               </>
             )}
@@ -234,7 +234,7 @@ export default function WheelWrapper({
             />
             {loading === "valueThree" ? (
               <>
-                <Help className={"invisible size-5"} />
+                <Help className={"invisible size-5 md:size-6"} />
                 <span className={"invisible whitespace-nowrap"}>
                   Je sais pas
                 </span>
@@ -245,7 +245,7 @@ export default function WheelWrapper({
               </>
             ) : (
               <>
-                <X className={"size-5"} />
+                <X className={"size-5 md:size-6"} />
                 <span className={"whitespace-nowrap"}>Je sais pas</span>
               </>
             )}
