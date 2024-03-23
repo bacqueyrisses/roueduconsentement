@@ -137,7 +137,7 @@ export default function WheelWrapper({
       >
         <h1
           className={
-            "animate-fade-up text-center text-2xl font-semibold tracking-tight"
+            "animate-fade-up text-center text-xl font-semibold tracking-tight"
           }
         >
           {questions[currentQuestionIndex]?.description}
