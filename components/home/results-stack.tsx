@@ -20,7 +20,7 @@ export default function CardStackWrapper({
   return (
     <div
       className={
-        "flex h-full w-full flex-shrink animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
+        "flex h-full w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
       }
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
@@ -34,47 +34,47 @@ export default function CardStackWrapper({
       ) : (
         <FinalCard key={"not-completed-card"} score={score} />
       )}
-      {!initial && surveyCompleted ? (
-        <button
-          key={"completed-button"}
-          onClick={async () => {
-            localStorage.removeItem("answeredQuestions");
-            localStorage.removeItem("surveyCompleted");
-            localStorage.removeItem("score");
+      {/*{!initial && surveyCompleted ? (*/}
+      {/*  <button*/}
+      {/*    key={"completed-button"}*/}
+      {/*    onClick={async () => {*/}
+      {/*      localStorage.removeItem("answeredQuestions");*/}
+      {/*      localStorage.removeItem("surveyCompleted");*/}
+      {/*      localStorage.removeItem("score");*/}
 
-            await signout(paths.toHome);
-          }}
-          className={`absolute bottom-24 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-16 md:px-7`}
-          style={{
-            animationDelay: "1.3s",
-            animationFillMode: "forwards",
-            animationDuration: "800ms",
-          }}
-        >
-          <Refresh className={"size-5"} />
-          <span>Jouer à nouveau</span>
-        </button>
-      ) : !initial ? (
-        <button
-          key={"not-completed-button"}
-          onClick={async () => {
-            localStorage.removeItem("answeredQuestions");
-            localStorage.removeItem("surveyCompleted");
-            localStorage.removeItem("score");
+      {/*      await signout(paths.toHome);*/}
+      {/*    }}*/}
+      {/*    className={`absolute bottom-24 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-16 md:px-7`}*/}
+      {/*    style={{*/}
+      {/*      animationDelay: "1.3s",*/}
+      {/*      animationFillMode: "forwards",*/}
+      {/*      animationDuration: "800ms",*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <Refresh className={"size-5"} />*/}
+      {/*    <span>Jouer à nouveau</span>*/}
+      {/*  </button>*/}
+      {/*) : !initial ? (*/}
+      {/*  <button*/}
+      {/*    key={"not-completed-button"}*/}
+      {/*    onClick={async () => {*/}
+      {/*      localStorage.removeItem("answeredQuestions");*/}
+      {/*      localStorage.removeItem("surveyCompleted");*/}
+      {/*      localStorage.removeItem("score");*/}
 
-            await signout(paths.toHome);
-          }}
-          className={`absolute bottom-40 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-20 md:px-7`}
-          style={{
-            animationDelay: "1.5s",
-            animationFillMode: "forwards",
-            animationDuration: "800ms",
-          }}
-        >
-          <Refresh className={"size-5"} />
-          <span>Jouer à nouveau</span>
-        </button>
-      ) : null}
+      {/*      await signout(paths.toHome);*/}
+      {/*    }}*/}
+      {/*    className={`absolute bottom-40 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-20 md:px-7`}*/}
+      {/*    style={{*/}
+      {/*      animationDelay: "1.5s",*/}
+      {/*      animationFillMode: "forwards",*/}
+      {/*      animationDuration: "800ms",*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <Refresh className={"size-5"} />*/}
+      {/*    <span>Jouer à nouveau</span>*/}
+      {/*  </button>*/}
+      {/*) : null}*/}
     </div>
   );
 }

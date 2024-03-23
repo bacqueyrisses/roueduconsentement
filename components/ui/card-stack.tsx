@@ -7,6 +7,9 @@ import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
+import Refresh from "@/components/icons/refresh";
+import { signout } from "@/lib/actions/auth";
+import { paths } from "@/lib/constants";
 
 type Card = {
   id: number;
@@ -119,6 +122,25 @@ export default function CardStack({
           </motion.div>
         );
       })}
+      <button
+        key={"not-completed-button"}
+        onClick={async () => {
+          localStorage.removeItem("answeredQuestions");
+          localStorage.removeItem("surveyCompleted");
+          localStorage.removeItem("score");
+
+          await signout(paths.toHome);
+        }}
+        className={`absolute bottom-16 z-[200] flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-12 md:px-7`}
+        style={{
+          animationDelay: "1.5s",
+          animationFillMode: "forwards",
+          animationDuration: "800ms",
+        }}
+      >
+        <Refresh className={"size-5"} />
+        <span>Jouer à nouveau</span>
+      </button>
     </div>
   );
 }
