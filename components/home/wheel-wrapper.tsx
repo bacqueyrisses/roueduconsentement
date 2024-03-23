@@ -166,7 +166,7 @@ export default function WheelWrapper({
             value={questions[currentQuestionIndex]?.valueOne}
             name={"value"}
             disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-emerald-100 px-5 py-2 text-base font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 disabled:pointer-events-none md:px-7"
+            className="relative mt-2 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-emerald-100 px-5 py-2 text-sm font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 disabled:pointer-events-none md:mt-6 md:px-7 md:text-base"
           >
             <input name={"option"} value={"Oui"} type="hidden" />
             <input
@@ -195,7 +195,7 @@ export default function WheelWrapper({
             value={questions[currentQuestionIndex]?.valueTwo}
             name={"value"}
             disabled={!!loading}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-base font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 disabled:pointer-events-none md:px-7"
+            className="relative mt-2 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-sm font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 disabled:pointer-events-none md:mt-6 md:px-7 md:text-base"
           >
             <input name={"option"} value={"Non"} type="hidden" />
             <input
@@ -224,7 +224,7 @@ export default function WheelWrapper({
             name={"value"}
             disabled={!!loading}
             value={questions[currentQuestionIndex]?.valueThree}
-            className="relative mt-6 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-base font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 disabled:pointer-events-none md:px-7"
+            className="relative mt-2 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-sm font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 disabled:pointer-events-none md:mt-6 md:px-7 md:text-base"
           >
             <input name={"option"} value={"Je sais pas"} type="hidden" />
             <input
