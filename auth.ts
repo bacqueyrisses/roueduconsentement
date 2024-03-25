@@ -1,10 +1,10 @@
-import { createUser } from "@/lib/actions/auth";
+import { createUser } from "@/lib/actions/users";
 
 import NextAuth, { User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 
-import { upsertAdmin } from "@/lib/actions/auth-admin";
+import { upsertAdmin } from "@/lib/actions/users";
 import { authConfig } from "./auth.config";
 
 export const { auth, unstable_update, signIn, signOut } = NextAuth({

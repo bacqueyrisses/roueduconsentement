@@ -1,6 +1,6 @@
 "use client";
 
-import { authenticateAdmin } from "@/lib/actions/auth-admin";
+import { authenticateAdmin } from "@/lib/actions/auth";
 import { Button, TextInput } from "@tremor/react";
 import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";

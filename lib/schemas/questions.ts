@@ -17,19 +17,3 @@ export const CreateQuestion = z.object({
     .transform((x) => x === "on")
     .pipe(z.boolean()),
 });
-
-export const CreateAnswer = z.object({
-  description: z
-    .string()
-    .transform((t) => t?.trim())
-    .pipe(z.string().min(1)),
-  option: z.string(),
-  value: z.coerce.number().gte(0).lte(10),
-});
-
-export const AddSurvey = z.object({
-  age: z.coerce
-    .number()
-    .gte(0)
-    .lte(150, { message: "Rentrez un nombre inférieur à 150." }),
-});

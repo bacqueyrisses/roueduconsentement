@@ -13,7 +13,7 @@ import {
 import { Field, Label } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
 import { updateSession } from "@/lib/actions/auth";
-import { addSurvey } from "@/lib/actions/rest";
+import { addSurvey } from "@/lib/actions/users";
 import { initialState } from "@/lib/utils";
 import JSConfetti from "js-confetti";
 import { Route } from "next";

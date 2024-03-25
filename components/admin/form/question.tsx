@@ -1,5 +1,5 @@
 import Check from "@/components/icons/check";
-import { createQuestion } from "@/lib/actions/rest";
+import { createQuestion } from "@/lib/actions/questions";
 import { initialState } from "@/lib/utils";
 import { Button, NumberInput, Switch, TextInput } from "@tremor/react";
 import { Dispatch, useEffect, useState } from "react";

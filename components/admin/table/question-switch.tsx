@@ -1,5 +1,5 @@
 "use client";
-import { updateQuestion } from "@/lib/actions/rest";
+import { updateQuestion } from "@/lib/actions/questions";
 import { QuestionByDescription } from "@/lib/database/questions";
 import { Switch } from "@tremor/react";
 import { useState } from "react";
