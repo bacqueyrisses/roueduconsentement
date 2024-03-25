@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import WheelWrapper from "@/components/home/wheel-wrapper";
-import { Question } from "@prisma/client";
-import { sql } from "@vercel/postgres";
+import { getQuestionsWithoutActiveAndDate } from "@/lib/database/questions";
 import { notFound } from "next/navigation";
 
 export default async function Page({
@@ -22,14 +21,8 @@ export default async function Page({
   const surveyCompleted =
     searchParams?.surveyCompleted || user?.surveyCompleted || "";
 
-  const result = await sql<Omit<Question, "active" | "date">>`
-      SELECT id, description, "valueOne", "valueTwo", "valueThree"
-      FROM "Question"
-      WHERE active = true
-      ORDER BY date DESC
-`;
+  const questions = await getQuestionsWithoutActiveAndDate();
 
-  const questions = result.rows;
   if (questions.length === 0) return notFound();
 
   return (

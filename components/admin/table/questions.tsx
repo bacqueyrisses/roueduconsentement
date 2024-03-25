@@ -1,5 +1,5 @@
-import { QuestionQuery } from "@/app/admin/(admin)/questions/page";
 import QuestionSwitch from "@/components/admin/table/question-switch";
+import { QuestionByDescription } from "@/lib/database/questions";
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
 export default function QuestionsTable({
   questions,
 }: {
-  questions: QuestionQuery[];
+  questions: QuestionByDescription[];
 }) {
   return (
     <Table>

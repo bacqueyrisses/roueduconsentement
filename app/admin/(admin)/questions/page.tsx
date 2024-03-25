@@ -1,11 +1,9 @@
 import QuestionsDialog from "@/components/admin/dialog/questions";
 import Search from "@/components/admin/search";
 import QuestionsTable from "@/components/admin/table/questions";
-import { Question } from "@prisma/client";
+import { searchQuestionsByDescription } from "@/lib/database/questions";
 import { Card, Text, Title } from "@tremor/react";
-import { sql } from "@vercel/postgres";
 
-export type QuestionQuery = Omit<Question, "date">;
 export default async function QuestionsPage({
   searchParams,
 }: {
@@ -13,14 +11,7 @@ export default async function QuestionsPage({
 }) {
   const search = searchParams.search ?? "";
 
-  const result = await sql<QuestionQuery>`
-      SELECT id, description, "valueOne", "valueTwo", "valueThree", active
-      FROM "Question"
-      WHERE description ILIKE ${"%" + search + "%"}
-      ORDER BY date DESC
-  `;
-
-  const questions = result.rows;
+  const questions = await searchQuestionsByDescription(search);
 
   return (
     <main className="mx-auto max-w-7xl p-4 md:p-10">

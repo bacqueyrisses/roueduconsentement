@@ -1,5 +1,5 @@
-import { UserQuery } from "@/app/admin/(admin)/page";
 import Message from "@/components/icons/message";
+import { UserWithAnswers } from "@/lib/database/users";
 import {
   Card,
   Table,
@@ -11,7 +11,7 @@ import {
   Text,
 } from "@tremor/react";
 
-export function AnswersList({ user }: { user: UserQuery }) {
+export function AnswersList({ user }: { user: UserWithAnswers }) {
   return (
     <Card className="mx-auto max-w-6xl">
       <Table>

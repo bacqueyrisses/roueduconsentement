@@ -1,5 +1,5 @@
-import { UserQuery } from "@/app/admin/(admin)/page";
 import AnswersDialog from "@/components/admin/dialog/answers";
+import { UserWithAnswers } from "@/lib/database/users";
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   Text,
 } from "@tremor/react";
 
-export default function UsersTable({ users }: { users: UserQuery[] }) {
+export default function UsersTable({ users }: { users: UserWithAnswers[] }) {
   return (
     <Table>
       <TableHead>

@@ -1,12 +1,12 @@
 "use client";
 
-import { UserQuery } from "@/app/admin/(admin)/page";
 import { AnswersList } from "@/components/admin/list/answers";
 import Message from "@/components/icons/message";
+import { UserWithAnswers } from "@/lib/database/users";
 import { Button, Dialog, DialogPanel } from "@tremor/react";
 import { useState } from "react";
 
-export default function AnswersDialog({ user }: { user: UserQuery }) {
+export default function AnswersDialog({ user }: { user: UserWithAnswers }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

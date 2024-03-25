@@ -8,6 +8,7 @@ import Loader from "@/components/icons/loader";
 import X from "@/components/icons/x";
 import { updateSession } from "@/lib/actions/auth";
 import { addScore, createAnswer } from "@/lib/actions/rest";
+import { QuestionWithoutActiveAndDate } from "@/lib/database/questions";
 import { retry } from "@/lib/utils";
 import { Question } from "@prisma/client";
 import { Route } from "next";
@@ -18,7 +19,7 @@ import { toast } from "sonner";
 
 interface WheelWrapper {
   user: User;
-  questions: Omit<Question, "active" | "date">[];
+  questions: QuestionWithoutActiveAndDate[];
   completed: string | User["completed"];
   initial: string;
   surveyCompleted: string | User["surveyCompleted"];

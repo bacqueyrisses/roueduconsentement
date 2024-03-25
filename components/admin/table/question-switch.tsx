@@ -1,6 +1,6 @@
 "use client";
-import { QuestionQuery } from "@/app/admin/(admin)/questions/page";
 import { updateQuestion } from "@/lib/actions/rest";
+import { QuestionByDescription } from "@/lib/database/questions";
 import { Switch } from "@tremor/react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -9,8 +9,8 @@ export default function QuestionSwitch({
   id,
   active,
 }: {
-  id: QuestionQuery["id"];
-  active: QuestionQuery["active"];
+  id: QuestionByDescription["id"];
+  active: QuestionByDescription["active"];
 }) {
   const [isSwitchOn, setIsSwitchOn] = useState(active);
 
