@@ -62,7 +62,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "lint-staged": {
-    "*": "prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports"
+    "*": "prettier --write --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports && node rws.js"
   },
   "prettier": {
     "plugins": [
