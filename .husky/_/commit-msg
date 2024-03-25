@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-. "${0%/*}/h"
 
-# check commitlint format
+# check commit message format using commitlint
 npx --no-install commitlint --edit "$1"
