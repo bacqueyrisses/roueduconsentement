@@ -13,8 +13,14 @@ import { z } from "zod";
 
 export async function createUser(pseudo: User["pseudo"]) {
   try {
-    const user =
-      await sql<User>`INSERT INTO "User" (pseudo) VALUES (${pseudo}) RETURNING *`;
+    const user = await sql<User>`
+      INSERT INTO
+        "User" (pseudo)
+      VALUES
+        (${pseudo})
+      RETURNING
+        *
+    `;
     return user.rows[0];
   } catch (error) {
     console.error(error);
@@ -38,10 +44,13 @@ export async function addScore(score: User["score"]) {
 
   try {
     await sql`
-        UPDATE "User"
-        SET score = ${validatedScore}, completed = true
-        WHERE id = ${user?.id}
-        `;
+      UPDATE "User"
+      SET
+        score = ${validatedScore},
+        completed = TRUE
+      WHERE
+        id = ${user?.id}
+    `;
   } catch (error) {
     console.error(error);
     throw new Error("Database error. Failed to Add Score to User.");
@@ -68,10 +77,12 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
 
   try {
     await sql`
-        UPDATE "User"
-        SET age = ${age}
-        WHERE id = ${user?.id}
-        `;
+      UPDATE "User"
+      SET
+        age = ${age}
+      WHERE
+        id = ${user?.id}
+    `;
   } catch (error) {
     console.error(error);
     throw new Error("Database error. Failed to Add Survey to User.");
@@ -86,10 +97,22 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
 export async function upsertAdmin(email: UserDB["emailAdmin"]) {
   try {
     const user = await sql<User>`
-        INSERT INTO "User" ("emailAdmin", pseudo, role)
-        VALUES (${email}, 'Admin', 'admin')
-        ON CONFLICT ("emailAdmin")  DO UPDATE SET pseudo = excluded.pseudo, role = excluded.role
-        RETURNING *`;
+      INSERT INTO
+        "User" ("emailAdmin", pseudo, role)
+      VALUES
+        (
+          ${email},
+          'Admin',
+          'admin'
+        )
+      ON CONFLICT ("emailAdmin") DO
+      UPDATE
+      SET
+        pseudo = excluded.pseudo,
+        role = excluded.role
+      RETURNING
+        *
+    `;
     return user.rows[0];
   } catch (error) {
     console.error(error);

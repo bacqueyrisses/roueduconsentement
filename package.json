@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "node .husky/helpers/rws.js && prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports"
+    "format": "node .husky/helpers/rws.js && prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports --plugin=prettier-plugin-embed --plugin=prettier-plugin-sql"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.0-alpha.4",
@@ -50,7 +50,9 @@
     "lint-staged": "^15.2.2",
     "postcss": "^8",
     "prettier": "^3.2.5",
+    "prettier-plugin-embed": "^0.4.15",
     "prettier-plugin-organize-imports": "^3.2.4",
+    "prettier-plugin-sql": "^0.18.0",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "prisma": "^5.11.0",
     "tailwindcss": "^3.4.1",
@@ -62,8 +64,15 @@
   },
   "prettier": {
     "plugins": [
-      "prettier-plugin-tailwindcss"
-    ]
+      "prettier-plugin-tailwindcss",
+      "prettier-plugin-embed",
+      "prettier-plugin-sql"
+    ],
+    "embeddedSqlIdentifiers": [
+      "sql"
+    ],
+    "language": "postgresql",
+    "keywordCase": "upper"
   },
   "eslintConfig": {
     "extends": [

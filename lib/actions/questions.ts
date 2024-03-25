@@ -29,8 +29,23 @@ export async function createQuestion(prevState: PrevState, formData: FormData) {
 
   try {
     await sql`
-        INSERT INTO "Question" (description, "valueOne", "valueTwo", "valueThree", active)
-        VALUES (${description}, ${valueOne}, ${valueTwo}, ${valueThree}, ${active})`;
+      INSERT INTO
+        "Question" (
+          description,
+          "valueOne",
+          "valueTwo",
+          "valueThree",
+          active
+        )
+      VALUES
+        (
+          ${description},
+          ${valueOne},
+          ${valueTwo},
+          ${valueThree},
+          ${active}
+        )
+    `;
   } catch (error) {
     console.error(error);
     throw new Error("Database error. Failed to Create Question.");
@@ -52,10 +67,12 @@ export async function updateQuestion(id: Question["id"], value: boolean) {
 
   try {
     await sql`
-        UPDATE "Question"
-        SET active = ${active}
-        WHERE id = ${id}
-        `;
+      UPDATE "Question"
+      SET
+        active = ${active}
+      WHERE
+        id = ${id}
+    `;
   } catch (error) {
     console.error(error);
     throw new Error("Database error. Failed to Update Question.");

@@ -21,8 +21,16 @@ export async function createAnswer(formData: FormData) {
 
   try {
     await sql`
-        INSERT INTO "Answer" ("userId", description, option, value)
-        VALUES (${user?.id}, ${description}, ${option}, ${value})`;
+      INSERT INTO
+        "Answer" ("userId", description, option, value)
+      VALUES
+        (
+          ${user?.id},
+          ${description},
+          ${option},
+          ${value}
+        )
+    `;
   } catch (error) {
     console.error(error);
     throw new Error("Database error. Failed to Create Answer.");
