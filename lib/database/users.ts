@@ -5,7 +5,6 @@ export type UserWithAnswers = Omit<User, "date"> & {
   date: string;
   answers: Answer[];
 };
-
 export async function getUsersByPseudoWithAnswers(pseudo: string) {
   const result = await sql<UserWithAnswers>`
     SELECT

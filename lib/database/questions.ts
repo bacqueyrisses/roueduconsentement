@@ -2,7 +2,6 @@ import { Question } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 
 export type QuestionByDescription = Omit<Question, "date">;
-
 export async function getQuestionsByDescription(description: string) {
   const result = await sql<QuestionByDescription>`
     SELECT
