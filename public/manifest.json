@@ -3,7 +3,7 @@
   "short_name": "La Roue du Consentement",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
