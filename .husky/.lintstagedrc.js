@@ -7,5 +7,9 @@ const buildEslintCommand = (filenames) =>
 
 module.exports = {
   "*.{js,jsx,ts,tsx}": [buildEslintCommand],
-  "*": "node rws.js && prettier --write --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports",
+  "*": [
+    "eslint --fix",
+    "node rws.js",
+    "prettier --write --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports",
+  ],
 };
