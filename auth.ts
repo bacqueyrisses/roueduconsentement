@@ -1,4 +1,4 @@
-import { create } from "@/lib/actions/auth";
+import { createUser } from "@/lib/actions/auth";
 
 import NextAuth, { User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -28,7 +28,7 @@ export const { auth, unstable_update, signIn, signOut } = NextAuth({
 
         if (parsedCredentials.success) {
           const { pseudo } = parsedCredentials.data;
-          const user = await create(pseudo);
+          const user = await createUser(pseudo);
           if (!user) return null;
 
           return user;

@@ -26,7 +26,14 @@ export async function authenticate(
   }
 }
 
-export async function create(pseudo: User["pseudo"]) {
+export async function signout(redirectTo: Route) {
+  await signOut({ redirectTo });
+}
+export async function updateSession(data: Partial<User>) {
+  await unstable_update({ user: data });
+}
+
+export async function createUser(pseudo: User["pseudo"]) {
   try {
     const user =
       await sql<User>`INSERT INTO "User" (pseudo) VALUES (${pseudo}) RETURNING *`;
@@ -37,11 +44,4 @@ export async function create(pseudo: User["pseudo"]) {
   } finally {
     revalidatePath(paths.toAdmin);
   }
-}
-
-export async function signout(redirectTo: Route) {
-  await signOut({ redirectTo });
-}
-export async function updateSession(data: Partial<User>) {
-  await unstable_update({ user: data });
 }

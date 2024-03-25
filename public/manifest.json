@@ -1,0 +1,14 @@
+{
+  "name": "La Roue du Consentement",
+  "short_name": "La Roue du Consentement",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#EDF3FD",
+  "background_color": "#F0FBFA",
+  "display": "standalone"
+}
