@@ -1,6 +1,5 @@
 {
   "name": "roue",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports"
+    "format": "node rws.js && prettier --write . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-organize-imports"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.0-alpha.4",
