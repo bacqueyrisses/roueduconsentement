@@ -1,15 +1,15 @@
 "use client";
 import { Highlight } from "@/components/home/results-stack";
 import SurveyDialog from "@/components/home/survey-dialog";
+import Refresh from "@/components/icons/refresh";
 import RightArrow from "@/components/icons/right-arrow";
+import { signout } from "@/lib/actions/auth";
+import { paths } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
-import Refresh from "@/components/icons/refresh";
-import { signout } from "@/lib/actions/auth";
-import { paths } from "@/lib/constants";
 
 type Card = {
   id: number;

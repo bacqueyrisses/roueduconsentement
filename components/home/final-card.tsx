@@ -1,10 +1,10 @@
 import CopyButton from "@/components/home/copy-button";
 import { Highlight } from "@/components/home/results-stack";
-import { motion } from "framer-motion";
-import { User } from "next-auth";
 import Refresh from "@/components/icons/refresh";
 import { signout } from "@/lib/actions/auth";
 import { paths } from "@/lib/constants";
+import { motion } from "framer-motion";
+import { User } from "next-auth";
 
 export function FinalCard({ score }: { score: User["score"] }) {
   return (

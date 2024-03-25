@@ -2,7 +2,6 @@
 
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
-import JSConfetti from "js-confetti";
 import X from "@/components/icons/x";
 import {
   Dialog,
@@ -16,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { updateSession } from "@/lib/actions/auth";
 import { addSurvey } from "@/lib/actions/rest";
 import { initialState } from "@/lib/utils";
+import JSConfetti from "js-confetti";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
