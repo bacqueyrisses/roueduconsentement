@@ -3,11 +3,11 @@ import { sql } from "@vercel/postgres";
 
 export type QuestionByDescription = Omit<Question, "date">;
 
-export async function searchQuestionsByDescription(search: string) {
+export async function getQuestionsByDescription(description: string) {
   const result = await sql<QuestionByDescription>`
       SELECT id, description, "valueOne", "valueTwo", "valueThree", active
       FROM "Question"
-      WHERE description ILIKE ${"%" + search + "%"}
+      WHERE description ILIKE ${"%" + description + "%"}
       ORDER BY date DESC
   `;
 

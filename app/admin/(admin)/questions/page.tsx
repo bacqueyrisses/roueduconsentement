@@ -1,7 +1,7 @@
 import QuestionsDialog from "@/components/admin/dialog/questions";
 import Search from "@/components/admin/search";
 import QuestionsTable from "@/components/admin/table/questions";
-import { searchQuestionsByDescription } from "@/lib/database/questions";
+import { getQuestionsByDescription } from "@/lib/database/questions";
 import { Card, Text, Title } from "@tremor/react";
 
 export default async function QuestionsPage({
@@ -11,7 +11,7 @@ export default async function QuestionsPage({
 }) {
   const search = searchParams.search ?? "";
 
-  const questions = await searchQuestionsByDescription(search);
+  const questions = await getQuestionsByDescription(search);
 
   return (
     <main className="mx-auto max-w-7xl p-4 md:p-10">
