@@ -19,4 +19,5 @@ if (env === "preview") {
     ignoreBuildErrors: true,
   };
 }
+
 export default nextConfig;
