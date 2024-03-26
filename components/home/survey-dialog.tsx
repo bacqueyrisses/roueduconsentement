@@ -29,7 +29,6 @@ export default function SurveyDialog() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
-
   const jsConfetti = new JSConfetti();
 
   function handleClose() {

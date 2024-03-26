@@ -6,7 +6,13 @@ import { paths } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { User } from "next-auth";
 
-export function FinalCard({ score }: { score: User["score"] }) {
+export function FinalCard({
+  score,
+  initial,
+}: {
+  score: User["score"];
+  initial: string;
+}) {
   return (
     <div className="relative flex h-full -translate-y-8 items-center justify-center">
       <motion.div
@@ -38,25 +44,27 @@ export function FinalCard({ score }: { score: User["score"] }) {
           </div>
         </div>
       </motion.div>
-      <button
-        key={"completed-button"}
-        onClick={async () => {
-          localStorage.removeItem("answeredQuestions");
-          localStorage.removeItem("surveyCompleted");
-          localStorage.removeItem("score");
+      {!initial && (
+        <button
+          key={"completed-button"}
+          onClick={async () => {
+            localStorage.removeItem("answeredQuestions");
+            localStorage.removeItem("surveyCompleted");
+            localStorage.removeItem("score");
 
-          await signout(paths.toHome);
-        }}
-        className={`absolute bottom-0 z-[200] flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7`}
-        style={{
-          animationDelay: "1.3s",
-          animationFillMode: "forwards",
-          animationDuration: "800ms",
-        }}
-      >
-        <Refresh className={"size-5"} />
-        <span>Jouer à nouveau</span>
-      </button>
+            await signout(paths.toHome);
+          }}
+          className={`absolute bottom-0 z-[200] flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7`}
+          style={{
+            animationDelay: "1.3s",
+            animationFillMode: "forwards",
+            animationDuration: "800ms",
+          }}
+        >
+          <Refresh className={"size-5"} />
+          <span>Jouer à nouveau</span>
+        </button>
+      )}
     </div>
   );
 }
