@@ -13,6 +13,7 @@ export default function RootAdminLayout({ children }: { children: ReactNode }) {
   return (
     <body className="h-full w-full bg-gray-50">
       <Toaster
+        visibleToasts={4}
         position={"bottom-center"}
         toastOptions={{
           classNames: {
