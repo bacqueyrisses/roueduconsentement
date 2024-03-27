@@ -4,10 +4,22 @@ export const CreateQuestion = z.object({
   description: z
     .string()
     .transform((t) => t?.trim())
-    .pipe(z.string().min(1)),
-  valueOne: z.coerce.number().gte(0).lte(10),
-  valueTwo: z.coerce.number().gte(0).lte(10),
-  valueThree: z.coerce.number().gte(0).lte(10),
+    .pipe(z.string().min(1, { message: "Rentrez une description." })),
+  valueOne: z.coerce
+    .number()
+    .min(1, { message: "Rentrez une valeur pour Oui." })
+    .gte(0)
+    .lte(10),
+  valueTwo: z.coerce
+    .number()
+    .min(1, { message: "Rentrez une valeur pour Non." })
+    .gte(0)
+    .lte(10),
+  valueThree: z.coerce
+    .number()
+    .min(1, { message: "Rentrez une valeur pour Je sais pas." })
+    .gte(0)
+    .lte(10),
   active: z
     .string()
     .toLowerCase()
