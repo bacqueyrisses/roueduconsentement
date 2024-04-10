@@ -22,14 +22,14 @@ export default function DetailsDialog({
   surveyCompleted,
   initial,
   score,
-  questions,
+  answers,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => setIsOpen((prevState) => !prevState)}
         className="inline-flex w-fit animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-blue-100 px-5 py-2 text-base font-medium text-blue-500 opacity-0 transition-colors duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-600 md:px-7"
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
@@ -45,7 +45,7 @@ export default function DetailsDialog({
         >
           <CardStackWrapper
             initial={initial}
-            questions={questions}
+            answers={answers}
             surveyCompleted={
               localStorage.getItem("surveyCompleted") || surveyCompleted
             }

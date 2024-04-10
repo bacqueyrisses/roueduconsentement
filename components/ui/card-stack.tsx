@@ -10,18 +10,21 @@ import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
+import { Answer } from "@prisma/client";
+import Wheel from "@/components/home/wheel";
 
-type Card = {
-  id: number;
-  name: string;
-  survey?: boolean;
-  designation: string;
-  content: ReactNode | null;
-  contentCompleted?: ReactNode;
-};
+// type Card = {
+//   id: number;
+//   value: string;
+//   survey?: boolean;
+//   designation: string;
+//   content: ReactNode | null;
+//   contentCompleted?: ReactNode;
+// };
 
 interface CardStack {
-  items: Card[];
+  items: Answer[];
+  answers: Answer[];
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
   offset?: number;
@@ -34,15 +37,18 @@ export default function CardStack({
   surveyCompleted,
   score,
   offset,
+  answers,
   scaleFactor,
   initial,
 }: CardStack) {
   const [isSurveyCompleted, setIsSurveyCompleted] = useState(!!surveyCompleted);
-  const CARD_OFFSET = offset || 10;
+  const CARD_OFFSET = offset || 3;
   const SCALE_FACTOR = scaleFactor || 0.06;
-  const [cards, setCards] = useState<Card[]>(
-    [...items].sort((a, b) => b.id - a.id),
+  const [cards, setCards] = useState<Answer[]>(
+    [...answers].sort((a, b) => b.date - a.date),
   );
+  const [indexCard, setIndexCard] = useState(1);
+  const completed = cards.length === indexCard;
 
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -58,7 +64,9 @@ export default function CardStack({
   }, [surveyCompleted]);
 
   const flip = () => {
-    setCards((prevCards: Card[]) => {
+    if (cards.length === indexCard) return;
+    setIndexCard((prevState) => prevState + 1);
+    setCards((prevCards: Answer[]) => {
       const newArray = [...prevCards]; // create a copy of the array
       newArray.unshift(newArray.pop()!); // move the last element to the front
       return newArray;
@@ -82,28 +90,47 @@ export default function CardStack({
             }}
           >
             <>
-              <div className={`font-normal leading-relaxed text-neutral-700`}>
-                {!isSurveyCompleted && !card.content && score ? (
-                  <p>
-                    <Highlight>Félicitations,</Highlight> vous avez répondu à
-                    toutes les questions. Votre score est de
-                    <Highlight score={score}>
-                      {score.toFixed(1)} sur 10.
-                    </Highlight>{" "}
-                    Cliquez sur{" "}
-                    <span className={"font-medium italic"}>suivant</span> pour
-                    avoir plus d'informations !
-                  </p>
+              <div
+                className={`font-normal leading-relaxed text-neutral-700 flex w-full items-center flex-col justify-center`}
+              >
+                {!completed ? (
+                  card.summary
                 ) : (
-                  card.content
+                  <p>
+                    <Highlight>Merci d'avoir participé</Highlight> à notre jeu,
+                    toutes les informations données restent anonymes. Vous
+                    pouvez cliquer sur le <Highlight>bouton vert</Highlight>{" "}
+                    pour partagez quelques informations.{" "}
+                  </p>
                 )}
+                {/*{!isSurveyCompleted && !card.content && score ? (*/}
+                {/*  <p>*/}
+                {/*    <Highlight>Félicitations,</Highlight> vous avez répondu à*/}
+                {/*    toutes les questions. Votre score est de*/}
+                {/*    <Highlight score={score}>*/}
+                {/*      {score.toFixed(1)} sur 10.*/}
+                {/*    </Highlight>{" "}*/}
+                {/*    Cliquez sur{" "}*/}
+                {/*    <span className={"font-medium italic"}>suivant</span> pour*/}
+                {/*    avoir plus d'informations !*/}
+                {/*  </p>*/}
+                {/*) : (*/}
+                {/*  card.content*/}
+                {/*)}*/}
+              </div>
+              <div className={"h-36 w-full translate-y-4"}>
+                <Wheel value={completed ? score : card.value} />
               </div>
 
               <div>
-                <div className="font-medium text-neutral-500">{card.name}</div>
+                <div className="font-medium text-neutral-500">
+                  Question {index}
+                </div>
                 <div className="flex items-center justify-between font-normal text-neutral-400">
-                  {card.designation}
-                  {!card.survey ? (
+                  Réponse : {card.option}
+                  {completed ? (
+                    <SurveyDialog />
+                  ) : (
                     <button
                       onClick={flip}
                       className="z-100 group absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 px-3 py-1 font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 md:right-5"
@@ -115,8 +142,6 @@ export default function CardStack({
                       />
                       <span>Suivant</span>
                     </button>
-                  ) : (
-                    <SurveyDialog />
                   )}
                 </div>
               </div>

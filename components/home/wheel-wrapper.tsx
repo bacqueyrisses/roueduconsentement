@@ -29,6 +29,7 @@ interface WheelWrapper {
 export default function WheelWrapper({
   user,
   questions,
+  answers,
   completed,
   initial,
   surveyCompleted,
@@ -128,7 +129,7 @@ export default function WheelWrapper({
       >
         <div className={"space-x-2"}>
           <DetailsDialog
-            questions={questions}
+            answers={answers}
             surveyCompleted={surveyCompleted}
             initial={initial}
             score={score}
@@ -227,6 +228,11 @@ export default function WheelWrapper({
             className="relative mt-2.5 inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-red-100 px-5 py-2 text-sm font-medium text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-200 hover:text-red-600 disabled:pointer-events-none md:mt-6 md:px-7 md:text-base"
           >
             <input name={"option"} value={"Non"} type="hidden" />
+            <input
+              name={"summary"}
+              value={questions[currentQuestionIndex]?.summary}
+              type="hidden"
+            />
             <input
               name={"description"}
               value={questions[currentQuestionIndex]?.description}

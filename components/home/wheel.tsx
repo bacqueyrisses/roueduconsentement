@@ -42,11 +42,8 @@ export default function Wheel({ value }: StatProps) {
   }, [value]);
 
   return (
-    <div className="z-10 flex-grow">
-      <svg
-        className="h-full w-full overflow-visible p-10 md:p-20"
-        {...gauge.getSVGProps()}
-      >
+    <div className="z-10 flex-grow h-full w-full">
+      <svg className="h-full w-full overflow-visible" {...gauge.getSVGProps()}>
         <defs>
           <linearGradient
             id="greenGradient"

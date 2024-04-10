@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import WheelWrapper from "@/components/home/wheel-wrapper";
 import { getQuestionsWithoutActiveAndDate } from "@/lib/database/questions";
 import { notFound } from "next/navigation";
+import { getAnswers } from "@/lib/database/answers";
 
 export default async function Page({
   searchParams,
@@ -22,6 +23,7 @@ export default async function Page({
     searchParams?.surveyCompleted || user?.surveyCompleted || "";
 
   const questions = await getQuestionsWithoutActiveAndDate();
+  const answers = await getAnswers(user.id);
 
   if (questions.length === 0) return notFound();
 
@@ -59,6 +61,7 @@ export default async function Page({
       <WheelWrapper
         user={user}
         questions={questions}
+        answers={answers}
         completed={completed}
         initial={initial}
         surveyCompleted={surveyCompleted}

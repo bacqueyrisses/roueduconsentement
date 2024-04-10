@@ -13,12 +13,12 @@ export default function CardStackWrapper({
   initial,
   surveyCompleted,
   score,
-  questions,
+  answers,
 }: CardStackDemo) {
   return (
     <div
       className={
-        "flex h-[400px] w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
+        "flex h-[620px] w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
       }
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
@@ -26,7 +26,7 @@ export default function CardStackWrapper({
         <CardStack
           key={"not-completed-card"}
           items={CARDS}
-          questions={questions}
+          answers={answers}
           surveyCompleted={surveyCompleted}
           score={score}
           initial={initial}
