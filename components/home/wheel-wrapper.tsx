@@ -1,6 +1,5 @@
 "use client";
 
-import CardStackWrapper from "@/components/home/results-stack";
 import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
 import Help from "@/components/icons/help";
@@ -129,6 +128,7 @@ export default function WheelWrapper({
       >
         <div className={"space-x-2"}>
           <DetailsDialog
+            questions={questions}
             surveyCompleted={surveyCompleted}
             initial={initial}
             score={score}

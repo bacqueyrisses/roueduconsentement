@@ -14,6 +14,7 @@ model Answer {
   description String
   option      String
   value       Int
+  summary     String
   date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
 

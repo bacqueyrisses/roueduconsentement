@@ -13,6 +13,7 @@ export default function CardStackWrapper({
   initial,
   surveyCompleted,
   score,
+  questions,
 }: CardStackDemo) {
   return (
     <div
@@ -25,6 +26,7 @@ export default function CardStackWrapper({
         <CardStack
           key={"not-completed-card"}
           items={CARDS}
+          questions={questions}
           surveyCompleted={surveyCompleted}
           score={score}
           initial={initial}

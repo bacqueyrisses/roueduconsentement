@@ -18,7 +18,12 @@ import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
 import CardStackWrapper from "@/components/home/results-stack";
 
-export default function DetailsDialog({ surveyCompleted, initial, score }) {
+export default function DetailsDialog({
+  surveyCompleted,
+  initial,
+  score,
+  questions,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -40,6 +45,7 @@ export default function DetailsDialog({ surveyCompleted, initial, score }) {
         >
           <CardStackWrapper
             initial={initial}
+            questions={questions}
             surveyCompleted={
               localStorage.getItem("surveyCompleted") || surveyCompleted
             }

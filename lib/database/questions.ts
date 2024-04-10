@@ -30,7 +30,8 @@ export async function getQuestionsWithoutActiveAndDate() {
       description,
       "valueOne",
       "valueTwo",
-      "valueThree"
+      "valueThree",
+      "summary"
     FROM
       "Question"
     WHERE

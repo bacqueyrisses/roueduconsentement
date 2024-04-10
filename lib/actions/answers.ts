@@ -12,23 +12,25 @@ export async function createAnswer(formData: FormData) {
     description: formData.get("description"),
     option: formData.get("option"),
     value: formData.get("value"),
+    summary: formData.get("summary"),
   });
 
   if (!validatedFields.success)
     throw new Error("Validation error. Failed to Create Answer.");
 
-  const { description, option, value } = validatedFields.data;
+  const { description, option, value, summary } = validatedFields.data;
 
   try {
     await sql`
       INSERT INTO
-        "Answer" ("userId", description, option, value)
+        "Answer" ("userId", description, option, value, summary)
       VALUES
         (
           ${user?.id},
           ${description},
           ${option},
-          ${value}
+          ${value},
+          ${summary}
         )
     `;
   } catch (error) {
