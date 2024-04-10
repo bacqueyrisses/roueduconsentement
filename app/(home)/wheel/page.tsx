@@ -46,10 +46,13 @@ export default async function Page({
       ) : (
         <p
           key={"completed-title"}
-          className="animate-fade-up text-center text-xl text-gray-500 opacity-0 [text-wrap:balance]"
+          className="animate-fade-up text-center text-base text-gray-500 opacity-0 [text-wrap:balance]"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
-          Découvrez les informations liées à votre score ✨
+          Ce programme est un outil d'information et de réflexion sur le
+          consentement. Sa fonction est d'alimenter ton raisonnement, en
+          t’accompagnant dans ta prise de décision. Il ne peut en aucun cas te
+          dire ce que tu dois faire et se substituer à ton propre choix ! ✅
         </p>
       )}
 

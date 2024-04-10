@@ -17,7 +17,7 @@ export default function CardStackWrapper({
   return (
     <div
       className={
-        "flex h-full w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
+        "flex h-[400px] w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
       }
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >

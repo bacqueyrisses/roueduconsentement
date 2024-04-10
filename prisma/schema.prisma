@@ -24,6 +24,7 @@ model Question {
   valueTwo    Int
   valueThree  Int
   active      Boolean
+  summary     String
   date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
 

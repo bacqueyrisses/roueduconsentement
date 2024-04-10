@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.0.0-alpha.4",
-    "@prisma/client": "^5.11.0",
+    "@prisma/client": "^5.12.1",
     "@types/bcrypt": "^5.0.2",
     "@vercel/postgres": "^0.7.2",
     "autoprefixer": "^10.4.16",
@@ -54,7 +54,7 @@
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-sql": "^0.18.0",
     "prettier-plugin-tailwindcss": "^0.5.12",
-    "prisma": "^5.11.0",
+    "prisma": "^5.12.1",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.2"

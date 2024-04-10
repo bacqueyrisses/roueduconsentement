@@ -43,7 +43,7 @@ export default function NameDialog() {
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
         <Check className={"size-6"} />
-        <span>Se tester maintenant</span>
+        <span>Faire le test</span>
       </button>
 
       <Dialog open={isOpen} onClose={setIsOpen}>
