@@ -26,7 +26,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
         }}
       />
       <div className="fixed h-screen w-full bg-gradient-to-br from-violet-100 via-teal-50 to-amber-100" />
-      <main className="z-10 mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-between gap-4 px-2.5 py-4">
+      <main className="z-10 mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-between gap-6 px-2.5 py-4">
         <section className={"flex w-full flex-col items-center justify-center"}>
           <Image
             src={logo}

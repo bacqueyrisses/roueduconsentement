@@ -261,7 +261,7 @@ export default function WheelWrapper({
             name={"value"}
             disabled={!!loading}
             value={questions[currentQuestionIndex]?.valueThree}
-            className="relative inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-sm font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300 hover:text-yellow-800 disabled:pointer-events-none md:px-7 md:text-base"
+            className="relative inline-flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-sm font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300/80 hover:text-yellow-800 disabled:pointer-events-none md:px-7 md:text-base"
           >
             <input name={"option"} value={"Je sais pas"} type="hidden" />
             <input

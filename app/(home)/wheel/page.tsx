@@ -4,6 +4,7 @@ import { getQuestionsWithoutActiveAndDate } from "@/lib/database/questions";
 import { notFound } from "next/navigation";
 import { getAnswers } from "@/lib/database/answers";
 import { Highlight } from "@/lib/utils";
+import { signout } from "@/lib/actions/auth";
 
 export default async function Page({
   searchParams,
