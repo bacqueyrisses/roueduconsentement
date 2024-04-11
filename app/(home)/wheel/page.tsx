@@ -3,6 +3,7 @@ import WheelWrapper from "@/components/home/wheel-wrapper";
 import { getQuestionsWithoutActiveAndDate } from "@/lib/database/questions";
 import { notFound } from "next/navigation";
 import { getAnswers } from "@/lib/database/answers";
+import { Highlight } from "@/lib/utils";
 
 export default async function Page({
   searchParams,
@@ -51,10 +52,12 @@ export default async function Page({
           className="animate-fade-up text-center text-base text-gray-500 opacity-0 [text-wrap:balance]"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
-          Ce programme est un outil d'information et de réflexion sur le
+          Ce programme est un{" "}
+          <Highlight>outil d'information et de réflexion</Highlight> sur le
           consentement. Sa fonction est d'alimenter ton raisonnement, en
           t’accompagnant dans ta prise de décision. Il ne peut en aucun cas te
-          dire ce que tu dois faire et se substituer à ton propre choix ! ✅
+          dire ce que tu dois faire et se substituer
+          <Highlight>à ton propre choix !</Highlight> ✅
         </p>
       )}
 
