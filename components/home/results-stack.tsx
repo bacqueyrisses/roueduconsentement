@@ -2,7 +2,7 @@
 import { FinalCard } from "@/components/home/final-card";
 import CardStack from "@/components/ui/card-stack";
 import { User } from "next-auth";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 interface CardStackDemo {
   initial: string;
@@ -14,11 +14,12 @@ export default function CardStackWrapper({
   surveyCompleted,
   score,
   answers,
+  setIsOpen,
 }: CardStackDemo) {
   return (
     <div
       className={
-        "flex h-[620px] w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0"
+        "flex h-[610px] w-full animate-fade-up flex-col items-center justify-center gap-10 opacity-0 z-10"
       }
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
@@ -30,6 +31,7 @@ export default function CardStackWrapper({
           surveyCompleted={surveyCompleted}
           score={score}
           initial={initial}
+          setIsOpen={setIsOpen}
         />
       ) : (
         <FinalCard key={"not-completed-card"} score={score} initial={initial} />
@@ -48,7 +50,7 @@ export const Highlight = ({
 }) => {
   return (
     <span
-      className={`px-1 py-0.5 font-bold ${!score ? "bg-emerald-100 text-emerald-700" : score === 0 ? "" : score <= 4 ? "bg-red-100 text-red-700" : score <= 7 ? "bg-yellow-100 text-yellow-700" : "bg-emerald-100 text-emerald-700"}`}
+      className={`px-1 py-0.5 font-bold ${score === undefined ? "bg-emerald-100 text-emerald-700" : score <= 4 ? "bg-red-100 text-red-700" : score <= 7 ? "bg-yellow-100 text-yellow-700" : "bg-emerald-100 text-emerald-700"}`}
     >
       {children}
     </span>

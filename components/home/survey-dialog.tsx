@@ -14,7 +14,7 @@ import { Field, Label } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
 import { updateSession } from "@/lib/actions/auth";
 import { addSurvey } from "@/lib/actions/users";
-import { initialState } from "@/lib/utils";
+import { Highlight, initialState } from "@/lib/utils";
 import JSConfetti from "js-confetti";
 import { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -22,7 +22,7 @@ import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
-export default function SurveyDialog() {
+export default function SurveyDialog({ setDetailsOpen }) {
   const [isOpen, setIsOpen] = useState(false);
   const [state, dispatch] = useFormState(addSurvey, initialState);
 
@@ -95,7 +95,13 @@ export default function SurveyDialog() {
       </button>
       <Dialog open={isOpen} onClose={handleClose}>
         <form action={dispatch}>
-          <DialogTitle>Répondez à quelques questions</DialogTitle>
+          <DialogTitle>
+            Pour nous aider à{" "}
+            <Highlight className={"text-emerald-800"}>
+              améliorer cette appli
+            </Highlight>
+            , merci de répondre à ces quatre questions.
+          </DialogTitle>
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
           </DialogDescription>

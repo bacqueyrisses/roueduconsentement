@@ -50,6 +50,7 @@ export default function DetailsDialog({
               localStorage.getItem("surveyCompleted") || surveyCompleted
             }
             score={score}
+            setIsOpen={setIsOpen}
           />
         </div>
       )}
