@@ -87,9 +87,9 @@ export default function WheelWrapper({
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <Wheel value={score} />
-        {user.score && (
-          <Highlight className={"absolute bottom-[20%]"}>
-            Score: {user.score}
+        {score && (
+          <Highlight score={score} className={"absolute bottom-[19%]"}>
+            Mon score: {score}
           </Highlight>
         )}
 
