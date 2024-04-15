@@ -27,7 +27,7 @@ export default function Footer() {
         >
           Firah
         </Link>
-        . Développement par{" "}
+        . Réalisé par diodeproduction / troispetitspoints. Développement par{" "}
         <Link
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
           href="https://www.enzo.codes"

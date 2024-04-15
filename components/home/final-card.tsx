@@ -9,7 +9,7 @@ import { User } from "next-auth";
 export function FinalCard({ score }: { score: User["score"] }) {
   return (
     <div className="relative flex h-full translate-y-10 w-full justify-center">
-      <motion.div className="absolute animate-fade-up flex h-fit w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-2/4 md:w-4/5 md:p-5">
+      <motion.div className="absolute animate-fade-up flex h-[310px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5">
         <div
           className={`font-normal leading-relaxed text-neutral-700 transition-opacity`}
         >

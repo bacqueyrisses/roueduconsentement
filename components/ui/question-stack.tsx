@@ -151,7 +151,7 @@ export default function QuestionStack({
         return (
           <motion.div
             key={card.id}
-            className="absolute flex h-fit w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-3/5 md:w-4/5 md:p-5"
+            className="absolute flex h-full w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-3/5 md:w-4/5 md:p-5"
             style={{
               transformOrigin: "top center",
             }}
