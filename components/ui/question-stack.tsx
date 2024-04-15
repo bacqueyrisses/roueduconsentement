@@ -207,6 +207,11 @@ export default function QuestionStack({
                   >
                     <input name={"option"} value={"Oui"} type="hidden" />
                     <input
+                      name={"summary"}
+                      value={questions[currentQuestionIndex]?.summary}
+                      type="hidden"
+                    />
+                    <input
                       name={"description"}
                       value={questions[currentQuestionIndex]?.description}
                       type="hidden"
@@ -275,6 +280,11 @@ export default function QuestionStack({
                     <input
                       name={"option"}
                       value={"Je sais pas"}
+                      type="hidden"
+                    />
+                    <input
+                      name={"summary"}
+                      value={questions[currentQuestionIndex]?.summary}
                       type="hidden"
                     />
                     <input
