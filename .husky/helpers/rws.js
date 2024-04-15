@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const directoriesToIgnore = ["node_modules", ".git", ".next"];
+const directoriesToIgnore = ["node_modules", ".git", ".next", ".husky"];
 const acceptedFileExtensions = [".js", ".jsx", ".ts", ".tsx"];
 const defaultRootDirectory = "./";
 
@@ -42,10 +42,34 @@ function processDirectory(directoryPath) {
             }
 
             const modifiedContent = data.replace(
-              /className="(.*?)"/g,
-              (match, className) => {
-                const compactedClassName = removeWhiteSpaceFromJSX(className);
-                return `className="${compactedClassName}"`;
+              /className={"(.*?)"}|className="(.*?)"|className={\s*"(.*?)"\s*}|className={`(.*?)`}/gs,
+              (
+                match,
+                classNameWithBraces,
+                classNameWithoutBraces,
+                classNameWithBrackets,
+                classNameWithBackticks,
+              ) => {
+                let className =
+                  classNameWithBraces ||
+                  classNameWithoutBraces ||
+                  classNameWithBrackets ||
+                  classNameWithBackticks;
+                if (classNameWithBackticks) {
+                  // Check if there is a variable inside the backticks
+                  if (/\${.*?}/.test(classNameWithBackticks)) {
+                    // Handle class name with backticks containing a variable
+                    // You can replace this logic with your specific handling
+                    return `className={\`${removeWhiteSpaceFromJSX(classNameWithBackticks).trim()}\`}`;
+                  } else {
+                    // Handle class name with backticks without a variable
+                    return `className="${removeWhiteSpaceFromJSX(classNameWithBackticks).trim()}"`;
+                  }
+                } else {
+                  // Handle other cases where className is enclosed in quotes or braces
+                  const compactedClassName = removeWhiteSpaceFromJSX(className);
+                  return `className={"${compactedClassName}"}`;
+                }
               },
             );
 
