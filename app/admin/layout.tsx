@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootAdminLayout({ children }: { children: ReactNode }) {
   return (
-    <body className="h-full w-full bg-gray-50">
+    <body className={"h-full w-full bg-gray-50"}>
       <Toaster
         duration={2500}
         visibleToasts={4}

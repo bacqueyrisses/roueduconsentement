@@ -88,4 +88,4 @@ function processDirectory(directoryPath) {
 const rootDirectory = process.argv[2] || defaultRootDirectory;
 
 processDirectory(rootDirectory);
-console.log("🧹");
+console.log("🧹...");

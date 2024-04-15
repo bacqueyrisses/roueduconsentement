@@ -32,7 +32,7 @@ export default function QuestionForm({
   }, [state?.errors]);
 
   return (
-    <form action={dispatch} className="mx-auto max-w-sm space-y-8">
+    <form action={dispatch} className={"mx-auto max-w-sm space-y-8"}>
       <div>
         <TextInput
           icon={Check}
@@ -68,7 +68,7 @@ export default function QuestionForm({
           name={"value-three"}
         />
       </div>
-      <div className="flex items-center space-x-3">
+      <div className={"flex items-center space-x-3"}>
         <Switch
           id="switch"
           name="active"
@@ -77,12 +77,14 @@ export default function QuestionForm({
         />
         <label
           htmlFor="switch"
-          className="dark:text-dark-tremor-content text-tremor-default text-tremor-content"
+          className={
+            "dark:text-dark-tremor-content text-tremor-default text-tremor-content"
+          }
         >
           Rendre la question active
         </label>
       </div>
-      <div className="mt-8 flex items-center justify-end space-x-2">
+      <div className={"mt-8 flex items-center justify-end space-x-2"}>
         <Button
           type={"button"}
           size="xs"

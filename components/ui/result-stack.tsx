@@ -34,12 +34,14 @@ export default function ResultStack({ score, answers }: ResultStack) {
   };
 
   return (
-    <div className="relative flex h-full w-full translate-y-8 justify-center">
+    <div className={"relative flex h-full w-full translate-y-8 justify-center"}>
       {cards.map((card, index) => {
         return (
           <motion.div
             key={card.id}
-            className="absolute flex h-[380px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
+            className={
+              "absolute flex h-[380px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
+            }
             style={{
               transformOrigin: "top center",
             }}
@@ -50,9 +52,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
             }}
           >
             <>
-              <div
-                className={`flex w-full flex-col items-center justify-center font-normal leading-relaxed text-neutral-700`}
-              >
+              <div className="flex w-full flex-col items-center justify-center font-normal leading-relaxed text-neutral-700">
                 {!completed ? (
                   card.summary
                 ) : (
@@ -69,17 +69,23 @@ export default function ResultStack({ score, answers }: ResultStack) {
               </div>
 
               <div>
-                <div className="mb-0.5 font-medium text-neutral-500">
+                <div className={"mb-0.5 font-medium text-neutral-500"}>
                   <Highlight>Question {indexCard + 1}</Highlight>
                 </div>
-                <div className="flex items-center justify-between font-normal text-neutral-500">
+                <div
+                  className={
+                    "flex items-center justify-between font-normal text-neutral-500"
+                  }
+                >
                   <Highlight score={card.value}>Score : {card.value}</Highlight>
                   {completed ? (
                     <SurveyDialog />
                   ) : (
                     <button
                       onClick={flip}
-                      className="z-100 group absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 px-3 py-1 font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 md:right-5"
+                      className={
+                        "z-100 group absolute right-4 inline-flex items-center justify-between gap-1.5 rounded-full bg-emerald-100 px-3 py-1 font-medium text-emerald-700 transition-colors duration-300 ease-in-out hover:bg-emerald-200 hover:text-emerald-800 md:right-5"
+                      }
                     >
                       <RightArrow
                         className={

@@ -81,7 +81,9 @@ export default function WheelWrapper({
         </div>
       </section>
       <section
-        className="flex h-full w-full animate-fade-up flex-col items-center justify-center overflow-hidden p-6 opacity-0"
+        className={
+          "flex h-full w-full animate-fade-up flex-col items-center justify-center overflow-hidden p-6 opacity-0"
+        }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <Wheel value={score} />

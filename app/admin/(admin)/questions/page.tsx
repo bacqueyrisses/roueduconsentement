@@ -14,14 +14,14 @@ export default async function QuestionsPage({
   const questions = await getQuestionsByDescription(search);
 
   return (
-    <main className="mx-auto max-w-7xl p-4 md:p-10">
+    <main className={"mx-auto max-w-7xl p-4 md:p-10"}>
       <Title>Questions</Title>
       <Text>Faites une recherche dans la liste des questions.</Text>
       <div className={"flex items-center gap-4"}>
         <Search />
         <QuestionsDialog />
       </div>
-      <Card className="mt-6">
+      <Card className={"mt-6"}>
         <QuestionsTable questions={questions} />
       </Card>
     </main>
