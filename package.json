@@ -64,9 +64,9 @@
   },
   "prettier": {
     "plugins": [
-      "prettier-plugin-tailwindcss",
       "prettier-plugin-embed",
-      "prettier-plugin-sql"
+      "prettier-plugin-sql",
+      "prettier-plugin-tailwindcss"
     ],
     "embeddedSqlIdentifiers": [
       "sql"
