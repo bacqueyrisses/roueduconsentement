@@ -1,11 +1,8 @@
-import NameDialog from "@/components/home/name-dialog";
-import Wheel from "@/components/home/wheel";
-import Check from "@/components/icons/check";
-import { Highlight } from "@/lib/utils";
-import Book from "@/components/icons/book";
-import Link from "@/components/icons/link";
 import DefinitionButton from "@/components/buttons/definition";
 import LinksButton from "@/components/buttons/links";
+import NameDialog from "@/components/home/name-dialog";
+import Wheel from "@/components/home/wheel";
+import { Highlight } from "@/lib/utils";
 
 export default function HomePage() {
   return (

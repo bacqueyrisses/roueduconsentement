@@ -1,9 +1,9 @@
 import { auth } from "@/auth";
 import WheelWrapper from "@/components/home/wheel-wrapper";
-import { getQuestionsWithoutActive } from "@/lib/database/questions";
-import { notFound } from "next/navigation";
 import { getAnswers } from "@/lib/database/answers";
+import { getQuestionsWithoutActive } from "@/lib/database/questions";
 import { Highlight } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   searchParams,

@@ -1,8 +1,5 @@
 import CopyButton from "@/components/home/copy-button";
 import { Highlight } from "@/lib/utils";
-import Refresh from "@/components/icons/refresh";
-import { signout } from "@/lib/actions/auth";
-import { paths } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { User } from "next-auth";
 

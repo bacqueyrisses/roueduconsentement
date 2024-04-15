@@ -1,20 +1,19 @@
-import { Highlight } from "@/lib/utils";
+import Check from "@/components/icons/check";
+import Help from "@/components/icons/help";
+import Loader from "@/components/icons/loader";
+import X from "@/components/icons/x";
+import { createAnswer } from "@/lib/actions/answers";
 import { updateSession } from "@/lib/actions/auth";
+import { addScore } from "@/lib/actions/users";
+import { QuestionWithoutActive } from "@/lib/database/questions";
+import { Highlight, retry } from "@/lib/utils";
+import { Question } from "@prisma/client";
 import { motion } from "framer-motion";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, useEffect, useState } from "react";
-import { Answer, Question } from "@prisma/client";
-import Loader from "@/components/icons/loader";
-import Help from "@/components/icons/help";
-import { createAnswer } from "@/lib/actions/answers";
 import { toast } from "sonner";
-import X from "@/components/icons/x";
-import Check from "@/components/icons/check";
-import { addScore } from "@/lib/actions/users";
-import { retry } from "@/lib/utils";
-import { QuestionWithoutActive } from "@/lib/database/questions";
 
 interface QuestionStack {
   questions: QuestionWithoutActive[];

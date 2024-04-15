@@ -1,10 +1,10 @@
 "use client";
 
-import Check from "@/components/icons/check";
-import { useState } from "react";
 import ResultStackWrapper from "@/components/home/result-stack";
-import { User } from "next-auth";
+import Check from "@/components/icons/check";
 import { Answer } from "@prisma/client";
+import { User } from "next-auth";
+import { useState } from "react";
 
 interface DetailsDialog {
   surveyCompleted: string | User["surveyCompleted"];

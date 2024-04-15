@@ -1,11 +1,11 @@
 "use client";
 import { FinalCard } from "@/components/home/final-card";
-import { User } from "next-auth";
-import { useEffect } from "react";
 import ResultStack from "@/components/ui/result-stack";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Route } from "next";
 import { Answer } from "@prisma/client";
+import { Route } from "next";
+import { User } from "next-auth";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 interface ResultStackWrapper {
   initial: string;

@@ -1,27 +1,22 @@
 "use client";
 
+import DefinitionButton from "@/components/buttons/definition";
+import LinksButton from "@/components/buttons/links";
+import DetailsDialog from "@/components/home/details-dialog";
 import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
-import Help from "@/components/icons/help";
-import Loader from "@/components/icons/loader";
-import X from "@/components/icons/x";
-import { createAnswer } from "@/lib/actions/answers";
-import { signout, updateSession } from "@/lib/actions/auth";
-import { addScore } from "@/lib/actions/users";
+import Refresh from "@/components/icons/refresh";
+import QuestionStack from "@/components/ui/question-stack";
+import { signout } from "@/lib/actions/auth";
+import { paths } from "@/lib/constants";
 import { QuestionWithoutActive } from "@/lib/database/questions";
-import { Highlight, retry } from "@/lib/utils";
-import { Answer, Question } from "@prisma/client";
+import { Highlight } from "@/lib/utils";
+import { Answer } from "@prisma/client";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import DetailsDialog from "@/components/home/details-dialog";
-import QuestionStack from "@/components/ui/question-stack";
-import DefinitionButton from "@/components/buttons/definition";
-import LinksButton from "@/components/buttons/links";
-import Refresh from "@/components/icons/refresh";
-import { paths } from "@/lib/constants";
 
 interface WheelWrapper {
   user: User;

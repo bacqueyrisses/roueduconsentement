@@ -1,11 +1,11 @@
-import { Highlight } from "@/lib/utils";
 import SurveyDialog from "@/components/home/survey-dialog";
+import Wheel from "@/components/home/wheel";
 import RightArrow from "@/components/icons/right-arrow";
+import { Highlight } from "@/lib/utils";
+import { Answer } from "@prisma/client";
 import { motion } from "framer-motion";
 import { User } from "next-auth";
 import { useState } from "react";
-import { Answer } from "@prisma/client";
-import Wheel from "@/components/home/wheel";
 
 interface ResultStack {
   answers: Answer[];
