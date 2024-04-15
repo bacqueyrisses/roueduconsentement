@@ -93,7 +93,11 @@ export default function SurveyDialog({ setDetailsOpen }) {
 
         <span>Répondre</span>
       </button>
-      <Dialog className={"translate-y-20"} open={isOpen} onClose={handleClose}>
+      <Dialog
+        className={"translate-y-[72px]"}
+        open={isOpen}
+        onClose={handleClose}
+      >
         <form action={dispatch}>
           <DialogTitle>
             Pour nous aider à{" "}

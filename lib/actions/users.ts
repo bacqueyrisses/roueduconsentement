@@ -65,6 +65,7 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
   const validatedFields = AddSurvey.safeParse({
     age: formData.get("age"),
   });
+  console.log(validatedFields);
 
   if (!validatedFields.success) {
     return {

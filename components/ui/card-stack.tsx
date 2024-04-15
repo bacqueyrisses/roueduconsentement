@@ -75,7 +75,7 @@ export default function CardStack({
   };
 
   return (
-    <div className="relative flex h-full w-full translate-y-10 justify-center">
+    <div className="relative flex h-full w-full translate-y-8 justify-center">
       {cards.map((card, index) => {
         return (
           <motion.div
