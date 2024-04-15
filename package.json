@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "node .husky/helpers/rws.js && prettier --write . --config ./package.json && prettier --write . --plugin=prettier-plugin-organize-imports"
+    "format": "node .husky/helpers/rws.js && prettier --write . --log-level silent --config ./package.json && prettier --write . --log-level silent --plugin=prettier-plugin-organize-imports"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.0-alpha.4",
