@@ -51,7 +51,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
           >
             <>
               <div
-                className={`font-normal leading-relaxed text-neutral-700 flex w-full items-center flex-col justify-center`}
+                className={`flex w-full flex-col items-center justify-center font-normal leading-relaxed text-neutral-700`}
               >
                 {!completed ? (
                   card.summary
@@ -69,7 +69,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
               </div>
 
               <div>
-                <div className="font-medium text-neutral-500 mb-0.5">
+                <div className="mb-0.5 font-medium text-neutral-500">
                   <Highlight>Question {indexCard + 1}</Highlight>
                 </div>
                 <div className="flex items-center justify-between font-normal text-neutral-500">

@@ -8,8 +8,9 @@ const buildEslintCommand = (filenames) =>
 module.exports = {
   "*.{js,jsx,ts,tsx}": [
     "node .husky/helpers/rws.js",
-    "prettier --write . --config ./package.json --log-level silent",
-    "prettier --write . --plugin=prettier-plugin-organize-imports --log-level silent",
+    "prettier --write --config ./package.json --log-level silent",
+    "prettier --write --plugin=prettier-plugin-organize-imports --log-level silent",
     buildEslintCommand,
+    "git add",
   ],
 };

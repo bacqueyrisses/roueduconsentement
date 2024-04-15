@@ -127,13 +127,13 @@ export default function QuestionStack({
             }}
           >
             <>
-              <div className={"text-center pt-2"}>
+              <div className={"pt-2 text-center"}>
                 <Highlight>
                   Question numéro {currentQuestionIndex + 1}
                 </Highlight>
               </div>
               <div
-                className={`flex-grow text-center leading-relaxed text-neutral-700 flex w-full items-center flex-col justify-center text-lg font-normal px-12`}
+                className={`flex w-full flex-grow flex-col items-center justify-center px-12 text-center text-lg font-normal leading-relaxed text-neutral-700`}
               >
                 {card.description}
               </div>
@@ -158,7 +158,7 @@ export default function QuestionStack({
                     }
                   }}
                   className={
-                    "flex items-center justify-center gap-3 md:gap-4 pb-2"
+                    "flex items-center justify-center gap-3 pb-2 md:gap-4"
                   }
                 >
                   <button

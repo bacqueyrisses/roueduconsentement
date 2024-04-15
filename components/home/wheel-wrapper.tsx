@@ -81,7 +81,7 @@ export default function WheelWrapper({
         </div>
       </section>
       <section
-        className="flex flex-col h-full w-full animate-fade-up items-center justify-center overflow-hidden opacity-0 p-6"
+        className="flex h-full w-full animate-fade-up flex-col items-center justify-center overflow-hidden p-6 opacity-0"
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <Wheel value={score} />
@@ -116,7 +116,7 @@ export default function WheelWrapper({
     <>
       <section
         className={
-          "w-screen animate-fade-up px-2 text-stone-600 opacity-0 flex-grow max-w-3xl space-y-6"
+          "w-screen max-w-3xl flex-grow animate-fade-up space-y-6 px-2 text-stone-600 opacity-0"
         }
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >

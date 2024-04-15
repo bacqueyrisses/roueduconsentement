@@ -35,7 +35,7 @@ export default function DetailsDialog({
       {isOpen && (
         <div
           className={
-            "z-10 absolute left-1/2 -translate-x-1/2 flex w-full h-full"
+            "absolute left-1/2 z-10 flex h-full w-full -translate-x-1/2"
           }
         >
           <ResultStackWrapper

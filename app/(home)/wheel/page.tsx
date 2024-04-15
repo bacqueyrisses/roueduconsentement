@@ -33,7 +33,7 @@ export default async function Page({
       {!completed ? (
         <p
           key={"not-completed-title"}
-          className="animate-fade-up text-center text-xl text-gray-500 opacity-0 text-balance"
+          className="animate-fade-up text-balance text-center text-xl text-gray-500 opacity-0"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Répondez aux questions 👇
@@ -41,7 +41,7 @@ export default async function Page({
       ) : (
         <p
           key={"completed-title"}
-          className="animate-fade-up text-center text-base text-gray-500 opacity-0 text-balance"
+          className="animate-fade-up text-balance text-center text-base text-gray-500 opacity-0"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Ce programme est un{" "}
