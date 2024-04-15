@@ -1,17 +1,11 @@
-"use client";
-import { Highlight } from "@/components/home/results-stack";
-import SurveyDialog from "@/components/home/survey-dialog";
-import Refresh from "@/components/icons/refresh";
-import RightArrow from "@/components/icons/right-arrow";
-import { signout, updateSession } from "@/lib/actions/auth";
-import { paths } from "@/lib/constants";
+import { Highlight } from "@/lib/utils";
+import { updateSession } from "@/lib/actions/auth";
 import { motion } from "framer-motion";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ReactNode, useEffect, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import { Answer, Question } from "@prisma/client";
-import Wheel from "@/components/home/wheel";
 import Loader from "@/components/icons/loader";
 import Help from "@/components/icons/help";
 import { createAnswer } from "@/lib/actions/answers";
@@ -20,37 +14,24 @@ import X from "@/components/icons/x";
 import Check from "@/components/icons/check";
 import { addScore } from "@/lib/actions/users";
 import { retry } from "@/lib/utils";
+import { QuestionWithoutActive } from "@/lib/database/questions";
 
-// type Card = {
-//   id: number;
-//   value: string;
-//   survey?: boolean;
-//   designation: string;
-//   content: ReactNode | null;
-//   contentCompleted?: ReactNode;
-// };
-
-interface CardStack {
-  questions: Question[];
+interface QuestionStack {
+  questions: QuestionWithoutActive[];
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
-  offset?: number;
-  scaleFactor?: number;
+  setScore: Dispatch<number>;
 }
 
 export default function QuestionStack({
-  surveyCompleted,
   score,
-  offset,
   setScore,
   questions,
-  scaleFactor,
-}: CardStack) {
-  const [isSurveyCompleted, setIsSurveyCompleted] = useState(!!surveyCompleted);
-  const CARD_OFFSET = offset || 0;
-  const SCALE_FACTOR = scaleFactor || 0.06;
-  const [cards, setCards] = useState<Answer[]>(
-    [...questions].sort((a, b) => b.date - a.date),
+}: QuestionStack) {
+  const CARD_OFFSET = 0;
+  const SCALE_FACTOR = 0.06;
+  const [cards, setCards] = useState<QuestionWithoutActive[]>(
+    [...questions].sort((a, b) => Number(b.date) - Number(a.date)),
   );
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -60,15 +41,6 @@ export default function QuestionStack({
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    surveyCompleted && setIsSurveyCompleted(!!surveyCompleted);
-
-    const params = new URLSearchParams(searchParams);
-
-    params.delete("surveyCompleted");
-    replace(`${pathname}?${params.toString()}` as Route);
-  }, [surveyCompleted]);
 
   function handleAnswer(
     key: keyof Pick<
@@ -132,7 +104,7 @@ export default function QuestionStack({
 
   const flip = () => {
     if (currentQuestionIndex === questions.length - 1) return;
-    setCards((prevCards: Answer[]) => {
+    setCards((prevCards: QuestionWithoutActive[]) => {
       const newArray = [...prevCards]; // create a copy of the array
       newArray.unshift(newArray.pop()!); // move the last element to the front
       return newArray;

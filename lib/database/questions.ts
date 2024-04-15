@@ -22,16 +22,17 @@ export async function getQuestionsByDescription(description: string) {
   return result.rows;
 }
 
-export type QuestionWithoutActiveAndDate = Omit<Question, "active" | "date">;
-export async function getQuestionsWithoutActiveAndDate() {
-  const result = await sql<QuestionWithoutActiveAndDate>`
+export type QuestionWithoutActive = Omit<Question, "active">;
+export async function getQuestionsWithoutActive() {
+  const result = await sql<QuestionWithoutActive>`
     SELECT
       id,
       description,
       "valueOne",
       "valueTwo",
       "valueThree",
-      "summary"
+      "summary",
+      "date"
     FROM
       "Question"
     WHERE

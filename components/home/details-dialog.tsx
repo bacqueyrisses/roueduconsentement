@@ -1,29 +1,24 @@
 "use client";
 
 import Check from "@/components/icons/check";
-import Loader from "@/components/icons/loader";
-import X from "@/components/icons/x";
-import {
-  Dialog,
-  DialogActions,
-  DialogBody,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Field } from "@/components/ui/fieldset";
-import { Input } from "@/components/ui/input";
-import { authenticate } from "@/lib/actions/auth";
-import { useEffect, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
-import { toast } from "sonner";
-import CardStackWrapper from "@/components/home/results-stack";
+import { useState } from "react";
+import ResultStackWrapper from "@/components/home/result-stack";
+import { User } from "next-auth";
+import { Answer } from "@prisma/client";
+
+interface DetailsDialog {
+  surveyCompleted: string | User["surveyCompleted"];
+  initial: string;
+  score: number;
+  answers: Answer[];
+}
 
 export default function DetailsDialog({
   surveyCompleted,
   initial,
   score,
   answers,
-}) {
+}: DetailsDialog) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -43,14 +38,11 @@ export default function DetailsDialog({
             "z-10 absolute left-1/2 -translate-x-1/2 flex w-full h-full"
           }
         >
-          <CardStackWrapper
+          <ResultStackWrapper
             initial={initial}
             answers={answers}
-            surveyCompleted={
-              localStorage.getItem("surveyCompleted") || surveyCompleted
-            }
+            surveyCompleted={surveyCompleted}
             score={score}
-            setIsOpen={setIsOpen}
           />
         </div>
       )}

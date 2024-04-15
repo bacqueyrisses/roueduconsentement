@@ -1,10 +1,9 @@
 import { auth } from "@/auth";
 import WheelWrapper from "@/components/home/wheel-wrapper";
-import { getQuestionsWithoutActiveAndDate } from "@/lib/database/questions";
+import { getQuestionsWithoutActive } from "@/lib/database/questions";
 import { notFound } from "next/navigation";
 import { getAnswers } from "@/lib/database/answers";
 import { Highlight } from "@/lib/utils";
-import { signout } from "@/lib/actions/auth";
 
 export default async function Page({
   searchParams,
@@ -24,7 +23,7 @@ export default async function Page({
   const surveyCompleted =
     searchParams?.surveyCompleted || user?.surveyCompleted || "";
 
-  const questions = await getQuestionsWithoutActiveAndDate();
+  const questions = await getQuestionsWithoutActive();
   const answers = await getAnswers(user.id);
 
   if (questions.length === 0) return notFound();

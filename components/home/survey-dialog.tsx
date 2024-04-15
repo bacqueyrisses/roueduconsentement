@@ -1,5 +1,3 @@
-"use client";
-
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
 import X from "@/components/icons/x";
@@ -22,7 +20,7 @@ import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
-export default function SurveyDialog({ setDetailsOpen }) {
+export default function SurveyDialog() {
   const [isOpen, setIsOpen] = useState(false);
   const [state, dispatch] = useFormState(addSurvey, initialState);
 

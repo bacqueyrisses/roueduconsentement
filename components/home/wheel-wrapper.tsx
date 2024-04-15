@@ -8,9 +8,9 @@ import X from "@/components/icons/x";
 import { createAnswer } from "@/lib/actions/answers";
 import { signout, updateSession } from "@/lib/actions/auth";
 import { addScore } from "@/lib/actions/users";
-import { QuestionWithoutActiveAndDate } from "@/lib/database/questions";
+import { QuestionWithoutActive } from "@/lib/database/questions";
 import { Highlight, retry } from "@/lib/utils";
-import { Question } from "@prisma/client";
+import { Answer, Question } from "@prisma/client";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -25,7 +25,8 @@ import { paths } from "@/lib/constants";
 
 interface WheelWrapper {
   user: User;
-  questions: QuestionWithoutActiveAndDate[];
+  questions: QuestionWithoutActive[];
+  answers: Answer[];
   completed: string | User["completed"];
   initial: string;
   surveyCompleted: string | User["surveyCompleted"];
@@ -74,7 +75,9 @@ export default function WheelWrapper({
         <div className={"space-x-2"}>
           <DetailsDialog
             answers={answers}
-            surveyCompleted={surveyCompleted}
+            surveyCompleted={
+              localStorage.getItem("surveyCompleted") || surveyCompleted
+            }
             initial={initial}
             score={score}
           />
@@ -89,7 +92,7 @@ export default function WheelWrapper({
         <Wheel value={score} />
         {score && (
           <Highlight score={score} className={"absolute bottom-[19%]"}>
-            Mon score: {score}
+            Mon score: {score.toFixed(1)}
           </Highlight>
         )}
 
@@ -124,11 +127,11 @@ export default function WheelWrapper({
       >
         <QuestionStack
           setScore={setScore}
-          items={questions}
           questions={questions}
-          surveyCompleted={false}
-          score={5}
-          initial={false}
+          surveyCompleted={
+            localStorage.getItem("surveyCompleted") || surveyCompleted
+          }
+          score={score}
         />
       </section>
     </>
