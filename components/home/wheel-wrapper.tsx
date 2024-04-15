@@ -9,7 +9,7 @@ import { createAnswer } from "@/lib/actions/answers";
 import { signout, updateSession } from "@/lib/actions/auth";
 import { addScore } from "@/lib/actions/users";
 import { QuestionWithoutActiveAndDate } from "@/lib/database/questions";
-import { retry } from "@/lib/utils";
+import { Highlight, retry } from "@/lib/utils";
 import { Question } from "@prisma/client";
 import { Route } from "next";
 import { User } from "next-auth";
@@ -42,6 +42,9 @@ export default function WheelWrapper({
   const [score, setScore] = useState(
     Number(JSON.parse(localStorage.getItem("score") as string)) || 5,
   );
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     toast(
@@ -54,6 +57,13 @@ export default function WheelWrapper({
         <h1>Bienvenue {user.pseudo}</h1>
       </div>,
     );
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+
+    params.delete("initial");
+    replace(`${pathname}?${params.toString()}` as Route);
   }, []);
 
   return completed ? (
@@ -77,27 +87,31 @@ export default function WheelWrapper({
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <Wheel value={score} />
-        {!initial && (
-          <button
-            key={"completed-button"}
-            onClick={async () => {
-              localStorage.removeItem("answeredQuestions");
-              localStorage.removeItem("surveyCompleted");
-              localStorage.removeItem("score");
-
-              await signout(paths.toHome);
-            }}
-            className={`z-40 flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7`}
-            style={{
-              animationDelay: "1.5s",
-              animationFillMode: "forwards",
-              animationDuration: "800ms",
-            }}
-          >
-            <Refresh className={"size-5"} />
-            <span>Jouer à nouveau</span>
-          </button>
+        {user.score && (
+          <Highlight className={"absolute bottom-[20%]"}>
+            Score: {user.score}
+          </Highlight>
         )}
+
+        <button
+          key={"completed-button"}
+          onClick={async () => {
+            localStorage.removeItem("answeredQuestions");
+            localStorage.removeItem("surveyCompleted");
+            localStorage.removeItem("score");
+
+            await signout(paths.toHome);
+          }}
+          className={`${initial ? "invisible" : "visible"} z-40 flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7`}
+          style={{
+            animationDelay: "1.5s",
+            animationFillMode: "forwards",
+            animationDuration: "800ms",
+          }}
+        >
+          <Refresh className={"size-5"} />
+          <span>Jouer à nouveau</span>
+        </button>
       </section>
     </>
   ) : (

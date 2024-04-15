@@ -70,13 +70,6 @@ export default function QuestionStack({
     replace(`${pathname}?${params.toString()}` as Route);
   }, [surveyCompleted]);
 
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-
-    params.delete("initial");
-    replace(`${pathname}?${params.toString()}` as Route);
-  }, []);
-
   function handleAnswer(
     key: keyof Pick<
       Omit<Question, "active" | "date">,
@@ -85,6 +78,7 @@ export default function QuestionStack({
   ) {
     if (currentQuestionIndex === questions.length - 1)
       return handleCompleted(key);
+    flip();
     const currentValue = questions[currentQuestionIndex][key];
     const newScore = (score + currentValue) / 2;
 
@@ -115,7 +109,7 @@ export default function QuestionStack({
     setLoading(value);
     addScore(score).catch(() => retry(() => addScore(score)));
 
-    await updateSession({ completed: true });
+    await updateSession({ completed: true, score });
 
     const params = new URLSearchParams(searchParams);
 
@@ -175,7 +169,6 @@ export default function QuestionStack({
 
               <div>
                 <form
-                  onClick={flip}
                   action={async (data) => {
                     try {
                       await createAnswer(data);
