@@ -76,8 +76,6 @@ function processDirectory(directoryPath) {
             fs.writeFile(filePath, modifiedContent, "utf8", (err) => {
               if (err) {
                 console.error("Error writing file:", err);
-              } else {
-                console.log(`Modified and saved: ${file}`);
               }
             });
           });
@@ -90,3 +88,4 @@ function processDirectory(directoryPath) {
 const rootDirectory = process.argv[2] || defaultRootDirectory;
 
 processDirectory(rootDirectory);
+console.log("🧹");
