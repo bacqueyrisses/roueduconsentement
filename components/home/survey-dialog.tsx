@@ -117,6 +117,7 @@ export default function SurveyDialog({ setDetailsOpen }) {
                 name="age"
                 placeholder="Quel âge avez vous ?"
                 min={0}
+                required
                 invalid={!!state?.errors?.age}
               />
             </Field>
