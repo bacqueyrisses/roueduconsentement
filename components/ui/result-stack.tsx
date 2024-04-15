@@ -20,7 +20,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
   const [cards, setCards] = useState<Answer[]>(
     [...answers].sort((a, b) => Number(b.date) - Number(+a.date)),
   );
-  const [indexCard, setIndexCard] = useState(1);
+  const [indexCard, setIndexCard] = useState(0);
   const completed = cards.length === indexCard;
 
   const flip = () => {
@@ -70,7 +70,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
 
               <div>
                 <div className="font-medium text-neutral-500 mb-0.5">
-                  <Highlight>Question {"2"}</Highlight>
+                  <Highlight>Question {indexCard + 1}</Highlight>
                 </div>
                 <div className="flex items-center justify-between font-normal text-neutral-500">
                   <Highlight score={card.value}>Score : {card.value}</Highlight>
