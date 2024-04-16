@@ -77,7 +77,7 @@ export default function WheelWrapper({
             score={score}
           />
           <DefinitionButton />
-          <LinksButton />
+          <LinksButton variant="wheel" />
         </div>
         <div
           className={
@@ -93,7 +93,7 @@ export default function WheelWrapper({
               initial={initial}
               score={score}
             />
-            <LinksButton />
+            <LinksButton variant="wheel" />
           </div>
           <DefinitionButton />
         </div>

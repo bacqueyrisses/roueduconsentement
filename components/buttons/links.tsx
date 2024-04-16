@@ -1,6 +1,10 @@
 import Link from "@/components/icons/link";
 
-export default function LinksButton() {
+export default function LinksButton({
+  variant,
+}: {
+  variant: "home" | "wheel";
+}) {
   return (
     <button
       className={
@@ -9,8 +13,7 @@ export default function LinksButton() {
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
       <Link className={"size-6"} />
-      <span className="hidden md:block">Liens utiles</span>
-      <span className="block md:hidden">Liens</span>
+      <span>{variant === "home" ? "Liens utiles" : "Liens"}</span>
     </button>
   );
 }

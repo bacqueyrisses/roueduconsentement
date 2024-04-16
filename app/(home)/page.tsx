@@ -23,7 +23,7 @@ export default function HomePage() {
         <div className={"hidden space-x-2 text-center md:block"}>
           <NameDialog />
           <DefinitionButton />
-          <LinksButton />
+          <LinksButton variant="home" />
         </div>
         <div
           className={
@@ -32,7 +32,7 @@ export default function HomePage() {
         >
           <div className="space-x-2">
             <NameDialog />
-            <LinksButton />
+            <LinksButton variant="home" />
           </div>
           <DefinitionButton />
         </div>
