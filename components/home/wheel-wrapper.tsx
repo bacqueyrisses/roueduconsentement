@@ -67,7 +67,7 @@ export default function WheelWrapper({
       <section
         className={"relative mx-auto flex w-full flex-col items-center gap-4"}
       >
-        <div className={"space-y-2 text-center md:space-x-2"}>
+        <div className={"hidden space-x-2 text-center md:block"}>
           <DetailsDialog
             answers={answers}
             surveyCompleted={
@@ -79,10 +79,28 @@ export default function WheelWrapper({
           <DefinitionButton />
           <LinksButton />
         </div>
+        <div
+          className={
+            "flex flex-col items-center justify-center gap-2 md:hidden"
+          }
+        >
+          <div className="space-x-2">
+            <DetailsDialog
+              answers={answers}
+              surveyCompleted={
+                localStorage.getItem("surveyCompleted") || surveyCompleted
+              }
+              initial={initial}
+              score={score}
+            />
+            <LinksButton />
+          </div>
+          <DefinitionButton />
+        </div>
       </section>
       <section
         className={
-          "flex h-full w-3/5 animate-fade-up flex-col items-center justify-center overflow-hidden opacity-0 md:w-full md:p-6"
+          "flex h-full w-3/5 animate-fade-up flex-col items-center justify-center opacity-0 md:w-full md:overflow-hidden md:p-6"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >

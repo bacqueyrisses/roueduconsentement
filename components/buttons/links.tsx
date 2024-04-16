@@ -9,7 +9,8 @@ export default function LinksButton() {
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
       <Link className={"size-6"} />
-      <span>Liens utiles</span>
+      <span className="hidden md:block">Liens utiles</span>
+      <span className="block md:hidden">Liens</span>
     </button>
   );
 }

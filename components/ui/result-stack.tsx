@@ -42,7 +42,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
           <motion.div
             key={card.id}
             className={
-              "absolute flex h-[360px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[380px] md:w-4/5 md:p-5"
+              "absolute flex h-[380px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
             }
             style={{
               transformOrigin: "top center",
@@ -60,7 +60,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
                 }
               >
                 {!completed ? (
-                  card.summary
+                  <div dangerouslySetInnerHTML={{ __html: card.summary }} />
                 ) : (
                   <p>
                     <Highlight>Merci d'avoir participé</Highlight> à notre jeu,
