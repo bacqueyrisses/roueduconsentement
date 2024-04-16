@@ -20,15 +20,26 @@ export default function HomePage() {
           </Highlight>{" "}
           grâce à cette appli ! (autant de fois que nécessaire) 🤍
         </p>
-        <div className={"space-y-2 text-center md:space-x-2"}>
+        <div className={"hidden space-y-2 text-center md:block"}>
           <NameDialog />
           <DefinitionButton />
           <LinksButton />
         </div>
+        <div
+          className={
+            "flex flex-col items-center justify-center gap-2 md:hidden"
+          }
+        >
+          <div className="space-x-2">
+            <NameDialog />
+            <LinksButton />
+          </div>
+          <DefinitionButton />
+        </div>
       </section>
       <section
         className={
-          "flex h-full w-full animate-fade-up items-center justify-center overflow-hidden p-6 opacity-0"
+          "flex h-full w-full animate-fade-up items-center justify-center overflow-hidden opacity-0 md:p-6"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
