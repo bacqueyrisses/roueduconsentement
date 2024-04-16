@@ -91,7 +91,7 @@ export default function WheelWrapper({
           <Highlight
             score={score}
             className={
-              "absolute top-[23%] text-sm md:bottom-[19%] md:text-base"
+              "absolute top-[23%] h-fit text-sm md:bottom-[19%] md:top-auto md:text-base"
             }
           >
             Mon score: {score.toFixed(1)}

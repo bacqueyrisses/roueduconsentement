@@ -6,7 +6,7 @@ import { User } from "next-auth";
 export function FinalCard({ score }: { score: User["score"] }) {
   return (
     <div
-      className={"relative flex h-full w-full translate-y-10 justify-center"}
+      className={"relative flex h-full w-full justify-center md:translate-y-10"}
     >
       <motion.div
         className={
@@ -35,7 +35,7 @@ export function FinalCard({ score }: { score: User["score"] }) {
         <div>
           <div
             className={
-              "flex items-center justify-end font-normal text-neutral-400"
+              "flex items-center justify-center font-normal text-neutral-400 md:justify-end"
             }
           >
             <CopyButton />

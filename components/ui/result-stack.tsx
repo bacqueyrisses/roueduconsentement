@@ -34,13 +34,15 @@ export default function ResultStack({ score, answers }: ResultStack) {
   };
 
   return (
-    <div className={"relative flex h-full w-full translate-y-8 justify-center"}>
+    <div
+      className={"relative flex h-full w-full justify-center md:translate-y-8"}
+    >
       {cards.map((card, index) => {
         return (
           <motion.div
             key={card.id}
             className={
-              "absolute flex h-[380px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
+              "absolute flex h-[360px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[380px] md:w-4/5 md:p-5"
             }
             style={{
               transformOrigin: "top center",
@@ -54,7 +56,7 @@ export default function ResultStack({ score, answers }: ResultStack) {
             <>
               <div
                 className={
-                  "flex w-full flex-col items-center justify-center font-normal leading-relaxed text-neutral-700"
+                  "flex w-full flex-col items-center justify-center text-sm font-normal leading-relaxed text-neutral-700 md:text-base"
                 }
               >
                 {!completed ? (
@@ -68,12 +70,12 @@ export default function ResultStack({ score, answers }: ResultStack) {
                   </p>
                 )}
               </div>
-              <div className={"h-36 w-full translate-y-4"}>
+              <div className={"h-20 w-full translate-y-4 md:h-36"}>
                 <Wheel value={completed ? score : card.value} />
               </div>
 
               <div>
-                <div className={"mb-0.5 font-medium text-neutral-500"}>
+                <div className={"mb-0.5 flex font-medium text-neutral-500"}>
                   <Highlight>Question {indexCard + 1}</Highlight>
                 </div>
                 <div
