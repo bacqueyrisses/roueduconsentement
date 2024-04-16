@@ -67,7 +67,7 @@ export default function WheelWrapper({
       <section
         className={"relative mx-auto flex w-full flex-col items-center gap-4"}
       >
-        <div className={"space-x-2"}>
+        <div className={"space-y-2 text-center md:space-x-2"}>
           <DetailsDialog
             answers={answers}
             surveyCompleted={
@@ -82,13 +82,18 @@ export default function WheelWrapper({
       </section>
       <section
         className={
-          "flex h-full w-full animate-fade-up flex-col items-center justify-center overflow-hidden p-6 opacity-0"
+          "flex h-full w-3/5 animate-fade-up flex-col items-center justify-center overflow-hidden opacity-0 md:w-full md:p-6"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <Wheel value={score} />
         {score && (
-          <Highlight score={score} className={"absolute bottom-[19%]"}>
+          <Highlight
+            score={score}
+            className={
+              "absolute top-[23%] text-sm md:bottom-[19%] md:text-base"
+            }
+          >
             Mon score: {score.toFixed(1)}
           </Highlight>
         )}
@@ -102,7 +107,7 @@ export default function WheelWrapper({
 
             await signout(paths.toHome);
           }}
-          className={`${initial ? "invisible" : "visible"} z-40 flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-base font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7`}
+          className={`${initial ? "invisible" : "visible"} z-40 flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-sm font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7 md:text-base`}
           style={{
             animationDelay: "1.5s",
             animationFillMode: "forwards",
