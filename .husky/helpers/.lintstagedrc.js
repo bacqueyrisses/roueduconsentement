@@ -11,6 +11,5 @@ module.exports = {
     "prettier --write --config ./package.json --log-level silent",
     "prettier --write --plugin=prettier-plugin-organize-imports --log-level silent",
     buildEslintCommand,
-    "git add",
   ],
 };
