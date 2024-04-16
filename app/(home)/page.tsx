@@ -20,7 +20,7 @@ export default function HomePage() {
           </Highlight>{" "}
           grâce à cette appli ! (autant de fois que nécessaire) 🤍
         </p>
-        <div className={"space-x-2"}>
+        <div className={"space-y-2 text-center md:space-x-2"}>
           <NameDialog />
           <DefinitionButton />
           <LinksButton />
