@@ -38,15 +38,15 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
         <section className={"flex w-full flex-col items-center justify-center"}>
           <Image
             src={logo}
-            width={33}
-            height={33}
+            width={31}
+            height={31}
             alt={"logo de la roue du consentement"}
             style={{ animationDelay: "0.10s", animationFillMode: "forwards" }}
             className={"mb-1 animate-fade-up opacity-0"}
           />
           <h1
             className={
-              "inline-flex animate-fade-up flex-col bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl"
+              "inline-flex animate-fade-up flex-col bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-6xl"
             }
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
