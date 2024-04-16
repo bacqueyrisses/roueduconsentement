@@ -52,7 +52,11 @@ export default function ResultStack({ score, answers }: ResultStack) {
             }}
           >
             <>
-              <div className="flex w-full flex-col items-center justify-center font-normal leading-relaxed text-neutral-700">
+              <div
+                className={
+                  "flex w-full flex-col items-center justify-center font-normal leading-relaxed text-neutral-700"
+                }
+              >
                 {!completed ? (
                   card.summary
                 ) : (

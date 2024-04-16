@@ -138,7 +138,11 @@ export default function QuestionStack({
                   Question numéro {currentQuestionIndex + 1}
                 </Highlight>
               </div>
-              <div className="flex w-full flex-grow flex-col items-center justify-center px-12 text-center text-lg font-normal leading-relaxed text-neutral-700">
+              <div
+                className={
+                  "flex w-full flex-grow flex-col items-center justify-center px-12 text-center text-lg font-normal leading-relaxed text-neutral-700"
+                }
+              >
                 {card.description}
               </div>
 
