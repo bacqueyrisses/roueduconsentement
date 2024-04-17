@@ -2,7 +2,6 @@
 
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
-import X from "@/components/icons/x";
 import {
   Dialog,
   DialogActions,
@@ -13,27 +12,26 @@ import {
 import { Field } from "@/components/ui/fieldset";
 import { Input } from "@/components/ui/input";
 import { authenticate } from "@/lib/actions/auth";
-import { useEffect, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
-import { toast } from "sonner";
+import { useState } from "react";
+import { useFormStatus } from "react-dom";
 
 export default function NameDialog() {
   const [isOpen, setIsOpen] = useState(false);
-  const [error, dispatch] = useFormState(authenticate, undefined);
+  // const [error, dispatch] = useFormState(authenticate, undefined);
 
-  useEffect(() => {
-    error &&
-      toast(
-        <div
-          className={
-            "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
-          }
-        >
-          <X />
-          <h1>{error}</h1>
-        </div>,
-      );
-  }, [error]);
+  // useEffect(() => {
+  //   error &&
+  //     toast(
+  //       <div
+  //         className={
+  //           "inline-flex items-center gap-1.5 rounded-full bg-red-200 px-5 py-2 text-base font-medium text-red-600 md:px-7"
+  //         }
+  //       >
+  //         <X />
+  //         <h1>{error}</h1>
+  //       </div>,
+  //     );
+  // }, [error]);
 
   return (
     <>
@@ -49,7 +47,7 @@ export default function NameDialog() {
       </button>
 
       <Dialog open={isOpen} onClose={setIsOpen}>
-        <form action={dispatch}>
+        <form action={authenticate}>
           <DialogTitle>Rentrez votre pseudo</DialogTitle>
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
@@ -60,7 +58,7 @@ export default function NameDialog() {
                 type={"text"}
                 name="pseudo"
                 placeholder="pseudonyme"
-                invalid={!!error}
+                // invalid={!!error}
               />
             </Field>
           </DialogBody>
