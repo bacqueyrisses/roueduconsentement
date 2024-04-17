@@ -38,8 +38,8 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
         <section className={"flex w-full flex-col items-center justify-center"}>
           <Image
             src={logo}
-            width={31}
-            height={31}
+            width={33}
+            height={33}
             alt={"logo de la roue du consentement"}
             style={{ animationDelay: "0.10s", animationFillMode: "forwards" }}
             className={"mb-1 animate-fade-up opacity-0"}
