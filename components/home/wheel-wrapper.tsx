@@ -2,6 +2,7 @@
 
 import DefinitionButton from "@/components/buttons/definition";
 import LinksButton from "@/components/buttons/links";
+import Footer from "@/components/footer";
 import DetailsDialog from "@/components/home/details-dialog";
 import Wheel from "@/components/home/wheel";
 import Check from "@/components/icons/check";
@@ -13,7 +14,6 @@ import { QuestionWithoutActive } from "@/lib/database/questions";
 import { Highlight } from "@/lib/utils";
 import { Answer } from "@prisma/client";
 import { User } from "next-auth";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -35,9 +35,6 @@ export default function WheelWrapper({
   const [score, setScore] = useState(
     Number(JSON.parse(localStorage.getItem("score") as string)) || 5,
   );
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
     toast(
@@ -144,6 +141,7 @@ export default function WheelWrapper({
           score={score}
         />
       </section>
+      <Footer visible={true} />
     </>
   );
 }
