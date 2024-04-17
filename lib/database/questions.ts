@@ -38,7 +38,7 @@ export async function getQuestionsWithoutActive() {
     WHERE
       active = TRUE
     ORDER BY
-      date DESC
+      id DESC
   `;
 
   return result.rows;

@@ -3,6 +3,7 @@
 import { auth, signIn, signOut, unstable_update } from "@/auth";
 import { Route } from "next";
 import { AuthError, User } from "next-auth";
+import { cookies } from "next/headers";
 
 export async function getUser() {
   const session = await auth();
@@ -48,7 +49,13 @@ export async function authenticateAdmin(
 }
 
 export async function signout(redirectTo: Route) {
-  await signOut({ redirectTo });
+  await signOut({ redirectTo }).then(() =>
+    cookies()
+      .getAll()
+      .forEach((cookie) => {
+        cookies().delete(cookie.name);
+      }),
+  );
 }
 export async function updateSession(data: Partial<User>) {
   await unstable_update({ user: data });

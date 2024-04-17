@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Dispatch, useEffect, useState } from "react";
+import { Dispatch, useState } from "react";
 import { toast } from "sonner";
 
 interface QuestionStack {
@@ -29,11 +29,26 @@ export default function QuestionStack({
 }: QuestionStack) {
   const CARD_OFFSET = 0;
   const SCALE_FACTOR = 0.06;
-  const [cards, setCards] = useState<QuestionWithoutActive[]>(
-    [...questions].sort((a, b) => Number(b.date) - Number(a.date)),
-  );
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const [cards, setCards] = useState<QuestionWithoutActive[]>(() => {
+    const answeredQuestionsData = localStorage.getItem("answeredQuestions");
+    const initialAnsweredQuestions = answeredQuestionsData
+      ? JSON.parse(answeredQuestionsData)
+      : {};
+
+    const answeredIndices = Object.keys(initialAnsweredQuestions).map(Number);
+
+    const updatedQuestions = questions.filter(
+      (q) => !answeredIndices.includes(q.id - 1),
+    );
+
+    const nextUnansweredIndex = answeredIndices.length;
+    setCurrentQuestionIndex(
+      nextUnansweredIndex !== questions.length ? nextUnansweredIndex : 0,
+    );
+    return updatedQuestions;
+  });
 
   const [loading, setLoading] = useState("");
 
@@ -60,18 +75,22 @@ export default function QuestionStack({
       localStorage.getItem("answeredQuestions") || "{}",
     );
 
-    answeredQuestions[currentQuestionIndex] = true;
+    const updatedAnsweredQuestions = {
+      ...answeredQuestions,
+      [currentQuestionIndex]: true, // Update the answered state for current question
+    };
+
     localStorage.setItem(
       "answeredQuestions",
-      JSON.stringify(answeredQuestions),
+      JSON.stringify(updatedAnsweredQuestions),
     );
 
     let nextIndex = currentQuestionIndex + 1;
-    while (answeredQuestions[nextIndex]) {
+    while (updatedAnsweredQuestions[nextIndex]) {
       nextIndex++;
     }
 
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setCurrentQuestionIndex(nextIndex);
   }
 
   async function handleCompleted(value: string) {
@@ -89,24 +108,14 @@ export default function QuestionStack({
     replace(`${pathname}?${params.toString()}` as Route);
   }
 
-  useEffect(() => {
-    const answeredQuestions = JSON.parse(
-      localStorage.getItem("answeredQuestions") || "{}",
-    );
-    let index = 0;
-    while (answeredQuestions[index]) {
-      index++;
-    }
-
-    setCurrentQuestionIndex(index);
-  }, []);
-
   const flip = () => {
     if (currentQuestionIndex === questions.length - 1) return;
-    setCards((prevCards: QuestionWithoutActive[]) => {
-      const newArray = [...prevCards]; // create a copy of the array
-      newArray.unshift(newArray.pop()!); // move the last element to the front
-      return newArray;
+
+    setCards((prevCards) => {
+      const newCards = [...prevCards];
+      const lastCard = newCards.pop();
+      newCards.unshift(lastCard!);
+      return newCards;
     });
   };
 
@@ -121,10 +130,12 @@ export default function QuestionStack({
           <motion.div
             key={card.id}
             className={
-              "absolute flex h-4/5 w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-3/5 md:w-4/5 md:p-5"
+              "absolute flex h-fit w-full flex-col justify-between gap-6 rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-3/5 md:w-4/5 md:gap-2 md:p-5"
             }
             style={{
               transformOrigin: "top center",
+              visibility:
+                currentQuestionIndex + 1 !== card.id ? "hidden" : "visible",
             }}
             animate={{
               top: (cards.length - index - 1) * -CARD_OFFSET, // Reverse the order for animation
@@ -134,9 +145,7 @@ export default function QuestionStack({
           >
             <>
               <div className={"pt-2 text-center text-base md:text-lg"}>
-                <Highlight>
-                  Question numéro {currentQuestionIndex + 1}
-                </Highlight>
+                <Highlight>Question numéro {card.id}</Highlight>
               </div>
               <div
                 className={

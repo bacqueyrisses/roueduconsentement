@@ -17,7 +17,6 @@ export async function createAnswer(formData: FormData) {
 
   if (!validatedFields.success)
     throw new Error("Validation error. Failed to Create Answer.");
-  console.log(validatedFields.data);
 
   const { description, option, value, summary } = validatedFields.data;
 

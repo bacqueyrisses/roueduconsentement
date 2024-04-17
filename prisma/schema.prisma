@@ -19,7 +19,7 @@ model Answer {
 }
 
 model Question {
-  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id          Int      @id @default(autoincrement())
   description String   @unique
   valueOne    Int
   valueTwo    Int
