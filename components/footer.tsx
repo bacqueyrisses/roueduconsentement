@@ -1,11 +1,14 @@
+"use client";
+import { paths } from "@/lib/constants";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
   return (
     <footer
-      className={
-        "w-screen animate-fade-up text-center text-[0.65rem] tracking-tight opacity-0 md:text-[0.9rem]"
-      }
+      className={`${pathname === paths.toWheel && "hidden md:block"} w-screen animate-fade-up text-center text-[0.65rem] tracking-tight opacity-0 md:text-[0.9rem]`}
       style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
     >
       <p className={"text-gray-500"}>

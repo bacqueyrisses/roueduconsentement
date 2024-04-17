@@ -44,7 +44,7 @@ export default async function Page({
         <p
           key={"completed-title"}
           className={
-            "animate-fade-up text-balance text-center text-sm text-gray-500 opacity-0 md:text-base"
+            "animate-fade-up text-balance text-center text-sm tracking-tight text-gray-500 opacity-0 md:text-base md:tracking-normal"
           }
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >

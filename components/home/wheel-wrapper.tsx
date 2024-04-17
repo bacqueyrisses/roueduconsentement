@@ -132,7 +132,7 @@ export default function WheelWrapper({
             animationDuration: "800ms",
           }}
         >
-          <Refresh className={"size-5"} />
+          <Refresh className={"size-4 md:size-5"} />
           <span>Jouer à nouveau</span>
         </button>
       </section>
