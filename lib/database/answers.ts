@@ -10,6 +10,8 @@ export async function getAnswers(userId: User["id"]) {
       "Answer"
     WHERE
       "userId" = ${userId}
+    ORDER BY
+      id ASC
   `;
 
   return result.rows;

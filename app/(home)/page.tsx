@@ -30,7 +30,7 @@ export default function HomePage() {
             "flex flex-col items-center justify-center gap-2 md:hidden"
           }
         >
-          <div className="space-x-2">
+          <div>
             <NameDialog />
             <LinksButton variant="home" />
           </div>

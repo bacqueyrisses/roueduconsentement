@@ -73,7 +73,7 @@ export default function WheelWrapper({
             "flex flex-col items-center justify-center gap-2 md:hidden"
           }
         >
-          <div className="space-x-2">
+          <div>
             <DetailsDialog
               answers={answers}
               surveyCompleted={
