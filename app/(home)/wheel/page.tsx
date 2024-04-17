@@ -4,6 +4,7 @@ import { getAnswers } from "@/lib/database/answers";
 import { getQuestionsWithoutActive } from "@/lib/database/questions";
 import { Highlight } from "@/lib/utils";
 import { notFound } from "next/navigation";
+export const dynamic = "force-dynamic";
 
 export default async function Page({
   searchParams,
