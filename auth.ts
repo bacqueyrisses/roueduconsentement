@@ -29,7 +29,7 @@ export const { auth, unstable_update, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { pseudo } = parsedCredentials.data;
 
-          const user = createUser(pseudo);
+          const user = await createUser(pseudo);
           if (!user) return null;
 
           return user;
