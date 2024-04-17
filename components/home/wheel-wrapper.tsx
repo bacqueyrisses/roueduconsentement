@@ -100,7 +100,7 @@ export default function WheelWrapper({
       </section>
       <section
         className={
-          "flex h-full w-3/5 animate-fade-up flex-col items-center justify-center opacity-0 md:w-full md:overflow-hidden md:p-6"
+          "flex h-full w-3/5 animate-fade-up flex-col items-center justify-center overflow-hidden opacity-0 md:w-full md:p-6"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
