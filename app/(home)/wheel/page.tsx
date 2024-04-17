@@ -10,7 +10,6 @@ export default async function Page({
 }: {
   searchParams?: {
     completed?: string;
-    initial?: string;
     surveyCompleted?: string;
   };
 }) {
@@ -19,7 +18,6 @@ export default async function Page({
   if (!user) notFound();
 
   const completed = searchParams?.completed || user?.completed || "";
-  const initial = searchParams?.initial || "";
   const surveyCompleted =
     searchParams?.surveyCompleted || user?.surveyCompleted || "";
 
@@ -62,7 +60,6 @@ export default async function Page({
         questions={questions}
         answers={answers}
         completed={completed}
-        initial={initial}
         surveyCompleted={surveyCompleted}
       />
     </>

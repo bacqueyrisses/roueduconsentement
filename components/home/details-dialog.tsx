@@ -8,14 +8,12 @@ import { useState } from "react";
 
 interface DetailsDialog {
   surveyCompleted: string | User["surveyCompleted"];
-  initial: string;
   score: number;
   answers: Answer[];
 }
 
 export default function DetailsDialog({
   surveyCompleted,
-  initial,
   score,
   answers,
 }: DetailsDialog) {
@@ -41,7 +39,6 @@ export default function DetailsDialog({
           }
         >
           <ResultStackWrapper
-            initial={initial}
             answers={answers}
             surveyCompleted={surveyCompleted}
             score={score}

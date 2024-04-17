@@ -104,7 +104,6 @@ export default function QuestionStack({
     const params = new URLSearchParams(searchParams);
 
     params.set("completed", "true");
-    params.set("initial", "true");
     replace(`${pathname}?${params.toString()}` as Route);
   }
 

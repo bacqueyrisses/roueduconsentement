@@ -12,7 +12,6 @@ import { paths } from "@/lib/constants";
 import { QuestionWithoutActive } from "@/lib/database/questions";
 import { Highlight } from "@/lib/utils";
 import { Answer } from "@prisma/client";
-import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -23,7 +22,6 @@ interface WheelWrapper {
   questions: QuestionWithoutActive[];
   answers: Answer[];
   completed: string | User["completed"];
-  initial: string;
   surveyCompleted: string | User["surveyCompleted"];
 }
 
@@ -32,7 +30,6 @@ export default function WheelWrapper({
   questions,
   answers,
   completed,
-  initial,
   surveyCompleted,
 }: WheelWrapper) {
   const [score, setScore] = useState(
@@ -55,13 +52,6 @@ export default function WheelWrapper({
     );
   }, []);
 
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-
-    params.delete("initial");
-    replace(`${pathname}?${params.toString()}` as Route);
-  }, []);
-
   return completed ? (
     <>
       <section
@@ -73,7 +63,6 @@ export default function WheelWrapper({
             surveyCompleted={
               localStorage.getItem("surveyCompleted") || surveyCompleted
             }
-            initial={initial}
             score={score}
           />
           <DefinitionButton />
@@ -90,7 +79,6 @@ export default function WheelWrapper({
               surveyCompleted={
                 localStorage.getItem("surveyCompleted") || surveyCompleted
               }
-              initial={initial}
               score={score}
             />
             <LinksButton variant="wheel" />
@@ -125,7 +113,9 @@ export default function WheelWrapper({
 
             await signout(paths.toHome);
           }}
-          className={`${initial ? "invisible" : "visible"} z-40 flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-sm font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7 md:text-base`}
+          className={
+            "z-40 flex animate-fade-up cursor-pointer items-center gap-1.5 rounded-full bg-amber-100 px-5 py-2 text-sm font-medium text-amber-700 opacity-0 transition-colors duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-800 md:bottom-8 md:px-7 md:text-base"
+          }
           style={{
             animationDelay: "1.5s",
             animationFillMode: "forwards",

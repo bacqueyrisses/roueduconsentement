@@ -11,7 +11,6 @@ interface ResultStack {
   answers: Answer[];
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
-  initial: string;
 }
 
 export default function ResultStack({ score, answers }: ResultStack) {

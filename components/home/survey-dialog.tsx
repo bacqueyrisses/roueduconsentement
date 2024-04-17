@@ -31,10 +31,6 @@ export default function SurveyDialog() {
 
   function handleClose() {
     setIsOpen((prevState) => !prevState);
-    const params = new URLSearchParams(searchParams);
-
-    params.delete("initial");
-    replace(`${pathname}?${params.toString()}` as Route);
   }
 
   // Effect to handle useFormState success states
@@ -44,7 +40,6 @@ export default function SurveyDialog() {
 
       const params = new URLSearchParams(searchParams);
       params.set("surveyCompleted", "true");
-      params.delete("initial");
       replace(`${pathname}?${params.toString()}` as Route);
       localStorage.setItem("surveyCompleted", "true");
 

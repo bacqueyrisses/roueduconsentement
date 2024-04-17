@@ -8,13 +8,11 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 interface ResultStackWrapper {
-  initial: string;
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
   answers: Answer[];
 }
 export default function ResultStackWrapper({
-  initial,
   surveyCompleted,
   score,
   answers,
@@ -42,7 +40,6 @@ export default function ResultStackWrapper({
           answers={answers}
           surveyCompleted={surveyCompleted}
           score={score}
-          initial={initial}
         />
       ) : (
         <FinalCard key={"not-completed-card"} score={score} />
