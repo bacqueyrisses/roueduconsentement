@@ -122,7 +122,7 @@ export default function QuestionStack({
   return (
     <div
       className={
-        "relative flex h-full w-full translate-y-12 items-center justify-center"
+        "relative flex h-full w-full items-center justify-center md:translate-y-12"
       }
     >
       {cards.map((card, index) => {

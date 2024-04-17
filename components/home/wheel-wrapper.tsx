@@ -141,7 +141,7 @@ export default function WheelWrapper({
     <>
       <section
         className={
-          "w-screen max-w-3xl flex-grow animate-fade-up space-y-6 px-2 text-stone-600 opacity-0"
+          "w-screen flex-grow animate-fade-up space-y-6 px-2 text-stone-600 opacity-0 md:max-w-3xl"
         }
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       >
