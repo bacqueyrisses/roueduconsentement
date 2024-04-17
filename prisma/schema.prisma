@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Answer {
-  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id          Int      @id @default(autoincrement())
   userId      String   @db.Uuid
   description String
   option      String
