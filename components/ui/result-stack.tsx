@@ -37,7 +37,6 @@ export default function ResultStack({ score, answers }: ResultStack) {
       className={"relative flex h-full w-full justify-center md:translate-y-8"}
     >
       {cards.map((card, index) => {
-        console.log(index);
         return (
           <motion.div
             key={card.id}
