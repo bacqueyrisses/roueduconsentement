@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   darkMode: "selector",
@@ -10,6 +11,10 @@ const config: Config = {
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      xs: "380px",
+      ...defaultTheme.screens,
+    },
     current: "currentColor",
     transparent: "transparent",
     extend: {
