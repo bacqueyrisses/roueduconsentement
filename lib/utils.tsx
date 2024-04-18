@@ -1,6 +1,11 @@
 import { User } from "next-auth";
 import { ReactNode } from "react";
 
+// This is temporary until @types/react-dom is updated
+export const initialState: any = {};
+export type PrevState = any;
+
+// Helper functions
 export async function retry<T>(
   operation: () => Promise<T>,
   maxAttempts: number = 3,
@@ -23,10 +28,6 @@ export async function retry<T>(
 
   throw new Error("Maximum number of retry attempts reached.");
 }
-
-// This is temporary until @types/react-dom is updated
-export const initialState: any = {};
-export type PrevState = any;
 
 export function Highlight({
   children,
