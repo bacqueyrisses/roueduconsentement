@@ -42,7 +42,7 @@ export default function Wheel({ value }: StatProps) {
   }, [value]);
 
   return (
-    <div className={"relative z-0 h-full w-full flex-grow"}>
+    <div className={"z-0 h-full w-full flex-grow"}>
       <svg
         className={"h-full w-full overflow-visible"}
         {...gauge.getSVGProps()}
@@ -96,7 +96,7 @@ export default function Wheel({ value }: StatProps) {
           />
         </g>
         <g id="needle">
-          <circle className={"fill-white"} {...needle.base} r={20} />
+          <circle className={"relative fill-white"} {...needle.base} r={20} />
           <line
             className={"stroke-gray-600"}
             strokeLinecap="round"

@@ -25,6 +25,8 @@ export async function createUser(pseudo: User["pseudo"]) {
   } catch (error) {
     console.error(error);
     throw new Error("Couldn't create user.");
+  } finally {
+    revalidatePath(paths.toAdmin);
   }
 }
 
