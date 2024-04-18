@@ -46,7 +46,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
           />
           <h1
             className={
-              "inline-flex animate-fade-up flex-col bg-gradient-to-br from-black to-fuchsia-950/80 bg-clip-text text-center font-display text-3xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-6xl"
+              "inline-flex animate-fade-up flex-col bg-gradient-to-br from-black to-fuchsia-950/75 bg-clip-text text-center font-display text-3xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-6xl"
             }
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
