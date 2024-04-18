@@ -9,7 +9,10 @@ export async function getUser() {
   return session?.user;
 }
 
-export async function authenticate(formData: FormData) {
+export async function authenticate(
+  prevState: string | any,
+  formData: FormData,
+) {
   try {
     await signIn("app-login", formData);
   } catch (error) {
