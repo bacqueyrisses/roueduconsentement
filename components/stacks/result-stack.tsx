@@ -1,6 +1,6 @@
-import SurveyDialog from "@/components/home/survey-dialog";
-import Wheel from "@/components/home/wheel";
+import SurveyDialog from "@/components/dialogs/survey-dialog";
 import RightArrow from "@/components/icons/right-arrow";
+import Wheel from "@/components/wheel";
 import { Highlight } from "@/lib/utils";
 import { Answer } from "@prisma/client";
 import { motion } from "framer-motion";

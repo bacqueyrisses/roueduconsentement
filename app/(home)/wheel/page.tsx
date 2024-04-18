@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import WheelWrapper from "@/components/home/wheel-wrapper";
+import WheelWrapper from "@/components/wrappers/wheel-wrapper";
 import { getAnswers } from "@/lib/database/answers";
 import { getQuestionsWithoutActive } from "@/lib/database/questions";
 import { Highlight } from "@/lib/utils";

@@ -1,4 +1,4 @@
-import CopyButton from "@/components/home/copy-button";
+import CopyButton from "@/components/buttons/copy-button";
 import { Highlight } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { User } from "next-auth";

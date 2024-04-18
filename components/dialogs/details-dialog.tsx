@@ -1,7 +1,7 @@
 "use client";
 
-import ResultStackWrapper from "@/components/home/result-stack";
 import Check from "@/components/icons/check";
+import ResultStackWrapper from "@/components/wrappers/result-stack-wrapper";
 import { Answer } from "@prisma/client";
 import { User } from "next-auth";
 import { useState } from "react";
