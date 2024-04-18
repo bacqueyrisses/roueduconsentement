@@ -16,7 +16,7 @@ export default function Footer({ visible }: { visible?: boolean }) {
         Master AGAPES de{" "}
         <Link
           className={
-            "font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
+            "inline-block bg-gradient-to-r from-black to-fuchsia-950 bg-clip-text font-semibold text-transparent underline-offset-4 transition-colors hover:text-black hover:underline"
           }
           href="https://www.univ-tlse2.fr"
           target="_blank"
@@ -28,7 +28,7 @@ export default function Footer({ visible }: { visible?: boolean }) {
         Projet financé par la{" "}
         <Link
           className={
-            "font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
+            "inline-block bg-gradient-to-r from-black to-fuchsia-950 bg-clip-text font-semibold text-transparent underline-offset-4 transition-colors hover:text-black hover:underline"
           }
           href="https://www.firah.org"
           target="_blank"
@@ -39,7 +39,7 @@ export default function Footer({ visible }: { visible?: boolean }) {
         . Réalisé par diodeproduction / troispetitspoints. Développement par{" "}
         <Link
           className={
-            "font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
+            "inline-block bg-gradient-to-r from-black to-fuchsia-950 bg-clip-text font-semibold text-transparent underline-offset-4 transition-colors hover:text-black hover:underline"
           }
           href="https://www.enzo.codes"
           target="_blank"
