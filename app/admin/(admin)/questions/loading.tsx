@@ -1,4 +1,4 @@
-import QuestionsDialog from "@/components/admin/dialog/questions";
+import QuestionsDialog from "@/components/admin/dialogs/questions";
 import Search from "@/components/admin/search";
 import { Text, Title } from "@tremor/react";
 

@@ -7,13 +7,13 @@ import { motion } from "framer-motion";
 import { User } from "next-auth";
 import { useState } from "react";
 
-interface ResultStack {
+interface ResultCards {
   answers: Answer[];
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
 }
 
-export default function ResultStack({ score, answers }: ResultStack) {
+export default function ResultCards({ score, answers }: ResultCards) {
   const CARD_OFFSET = 0;
   const SCALE_FACTOR = 0.06;
   const [cards, setCards] = useState<Answer[]>(

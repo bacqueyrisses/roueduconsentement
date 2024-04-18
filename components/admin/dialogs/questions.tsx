@@ -1,6 +1,6 @@
 "use client";
 
-import QuestionForm from "@/components/admin/form/question";
+import QuestionForm from "@/components/admin/forms/question";
 import Plus from "@/components/icons/plus";
 import { Dialog, DialogPanel } from "@tremor/react";
 import { useState } from "react";

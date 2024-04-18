@@ -1,6 +1,6 @@
-import QuestionsDialog from "@/components/admin/dialog/questions";
+import QuestionsDialog from "@/components/admin/dialogs/questions";
 import Search from "@/components/admin/search";
-import QuestionsTable from "@/components/admin/table/questions";
+import QuestionsTable from "@/components/admin/tables/questions";
 import { getQuestionsByDescription } from "@/lib/database/questions";
 import { Card, Text, Title } from "@tremor/react";
 

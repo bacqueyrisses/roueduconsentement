@@ -1,4 +1,4 @@
-import QuestionSwitch from "@/components/admin/table/question-switch";
+import QuestionSwitch from "@/components/admin/tables/switchs/question-switch";
 import { QuestionByDescription } from "@/lib/database/questions";
 import {
   Table,

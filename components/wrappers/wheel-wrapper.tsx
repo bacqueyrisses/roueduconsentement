@@ -2,11 +2,11 @@
 
 import DefinitionButton from "@/components/buttons/definition-button";
 import LinksButton from "@/components/buttons/links-button";
+import QuestionStack from "@/components/cards/question-cards";
 import DetailsDialog from "@/components/dialogs/details-dialog";
 import Footer from "@/components/footer";
 import Check from "@/components/icons/check";
 import Refresh from "@/components/icons/refresh";
-import QuestionStack from "@/components/stacks/question-stack";
 import Wheel from "@/components/wheel";
 import { signout } from "@/lib/actions/auth";
 import { paths } from "@/lib/constants";

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnswersList } from "@/components/admin/list/answers";
+import { AnswersList } from "@/components/admin/lists/answers";
 import Message from "@/components/icons/message";
 import { UserWithAnswers } from "@/lib/database/users";
 import { Button, Dialog, DialogPanel } from "@tremor/react";

@@ -15,18 +15,18 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, useState } from "react";
 import { toast } from "sonner";
 
-interface QuestionStack {
+interface QuestionCards {
   questions: QuestionWithoutActive[];
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
   setScore: Dispatch<number>;
 }
 
-export default function QuestionStack({
+export default function QuestionCards({
   score,
   setScore,
   questions,
-}: QuestionStack) {
+}: QuestionCards) {
   const CARD_OFFSET = 0;
   const SCALE_FACTOR = 0.06;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

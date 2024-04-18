@@ -1,5 +1,5 @@
 import Search from "@/components/admin/search";
-import UsersTable from "@/components/admin/table/users";
+import UsersTable from "@/components/admin/tables/users";
 import { getUsersByPseudoWithAnswers } from "@/lib/database/users";
 import { Card, Text, Title } from "@tremor/react";
 

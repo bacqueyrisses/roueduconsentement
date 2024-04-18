@@ -1,4 +1,4 @@
-import AnswersDialog from "@/components/admin/dialog/answers";
+import AnswersDialog from "@/components/admin/dialogs/answers";
 import { UserWithAnswers } from "@/lib/database/users";
 import {
   Table,

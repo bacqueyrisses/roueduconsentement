@@ -1,6 +1,6 @@
 "use client";
-import { FinalCard } from "@/components/stacks/final-card";
-import ResultStack from "@/components/stacks/result-stack";
+import { FinalCard } from "@/components/cards/final-card";
+import ResultStack from "@/components/cards/result-cards";
 import { Answer } from "@prisma/client";
 import { Route } from "next";
 import { User } from "next-auth";
