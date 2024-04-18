@@ -27,7 +27,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
       />
       <div
         className={
-          "fixed h-screen w-full bg-gradient-to-br from-violet-100 via-teal-50 to-amber-100"
+          "fixed h-screen w-full bg-gradient-to-br from-fuchsia-100/80 via-teal-50 to-amber-100"
         }
       />
       <main
