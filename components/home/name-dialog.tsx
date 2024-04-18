@@ -60,7 +60,7 @@ export default function NameDialog() {
                 type={"text"}
                 name="pseudo"
                 placeholder="pseudonyme"
-                // invalid={!!error}
+                invalid={!!error}
               />
             </Field>
           </DialogBody>

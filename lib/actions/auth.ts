@@ -10,7 +10,7 @@ export async function getUser() {
 }
 
 export async function authenticate(
-  prevState: string | any,
+  prevState: string | undefined,
   formData: FormData,
 ) {
   try {
