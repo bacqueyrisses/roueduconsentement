@@ -1,5 +1,4 @@
 import { auth } from "@/auth";
-import WheelWrapper from "@/components/home/wheel-wrapper";
 import { Question } from "@prisma/client";
 import { sql } from "@vercel/postgres";
 import { notFound } from "next/navigation";
@@ -51,13 +50,13 @@ export default async function Page({
         </p>
       )}
 
-      <WheelWrapper
-        user={user}
-        questions={questions}
-        completed={completed}
-        initial={initial}
-        surveyCompleted={surveyCompleted}
-      />
+      {/*<WheelWrapper*/}
+      {/*  user={user}*/}
+      {/*  questions={questions}*/}
+      {/*  completed={completed}*/}
+      {/*  initial={initial}*/}
+      {/*  surveyCompleted={surveyCompleted}*/}
+      {/*/>*/}
     </>
   );
 }
