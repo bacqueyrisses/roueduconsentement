@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import WheelWrapper from "@/components/wrappers/wheel-wrapper";
 import { getAnswers } from "@/lib/database/answers";
 import { getQuestionsWithoutActive } from "@/lib/database/questions";
 import { Highlight } from "@/lib/utils";
@@ -54,13 +55,13 @@ export default async function Page({
         </p>
       )}
 
-      {/*<WheelWrapper*/}
-      {/*  user={user}*/}
-      {/*  questions={questions}*/}
-      {/*  answers={answers}*/}
-      {/*  completed={completed}*/}
-      {/*  surveyCompleted={surveyCompleted}*/}
-      {/*/>*/}
+      <WheelWrapper
+        user={user}
+        questions={questions}
+        answers={answers}
+        completed={completed}
+        surveyCompleted={surveyCompleted}
+      />
     </>
   );
 }
