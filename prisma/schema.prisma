@@ -9,29 +9,40 @@ datasource db {
 }
 
 model Answer {
-  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id          Int      @id @default(autoincrement())
   userId      String   @db.Uuid
   description String
   option      String
   value       Int
+  summary     String
   date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
 
 model Question {
-  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  description String
+  id          Int      @id @default(autoincrement())
+  description String   @unique
   valueOne    Int
   valueTwo    Int
   valueThree  Int
   active      Boolean
+  summary     String
   date        DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
 
 model User {
-  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  pseudo    String   @db.VarChar(255)
-  score     Decimal? @db.Decimal
-  age       Int?
-  completed Boolean? @default(false)
-  date      DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  pseudo          String   @db.VarChar(255)
+  score           Decimal? @db.Decimal
+  age             Int?
+  email           String?
+  emailAdmin      String?  @unique
+  completed       Boolean? @default(false)
+  surveyCompleted Boolean? @default(false)
+  role            Role     @default(user)
+  date            DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+}
+
+enum Role {
+  user
+  admin
 }

@@ -1,16 +1,20 @@
 "use server";
 
-import { signIn, signOut } from "@/auth";
-import { sql } from "@vercel/postgres";
+import { auth, signIn, signOut, unstable_update } from "@/auth";
+import { Route } from "next";
 import { AuthError, User } from "next-auth";
-import { revalidatePath } from "next/cache";
+
+export async function getUser() {
+  const session = await auth();
+  return session?.user;
+}
 
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
 ) {
   try {
-    await signIn("credentials", formData);
+    await signIn("app-login", formData);
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -24,19 +28,28 @@ export async function authenticate(
   }
 }
 
-export async function create(pseudo: User["pseudo"]) {
+export async function authenticateAdmin(
+  prevState: string | undefined,
+  formData: FormData,
+) {
   try {
-    const user =
-      await sql<User>`INSERT INTO "User" (pseudo) VALUES (${pseudo}) RETURNING *`;
-    return user.rows[0];
+    await signIn("admin-login", formData);
   } catch (error) {
-    console.error(error);
-    throw new Error("Couldn't create user.");
-  } finally {
-    revalidatePath("/admin");
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return "Identifiants incorrects.";
+        default:
+          return "Une erreur est survenue.";
+      }
+    }
+    throw error;
   }
 }
 
-export async function signout() {
-  await signOut();
+export async function signout(redirectTo: Route) {
+  await signOut({ redirectTo });
+}
+export async function updateSession(data: Partial<User>) {
+  await unstable_update({ user: data });
 }

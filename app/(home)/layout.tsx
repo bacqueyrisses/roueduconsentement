@@ -8,15 +8,15 @@ import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Jouez | La roue du consentement",
+  title: "Jouez",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 
 export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
-    <body className={`${clash.variable} ${inter.variable} h-screen w-full`}>
+    <body className={`${clash.variable} ${inter.variable} h-full w-full`}>
       <Toaster
-        offset={24}
+        offset={12}
         position={"top-center"}
         toastOptions={{
           unstyled: true,
@@ -25,27 +25,38 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
           },
         }}
       />
-      <div className="fixed h-screen w-full bg-gradient-to-br from-violet-100 via-teal-50 to-amber-100" />
-      <main className="flex w-full flex-col items-center justify-center pt-6">
-        <div className="z-10 flex w-full max-w-2xl flex-col items-center justify-center px-2.5 xl:px-0">
+      <div
+        className={
+          "fixed h-screen w-full bg-gradient-to-br from-fuchsia-100/80 via-teal-50 to-amber-100"
+        }
+      />
+      <main
+        className={
+          " z-10 mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-between gap-4 px-2.5 py-4 md:gap-6"
+        }
+      >
+        <section className={"flex w-full flex-col items-center justify-center"}>
           <Image
             src={logo}
             width={33}
             height={33}
             alt={"logo de la roue du consentement"}
             style={{ animationDelay: "0.10s", animationFillMode: "forwards" }}
-            className={"mb-3 animate-fade-up opacity-0"}
+            className={"mb-1 animate-fade-up opacity-0"}
           />
           <h1
-            className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-6xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl"
+            className={
+              "inline-flex animate-fade-up flex-col bg-gradient-to-br from-black to-fuchsia-950/75 bg-clip-text text-center font-display text-3xl tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-6xl"
+            }
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
-            La roue du consentement
+            <span>La roue du</span>
+            <span className={"-mt-1"}>consentement</span>
           </h1>
-          {children}
-        </div>
+        </section>
+        {children}
+        <Footer />
       </main>
-      <Footer />
     </body>
   );
 }

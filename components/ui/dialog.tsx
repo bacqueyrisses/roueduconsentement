@@ -48,11 +48,15 @@ export function Dialog({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/25 px-2 py-2 focus:outline-0 sm:px-6 sm:py-8 lg:px-8 lg:py-16 dark:bg-zinc-950/50" />
+          <div
+            className={
+              "fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/25 px-2 py-2 focus:outline-0 sm:px-6 sm:py-8 lg:px-8 lg:py-16 dark:bg-zinc-950/50"
+            }
+          />
         </HeadlessTransitionChild>
 
         <HeadlessTransitionChild
-          className="fixed inset-0 z-20 w-screen overflow-y-auto pt-6 sm:pt-0"
+          className={"fixed inset-0 z-20 w-screen overflow-y-auto pt-6 sm:pt-0"}
           enter="ease-out duration-100"
           enterFrom="opacity-0 translate-y-12 sm:translate-y-0"
           enterTo="opacity-100 translate-y-0"
@@ -60,7 +64,11 @@ export function Dialog({
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-12 sm:translate-y-0"
         >
-          <div className="grid min-h-full grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[2fr_auto_3fr] sm:p-4">
+          <div
+            className={
+              "grid min-h-full grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[2fr_auto_3fr] sm:p-4"
+            }
+          >
             <HeadlessTransitionChild
               as={HeadlessDialogPanel}
               className={clsx(
@@ -93,7 +101,7 @@ export function DialogTitle({
       {...props}
       className={clsx(
         className,
-        "text-balance text-lg/6 font-semibold text-zinc-950 sm:text-base/6 dark:text-white",
+        "text-lg/6 font-semibold text-zinc-950 sm:text-base/6 dark:text-white",
       )}
     />
   );

@@ -1,27 +1,27 @@
-import Navbar from "@/components/admin/navbar";
 import { inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Admin | La roue du consentement",
+  title: "Admin",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
 };
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default function RootAdminLayout({ children }: { children: ReactNode }) {
   return (
-    <body className="h-full bg-gray-50">
+    <body className={"h-full w-full bg-gray-50"}>
       <Toaster
+        duration={2500}
+        visibleToasts={4}
         position={"bottom-center"}
         toastOptions={{
           classNames: {
-            toast: `${inter.variable} max-w-max inline-flex gap-1.5 items-center justify-center z-100`,
+            toast: `${inter.variable} flex gap-1.5 items-center justify-center z-100`,
           },
         }}
       />
-      <Navbar />
       {children}
     </body>
   );

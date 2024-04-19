@@ -11,3 +11,11 @@
     -moz-appearance: textfield !important;
   }
 }
+.custom-link {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  text-decoration: underline;
+}
