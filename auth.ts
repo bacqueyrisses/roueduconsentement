@@ -7,7 +7,7 @@ import { z } from "zod";
 import { upsertAdmin } from "@/lib/actions/users";
 import { authConfig } from "./auth.config";
 
-export const { auth, unstable_update, signIn, signOut } = NextAuth({
+export const { auth, unstable_update, signIn, signOut, handlers } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
