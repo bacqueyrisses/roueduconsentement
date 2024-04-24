@@ -32,6 +32,7 @@ export async function createUser(pseudo: User["pseudo"]) {
 
 export async function addScore(score: User["score"]) {
   const user = await getUser();
+  console.log(user?.id);
   const validatedField = z
     .number()
     .transform((n) => Number(n.toFixed(1)))

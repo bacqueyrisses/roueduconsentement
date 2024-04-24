@@ -1,4 +1,3 @@
-import Footer from "@/components/footer";
 import logo from "@/public/logo.png";
 import { clash, inter } from "@/styles/fonts";
 import "@/styles/tailwind.css";
@@ -55,7 +54,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
           </h1>
         </section>
         {children}
-        <Footer />
+        {/*<Footer />*/}
       </main>
     </body>
   );

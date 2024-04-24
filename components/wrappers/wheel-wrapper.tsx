@@ -4,7 +4,6 @@ import DefinitionButton from "@/components/buttons/definition-button";
 import LinksButton from "@/components/buttons/links-button";
 import QuestionStack from "@/components/cards/question-cards";
 import DetailsDialog from "@/components/dialogs/details-dialog";
-import Footer from "@/components/footer";
 import Check from "@/components/icons/check";
 import Refresh from "@/components/icons/refresh";
 import Wheel from "@/components/wheel";
@@ -32,9 +31,10 @@ export default function WheelWrapper({
   completed,
   surveyCompleted,
 }: WheelWrapper) {
-  const [score, setScore] = useState(
-    Number(JSON.parse(localStorage.getItem("score") as string)) || 5,
-  );
+  // const [score, setScore] = useState(
+  //   Number(JSON.parse(localStorage.getItem("score") as string)) || 5,
+  // );
+  const [score, setScore] = useState(5);
 
   useEffect(() => {
     toast(
@@ -57,9 +57,10 @@ export default function WheelWrapper({
         <div className={"hidden space-x-2 text-center md:block"}>
           <DetailsDialog
             answers={answers}
-            surveyCompleted={
-              localStorage.getItem("surveyCompleted") || surveyCompleted
-            }
+            // surveyCompleted={
+            //   localStorage.getItem("surveyCompleted") || surveyCompleted
+            // }
+            surveyCompleted={surveyCompleted}
             score={score}
           />
           <DefinitionButton />
@@ -73,9 +74,10 @@ export default function WheelWrapper({
           <div>
             <DetailsDialog
               answers={answers}
-              surveyCompleted={
-                localStorage.getItem("surveyCompleted") || surveyCompleted
-              }
+              // surveyCompleted={
+              //   localStorage.getItem("surveyCompleted") || surveyCompleted
+              // }
+              surveyCompleted={surveyCompleted}
               score={score}
             />
             <LinksButton variant="wheel" />
@@ -135,13 +137,14 @@ export default function WheelWrapper({
         <QuestionStack
           setScore={setScore}
           questions={questions}
-          surveyCompleted={
-            localStorage.getItem("surveyCompleted") || surveyCompleted
-          }
+          // surveyCompleted={
+          //   localStorage.getItem("surveyCompleted") || surveyCompleted
+          // }
+          surveyCompleted={surveyCompleted}
           score={score}
         />
       </section>
-      <Footer visible={true} />
+      {/*<Footer visible={true} />*/}
     </>
   );
 }

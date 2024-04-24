@@ -1,12 +1,12 @@
+"use client";
 import Check from "@/components/icons/check";
 import Help from "@/components/icons/help";
 import Loader from "@/components/icons/loader";
 import X from "@/components/icons/x";
 import { createAnswer } from "@/lib/actions/answers";
-import { updateSession } from "@/lib/actions/auth";
 import { addScore } from "@/lib/actions/users";
 import { QuestionWithoutActive } from "@/lib/database/questions";
-import { Highlight, retry } from "@/lib/utils";
+import { Highlight } from "@/lib/utils";
 import { Question } from "@prisma/client";
 import { motion } from "framer-motion";
 import { Route } from "next";
@@ -30,25 +30,25 @@ export default function QuestionCards({
   const CARD_OFFSET = 0;
   const SCALE_FACTOR = 0.06;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
-  const [cards, setCards] = useState<QuestionWithoutActive[]>(() => {
-    const answeredQuestionsData = localStorage.getItem("answeredQuestions");
-    const initialAnsweredQuestions = answeredQuestionsData
-      ? JSON.parse(answeredQuestionsData)
-      : {};
-
-    const answeredIndices = Object.keys(initialAnsweredQuestions).map(Number);
-
-    const updatedQuestions = questions.filter(
-      (q) => !answeredIndices.includes(q.id - 1),
-    );
-
-    const nextUnansweredIndex = answeredIndices.length;
-    setCurrentQuestionIndex(
-      nextUnansweredIndex !== questions.length ? nextUnansweredIndex : 0,
-    );
-    return updatedQuestions;
-  });
+  const [cards, setCards] = useState([...questions]);
+  // const [cards, setCards] = useState<QuestionWithoutActive[]>(() => {
+  //   const answeredQuestionsData = localStorage.getItem("answeredQuestions");
+  //   const initialAnsweredQuestions = answeredQuestionsData
+  //     ? JSON.parse(answeredQuestionsData)
+  //     : {};
+  //
+  //   const answeredIndices = Object.keys(initialAnsweredQuestions).map(Number);
+  //
+  //   const updatedQuestions = questions.filter(
+  //     (q) => !answeredIndices.includes(q.id - 1),
+  //   );
+  //
+  //   const nextUnansweredIndex = answeredIndices.length;
+  //   setCurrentQuestionIndex(
+  //     nextUnansweredIndex !== questions.length ? nextUnansweredIndex : 0,
+  //   );
+  //   return updatedQuestions;
+  // });
 
   const [loading, setLoading] = useState("");
 
@@ -97,9 +97,10 @@ export default function QuestionCards({
     if (!score) return;
 
     setLoading(value);
-    addScore(score).catch(() => retry(() => addScore(score)));
+    await addScore(score);
+    console.log("bite");
 
-    await updateSession({ completed: true, score });
+    // await updateSession({ completed: true, score });
 
     const params = new URLSearchParams(searchParams);
 
