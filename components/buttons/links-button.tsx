@@ -19,7 +19,7 @@ export default function LinksButton({
       <span className={`${variant === "home" ? "block" : "hidden md:block"}`}>
         Liens utiles
       </span>
-      <span className={`${variant === "wheel" && "block md:hidden"}`}>
+      <span className={`${variant === "wheel" ? "block md:hidden" : "hidden"}`}>
         Liens
       </span>
     </button>
