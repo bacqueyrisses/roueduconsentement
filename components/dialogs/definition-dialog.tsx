@@ -18,7 +18,7 @@ export default function DefinitionDialog() {
       <DefinitionButton onClick={() => setIsOpen(true)} />
       <Dialog size={"5xl"} open={isOpen} onClose={setIsOpen}>
         <DialogTitle className={"mb-6 text-center md:mb-4 md:text-start"}>
-          <Highlight className={"text-xl md:text-2xl"}>
+          <Highlight className={"text-lg md:text-xl"}>
             {" "}
             Les 5 piliers du consentement
           </Highlight>

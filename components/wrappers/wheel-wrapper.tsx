@@ -1,9 +1,9 @@
 "use client";
 
 import DefinitionButton from "@/components/buttons/definition-button";
-import LinksButton from "@/components/buttons/links-button";
 import QuestionStack from "@/components/cards/question-cards";
 import DetailsDialog from "@/components/dialogs/details-dialog";
+import LinksDialog from "@/components/dialogs/links-dialog";
 import Footer from "@/components/footer";
 import Check from "@/components/icons/check";
 import Refresh from "@/components/icons/refresh";
@@ -63,7 +63,7 @@ export default function WheelWrapper({
             score={score}
           />
           <DefinitionButton />
-          <LinksButton variant="wheel" />
+          <LinksDialog variant="wheel" />
         </div>
         <div
           className={
@@ -78,7 +78,7 @@ export default function WheelWrapper({
               }
               score={score}
             />
-            <LinksButton variant="wheel" />
+            <LinksDialog variant="wheel" />
           </div>
           <DefinitionButton />
         </div>

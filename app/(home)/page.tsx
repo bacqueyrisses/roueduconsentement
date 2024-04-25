@@ -1,5 +1,5 @@
-import LinksButton from "@/components/buttons/links-button";
 import DefinitionDialog from "@/components/dialogs/definition-dialog";
+import LinksDialog from "@/components/dialogs/links-dialog";
 import NameDialog from "@/components/dialogs/name-dialog";
 import Wheel from "@/components/wheel";
 import { Highlight } from "@/lib/utils";
@@ -23,7 +23,7 @@ export default function HomePage() {
         <div className={"hidden space-x-2 text-center md:block"}>
           <NameDialog />
           <DefinitionDialog />
-          <LinksButton variant="home" />
+          <LinksDialog variant="home" />
         </div>
         <div
           className={
@@ -32,7 +32,7 @@ export default function HomePage() {
         >
           <div>
             <NameDialog />
-            <LinksButton variant="home" />
+            <LinksDialog variant="home" />
           </div>
           <DefinitionDialog />
         </div>
