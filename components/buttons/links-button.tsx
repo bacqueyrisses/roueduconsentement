@@ -16,7 +16,12 @@ export default function LinksButton({
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
     >
       <Link className={"size-5 md:size-6"} />
-      <span>{variant === "home" ? "Liens utiles" : "Liens"}</span>
+      <span className={`${variant === "home" ? "block" : "hidden md:block"}`}>
+        Liens utiles
+      </span>
+      <span className={`${variant === "wheel" && "block md:hidden"}`}>
+        Liens
+      </span>
     </button>
   );
 }
