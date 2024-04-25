@@ -1,5 +1,6 @@
 "use client";
 
+import CancelButton from "@/components/buttons/cancel-button";
 import Check from "@/components/icons/check";
 import Loader from "@/components/icons/loader";
 import X from "@/components/icons/x";
@@ -65,18 +66,7 @@ export default function NameDialog() {
             </Field>
           </DialogBody>
           <DialogActions className={"mt-10"}>
-            <button
-              type={"button"}
-              className={
-                "rounded-full bg-red-100 px-5 py-2 font-medium text-red-600 transition-colors duration-300 ease-in-out hover:bg-red-200 md:px-7"
-              }
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              Annuler
-            </button>
-
+            <CancelButton onClick={() => setIsOpen(false)} variant={"cancel"} />
             <SubmitButton />
           </DialogActions>
         </form>

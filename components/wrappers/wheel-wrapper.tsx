@@ -141,7 +141,7 @@ export default function WheelWrapper({
           score={score}
         />
       </section>
-      <Footer visible={true} />
+      <Footer visible={false} />
     </>
   );
 }
