@@ -24,7 +24,6 @@ export default function DefinitionDialog() {
       >
         <DialogTitle className={"mb-8 text-center md:mb-6 md:text-start"}>
           <Highlight className={"text-lg md:text-xl"}>
-            {" "}
             Les 5 piliers du consentement
           </Highlight>
         </DialogTitle>
@@ -91,9 +90,7 @@ export default function DefinitionDialog() {
             les IST avec ton.ta.tes partenaire.s.
           </div>
         </DialogDescription>
-        <DialogTitle
-          className={"pb-2 pt-6 text-center md:pb-0 md:pt-4 md:text-start"}
-        >
+        <DialogTitle className={"py-4 text-center md:py-0 md:text-start"}>
           ET N’OUBLIE PAS QUE <Highlight>SANS OUI C’EST NON</Highlight> !
         </DialogTitle>
         <DialogActions>
