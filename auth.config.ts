@@ -33,20 +33,19 @@ export const authConfig = {
       const isOnAdmin = nextUrl.pathname.startsWith(paths.toAdmin);
       const isOnAdminLogin = nextUrl.pathname === paths.toAdminLogin;
 
-      if (isOnAdminLogin) {
-        if (!isAdminLoggedIn) return true;
-        return Response.redirect(new URL(paths.toAdmin, nextUrl));
-      } else if (isOnAdmin) {
-        return isAdminLoggedIn;
-      }
+      // Authorize logging page for all users
+      if (isOnAdminLogin) return true;
+
+      if (isOnAdmin) return isAdminLoggedIn;
 
       if (isOnWheel) {
+        // Redirect logged admin to the dashboard
         if (isAdminLoggedIn)
           return Response.redirect(new URL(paths.toAdmin, nextUrl));
+
         return isUserLoggedIn;
-      } else if (isUserLoggedIn) {
-        return Response.redirect(new URL(paths.toWheel, nextUrl));
       }
+
       return true;
     },
   },

@@ -31,7 +31,7 @@ export default function ResultCards({ score, answers }: ResultCards) {
       return newArray;
     });
   };
-
+  console.log(answers);
   return (
     <div
       className={"relative flex h-full w-full justify-center md:translate-y-8"}

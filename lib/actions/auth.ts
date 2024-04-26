@@ -14,7 +14,11 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-    await signIn("app-login", formData);
+    const options = {
+      pseudo: formData.get("pseudo"),
+      redirectTo: "/wheel",
+    };
+    await signIn("app-login", options);
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -33,7 +37,12 @@ export async function authenticateAdmin(
   formData: FormData,
 ) {
   try {
-    await signIn("admin-login", formData);
+    const options = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+      redirectTo: "/admin",
+    };
+    await signIn("admin-login", options);
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
