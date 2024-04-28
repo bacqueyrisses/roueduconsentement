@@ -10,6 +10,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Field, Label } from "@/components/ui/fieldset";
+import { Radio, RadioField, RadioGroup } from "@/components/ui/radio";
+import { Textarea } from "@/components/ui/textarea";
+
 import { Input } from "@/components/ui/input";
 import { updateSession } from "@/lib/actions/auth";
 import { addSurvey } from "@/lib/actions/users";
@@ -22,8 +25,10 @@ import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
 export default function SurveyDialog() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [state, dispatch] = useFormState(addSurvey, initialState);
+  const [gender, setGender] = useState("female");
+  const [otherGender, setOtherGender] = useState("");
 
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -100,7 +105,7 @@ export default function SurveyDialog() {
             <Highlight className={"text-emerald-800"}>
               améliorer cette appli
             </Highlight>
-            , merci de répondre à ces quatre questions.
+            , merci de répondre à ces trois questions.
           </DialogTitle>
           <DialogDescription>
             Ce test est anonyme et aucune donnée nominative n’est conservée.
@@ -111,37 +116,49 @@ export default function SurveyDialog() {
               <Input
                 type={"number"}
                 name="age"
-                placeholder="Quel âge avez vous ?"
+                placeholder="Quelle est ton année de naissance ?"
                 min={0}
                 required
                 invalid={!!state?.errors?.age}
               />
             </Field>
             <Field>
-              <Label>Question</Label>
-              <Input
-                type={"text"}
-                disabled
-                name="question"
-                placeholder="Question"
-              />
+              <Label>Genre</Label>
+              <RadioGroup name="gender" defaultValue={gender}>
+                <RadioField>
+                  <Radio value="female" onClick={() => setGender("female")} />
+                  <Label className={"cursor-pointer"}>Femme</Label>
+                </RadioField>
+                <RadioField>
+                  <Radio value="male" onClick={() => setGender("male")} />
+                  <Label className={"cursor-pointer"}>Homme</Label>
+                </RadioField>
+                <RadioField>
+                  <Radio value="other" onClick={() => setGender("other")} />
+                  {gender === "other" ? (
+                    <input
+                      type="text"
+                      name="otherGender"
+                      value={otherGender}
+                      onChange={(e) => setOtherGender(e.target.value)}
+                      placeholder="Précisez"
+                      className={"w-fit text-base/6 outline-none sm:text-sm/6"}
+                      required={gender === "other"}
+                    />
+                  ) : (
+                    <Label className={"cursor-pointer"}>Autre</Label>
+                  )}
+                </RadioField>
+              </RadioGroup>
             </Field>
             <Field>
-              <Label>Question</Label>
-              <Input
-                type={"text"}
-                disabled
+              <Label>
+                Quelles raisons t’ont amené.e à utiliser l’application ?
+              </Label>
+              <Textarea
+                resizable={false}
                 name="question"
-                placeholder="Question"
-              />
-            </Field>
-            <Field>
-              <Label>Question</Label>
-              <Input
-                type={"text"}
-                disabled
-                name="question"
-                placeholder="Question"
+                placeholder="Question ouverte"
               />
             </Field>
           </DialogBody>

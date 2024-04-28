@@ -34,6 +34,8 @@ model User {
   pseudo          String   @db.VarChar(255)
   score           Decimal? @db.Decimal
   age             Int?
+  gender          String?
+  question        String?
   email           String?
   emailAdmin      String?  @unique
   completed       Boolean? @default(false)

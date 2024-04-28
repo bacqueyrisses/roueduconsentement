@@ -64,6 +64,8 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
 
   const validatedFields = AddSurvey.safeParse({
     age: formData.get("age"),
+    gender: formData.get("otherGender") || formData.get("gender"),
+    question: formData.get("question"),
   });
 
   if (!validatedFields.success) {
@@ -73,13 +75,16 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
     };
   }
 
-  const { age } = validatedFields.data;
+  const { age, gender, question } = validatedFields.data;
+  console.log(age, gender, question);
 
   try {
     await sql`
       UPDATE "User"
       SET
-        age = ${age}
+        age = ${age},
+        gender = ${gender},
+        question = ${question}
       WHERE
         id = ${user?.id}
     `;

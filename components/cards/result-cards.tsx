@@ -83,7 +83,7 @@ export default function ResultCards({ score, answers }: ResultCards) {
                   }
                 >
                   <Highlight score={card.value}>Score : {card.value}</Highlight>
-                  {completed ? (
+                  {completed || true ? (
                     <SurveyDialog />
                   ) : (
                     <button
