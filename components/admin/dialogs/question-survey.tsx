@@ -29,9 +29,7 @@ export default function QuestionSurveyDialog({
         className={"z-[100]"}
       >
         <DialogPanel className={"h-fit max-w-6xl"}>
-          <div className={"h-fit w-fit break-all"}>
-            {question ?? "Non renseigné."}
-          </div>
+          <div className={"h-fit w-fit break-all"}>{question}</div>
 
           <div className={"mt-8 flex items-center justify-end space-x-2"}>
             <Button

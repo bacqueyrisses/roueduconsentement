@@ -44,7 +44,9 @@ export default function UsersTable({ users }: { users: UserWithAnswers[] }) {
               <Text>{user.gender ?? "Non renseigné."}</Text>
             </TableCell>
             <TableCell>
-              <QuestionSurveyDialog question={user.question} />
+              <QuestionSurveyDialog
+                question={user.question ?? "Non renseignée."}
+              />
             </TableCell>
             <TableCell>
               <AnswersDialog user={user} />
