@@ -34,7 +34,9 @@ export default function ResultCards({ score, answers }: ResultCards) {
   console.log(answers);
   return (
     <div
-      className={"relative flex h-full w-full justify-center md:translate-y-8"}
+      className={
+        "relative flex h-full w-full justify-center text-start md:translate-y-8"
+      }
     >
       {cards.map((card, index) => {
         return (
@@ -83,7 +85,7 @@ export default function ResultCards({ score, answers }: ResultCards) {
                   }
                 >
                   <Highlight score={card.value}>Score : {card.value}</Highlight>
-                  {completed || true ? (
+                  {completed ? (
                     <SurveyDialog />
                   ) : (
                     <button

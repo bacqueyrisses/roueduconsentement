@@ -116,7 +116,7 @@ export default function SurveyDialog() {
               <Input
                 type={"number"}
                 name="age"
-                placeholder="Quelle est ton année de naissance ?"
+                placeholder="Quel âge as tu ?"
                 min={0}
                 required
                 invalid={!!state?.errors?.age}
