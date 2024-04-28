@@ -27,7 +27,7 @@ import { toast } from "sonner";
 export default function SurveyDialog() {
   const [isOpen, setIsOpen] = useState(true);
   const [state, dispatch] = useFormState(addSurvey, initialState);
-  const [gender, setGender] = useState("female");
+  const [gender, setGender] = useState("femme");
   const [otherGender, setOtherGender] = useState("");
 
   const searchParams = useSearchParams();
@@ -126,11 +126,11 @@ export default function SurveyDialog() {
               <Label>Genre</Label>
               <RadioGroup name="gender" defaultValue={gender}>
                 <RadioField>
-                  <Radio value="female" onClick={() => setGender("female")} />
+                  <Radio value="femme" onClick={() => setGender("female")} />
                   <Label className={"cursor-pointer"}>Femme</Label>
                 </RadioField>
                 <RadioField>
-                  <Radio value="male" onClick={() => setGender("male")} />
+                  <Radio value="homme" onClick={() => setGender("male")} />
                   <Label className={"cursor-pointer"}>Homme</Label>
                 </RadioField>
                 <RadioField>

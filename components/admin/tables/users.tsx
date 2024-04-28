@@ -1,4 +1,5 @@
 import AnswersDialog from "@/components/admin/dialogs/answers";
+import QuestionSurveyDialog from "@/components/admin/dialogs/question-survey";
 import { UserWithAnswers } from "@/lib/database/users";
 import {
   Table,
@@ -19,6 +20,8 @@ export default function UsersTable({ users }: { users: UserWithAnswers[] }) {
           <TableHeaderCell>Date</TableHeaderCell>
           <TableHeaderCell>Score</TableHeaderCell>
           <TableHeaderCell>Âge</TableHeaderCell>
+          <TableHeaderCell>Genre</TableHeaderCell>
+          <TableHeaderCell>Question ouverte</TableHeaderCell>
           <TableHeaderCell>Réponses</TableHeaderCell>
         </TableRow>
       </TableHead>
@@ -36,6 +39,12 @@ export default function UsersTable({ users }: { users: UserWithAnswers[] }) {
             </TableCell>
             <TableCell>
               <Text>{user.age ?? "Non renseigné."}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{user.gender ?? "Non renseigné."}</Text>
+            </TableCell>
+            <TableCell>
+              <QuestionSurveyDialog question={user.question} />
             </TableCell>
             <TableCell>
               <AnswersDialog user={user} />
