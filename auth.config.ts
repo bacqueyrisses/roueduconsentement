@@ -30,14 +30,22 @@ export const authConfig = {
       const isAdminLoggedIn = auth?.user.role === Role.admin;
 
       const isOnWheel = nextUrl.pathname.startsWith(paths.toWheel);
-      const isOnAdmin = nextUrl.pathname.startsWith(paths.toAdmin);
+      const isOnAdmin = nextUrl.pathname === paths.toAdmin;
       const isOnAdminLogin = nextUrl.pathname === paths.toAdminLogin;
 
       // Authorize logging page for all users
-      if (isOnAdminLogin) return true;
+      if (isOnAdminLogin) {
+        // Redirect logged admin to the dashboard
+        if (isAdminLoggedIn)
+          return Response.redirect(new URL(paths.toAdmin, nextUrl));
 
+        return true;
+      }
+
+      // Authorize only admins
       if (isOnAdmin) return isAdminLoggedIn;
 
+      // Handle /wheel auth
       if (isOnWheel) {
         // Redirect logged admin to the dashboard
         if (isAdminLoggedIn)
