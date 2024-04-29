@@ -25,7 +25,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
 export default function SurveyDialog() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [state, dispatch] = useFormState(addSurvey, initialState);
   const [gender, setGender] = useState("femme");
   const [otherGender, setOtherGender] = useState("");

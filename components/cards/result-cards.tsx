@@ -31,11 +31,11 @@ export default function ResultCards({ score, answers }: ResultCards) {
       return newArray;
     });
   };
-  console.log(answers);
+
   return (
     <div
       className={
-        "relative flex h-full w-full justify-center text-start md:translate-y-8"
+        "relative flex h-full w-full translate-y-16 justify-center text-start md:translate-y-8"
       }
     >
       {cards.map((card, index) => {
@@ -43,10 +43,11 @@ export default function ResultCards({ score, answers }: ResultCards) {
           <motion.div
             key={card.id}
             className={
-              "absolute flex h-fit w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:gap-2 md:p-5"
+              "absolute flex h-[330px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[420px] md:w-4/5 md:gap-2 md:p-5"
             }
             style={{
               transformOrigin: "top center",
+              // visibility: indexCard + 1 !== card.id ? "hidden" : "visible",
             }}
             animate={{
               top: (cards.length - index - 1) * -CARD_OFFSET, // Reverse the order for animation

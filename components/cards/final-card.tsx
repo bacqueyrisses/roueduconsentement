@@ -7,12 +7,12 @@ export function FinalCard({ score }: { score: User["score"] }) {
   return (
     <div
       className={
-        "relative flex h-full w-full justify-center text-start md:translate-y-10"
+        "relative flex h-full w-full translate-y-16 justify-center text-start md:translate-y-10"
       }
     >
       <motion.div
         className={
-          "absolute flex h-[310px] w-full animate-fade-up flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
+          "absolute flex h-[340px] w-full animate-fade-up flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
         }
       >
         <div
