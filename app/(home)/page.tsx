@@ -18,7 +18,7 @@ export default function HomePage() {
           <Highlight>
             Évalue ton niveau de consentement en 10 questions
           </Highlight>{" "}
-          grâce à cette appli ! (autant de fois que nécessaire) 🤍
+          grâce à cette appli ! (autant de fois que nécessaire) 💟
         </p>
         <div className={"hidden space-x-2 text-center md:block"}>
           <NameDialog />
