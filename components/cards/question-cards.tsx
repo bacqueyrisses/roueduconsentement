@@ -30,7 +30,7 @@ export default function QuestionCards({
   const CARD_OFFSET = 0;
   const SCALE_FACTOR = 0.06;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
+  console.log(currentQuestionIndex);
   const [cards, setCards] = useState<QuestionWithoutActive[]>(() => {
     const answeredQuestionsData = localStorage.getItem("answeredQuestions");
     const initialAnsweredQuestions = answeredQuestionsData
@@ -62,6 +62,7 @@ export default function QuestionCards({
       "valueOne" | "valueTwo" | "valueThree"
     >,
   ) {
+    console.log(currentQuestionIndex, questions.length - 1);
     if (currentQuestionIndex === questions.length - 1)
       return handleCompleted(key);
     flip();
@@ -117,7 +118,7 @@ export default function QuestionCards({
       return newCards;
     });
   };
-
+  console.log(questions[currentQuestionIndex]?.description);
   return (
     <div
       className={

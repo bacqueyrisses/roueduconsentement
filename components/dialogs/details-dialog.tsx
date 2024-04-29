@@ -18,7 +18,7 @@ export default function DetailsDialog({
   answers,
 }: DetailsDialog) {
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(answers);
   return (
     <>
       <button
