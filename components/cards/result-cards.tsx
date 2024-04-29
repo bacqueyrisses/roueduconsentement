@@ -35,7 +35,7 @@ export default function ResultCards({ score, answers }: ResultCards) {
   return (
     <div
       className={
-        "relative flex h-full w-full translate-y-16 justify-center text-start md:translate-y-8"
+        "relative flex h-full w-full translate-y-2 justify-center text-start md:translate-y-8"
       }
     >
       {cards.map((card, index) => {
