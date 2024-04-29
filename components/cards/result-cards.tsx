@@ -58,7 +58,7 @@ export default function ResultCards({ score, answers }: ResultCards) {
             <>
               <div
                 className={
-                  "flex w-full flex-col items-center justify-center text-sm font-normal leading-relaxed text-neutral-700 md:text-base"
+                  "flex w-full flex-col items-center justify-center text-sm font-normal text-neutral-700 md:text-base"
                 }
               >
                 {!completed ? (
