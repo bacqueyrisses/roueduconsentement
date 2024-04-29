@@ -141,7 +141,7 @@ export default function QuestionCards({
           >
             <>
               <div className={"pt-2 text-center text-base md:text-lg"}>
-                <Highlight>Question numéro {card.id}</Highlight>
+                <Highlight>Question numéro {10 - card.id + 1}</Highlight>
               </div>
               <div
                 className={
