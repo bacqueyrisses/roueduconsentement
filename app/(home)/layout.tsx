@@ -55,7 +55,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
           </h1>
         </section>
         {children}
-        <Footer />
+        <Footer key={"footer"} />
       </main>
     </body>
   );
