@@ -12,12 +12,12 @@ export function FinalCard({ score }: { score: User["score"] }) {
     >
       <motion.div
         className={
-          "absolute flex h-[300px] w-full animate-fade-up flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
+          "absolute flex h-[290px] w-full animate-fade-up flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:w-4/5 md:p-5"
         }
       >
         <div
           className={
-            "font-normal leading-relaxed text-neutral-700 transition-opacity"
+            "text-sm font-normal leading-relaxed text-neutral-700 transition-opacity md:text-base"
           }
         >
           <p>
