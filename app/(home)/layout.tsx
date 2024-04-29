@@ -42,11 +42,11 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
             height={40}
             alt={"logo de la roue du consentement"}
             style={{ animationDelay: "0.10s", animationFillMode: "forwards" }}
-            className={"mb-1 w-8 animate-fade-up opacity-0 md:w-12"}
+            className={"mb-1 w-8 animate-fade-up opacity-0 md:w-11"}
           />
           <h1
             className={
-              "inline-flex animate-fade-up flex-col bg-gradient-to-br from-gray-900 to-fuchsia-800/80 bg-clip-text text-center font-display text-3xl tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-6xl"
+              "inline-flex animate-fade-up flex-col bg-gradient-to-br from-gray-900 to-fuchsia-800/80 bg-clip-text text-center font-display text-3xl tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-5xl"
             }
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
