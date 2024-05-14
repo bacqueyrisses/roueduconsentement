@@ -2,8 +2,15 @@ import CopyButton from "@/components/buttons/copy-button";
 import { Highlight } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { User } from "next-auth";
+import { Dispatch, SetStateAction } from "react";
 
-export function FinalCard({ score }: { score: User["score"] }) {
+export function FinalCard({
+  setIsOpen,
+  score,
+}: {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  score: User["score"];
+}) {
   return (
     <div
       className={
@@ -40,7 +47,7 @@ export function FinalCard({ score }: { score: User["score"] }) {
               "flex items-center justify-center font-normal text-neutral-400 md:justify-end"
             }
           >
-            <CopyButton />
+            <CopyButton setIsOpen={setIsOpen} />
           </div>
         </div>
       </motion.div>

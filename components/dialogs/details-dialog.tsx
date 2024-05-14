@@ -42,6 +42,7 @@ export default function DetailsDialog({
             answers={answers}
             surveyCompleted={surveyCompleted}
             score={score}
+            setIsOpen={setIsOpen}
           />
         </div>
       )}

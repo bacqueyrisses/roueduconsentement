@@ -1,18 +1,19 @@
-"use client";
 import { FinalCard } from "@/components/cards/final-card";
 import ResultStack from "@/components/cards/result-cards";
 import { Answer } from "@prisma/client";
 import { Route } from "next";
 import { User } from "next-auth";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface ResultStackWrapper {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
   surveyCompleted: string | User["surveyCompleted"];
   score: User["score"];
   answers: Answer[];
 }
 export default function ResultStackWrapper({
+  setIsOpen,
   surveyCompleted,
   score,
   answers,
@@ -42,7 +43,11 @@ export default function ResultStackWrapper({
           score={score}
         />
       ) : (
-        <FinalCard key={"not-completed-card"} score={score} />
+        <FinalCard
+          key={"not-completed-card"}
+          score={score}
+          setIsOpen={setIsOpen}
+        />
       )}
     </div>
   );
