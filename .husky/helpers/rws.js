@@ -1,7 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 
-const directoriesToIgnore = ["node_modules", ".git", ".next", ".husky"];
+const directoriesToIgnore = [
+  "node_modules",
+  ".git",
+  ".next",
+  ".husky",
+  "prisma/migrations",
+];
 const acceptedFileExtensions = [".js", ".jsx", ".ts", ".tsx"];
 const defaultRootDirectory = "./";
 

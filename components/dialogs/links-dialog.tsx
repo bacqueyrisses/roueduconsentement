@@ -49,7 +49,7 @@ export default function LinksDialog({
 
           <div className={"flex items-center gap-2"}>
             <div className={"flex size-5 items-center justify-center"}>
-              <Phone className={" size-4 fill-current"} />
+              <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
               <span className={"hidden md:inline"}>Teléphone :</span>{" "}
@@ -74,7 +74,7 @@ export default function LinksDialog({
 
           <div className={"flex items-center gap-2"}>
             <div className={"flex size-5 items-center justify-center"}>
-              <Phone className={" size-4 fill-current"} />
+              <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
               <span className={"hidden md:inline"}>Teléphone :</span>{" "}
@@ -98,7 +98,7 @@ export default function LinksDialog({
 
           <div className={"flex items-center gap-2"}>
             <div className={"flex size-5 items-center justify-center"}>
-              <Phone className={" size-4 fill-current"} />
+              <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
               <span className={"hidden md:inline"}>Teléphone :</span>{" "}
@@ -121,7 +121,7 @@ export default function LinksDialog({
 
           <div className={"flex items-center gap-2"}>
             <div className={"flex size-5 items-center justify-center"}>
-              <Phone className={" size-4 fill-current"} />
+              <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
               <span className={"hidden md:inline"}>Teléphone :</span>{" "}
@@ -148,7 +148,7 @@ export default function LinksDialog({
 
           <div className={"flex items-center gap-2"}>
             <div className={"flex size-5 items-center justify-center"}>
-              <Phone className={" size-4 fill-current"} />
+              <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
               <span className={"hidden md:inline"}>Teléphone :</span>{" "}
@@ -172,7 +172,7 @@ export default function LinksDialog({
 
           <div className={"flex items-center gap-2"}>
             <div className={"flex size-5 items-center justify-center"}>
-              <Phone className={" size-4 fill-current"} />
+              <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
               <span className={"hidden md:inline"}>Teléphone :</span>{" "}

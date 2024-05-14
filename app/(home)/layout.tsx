@@ -32,7 +32,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
       />
       <main
         className={
-          " z-10 mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-between gap-4 px-2.5 py-4 md:gap-6"
+          "z-10 mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-between gap-4 px-2.5 py-4 md:gap-6"
         }
       >
         <section className={"flex w-full flex-col items-center justify-center"}>
