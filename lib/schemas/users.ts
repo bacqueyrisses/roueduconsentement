@@ -13,5 +13,5 @@ export const AddSurvey = z.object({
   question: z
     .string()
     .transform((t) => t?.trim())
-    .pipe(z.string().min(1, { message: "Complétez la question ouverte." })),
+    .pipe(z.string().optional()),
 });
