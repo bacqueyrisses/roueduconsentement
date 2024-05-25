@@ -8,8 +8,12 @@ import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Jouez",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+  title: "La roue du consentement.",
+  description: "Évaluez votre consentement à travers une série de questions.",
+  openGraph: {
+    title: "La roue du consentement.",
+    description: "Évaluez votre consentement à travers une série de questions.",
+  },
 };
 
 export default function HomeLayout({ children }: { children: ReactNode }) {
