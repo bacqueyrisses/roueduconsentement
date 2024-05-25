@@ -39,7 +39,7 @@ export default function HomePage() {
       </section>
       <section
         className={
-          "flex h-full w-full animate-fade-up items-center justify-center overflow-hidden opacity-0 md:p-10"
+          "flex h-full w-full animate-fade-up items-center justify-center overflow-hidden p-10 opacity-0 md:p-16"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
