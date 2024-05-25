@@ -89,17 +89,17 @@ export default function WheelWrapper({
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
+        <p
+          className={
+            "text-balance text-center text-sm tracking-tight text-gray-500 md:text-base md:tracking-normal"
+          }
+        >
+          Pour comprendre ton résultat, consulte le{" "}
+          <Highlight>Détail des réponses</Highlight>, <br /> aide-toi des pistes
+          qui te sont proposées.
+        </p>
+
         <Wheel value={score} />
-        {score && (
-          <Highlight
-            score={score}
-            className={
-              "absolute top-0 h-fit text-sm xs:top-[65%] md:bottom-[19%] md:top-auto md:text-base"
-            }
-          >
-            Mon score: {score.toFixed(1)}
-          </Highlight>
-        )}
 
         <button
           key={"completed-button"}
