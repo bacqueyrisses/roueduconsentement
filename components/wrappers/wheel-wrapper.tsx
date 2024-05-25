@@ -85,18 +85,20 @@ export default function WheelWrapper({
       </section>
       <section
         className={
-          "flex h-full animate-fade-up flex-col items-center justify-between overflow-hidden pb-2 opacity-0 md:justify-center md:p-10 md:pb-12"
+          "flex h-full animate-fade-up flex-col items-center justify-between overflow-hidden pb-2 opacity-0 md:justify-center md:p-10 md:py-12"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
         <p
           className={
-            "text-balance text-center text-sm tracking-tight text-gray-500 md:text-base md:tracking-normal"
+            "block text-balance text-center text-sm tracking-tight text-gray-500 md:text-base md:tracking-normal"
           }
         >
           Pour comprendre ton résultat, consulte le{" "}
-          <Highlight>Détail des réponses</Highlight>, <br /> aide-toi des pistes
-          qui te sont proposées.
+          <Highlight className={"bg-blue-100 text-blue-500"}>
+            détail des réponses
+          </Highlight>
+          , <br /> aide-toi des pistes qui te sont proposées.
         </p>
         <div className={"h-24 w-fit md:h-full md:w-full"}>
           <Wheel value={score} />

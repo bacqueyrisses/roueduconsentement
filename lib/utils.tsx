@@ -40,7 +40,7 @@ export function Highlight({
 }) {
   return (
     <span
-      className={`px-1 py-0.5 font-bold ${!score ? "bg-emerald-100 text-emerald-700" : score === 0 ? "" : score <= 4 ? "bg-red-100 text-red-700" : score <= 7 ? "bg-yellow-100 text-yellow-700" : "bg-emerald-100 text-emerald-700"} ${className && className}`}
+      className={`px-1 py-0.5 font-bold ${!className && (!score ? "bg-emerald-100 text-emerald-700" : score === 0 ? "" : score <= 4 ? "bg-red-100 text-red-700" : score <= 7 ? "bg-yellow-100 text-yellow-700" : "bg-emerald-100 text-emerald-700")} ${className && className}`}
     >
       {children}
     </span>
