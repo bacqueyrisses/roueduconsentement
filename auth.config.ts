@@ -30,6 +30,7 @@ export const authConfig = {
       const isAdminLoggedIn = auth?.user.role === Role.admin;
 
       const isOnWheel = nextUrl.pathname.startsWith(paths.toWheel);
+      const isOnHome = nextUrl.pathname === paths.toHome;
       const isOnAdmin = nextUrl.pathname === paths.toAdmin;
       const isOnAdminLogin = nextUrl.pathname === paths.toAdminLogin;
 
@@ -44,6 +45,10 @@ export const authConfig = {
 
       // Authorize only admins
       if (isOnAdmin) return isAdminLoggedIn;
+
+      // Redirect logged user to /wheel
+      if (isOnHome && isUserLoggedIn)
+        return Response.redirect(new URL(paths.toWheel, nextUrl));
 
       // Handle /wheel auth
       if (isOnWheel) {
