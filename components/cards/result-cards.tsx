@@ -83,7 +83,9 @@ export default function ResultCards({ score, answers }: ResultCards) {
                   <>
                     <div className={"inline-flex flex-col"}>
                       <div
-                        className={"mb-0.5 flex font-medium text-neutral-500"}
+                        className={
+                          "mb-0.5 flex text-nowrap font-medium text-neutral-500"
+                        }
                       >
                         <Highlight>Question {indexCard + 1}</Highlight>
                       </div>
