@@ -8,7 +8,7 @@ export default function Footer({ visible }: { visible?: boolean }) {
 
   return (
     <footer
-      className={`${pathname === paths.toWheel && !visible ? "hidden xs:block" : pathname === paths.toHome ? "block" : "block xs:hidden"} z-0 w-screen animate-fade-up text-center text-[0.65rem] tracking-tight opacity-0 md:text-[0.9rem]`}
+      className={`${pathname === paths.toWheel && !visible ? "hidden xs:block" : pathname === paths.toHome ? "block" : "block xs:hidden"} w-screen animate-fade-up text-center text-[0.65rem] tracking-tight opacity-0 md:text-[0.9rem]`}
       style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
     >
       <p className={"text-gray-500"}>

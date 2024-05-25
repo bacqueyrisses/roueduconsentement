@@ -76,24 +76,32 @@ export default function ResultCards({ score, answers }: ResultCards) {
                 )}
               </div>
 
-              <div className={"inline-flex items-end justify-between"}>
-                <div className={"inline-flex flex-col"}>
-                  <div className={"mb-0.5 flex font-medium text-neutral-500"}>
-                    <Highlight>Question {indexCard + 1}</Highlight>
-                  </div>
-                  <div
-                    className={
-                      "flex items-center justify-between font-normal text-neutral-500"
-                    }
-                  >
-                    <Highlight score={card.value}>
-                      Score : {card.value}
-                    </Highlight>
-                  </div>
-                </div>
-                <div className={"h-20 w-fit md:h-24"}>
-                  <Wheel value={completed ? score : card.value} />
-                </div>
+              <div
+                className={`inline-flex items-end ${!completed ? "justify-between" : "justify-end"}`}
+              >
+                {!completed && (
+                  <>
+                    <div className={"inline-flex flex-col"}>
+                      <div
+                        className={"mb-0.5 flex font-medium text-neutral-500"}
+                      >
+                        <Highlight>Question {indexCard + 1}</Highlight>
+                      </div>
+                      <div
+                        className={
+                          "flex items-center justify-between font-normal text-neutral-500"
+                        }
+                      >
+                        <Highlight score={card.value}>
+                          Score : {card.value}
+                        </Highlight>
+                      </div>
+                    </div>
+                    <div className={"h-20 w-fit md:h-24"}>
+                      <Wheel value={completed ? score : card.value} />
+                    </div>
+                  </>
+                )}
                 {completed ? (
                   <SurveyDialog />
                 ) : (
