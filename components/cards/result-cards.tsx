@@ -35,7 +35,7 @@ export default function ResultCards({ score, answers }: ResultCards) {
   return (
     <div
       className={
-        "relative flex h-full w-full translate-y-2 justify-center text-start md:translate-y-8"
+        "relative flex h-full w-full translate-y-2 justify-center text-start md:translate-y-6"
       }
     >
       {cards.map((card, index) => {
@@ -43,7 +43,7 @@ export default function ResultCards({ score, answers }: ResultCards) {
           <motion.div
             key={card.id}
             className={
-              "absolute flex h-[330px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[370px] md:w-4/5 md:gap-2 md:p-5"
+              "absolute flex h-[330px] w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[390px] md:w-4/5 md:gap-2 md:p-5"
             }
             style={{
               transformOrigin: "top center",

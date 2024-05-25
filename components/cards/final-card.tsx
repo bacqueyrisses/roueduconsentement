@@ -14,7 +14,7 @@ export function FinalCard({
   return (
     <div
       className={
-        "relative flex h-full w-full translate-y-2 justify-center text-start md:translate-y-10"
+        "relative flex h-full w-full translate-y-2 justify-center text-start md:translate-y-6"
       }
     >
       <motion.div
