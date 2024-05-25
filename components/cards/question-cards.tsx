@@ -57,14 +57,12 @@ export default function QuestionCards({
   const pathname = usePathname();
 
   function handleAnswer(
+    e: any,
     key: keyof Pick<
       Omit<Question, "active" | "date">,
       "valueOne" | "valueTwo" | "valueThree"
     >,
   ) {
-    if (currentQuestionIndex === questions.length - 1)
-      return handleCompleted(key);
-    flip();
     const currentValue = questions[currentQuestionIndex][key];
     const newScore = (score + currentValue) / 2;
 
@@ -79,6 +77,16 @@ export default function QuestionCards({
       ...answeredQuestions,
       [currentQuestionIndex]: true, // Update the answered state for current question
     };
+    if (currentQuestionIndex === questions.length - 1) {
+      localStorage.setItem(
+        "answeredQuestions",
+        JSON.stringify(updatedAnsweredQuestions),
+      );
+      e.currentTarget.form?.requestSubmit();
+      return handleCompleted(key);
+    }
+
+    flip();
 
     localStorage.setItem(
       "answeredQuestions",
@@ -176,8 +184,11 @@ export default function QuestionCards({
                 >
                   <button
                     type={"submit"}
-                    onClick={() => handleAnswer("valueOne")}
-                    value={questions[currentQuestionIndex]?.valueOne}
+                    onClick={(e) => handleAnswer(e, "valueOne")}
+                    value={
+                      questions.find((question) => question.id === card.id)
+                        ?.valueOne
+                    }
                     name={"value"}
                     disabled={!!loading}
                     className={
@@ -187,12 +198,18 @@ export default function QuestionCards({
                     <input name={"option"} value={"Oui"} type="hidden" />
                     <input
                       name={"summary"}
-                      value={questions[currentQuestionIndex]?.summary}
+                      value={
+                        questions.find((question) => question.id === card.id)
+                          ?.summary
+                      }
                       type="hidden"
                     />
                     <input
                       name={"description"}
-                      value={questions[currentQuestionIndex]?.description}
+                      value={
+                        questions.find((question) => question.id === card.id)
+                          ?.description
+                      }
                       type="hidden"
                     />
                     {loading === "valueOne" ? (
@@ -214,8 +231,11 @@ export default function QuestionCards({
                   </button>
                   <button
                     type={"submit"}
-                    onClick={() => handleAnswer("valueTwo")}
-                    value={questions[currentQuestionIndex]?.valueTwo}
+                    onClick={(e) => handleAnswer(e, "valueTwo")}
+                    value={
+                      questions.find((question) => question.id === card.id)
+                        ?.valueTwo
+                    }
                     name={"value"}
                     disabled={!!loading}
                     className={
@@ -225,12 +245,18 @@ export default function QuestionCards({
                     <input name={"option"} value={"Non"} type="hidden" />
                     <input
                       name={"summary"}
-                      value={questions[currentQuestionIndex]?.summary}
+                      value={
+                        questions.find((question) => question.id === card.id)
+                          ?.summary
+                      }
                       type="hidden"
                     />
                     <input
                       name={"description"}
-                      value={questions[currentQuestionIndex]?.description}
+                      value={
+                        questions.find((question) => question.id === card.id)
+                          ?.description
+                      }
                       type="hidden"
                     />
                     {loading === "valueTwo" ? (
@@ -252,10 +278,13 @@ export default function QuestionCards({
                   </button>
                   <button
                     type={"submit"}
-                    onClick={() => handleAnswer("valueThree")}
+                    onClick={(e) => handleAnswer(e, "valueThree")}
                     name={"value"}
                     disabled={!!loading}
-                    value={questions[currentQuestionIndex]?.valueThree}
+                    value={
+                      questions.find((question) => question.id === card.id)
+                        ?.valueThree
+                    }
                     className={
                       "relative inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-yellow-200 px-5 py-2 text-sm font-medium text-yellow-700 transition-colors duration-300 ease-in-out hover:bg-yellow-300/80 hover:text-yellow-800 disabled:pointer-events-none md:px-7 md:text-base"
                     }
@@ -267,12 +296,18 @@ export default function QuestionCards({
                     />
                     <input
                       name={"summary"}
-                      value={questions[currentQuestionIndex]?.summary}
+                      value={
+                        questions.find((question) => question.id === card.id)
+                          ?.summary
+                      }
                       type="hidden"
                     />
                     <input
                       name={"description"}
-                      value={questions[currentQuestionIndex]?.description}
+                      value={
+                        questions.find((question) => question.id === card.id)
+                          ?.description
+                      }
                       type="hidden"
                     />
                     {loading === "valueThree" ? (
