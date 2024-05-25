@@ -85,7 +85,7 @@ export default function WheelWrapper({
       </section>
       <section
         className={
-          "flex h-full w-2/3 animate-fade-up flex-col items-center justify-center overflow-hidden pb-2 opacity-0 md:w-full md:p-10 md:pb-12"
+          "flex h-full w-2/3 animate-fade-up flex-col items-center justify-between overflow-hidden pb-2 opacity-0 md:w-full md:justify-center md:p-10 md:pb-12"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
@@ -98,8 +98,9 @@ export default function WheelWrapper({
           <Highlight>Détail des réponses</Highlight>, <br /> aide-toi des pistes
           qui te sont proposées.
         </p>
-
-        <Wheel value={score} />
+        <div className={"h-24 w-fit md:h-full md:w-full"}>
+          <Wheel value={score} />
+        </div>
 
         <button
           key={"completed-button"}
