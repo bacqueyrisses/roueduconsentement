@@ -19,7 +19,7 @@ export function FinalCard({
     >
       <motion.div
         className={
-          "absolute flex h-[260px] w-full animate-fade-up flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[400px] md:w-4/5 md:p-5"
+          "absolute flex h-[260px] w-full animate-fade-up flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-4 shadow-xl shadow-black/[0.1] md:h-[310px] md:w-4/5 md:p-5"
         }
       >
         <div
