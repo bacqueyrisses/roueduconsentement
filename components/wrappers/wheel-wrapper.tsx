@@ -85,7 +85,7 @@ export default function WheelWrapper({
       </section>
       <section
         className={
-          "flex h-full w-2/3 animate-fade-up flex-col items-center justify-between overflow-hidden pb-2 opacity-0 md:w-full md:justify-center md:p-10 md:pb-12"
+          "flex h-full animate-fade-up flex-col items-center justify-between overflow-hidden pb-2 opacity-0 md:justify-center md:p-10 md:pb-12"
         }
         style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
       >
