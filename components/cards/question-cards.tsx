@@ -38,9 +38,8 @@ export default function QuestionCards({
       : {};
 
     const answeredIndices = Object.keys(initialAnsweredQuestions).map(Number);
-
     const updatedQuestions = questions.filter(
-      (q) => !answeredIndices.includes(q.id - 1),
+      (q) => !answeredIndices.includes(10 - q.id),
     );
 
     const nextUnansweredIndex = answeredIndices.length;
