@@ -62,7 +62,7 @@ export const authConfig = {
       return true;
     },
   },
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt", maxAge: 24 * 60 * 60 },
   providers: [],
   trustHost: true,
   secret: process.env.AUTH_SECRET,
