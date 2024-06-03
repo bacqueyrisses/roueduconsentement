@@ -7,8 +7,8 @@ const buildEslintCommand = (filenames) =>
 
 module.exports = {
   "*.{js,jsx,ts,tsx}": [
-    "prettier --write --log-level warn --config ./package.json '!prisma/migrations'",
-    "prettier --write --log-level warn --plugin=prettier-plugin-organize-imports '!prisma/migrations'",
+    "npm run format-code",
+    "npm run organize-imports",
     buildEslintCommand,
   ],
 };

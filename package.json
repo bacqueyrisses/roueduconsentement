@@ -7,7 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "prettier --write . '!prisma/migrations' --log-level warn --config ./package.json && prettier  --write . '!prisma/migrations' --log-level warn --plugin=prettier-plugin-organize-imports"
+    "format": "prettier --write . '!prisma/migrations' --log-level warn --config ./package.json && prettier  --write . '!prisma/migrations' --log-level warn --plugin=prettier-plugin-organize-imports",
+    "format-code": "prettier --write --log-level warn --config ./package.json '!prisma/migrations'",
+    "organize-imports": "prettier --write --log-level warn --plugin=prettier-plugin-organize-imports '!prisma/migrations'"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.0-alpha.4",
