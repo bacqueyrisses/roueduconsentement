@@ -7,7 +7,6 @@ const buildEslintCommand = (filenames) =>
 
 module.exports = {
   "*.{js,jsx,ts,tsx}": [
-    "node .husky/helpers/rws.js",
     "prettier --write --log-level warn --config ./package.json '!prisma/migrations'",
     "prettier --write --log-level warn --plugin=prettier-plugin-organize-imports '!prisma/migrations'",
     buildEslintCommand,
