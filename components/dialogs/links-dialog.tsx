@@ -127,6 +127,7 @@ export default function LinksDialog({
           <div>
             Tu peux aussi trouver de l’aide en ligne{" "}
             <a
+              target={"_blank"}
               className={"hover:underline"}
               href={"https://arretonslesviolences.gouv.fr/"}
             >
@@ -198,6 +199,7 @@ export default function LinksDialog({
           </div>
 
           <a
+            target={"_blank"}
             href={"https://vih.org/cegidd/"}
             className={"flex items-center gap-2"}
           >
@@ -224,6 +226,7 @@ export default function LinksDialog({
           </div>
 
           <a
+            target={"_blank"}
             href={
               "https://www.santepubliquefrance.fr/determinants-de-sante/sante-sexuelle/documents/depliant-flyer/aide-a-distance-en-sante-contacts-utiles"
             }
@@ -247,6 +250,7 @@ export default function LinksDialog({
               C’est un site très complet qui donne beaucoup d'informations sur
               toutes les formes de violences sexuelles. Aussi, sur le site{" "}
               <a
+                target={"_blank"}
                 className={"hover:underline"}
                 href={"https://consentement.info/"}
               >
@@ -258,6 +262,7 @@ export default function LinksDialog({
           </div>
 
           <a
+            target={"_blank"}
             href={"https://violences-sexuelles.info/"}
             className={"flex items-center gap-2"}
           >
