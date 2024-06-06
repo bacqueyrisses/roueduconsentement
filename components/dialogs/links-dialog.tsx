@@ -32,7 +32,7 @@ export default function LinksDialog({
         <DialogTitle className={"mb-6 text-center md:mb-4 md:text-start"}>
           <Highlight className={"text-lg md:text-xl"}>
             {" "}
-            Contacts et ressources utiles
+            Ressources & contacts et utiles
           </Highlight>
         </DialogTitle>
         <DialogDescription className={"space-y-2 md:space-y-1"}>
@@ -52,8 +52,7 @@ export default function LinksDialog({
               <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
-              <span className={"hidden md:inline"}>Teléphone :</span>{" "}
-              <span>112</span>
+              <span>Teléphone :</span> <span>112</span>
             </div>
           </div>
         </DialogDescription>
@@ -77,13 +76,12 @@ export default function LinksDialog({
               <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
-              <span className={"hidden md:inline"}>Teléphone :</span>{" "}
-              <span>114</span>
+              <span>Teléphone :</span> <span>114</span>
             </div>
           </div>
         </DialogDescription>
         <DialogDescription className={"space-y-2 md:space-y-1"}>
-          <DialogTitle>Police Secours</DialogTitle>
+          <DialogTitle>Police secours</DialogTitle>
           <div className={"flex items-center gap-2"}>
             <div
               className={"hidden size-5 items-center justify-center md:flex"}
@@ -91,9 +89,9 @@ export default function LinksDialog({
               <Info className={"size-5"} />
             </div>
             Si tu es victime ou témoin d'un événement grave, tu peux appeler
-            police secours qui dispose d’une ligne d'appel enregistrée avec
-            reconnaissance de l'appelant qui est disponible 24heures sur 24 et 7
-            jours sur 7.
+            ‘Police secours’ qui dispose d’une ligne d'appel enregistrée avec
+            reconnaissance de l'appelant qui est disponible 24 heures sur 24 et
+            7 jours sur 7.
           </div>
 
           <div className={"flex items-center gap-2"}>
@@ -101,8 +99,7 @@ export default function LinksDialog({
               <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
-              <span className={"hidden md:inline"}>Teléphone :</span>{" "}
-              <span>17</span>
+              <span>Teléphone :</span> <span>17</span>
             </div>
           </div>
         </DialogDescription>
@@ -115,8 +112,8 @@ export default function LinksDialog({
               <Info className={"size-5"} />
             </div>
             Cette plateforme d'écoute, d'information et d'orientation des
-            victimes de violences sexistes et sexuelles disponible 24h/24 et
-            7j/7.
+            victimes de violences sexistes et sexuelles est disponible 24 heures
+            sur 24 et 7 jours sur 7.
           </div>
 
           <div className={"flex items-center gap-2"}>
@@ -124,14 +121,21 @@ export default function LinksDialog({
               <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
-              <span className={"hidden md:inline"}>Teléphone :</span>{" "}
-              <span>3919</span>
+              <span>Teléphone :</span> <span>3919</span>
             </div>
           </div>
-          <div>Tu peux aussi trouver de l’aide en ligne ici</div>
+          <div>
+            Tu peux aussi trouver de l’aide en ligne{" "}
+            <a
+              className={"hover:underline"}
+              href={"https://arretonslesviolences.gouv.fr/"}
+            >
+              ici
+            </a>
+          </div>
         </DialogDescription>
         <DialogDescription className={"space-y-2 md:space-y-1"}>
-          <DialogTitle>Le Planning Familial</DialogTitle>
+          <DialogTitle>Planning familial</DialogTitle>
           <div className={"flex items-center gap-2"}>
             <div
               className={"hidden size-5 items-center justify-center md:flex"}
@@ -151,8 +155,7 @@ export default function LinksDialog({
               <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
-              <span className={"hidden md:inline"}>Teléphone :</span>{" "}
-              <span>0 800 08 11 11</span>
+              <span>Teléphone :</span> <span>0 800 08 11 11</span>
             </div>
           </div>
         </DialogDescription>
@@ -175,8 +178,7 @@ export default function LinksDialog({
               <Phone className={"size-4 fill-current"} />
             </div>
             <div className={"font-medium"}>
-              <span className={"hidden md:inline"}>Teléphone :</span>{" "}
-              <span>01 40 47 06 06</span>
+              <span>Teléphone :</span> <span>01 40 47 06 06</span>
             </div>
           </div>
         </DialogDescription>
@@ -191,16 +193,19 @@ export default function LinksDialog({
               <Info className={"size-5"} />
             </div>
             Voici une carte qui t'aidera à trouver un centre de dépistage des
-            infections par le VIH, des hépatites virales et des infections
-            sexuellement transmissibles.
+            infections par le VIH (Virus de l'Immunodéficience Humaine), des
+            hépatites virales et des infections sexuellement transmissibles.
           </div>
 
-          <div className={"flex items-center gap-2"}>
+          <a
+            href={"https://vih.org/cegidd/"}
+            className={"flex items-center gap-2"}
+          >
             <div className={"flex size-5 items-center justify-center"}>
               <Web className={"size-5"} />
             </div>
-            <div className={"font-medium"}>Site web</div>
-          </div>
+            <div className={"font-medium hover:underline"}>Site web</div>
+          </a>
         </DialogDescription>
         <DialogDescription className={"space-y-2 md:space-y-1"}>
           <DialogTitle>
@@ -213,17 +218,22 @@ export default function LinksDialog({
               <Info className={"size-5"} />
             </div>
             Voici les coordonnées téléphoniques et internet des 16 services de
-            téléphonie santé soutenus par Santé publique France, avec pour
+            téléphonie ‘santé’, soutenus par ‘Santé publique France’, avec pour
             chacun un petit descriptif, les heures d'ouverture de la ligne et le
             coût de l'appel.
           </div>
 
-          <div className={"flex items-center gap-2"}>
+          <a
+            href={
+              "https://www.santepubliquefrance.fr/determinants-de-sante/sante-sexuelle/documents/depliant-flyer/aide-a-distance-en-sante-contacts-utiles"
+            }
+            className={"flex items-center gap-2"}
+          >
             <div className={"flex size-5 items-center justify-center"}>
               <Web className={"size-5"} />
             </div>
-            <div className={"font-medium"}>Site web</div>
-          </div>
+            <div className={"font-medium hover:underline"}>Site web</div>
+          </a>
         </DialogDescription>
         <DialogDescription className={"space-y-2 md:space-y-1"}>
           <DialogTitle>Information violence sexuelle</DialogTitle>
@@ -233,18 +243,29 @@ export default function LinksDialog({
             >
               <Info className={"size-5"} />
             </div>
-            C’est un site très complet qui donne beaucoup d'informations sur
-            toutes les formes de violences sexuelles. Aussi, sur le site
-            consentement.info, tu trouveras des conseils, des quizz et même une
-            chanson sur le thème du consentement.
+            <p>
+              C’est un site très complet qui donne beaucoup d'informations sur
+              toutes les formes de violences sexuelles. Aussi, sur le site{" "}
+              <a
+                className={"hover:underline"}
+                href={"https://consentement.info/"}
+              >
+                consentement.info
+              </a>
+              , tu trouveras des conseils, des quizz et même une chanson sur le
+              thème du consentement.
+            </p>
           </div>
 
-          <div className={"flex items-center gap-2"}>
+          <a
+            href={"https://violences-sexuelles.info/"}
+            className={"flex items-center gap-2"}
+          >
             <div className={"flex size-5 items-center justify-center"}>
               <Web className={"size-5"} />
             </div>
-            <div className={"font-medium"}>Site web</div>
-          </div>
+            <div className={"font-medium hover:underline"}>Site web</div>
+          </a>
         </DialogDescription>
         <DialogActions>
           <CancelButton onClick={() => setIsOpen(false)} variant={"close"} />

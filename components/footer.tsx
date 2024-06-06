@@ -8,24 +8,26 @@ export default function Footer({ visible }: { visible?: boolean }) {
 
   return (
     <footer
-      className={`${pathname === paths.toWheel && !visible ? "hidden xs:block" : pathname === paths.toHome ? "block" : "block xs:hidden"} w-screen animate-fade-up text-center text-[0.65rem] tracking-tight opacity-0 md:text-[0.9rem]`}
+      className={`${pathname === paths.toWheel && !visible ? "hidden xs:block" : pathname === paths.toHome ? "block" : "block xs:hidden"} w-screen animate-fade-up text-balance text-center text-[0.65rem] tracking-tight opacity-0 md:text-[0.9rem]`}
       style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
     >
       <p className={"text-gray-500"}>
-        Cette application a été réalisée par un collectif de chercheurs issu du
-        Master AGAPES de{" "}
+        Cette application a été réalisée par une équipe de recherche
+        pluridisciplinaire dirigée par Anastasia Meidani, PU de sociologie à
+        l’Université Toulouse Jean-Jaurès, en collaboration avec le Cette
+        application a été réalisée par un collectif de chercheurs issu du{" "}
         <Link
           className={
             "inline-block bg-gradient-to-r from-black to-fuchsia-950 bg-clip-text font-medium text-transparent underline-offset-4 transition-colors hover:text-black hover:underline"
           }
-          href="https://www.univ-tlse2.fr"
+          href="https://www.univ-tlse2.fr/accueil/formation-insertion/master-agapes"
           target="_blank"
           rel="noopener noreferrer"
         >
-          l’université Toulouse Jean Jaurès
+          Master AGÂPÉS
         </Link>
         . <br />
-        Projet financé par la{" "}
+        Application financée par la{" "}
         <Link
           className={
             "inline-block bg-gradient-to-r from-black to-fuchsia-950 bg-clip-text font-medium text-transparent underline-offset-4 transition-colors hover:text-black hover:underline"
@@ -36,7 +38,7 @@ export default function Footer({ visible }: { visible?: boolean }) {
         >
           Firah
         </Link>
-        . Réalisé par diodeproduction / troispetitspoints. Développement par{" "}
+        . Réalisée par diodeproduction / troispetitspoints. Développement par{" "}
         <Link
           className={
             "inline-block bg-gradient-to-r from-black to-fuchsia-950 bg-clip-text font-medium text-transparent underline-offset-4 transition-colors hover:text-black hover:underline"

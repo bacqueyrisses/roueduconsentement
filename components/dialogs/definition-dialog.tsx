@@ -28,32 +28,32 @@ export default function DefinitionDialog() {
           </Highlight>
         </DialogTitle>
         <DialogDescription className={"space-y-1"}>
-          <DialogTitle>Enthousiaste</DialogTitle>
+          <DialogTitle>Enthousiaste & clair</DialogTitle>
           <div>
             Pour avoir un rapport sexuel consenti, il est essentiel que tu en
             aies une réelle envie de partager ce moment avec ton.ta.tes
-            partenaire.s et que, tu l’exprimes avec enthousiasme, de manière
-            verbale ou non, dans la mesure où cela ne laisse pas de place au
-            doute pour le ou les autre.s. À l’inverse, tu dois pouvoir dire
+            partenaire.s et que tu l’exprimes avec enthousiasme et clarté, de
+            manière verbale ou non, de sorte que cela ne laisse pas de place au
+            doute pour l'autre ou les autre.s. À l’inverse, tu dois pouvoir dire
             « non » sans craindre d’éventuelles conséquences (menaces, chantage
             affectif, etc.), sinon c’est une forme de pression, ce n’est pas
             consentir de façon authentique.
           </div>
         </DialogDescription>
         <DialogDescription className={"space-y-1"}>
-          <DialogTitle>Libre et éclairé</DialogTitle>
+          <DialogTitle>Libre & éclairé</DialogTitle>
           <div>
             <div>
-              Une consommation excessive d'alcool ou de stupéfiants, le fait
-              d’être inconscient.e ou endormi.e, ou toutes autres raisons qui
-              pourraient altérer momentanément ta capacité de discernement
-              peuvent t’empêcher de donner un consentement éclairé. Tu ne
-              consens pas de manière éclairée non plus si ton.ta.tes
-              partenaire.s ment.ent, dissimule.nt ou omet.tent délibérément
-              certaines de leurs intentions pour que tu acceptes d’avoir un
-              rapport sexuel avec elle.eux, tout comme tu ne donnes pas un
-              consentement libre lorsque tu cèdes par crainte des répercussions
-              en cas de refus de ta part.
+              Libre & éclairé Une consommation excessive d'alcool ou de
+              stupéfiants, le fait d’être inconscient.e ou endormi.e et/ou
+              toutes autres raisons qui pourraient altérer momentanément ta
+              capacité de discernement, peuvent t’empêcher de donner un
+              consentement éclairé. Tu ne consens pas de manière éclairée non
+              plus si ton.ta.tes partenaire.s ment.ent, dissimule.nt ou
+              omet.tent délibérément certaines de leurs intentions pour que tu
+              acceptes d’avoir un rapport sexuel avec elles ou eux, tout comme
+              tu ne donnes pas un consentement libre lorsque tu cèdes par
+              crainte des répercussions en cas de refus de ta part.
             </div>
           </div>
         </DialogDescription>
@@ -65,19 +65,19 @@ export default function DefinitionDialog() {
             poser la question et/ou en parler avec ton.ta.tes partenaire.s. Dans
             tous les cas, ce n’est pas parce que tu consens à une activité
             sexuelle que tu consens à toutes les autres. Par exemple, tu peux
-            être ok pour avoir un rapport sexuel mais ne pas consentir à un
-            rapport sexuel non protégé. Si ton.ta.tes partenaire.s retire.nt le
-            préservatif pendant l’acte sans te le dire, c’est considéré comme un
-            viol au regard de la loi.
+            être d’accord pour avoir un rapport sexuel, mais ne pas consentir à
+            un rapport sexuel non protégé. Si ton.ta.tes partenaire.s retire.nt
+            le préservatif pendant l’acte sans te le dire, c’est considéré comme
+            une agression au regard de la loi.
           </div>
         </DialogDescription>
         <DialogDescription className={"space-y-1"}>
           <DialogTitle>Réversible</DialogTitle>
           <div>
-            Si finalement si tu n’as plus envie de continuer, sache que c’est ok
-            et qu’il est nécessaire de t’écouter. Tout partenaire doit accepter
+            Si finalement tu n’as plus envie de continuer, sache que c’est OK et
+            qu’il est nécessaire de t’écouter. Tout.e partenaire doit accepter
             ton choix de ne pas aller plus loin car tu as le droit de changer
-            d’avis à n’importe quel moment. authentique.
+            d’avis à n’importe quel moment.
           </div>
         </DialogDescription>
         <DialogDescription className={"space-y-1"}>
@@ -85,14 +85,19 @@ export default function DefinitionDialog() {
           <div>
             Pour ta santé, il est important de savoir si ce rapport sexuel
             présente un risque de grossesse non planifié ou d’infections
-            sexuellement transmissibles. Pour éviter les mauvaises surprises, tu
-            peux discuter des moyens de contraception et de protections contre
-            les IST avec ton.ta.tes partenaire.s.
+            sexuellement transmissibles (IST). Pour éviter les mauvaises
+            surprises, tu peux discuter des moyens de contraception et de
+            protections contre les IST avec ton.ta.tes partenaire.s.
           </div>
         </DialogDescription>
         <DialogTitle className={"py-4 text-center md:py-0 md:text-start"}>
-          ET N’OUBLIE PAS QUE <Highlight>SANS OUI C’EST NON</Highlight> !
+          ET N’OUBLIE PAS QUE <Highlight>SANS « OUI », C’EST « NON »</Highlight>{" "}
+          !!!
         </DialogTitle>
+        <p>
+          Pour en savoir plus, consulte la page des « Ressources & contacts
+          utiles »
+        </p>
         <DialogActions>
           <CancelButton onClick={() => setIsOpen(false)} variant={"close"} />
         </DialogActions>
