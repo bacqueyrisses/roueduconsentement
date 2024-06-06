@@ -76,7 +76,6 @@ export async function addSurvey(prevState: PrevState, formData: FormData) {
   }
 
   const { age, gender, question } = validatedFields.data;
-  console.log(age, gender, question);
 
   try {
     await sql`
