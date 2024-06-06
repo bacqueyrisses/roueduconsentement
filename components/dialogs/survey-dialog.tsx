@@ -183,13 +183,13 @@ function SubmitButton() {
     >
       {pending ? (
         <>
-          <span className={"invisible"}>Partagez</span>
+          <span className={"invisible"}>Partager</span>
           <Loader
             className={"absolute inset-0 m-auto size-5 animate-spin-slow"}
           />
         </>
       ) : (
-        "Partagez"
+        "Partager"
       )}
     </button>
   );

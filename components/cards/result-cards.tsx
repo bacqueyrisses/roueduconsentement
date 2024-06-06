@@ -69,9 +69,9 @@ export default function ResultCards({ score, answers }: ResultCards) {
                 ) : (
                   <p>
                     <Highlight>Merci d'avoir participé</Highlight> à notre jeu,
-                    toutes les informations données restent anonymes. Vous
-                    pouvez cliquer sur le <Highlight>bouton vert</Highlight>{" "}
-                    pour partagez quelques informations.{" "}
+                    toutes les informations données restent anonymes. Tu peux
+                    cliquer sur le <Highlight>bouton vert</Highlight> pour
+                    partager quelques informations.{" "}
                   </p>
                 )}
               </div>

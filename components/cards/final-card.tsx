@@ -31,12 +31,12 @@ export function FinalCard({
             <Highlight>Merci d'avoir répondu</Highlight> à notre questionnaire,
             toutes les informations données restent anonymes.
             <br />
-            Pour rappel, votre score est de{" "}
+            Pour rappel, ton score est de{" "}
             <Highlight score={score}>
               {score?.toFixed(1)} sur 10.
             </Highlight>{" "}
             <br />
-            Vous pouvez cliquer sur le <Highlight>bouton vert</Highlight> pour
+            Tu peux cliquer sur le <Highlight>bouton vert</Highlight> pour
             copier le lien du site. <br />
             <Highlight>À bientôt !</Highlight>
           </p>
