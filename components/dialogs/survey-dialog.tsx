@@ -14,12 +14,9 @@ import { Radio, RadioField, RadioGroup } from "@/components/ui/radio";
 import { Textarea } from "@/components/ui/textarea";
 
 import { Input } from "@/components/ui/input";
-import { updateSession } from "@/lib/actions/auth";
 import { addSurvey } from "@/lib/actions/users";
+import useUpdateSurvey from "@/lib/hooks/useUpdateSurvey";
 import { Highlight, initialState } from "@/lib/utils";
-import JSConfetti from "js-confetti";
-import { Route } from "next";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
@@ -29,11 +26,7 @@ export default function SurveyDialog() {
   const [state, dispatch] = useFormState(addSurvey, initialState);
   const [gender, setGender] = useState("femme");
   const [otherGender, setOtherGender] = useState("");
-
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
-  const pathname = usePathname();
-  const jsConfetti = new JSConfetti();
+  const updateSurvey = useUpdateSurvey();
 
   function handleClose() {
     setIsOpen((prevState) => !prevState);
@@ -42,21 +35,8 @@ export default function SurveyDialog() {
   // Effect to handle useFormState success states
   useEffect(() => {
     if (state?.success) {
-      void updateSession({ surveyCompleted: true });
-
-      const params = new URLSearchParams(searchParams);
-      params.set("surveyCompleted", "true");
-      replace(`${pathname}?${params.toString()}` as Route);
-      localStorage.setItem("surveyCompleted", "true");
-
+      updateSurvey();
       setIsOpen(false);
-      setTimeout(() => {
-        void jsConfetti.addConfetti({
-          emojis: ["🤍"],
-          confettiNumber: 75,
-          emojiSize: 80,
-        });
-      }, 1000);
     }
   }, [state?.success]);
 
