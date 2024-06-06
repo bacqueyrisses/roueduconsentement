@@ -20,9 +20,9 @@ export default function useUpdateSurvey() {
 
     setTimeout(() => {
       void jsConfetti.addConfetti({
-        emojis: ["🤍"],
+        emojis: ["💟"],
         confettiNumber: 75,
-        emojiSize: 80,
+        emojiSize: 60,
       });
     }, 1000);
   }, [pathname]);
