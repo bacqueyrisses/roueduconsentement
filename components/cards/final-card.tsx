@@ -28,8 +28,8 @@ export function FinalCard({
           }
         >
           <p>
-            <Highlight>Merci d'avoir répondu</Highlight> à notre questionnaire,
-            toutes les informations données restent anonymes.
+            <Highlight>Merci d'avoir pris le temps !</Highlight> Toutes les
+            informations données restent anonymes.
             <br />
             Pour rappel, ton score est de{" "}
             <Highlight score={score}>

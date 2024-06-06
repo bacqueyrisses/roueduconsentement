@@ -14,7 +14,7 @@ export default function CancelButton({
       onClick={onClick}
     >
       {variant === "close" && "Fermer"}
-      {variant === "cancel" && "Annuler"}
+      {variant === "cancel" && "Retour"}
     </button>
   );
 }
